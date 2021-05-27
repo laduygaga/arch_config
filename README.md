@@ -55,10 +55,12 @@ mkdir /boot/EFI
 mount /dev/sdaX /boot/EFI  #Mount FAT32 EFI partition 
 
 grub-install --target=i386-pc /dev/sdX # legacy boot
-grub-install --target=x86_64-efi  --bootloader-id=grub_uefi --recheck #UEFI boot
-# or
-grub-install --target=x86_64-efi --bootloader-id=GRUB --efi-directory=/boot/efi --no-nvram --removable
 
+```
+grub-install --target=x86_64-efi  --bootloader-id=grub_uefi --recheck #UEFI boot
+## or
+grub-install --target=x86_64-efi --bootloader-id=GRUB --efi-directory=/boot/efi --no-nvram --removable
+```
 
 grub-mkconfig -o /boot/grub/grub.cfg
 
