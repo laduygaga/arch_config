@@ -10,7 +10,7 @@ fi
 touch $file
 if [ "$1" == "paste" ]; then
     shift
-    sel_file=$(awk '!x[$0]++' $file | dmenu -l 3 ${1+"$@"})
+    sel_file=$(awk '!x[$0]++' $file | dmenu -l 5 ${1+"$@"})
     sel_clip=$(echo -n "$sel_file"|tr '\034' '\n')
 fi
 
