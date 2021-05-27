@@ -87,18 +87,18 @@ nmap <S-Right> w
 " mouse
 set ttymouse=sgr
 
-set mouse=a
-let g:is_mouse_enabled = 1
+set mouse=
+let g:is_mouse_enabled = 0
 noremap <silent> <leader>m :call ToggleMouse()<CR>
 function ToggleMouse()
-	if g:is_mouse_enabled == 1
-		echo "Mouse OFF"
-		set mouse=
-		let g:is_mouse_enabled = 0
-	else
+	if g:is_mouse_enabled == 0
 		echo "Mouse ON"
 		set mouse=a
 		let g:is_mouse_enabled = 1
+	else
+		echo "Mouse OFF"
+		set mouse=
+		let g:is_mouse_enabled = 0
 	endif
 endfunction
 
@@ -225,38 +225,44 @@ augroup vim_autocmd
 	" fix always tabs to spaces when start python file
 	" fuck /usr/share/vim/vim74/ftplugin/python.vim
 	autocmd FileType python setlocal ts=4 sts=4 sw=4 noexpandtab
-	autocmd Filetype python inoremap <silent>  <buffer> <F9> <Esc>:%w !python3<CR>
-	autocmd Filetype python nnoremap <silent> <buffer> <F9> :%w !python3<CR>
+	autocmd Filetype python inoremap <silent>  <buffer> <leader>2 <Esc>:%w !python3<CR>
+	autocmd Filetype python nnoremap <silent> <buffer> <leader>2 :%w !python3<CR>
 	autocmd Filetype python nnoremap <silent> <buffer> <F8> :w<CR>:!clear;python3 %<CR>
-	autocmd Filetype python vnoremap <silent> <buffer> <F9> !python3<CR>
+	autocmd Filetype python vnoremap <silent> <buffer> <leader>2 !python3<CR>
 	autocmd Filetype python inoremap <silent> <buffer> <F5> <Esc>:%w !sudo python3<CR>
 	autocmd Filetype python nnoremap <silent> <buffer> <F5> :%w !sudo python3<CR>
-	autocmd Filetype php inoremap <silent> <buffer> <F9> <Esc>:%w !php<CR>
-	autocmd Filetype php nnoremap <silent> <buffer> <F9> :%w !php<CR>
-	autocmd Filetype php vnoremap <silent> <buffer> <F9> !php<CR>
+	autocmd Filetype php inoremap <silent> <buffer> <leader>2 <Esc>:%w !php<CR>
+	autocmd Filetype php nnoremap <silent> <buffer> <leader>2 :%w !php<CR>
+	autocmd Filetype php vnoremap <silent> <buffer> <leader>2 !php<CR>
 	autocmd Filetype php inoremap <silent> <buffer> <F5> <Esc>:%w !sudo php<CR>
 	autocmd Filetype php nnoremap <silent> <buffer> <F5> :%w !sudo php<CR>
-	autocmd Filetype sh inoremap <silent> <buffer> <F9> <Esc>:%w !bash<CR>
-	autocmd Filetype sh nnoremap <silent> <buffer> <F9> :%w !bash<CR>
-	autocmd Filetype sh vnoremap <silent> <buffer> <F9> !bash<CR>
+	autocmd Filetype sh inoremap <silent> <buffer> <leader>2 <Esc>:%w !bash<CR>
+	autocmd Filetype sh nnoremap <silent> <buffer> <leader>2 :%w !bash<CR>
+	autocmd Filetype sh vnoremap <silent> <buffer> <leader>2 !bash<CR>
 	autocmd Filetype sh nnoremap <silent> <buffer> <F8> :w<CR>:!clear; bash %<CR>
-	autocmd Filetype javascript inoremap <silent> <buffer> <F9> <Esc>:%w !node<CR>
-	autocmd Filetype javascript nnoremap <silent> <buffer> <F9> :%w !node<CR>
-	autocmd Filetype javascript vnoremap <silent> <buffer> <F9> !node<CR>
-	autocmd Filetype perl inoremap <silent> <buffer> <F9> <Esc>:%w !perl<CR>
-	autocmd Filetype perl nnoremap <silent> <buffer> <F9> :%w !perl<CR>
-	autocmd Filetype perl vnoremap <silent> <buffer> <F9> !perl<CR>
+	autocmd Filetype javascript inoremap <silent> <buffer> <leader>2 <Esc>:%w !node<CR>
+	autocmd Filetype javascript nnoremap <silent> <buffer> <leader>2 :%w !node<CR>
+	autocmd Filetype javascript vnoremap <silent> <buffer> <leader>2 !node<CR>
+	autocmd Filetype perl inoremap <silent> <buffer> <leader>2 <Esc>:%w !perl<CR>
+	autocmd Filetype perl nnoremap <silent> <buffer> <leader>2 :%w !perl<CR>
+	autocmd Filetype perl vnoremap <silent> <buffer> <leader>2 !perl<CR>
 	autocmd Filetype perl nnoremap <silent> <buffer> <F8> :w<CR>:!perl %<CR>
-	autocmd Filetype c nnoremap  <F8> :w<CR>:Shell gcc -g % >/dev/null;./a.out<CR><C-w><C-w>
-	autocmd Filetype c inoremap  <F8> <Esc>:w<CR>:Shell gcc -g % >/dev/null;./a.out<CR><C-w><C-w>
-	autocmd Filetype c nnoremap  <F9> :w<CR>:!clear;gcc -g % ;./a.out<CR>
-	autocmd Filetype c inoremap  <F9> <Esc>:w<CR>:!clear; gcc -g % ;./a.out<CR>
-	autocmd Filetype c nnoremap  <F5> :w<CR>:!gcc -g %<CR>:packadd termdebug<CR>:Termdebug<CR>
-	autocmd Filetype cpp nnoremap  <F8> :w<CR>:Shell g++ -g % >/dev/null;./a.out<CR><C-w><C-w>
-	autocmd Filetype cpp inoremap  <F8> <Esc>:w<CR>:Shell g++ -g % >/dev/null;./a.out<CR><C-w><C-w>
-	autocmd Filetype cpp nnoremap  <F9> :w<CR>:!clear;g++ -g % ;./a.out<CR>
-	autocmd Filetype cpp inoremap  <F9> <Esc>:w<CR>:!clear; g++ -g % ;./a.out<CR>
-	autocmd Filetype cpp nnoremap  <F5> :w<CR>:!g++ -g %<CR>:packadd termdebug<CR>:Termdebug<CR>
+	" autocmd Filetype c nnoremap  <F8> :w<CR>:Shell gcc -g % >/dev/null;./a.out<CR><C-w><C-w>
+	" autocmd Filetype c inoremap  <F8> <Esc>:w<CR>:Shell gcc -g % >/dev/null;./a.out<CR><C-w><C-w>
+	" autocmd Filetype c nnoremap  <leader>2 :w<CR>:!clear;gcc -g % ;./a.out<CR>
+	" autocmd Filetype c inoremap  <leader>2 <Esc>:w<CR>:!clear; gcc -g % ;./a.out<CR>
+	" autocmd Filetype c nnoremap  <F5> :w<CR>:!gcc -g %<CR>:packadd termdebug<CR>:Termdebug<CR>
+	" autocmd Filetype cpp nnoremap  <F8> :w<CR>:Shell g++ -g % >/dev/null;./a.out<CR><C-w><C-w>
+	" autocmd Filetype cpp inoremap  <F8> <Esc>:w<CR>:Shell g++ -g % >/dev/null;./a.out<CR><C-w><C-w>
+	" autocmd Filetype cpp nnoremap  <leader>2 :w<CR>:!clear;g++ -g % ;./a.out<CR>
+	" autocmd Filetype cpp inoremap  <leader>2 <Esc>:w<CR>:!clear; g++ -g % ;./a.out<CR>
+	" autocmd Filetype cpp nnoremap  <F5> :w<CR>:!g++ -g %<CR>:packadd termdebug<CR>:Termdebug<CR>
+	autocmd Filetype c nnoremap  <leader>2 :w<CR>:!clear;gcc -o %:r %:p<CR>:!./%:r<CR>
+	autocmd Filetype c inoremap  <leader>2 <Esc>:w<CR>:!clear;gcc -o %:r %:p<CR>:!./%:r<CR>
+	autocmd Filetype cpp nnoremap  <leader>2 :w<CR>:!clear;g++ -o %:r %:p<CR>:!./%:r<CR>
+	autocmd Filetype cpp inoremap  <leader>2 <Esc>:w<CR>:!clear;g++ -o %:r %:p<CR>:!./%:r<CR>
+	autocmd Filetype rust nnoremap  <leader>2 :w<CR>:!clear; rustc % <CR>:!./%:r<CR>
+	autocmd Filetype rust inoremap  <leader>2 <Esc>:w<CR>:!clear; rustc % <CR>:!./%:r<CR>
 
 set scrolloff=999
 " if !has('nvim')
