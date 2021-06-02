@@ -1,7 +1,7 @@
 #! /bin/bash
 
 file=$HOME/.dclip_cache
-size=10
+size=100
 
 if [ "$1" == "copy" ]; then
     sel_clip=$(xsel -o)
