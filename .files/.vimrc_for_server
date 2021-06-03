@@ -35,8 +35,8 @@ set viminfo='25,\"50,n~/.viminfo
 " mouse
 set ttymouse=sgr
 
-set mouse=a
-let g:is_mouse_enabled = 1
+set mouse=
+let g:is_mouse_enabled = 0
 noremap <silent> <leader>m :call ToggleMouse()<CR>
 function ToggleMouse()
 	if g:is_mouse_enabled == 1
