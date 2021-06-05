@@ -265,6 +265,8 @@ augroup vim_autocmd
 	autocmd Filetype rust inoremap  <leader>2 <Esc>:w<CR>:!clear; rustc % <CR>:!./%:r<CR>
 	autocmd Filetype go inoremap <silent>  <buffer> <leader>2 <Esc>:w<CR>:%w !go run %<CR>
 	autocmd Filetype go nnoremap <silent> <buffer> <leader>2 :w<CR>:%w !go run %<CR>
+	autocmd Filetype go inoremap <silent>  <buffer> <F9> <Esc>:w<CR>:!go build %; ./%:r<CR>
+	autocmd Filetype go nnoremap <silent>  <buffer> <F9> :w<CR>:!go build %; ./%:r<CR>
 
 set scrolloff=999
 " if !has('nvim')
