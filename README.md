@@ -28,9 +28,6 @@ sudo reflector --country Taiwan --age 12 --protocol https --sort rate --save /et
 # Install base linux linux-firmware 
 pacstrap /mnt base base-devel linux linux-firmware 
 
-# Create fstab file:
-genfstab -U /mnt >> /mnt/etc/fstab
-
 # Chroot to new system:
 arch-chroot /mnt
 # Install some basic package
@@ -61,6 +58,9 @@ grub-install --target=x86_64-efi --bootloader-id=GRUB --efi-directory=/boot/efi 
 
 
 grub-mkconfig -o /boot/grub/grub.cfg
+
+# Create fstab file:
+genfstab -U /mnt >> /mnt/etc/fstab
 
 exit
 
