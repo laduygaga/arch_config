@@ -263,6 +263,8 @@ augroup vim_autocmd
 	autocmd Filetype cpp inoremap  <leader>2 <Esc>:w<CR>:!clear;g++ -o %:r %:p<CR>:!./%:r<CR>
 	autocmd Filetype rust nnoremap  <leader>2 :w<CR>:!clear; rustc % <CR>:!./%:r<CR>
 	autocmd Filetype rust inoremap  <leader>2 <Esc>:w<CR>:!clear; rustc % <CR>:!./%:r<CR>
+	autocmd Filetype go inoremap <silent>  <buffer> <leader>2 <Esc>:w<CR>:%w !go run %<CR>
+	autocmd Filetype go nnoremap <silent> <buffer> <leader>2 :w<CR>:%w !go run %<CR>
 
 set scrolloff=999
 " if !has('nvim')
