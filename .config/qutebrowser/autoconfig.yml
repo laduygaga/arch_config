@@ -60,10 +60,18 @@ settings:
         j: scroll-page 0 0.5
         k: scroll-page 0 -0.5
         m: mode-enter set_mark
+  colors.tabs.even.fg:
+    global: black
+  colors.tabs.odd.fg:
+    global: black
   colors.tabs.selected.even.bg:
-    global: '#ebd534'
+    global: '#ededcc'
+  colors.tabs.selected.even.fg:
+    global: black
   colors.tabs.selected.odd.bg:
-    global: '#ebd534'
+    global: '#ededcc'
+  colors.tabs.selected.odd.fg:
+    global: black
   colors.webpage.darkmode.enabled:
     global: false
   content.autoplay:
