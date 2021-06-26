@@ -17,6 +17,7 @@ https://livecdn.fptplay.net/hda/vtv4_hls.smil/chunklist_b2500000.m3u8
 #EXTINF:-1 tvg-id="vtv5hd" tvg-name="VTV5 HD" tvg-logo="https://i.imgur.com/VBErOd8.png" group-title="VTV",VTV5 HD
 https://livecdn.fptplay.net/hda/vtv5hd_hls.smil/chunklist_b2500000.m3u8
 #EXTINF:-1 tvg-id="vtv6hd" tvg-name="VTV6 HD" tvg-logo="https://i.imgur.com/GtnRg0D.png" group-title="VTV",VTV6 HD
+https://livecdn.fptplay.net/hda/vtv6hd_hls.smil/chunklist_b2500000.m3u8
 #EXTINF:-1 tvg-logo="https://astrocontent.s3.amazonaws.com/Images/ChannelLogo/Pos/724_300.png" group-title="Quốc Tế",Fox HD
 https://livecdn.fptplay.net/foxlive/foxhd_hls.smil/chunklist_b2500000.m3u8
 #EXTINF:-1 tvg-logo="http://singteltv.com.sg/_channels/pic_ch414.jpg" group-title="Quốc Tế",Fox Movies
@@ -43,7 +44,6 @@ https://livecdn.fptplay.net/qnetlive/babyfirst_hls.smil/chunklist_b2500000.m3u8
 https://livecdn.fptplay.net/foxlive/natgeohd_hls.smil/chunklist_b2500000.m3u8
 #EXTINF:-1 tvg-logo="http://i.imgur.com/lB0VeoB.png" group-title="Quốc Tế",Discovery HD
 https://livecdn.fptplay.net/qnetlive/discovery_hls.smil/chunklist_b2500000.m3u8
-https://livecdn.fptplay.net/hda/vtv6hd_hls.smil/chunklist_b2500000.m3u8
 #EXTINF:-1 tvg-id="vtv7hd" tvg-name="VTV7 HD" tvg-logo="https://i.imgur.com/EQaqb0h.png" group-title="VTV",VTV7 HD
 https://livecdn.fptplay.net/hda/vtv7hd_hls.smil/chunklist_b2500000.m3u8
 #EXTINF:-1 tvg-id="vtv8hd" tvg-name="VTV8 HD" tvg-logo="https://i.imgur.com/9XsZ2fd.png" group-title="VTV",VTV8 HD
