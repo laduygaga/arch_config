@@ -27,6 +27,7 @@ Plug 'tpope/vim-surround'
 Plug 'echuraev/translate-shell.vim'
 " Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'ggreer/the_silver_searcher'
 " Plug 'vim-scripts/colorizer' "this slowdown vim
 " Plug 'gko/vim-coloresque' " show white/black in hex and others in string
 Plug 'pamacs/vim-srt-sync'
@@ -368,3 +369,12 @@ function! ToggleVExplorer()
       vertical resize 30
 endfunction
 map <silent> <leader>e :call ToggleVExplorer()<CR>
+
+
+" opens search results in a window w/ links and highlight the matches
+" command! -nargs=+ Grep execute 'silent grep! -I -r -n --exclude *.{json,pyc} . -e <args>' | copen | execute 'silent /<args>'
+" shift-control-* Greps for the word under the cursor
+" nmap <leader>g :Grep <c-r>=expand("<cword>")<cr><cr>
+"
+nnoremap <C-k> :<C-u>vimgrep <C-r><C-w> %<CR>:copen<CR><C-w><C-w>*
+vnoremap <C-k> y:execute 'vimgrep /\V' . escape(@@, '/\') . '/ %'<CR>:copen<CR><C-w><C-w>*
