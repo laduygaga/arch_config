@@ -86,7 +86,7 @@ pacman -S noto-fonts noto-fonts-emoji ttf-ubuntu-font-family ttf-dejavu ttf-free
 pacman -S alsa alsa-utils alsa-plugins alsa-lib pavucontrol
 
 # Tools
-pacman -S rxvt-unicode ranger rofi conky dmenu urxvt-perls perl-anyevent-i3 perl-json-xs atool highlight mediainfo w3m ffmpegthumbnailer zathura fzf firefox mpv mplayer feh sxiv scrot mtpfs gvfs-mtp pulseaudio git ibus-unikey ncmpcpp mpd mpc python-pip aria2 wget curl openvpn usbutils ctags youtube-dl streamlink i3lock-color perl-file-mimeinfo perl-image-exiftool xclip xdotool notify-osd crda geoip p7zip xbindkeys python2-wheel python-wheel re2
+pacman -S rxvt-unicode ranger rofi conky dmenu urxvt-perls perl-anyevent-i3 perl-json-xs atool highlight mediainfo w3m ffmpegthumbnailer zathura fzf firefox mpv mplayer feh sxiv scrot mtpfs gvfs-mtp pulseaudio git ibus-unikey ncmpcpp mpd mpc python-pip aria2 wget curl openvpn usbutils ctags youtube-dl streamlink i3lock-color perl-file-mimeinfo perl-image-exiftool xclip xdotool notify-osd crda geoip p7zip xbindkeys python2-wheel python-wheel re2 the_silver_searcher
 
 pip install --user python-mpd2 
 
