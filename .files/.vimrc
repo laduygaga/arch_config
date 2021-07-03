@@ -25,12 +25,13 @@ Plug 'ycm-core/YouCompleteMe'
 "required npm, libnghttp2; deleting third_party/ycmd/third_party/tern_runtime/node_module dir for javascript compleition
 Plug 'tpope/vim-surround'
 Plug 'echuraev/translate-shell.vim'
-" Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'ggreer/the_silver_searcher'
 " Plug 'vim-scripts/colorizer' "this slowdown vim
 " Plug 'gko/vim-coloresque' " show white/black in hex and others in string
 Plug 'pamacs/vim-srt-sync'
+Plug 'rking/ag.vim'
 
 call plug#end()
 
@@ -219,7 +220,8 @@ nnoremap <silent> <leader>D :qa!<CR>
 nnoremap <silent> <C-Tab> gt
 nnoremap <silent> <S-Tab> gT
 vnoremap <silent> <leader>,, :Trans :vi -b<CR> 
-map <leader><leader>f <leader>t:FZF ~/<CR>
+map <leader><leader>f :FZF ~/<CR>
+map <leader><leader>g :GFiles<CR>
 augroup vim_autocmd
 	" Prevent Vim from clearing the clipboard on exit
 	autocmd VimLeave * call system("xsel -ib", getreg('+'))
@@ -371,10 +373,11 @@ endfunction
 map <silent> <leader>e :call ToggleVExplorer()<CR>
 
 
-" opens search results in a window w/ links and highlight the matches
-" command! -nargs=+ Grep execute 'silent grep! -I -r -n --exclude *.{json,pyc} . -e <args>' | copen | execute 'silent /<args>'
-" shift-control-* Greps for the word under the cursor
-" nmap <leader>g :Grep <c-r>=expand("<cword>")<cr><cr>
-"
-nnoremap <C-k> :<C-u>vimgrep <C-r><C-w> %<CR>:copen<CR><C-w><C-w>*
-vnoremap <C-k> y:execute 'vimgrep /\V' . escape(@@, '/\') . '/ %'<CR>:copen<CR><C-w><C-w>*
+" vimgrep
+" nnoremap <C-k> :<C-u>vimgrep <C-r><C-w> %<CR>:copen<CR><C-w><C-w>*
+" vnoremap <C-k> y:execute 'vimgrep /\V' . escape(@@, '/\') . '/ %'<CR>:copen<CR><C-w><C-w>*
+
+" grep from root of project
+let g:ag_working_path_mode="r"
+nnoremap <C-k> :Ag <C-r>=expand('<cword>')<CR><CR>
+nnoremap <C-_> :AgFromSearch<CR>
