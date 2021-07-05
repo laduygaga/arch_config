@@ -374,7 +374,7 @@ map <silent> <leader>e :call ToggleVExplorer()<CR>
 
 
 " vimgrep
-" nnoremap <C-k> :<C-u>vimgrep <C-r><C-w> %<CR>:copen<CR><C-w><C-w>*
+nnoremap <leader>g :<C-u>vimgrep <C-r><C-w> %<CR>:copen<CR><C-w><C-w>*
 " vnoremap <C-k> y:execute 'vimgrep /\V' . escape(@@, '/\') . '/ %'<CR>:copen<CR><C-w><C-w>*
 
 " grep from root of project
