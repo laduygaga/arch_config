@@ -196,13 +196,13 @@ let &t_EI.="\e[1 q" "EI = NORMAL mode (ELSE)
 "  5 -> blinking vertical bar
 "  6 -> solid vertical bar
 
-map <leader>r :Run<CR>
-map <leader>b :Break<CR>
+map <leader><leader>r :Run<CR>
+map <leader><leader>b :Break<CR>
 map <leader><leader>b :Clear<CR>
-map <leader>s :Over<CR>
-map <leader>c :Continue<CR>
-map <leader>p :Stop<CR>
-map <leader>f :Finish<CR>
+map <leader><leader>s :Over<CR>
+map <leader><leader>c :Continue<CR>
+map <leader><leader>p :Stop<CR>
+map <leader><leader>f :Finish<CR>
 let g:termdebug_wide=1
 
 vnoremap Y "+y
@@ -220,7 +220,7 @@ nnoremap <silent> <leader>D :qa!<CR>
 nnoremap <silent> <C-Tab> gt
 nnoremap <silent> <S-Tab> gT
 vnoremap <silent> <leader>,, :Trans :vi -b<CR> 
-map <leader><leader>f :FZF ~/<CR>
+map <leader>f :FZF ~/<CR>
 map <leader><leader>g :GFiles<CR>
 augroup vim_autocmd
 	" Prevent Vim from clearing the clipboard on exit
@@ -374,10 +374,10 @@ map <silent> <leader>e :call ToggleVExplorer()<CR>
 
 
 " vimgrep
-nnoremap <leader>g :<C-u>vimgrep <C-r><C-w> %<CR>:copen<CR><C-w><C-w>*
+nnoremap <C-k> :<C-u>vimgrep <C-r><C-w> %<CR>:copen<CR><C-w><C-w>*
 " vnoremap <C-k> y:execute 'vimgrep /\V' . escape(@@, '/\') . '/ %'<CR>:copen<CR><C-w><C-w>*
 
 " grep from root of project
 let g:ag_working_path_mode="r"
-nnoremap <C-k> :Ag <C-r>=expand('<cword>')<CR><CR>
-nnoremap <C-_> :AgFromSearch<CR>
+nnoremap <leader>g :Ag <C-r>=expand('<cword>')<CR><CR>
+nnoremap <leader>s :AgFromSearch<CR>
