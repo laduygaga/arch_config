@@ -283,7 +283,9 @@ set path+=**
 set hlsearch incsearch
 set nrformats-=octal "fix when <c-a> auto add 07 to 10
 set cursorline
+set cursorcolumn
 hi CursorLine	cterm=NONE ctermbg=227
+hi CursorColumn cterm=NONE ctermbg=15
 hi Visual ctermfg=NONE ctermbg=11
 hi MatchParen ctermfg=Black ctermbg=LightCyan
 hi CursorLineNr term=none cterm=none ctermfg=202 
