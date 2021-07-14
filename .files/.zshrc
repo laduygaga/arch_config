@@ -115,12 +115,17 @@ alias emoji="cat ~/gits/arch_config/.local/share/emoji"
 push(){
     git pull && git add . && git commit -m "$*"  && git push;
 }
-alias dps="sudo docker ps -a"
-alias dup="sudo docker-compose up"
-alias drmi="sudo docker stop $(sudo docker ps -q) && sudo docker rmi -f $(sudo docker images -aq)"
-alias drmc="sudo docker container rm $(sudo docker container ls -aq)"
-alias dstop="sudo docker stop $(sudo docker ps -q)"
-alias dbuild="sudo docker-compose build"
+dps() {sudo docker ps -a}
+dup() {sudo docker-compose up}
+drmi() {
+	[[ -z $(sudo docker ps -q) ]] && echo "No running container" && sudo docker rmi -f `sudo docker images -aq | paste -sd ' '`
+	[[ ! -z $(sudo docker ps -q) ]] && sudo docker stop `sudo docker ps -q | paste -st ' '` && sudo docker rmi -f `sudo docker images -aq | paste -sd ' '`
+}
+dstop() {sudo docker stop `sudo docker ps -q | paste -sd ' '`}
+drmc() {
+	[[ -z $(sudo docker ps -q) ]] && echo "No running container" && sudo docker container rm `sudo docker ps -aq | paste -sd ' '`
+	[[ ! -z $(sudo docker ps -q) ]] && sudo docker stop `sudo docker ps -q | paste -st ' '` && sudo docker container -rm `sudo docker ps -aq | paste -sd ' '`
+}
 alias t/sh="cd ~/.trash/sh"
 alias t/p="cd ~/.trash/p"
 alias t/c="cd ~/.trash/c"
