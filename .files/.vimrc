@@ -1,3 +1,7 @@
+if !has('nvim')
+  set viminfo+=n~/.vim/viminfo
+endif
+
 " plugins
 let need_to_install_plugins = 0
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -8,19 +12,15 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin()
-" Plug 'tpope/vim-sensible'
-Plug 'itchyny/lightline.vim'
 Plug 'joshdick/onedark.vim'
 Plug 'ap/vim-buftabline'
 Plug 'airblade/vim-gitgutter'
-" Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'scrooloose/syntastic'
+" Plug 'scrooloose/syntastic'
 Plug 'majutsushi/tagbar'
 " emmet-vim html faster
 Plug 'mattn/emmet-vim'
 " Plug 'vim-scripts/indentpython.vim'
 Plug 'lepture/vim-jinja'
-" Plug 'pangloss/vim-javascript'
 Plug 'ycm-core/YouCompleteMe' 
 "required npm, libnghttp2; deleting third_party/ycmd/third_party/tern_runtime/node_module dir for javascript compleition
 Plug 'tpope/vim-surround'
@@ -32,6 +32,9 @@ Plug 'ggreer/the_silver_searcher'
 " Plug 'gko/vim-coloresque' " show white/black in hex and others in string
 Plug 'pamacs/vim-srt-sync'
 Plug 'rking/ag.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
+Plug 'cohama/lexima.vim'
 
 call plug#end()
 
@@ -47,7 +50,10 @@ if need_to_install_plugins == 1
 endif
 
 " always show the status bar
+set statusline+=%F
 set laststatus=2
+set title
+set titlestring=%F
 
 " enable 256 colors
 set t_Co=256
@@ -122,7 +128,7 @@ endfunction
 
 " lightline
 " set noshowmode
-let g:lightline = { 'colorscheme': 'onedark' }
+" let g:lightline = { 'colorscheme': 'onedark' }
 
 " code folding
 set foldmethod=indent
@@ -152,10 +158,10 @@ endfunction
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 " syntastic
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 0
+" let g:syntastic_check_on_wq = 0
 " map <leader>s :SyntasticCheck<CR>
 " map <leader>d :SyntasticReset<CR>
 " map <leader>e :lnext<CR>
