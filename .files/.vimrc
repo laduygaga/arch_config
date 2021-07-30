@@ -34,7 +34,7 @@ Plug 'pamacs/vim-srt-sync'
 Plug 'rking/ag.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
-Plug 'cohama/lexima.vim'
+" Plug 'cohama/lexima.vim'
 
 call plug#end()
 
@@ -80,17 +80,6 @@ set softtabstop=4
 set colorcolumn=80
 set viminfo='25,\"50,n~/.viminfo
 set autoread
-
-" word movement
-imap <S-Left> <Esc>bi
-nmap <S-Left> b
-imap <S-Right> <Esc><Right>wi
-nmap <S-Right> w
-
-" indent/unindent with tab/shift-tab
-" nmap <Tab> >>
-" imap <S-Tab> <Esc><<i
-" nmap <S-tab> <<
 
 " mouse
 set ttymouse=sgr
@@ -211,7 +200,28 @@ map <leader><leader>p :Stop<CR>
 map <leader><leader>f :Finish<CR>
 let g:termdebug_wide=1
 
+" undo break point
+inoremap , ,<C-g>u
+inoremap . .<C-g>u
+inoremap ? ?<C-g>u
+inoremap ! !<C-g>u
+
 vnoremap Y "+y
+vnoremap " <esc>`>a"<esc>`<i"<esc> 
+vnoremap ' <esc>`>a'<esc>`<i'<esc> 
+vnoremap ) <esc>`>a)<esc>`<i(<esc> 
+vnoremap } <esc>`>a}<esc>`<i{<esc> 
+vnoremap ] <esc>`>a]<esc>`<i[<esc> 
+
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+inoremap <C-j> <esc>:m .+1<CR>
+inoremap <C-k> <esc>:m .-2<CR>
+nnoremap <C-j> :m .+1<CR>
+nnoremap <C-k> :m .-2<CR>
+
+" nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . 'k'
+" nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j'
 set clipboard=unnamed
 inoremap jk <esc>
 set timeoutlen=400
@@ -226,7 +236,8 @@ nnoremap <silent> <leader>D :qa!<CR>
 nnoremap <silent> <C-Tab> gt
 nnoremap <silent> <S-Tab> gT
 vnoremap <silent> <leader>,, :Trans :vi -b<CR> 
-map <leader>f :FZF ~/<CR>
+"map <leader>f :FZF ~/<CR>
+map <leader><leader>f :Files<CR>
 map <leader><leader>g :GFiles<CR>
 augroup vim_autocmd
 	" Prevent Vim from clearing the clipboard on exit
@@ -326,7 +337,7 @@ let g:ycm_auto_trigger = 1
 :command! -complete=file -nargs=1 Rpdf :r !pdftotext -nopgbrk <q-args> - |fmt -csw78
 
 
-let $FZF_DEFAULT_COMMAND = "find -L"
+" let $FZF_DEFAULT_COMMAND = "find -L"
 
 
 
@@ -382,7 +393,7 @@ map <silent> <leader>e :call ToggleVExplorer()<CR>
 
 
 " vimgrep
-nnoremap <C-k> :<C-u>vimgrep <C-r><C-w> %<CR>:copen<CR><C-w><C-w>*
+" nnoremap <C-k> :<C-u>vimgrep <C-r><C-w> %<CR>:copen<CR><C-w><C-w>*
 " vnoremap <C-k> y:execute 'vimgrep /\V' . escape(@@, '/\') . '/ %'<CR>:copen<CR><C-w><C-w>*
 
 " grep from root of project
