@@ -50,7 +50,7 @@ if need_to_install_plugins == 1
 endif
 
 " always show the status bar
-set statusline+=%F
+set statusline+=%F,%l,%v
 set laststatus=2
 set title
 set titlestring=%F
