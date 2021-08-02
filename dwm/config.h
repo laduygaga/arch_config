@@ -167,6 +167,7 @@ static Key keys[] = {
     // { MODKEY,                XK_F10,         spawn,  SHCMD("amixer -D pulse -q set Master toggle" ) },
     // { MODKEY,                XK_F11,    spawn,   SHCMD("amixer -D pulse -q set Master 5%+    ") },
     // { MODKEY,                XK_F9,    spawn,    SHCMD("amixer -D pulse -q set Master 5%-    ") },
+    // { MODKEY,                XK_F12,        spawn,  SHCMD("pactl set-source-mute 1 toggle") },
     { MODKEY,               XK_F8,                      spawn,  SHCMD("touchpad_toggle.sh") },
     { 0,                    XK_Print,                   spawn,  SHCMD("scrot ~/Pictures/ScreenShots/%b%d:%H%M%S.png") },
     { MODKEY,               XK_Print,                   spawn,  SHCMD("scrot -s ~/Pictures/ScreenShots/%b%d:%H%M%S.png") },
@@ -184,6 +185,8 @@ static Key keys[] = {
     { MODKEY|ShiftMask,     XK_comma,                   spawn,  SHCMD("xterm -e trans :vi --shell") },
     { MODKEY,               XK_F1,                      spawn,  SHCMD("keylog.sh") },
     { MODKEY|ShiftMask,     XK_F1,                      spawn,  SHCMD("sudo killall python3") },
+    { MODKEY|ControlMask,   XK_f,						spawn,  SHCMD("thePower.sh") },
+    { MODKEY|ControlMask,   XK_d,						spawn,  SHCMD("allUp.sh") },
 
 };
 
