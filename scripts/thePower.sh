@@ -1,6 +1,6 @@
 #!/bin/bash
 
-file=$(find $HOME -type f | dmenu -i -l 10)
+file=$(find $HOME -type f -not -path '*/\.git/*' -not -path '*/\.vim/*' -not -path '*/\venv/*'| dmenu -i -l 10)
 
 case $(file --mime-type "$file" -b) in
 	text/html) $BROWSER "$file" >/dev/null 2>&1 &;;
