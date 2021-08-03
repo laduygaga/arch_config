@@ -34,6 +34,7 @@ Plug 'pamacs/vim-srt-sync'
 Plug 'rking/ag.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
+Plug 'SirVer/ultisnips'
 " Plug 'cohama/lexima.vim'
 
 call plug#end()
@@ -368,7 +369,7 @@ function! s:ExecuteInShell(command)
   " silent! execute 'resize ' . line('$')
   silent! redraw
   silent! execute 'au BufUnload <buffer> execute bufwinnr(' . bufnr('#') . ') . ''wincmd w'''
-  silent! execute 'nnoremap <silent> <buffer> <LocalLeader>r :call <SID>ExecuteInShell(''' . command . ''')<CR>'
+  silent! execute 'nnoremap <silent> <buffer> <Localkeader>r :call <SID>ExecuteInShell(''' . command . ''')<CR>'
   echo 'Shell command ' . command . ' executed.'
 endfunction
 command! -complete=shellcmd -nargs=+ Shell call s:ExecuteInShell(<q-args>)
@@ -400,3 +401,13 @@ map <silent> <leader>e :call ToggleVExplorer()<CR>
 let g:ag_working_path_mode="r"
 nnoremap <leader>g :Ag <C-r>=expand('<cword>')<CR><CR>
 nnoremap <leader>s :AgFromSearch<CR>
+nnoremap <leader>r :GRg<CR>
+
+command! -bang -nargs=* GGrep
+  \ call fzf#vim#grep(
+  \   'git grep --line-number -- '.shellescape(<q-args>), 0,
+  \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
+command! -bang -nargs=* GRg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
