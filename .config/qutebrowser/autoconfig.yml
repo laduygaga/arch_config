@@ -189,8 +189,10 @@ settings:
     global: false
   tabs.background:
     global: true
+  tabs.position:
+    global: left
   url.default_page:
-    global: https://google.com/search
+    global: about:blank
   url.searchengines:
     global:
       DEFAULT: https://google.com/search?q={}
