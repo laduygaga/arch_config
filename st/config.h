@@ -54,6 +54,7 @@ static unsigned int actionfps = 30;
  * attribute.
  */
 static unsigned int blinktimeout = 800;
+int ximspot_update_interval = 1000;
 
 /*
  * thickness of underline and bar cursors
@@ -191,6 +192,7 @@ ResourcePref resources[] = {
 		{ "cwscale",      FLOAT,   &cwscale },
 		{ "chscale",      FLOAT,   &chscale },
 		{ "alpha",        FLOAT,   &alpha },
+ 		{ "ximspot_update_interval", INTEGER, &ximspot_update_interval },
 };
 
 /*
