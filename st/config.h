@@ -7,8 +7,8 @@
  */
 // static char *font = "mono:pixelsize=15:antialias=true:autohint=true";
 // static char *font2[] = { "Inconsolata for Powerline:pixelsize=15:antialias=true:autohint=true" };
-static char *font = "mono:pixelsize=18:antialias=true:autohint=true";
-static char *font2[] = { "mono:pixelsize=12:antialias=true:autohint=true" };
+static char *font = "mono:pixelsize=19:antialias=true:autohint=true";
+static char *font2[] = { "mono:pixelsize=13:antialias=true:autohint=true" };
 
 static int borderpx = 2;
 
@@ -92,24 +92,51 @@ unsigned int tabspaces = 4;
 float alpha = 1;
 
 /* Terminal colors (16 first used in escape sequence) */
+// old
+// static const char *colorname[] = {
+// 	"#282828", /* hard contrast: #1d2021 / soft contrast: #32302f */
+// 	"#cc241d",
+// 	"#98971a",
+// 	"#d79921",
+// 	"#458588",
+// 	"#b16286",
+// 	"#689d6a",
+// 	"#a89984",
+// 	"#928374",
+// 	"#fb4934",
+// 	"#b8bb26",
+// 	"#fabd2f",
+// 	"#83a598",
+// 	"#d3869b",
+// 	"#8ec07c",
+// 	"#ebdbb2",
+// 	[255] = 0,
+// 	/* more colors can be added after 255 to use with DefaultXX */
+// 	"#ededcc",   /* 256 -> bg */
+// 	"#000000",   /* 257 -> fg */
+// 	"#000000", /* 258 -> cursor */
+// 	// "green", /* 258 -> cursor */
+// };
+
+// alacritty-like
 static const char *colorname[] = {
-	"#282828", /* hard contrast: #1d2021 / soft contrast: #32302f */
-	"#cc241d",
-	"#98971a",
-	"#d79921",
-	"#458588",
-	"#b16286",
-	"#689d6a",
-	"#a89984",
-	"#928374",
-	"#fb4934",
-	"#b8bb26",
-	"#fabd2f",
-	"#83a598",
-	"#d3869b",
-	"#8ec07c",
-	"#ebdbb2",
-	[255] = 0,
+	"#696c77",  /* 0: black */
+	"#e45649",  /* 1: red */
+	"#50a14f",  /* 2: green */
+	"#c18401",  /* 3: yellow */
+	"#199aa6",  /* 4: blue */
+	"#a626a4",  /* 5: magenta */
+	"#0184bc",  /* 6: cyan */
+	"#a0a1a7",  /* 7: white */
+	"#928374",  /* 8: brblack */
+	"#fb4934",  /* 9: brred */
+	"#b8bb26",  /* 10: brgreen */
+	"#fabd2f",  /* 11: bryellow */
+	"#83a598",  /* 12: brblue */
+	"#d3869b",  /* 13: brmagenta */
+	"#8ec07c",  /* 14: brcyan */
+	"#ebdbb2",  /* 15: brwhite */
+	[255] = 0, 
 	/* more colors can be added after 255 to use with DefaultXX */
 	"#ededcc",   /* 256 -> bg */
 	"#000000",   /* 257 -> fg */
