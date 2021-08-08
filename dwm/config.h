@@ -47,6 +47,11 @@ static const Rule rules[] = {
         { "Gimp",               NULL,       NULL,           0,          0,          0,          0,          -1 },
         // { "Sxiv",            NULL,       NULL,           0,          1,          0,         -1,          -1 },
         { "mpv",                NULL,       NULL,           1 << 7,     0,          0,          0,          -1 },
+        { "Steam",              NULL,       NULL,           1 << 5,     0,          0,          1,          -1 },
+        { "dota2",              NULL,       NULL,           1 << 3,     0,          0,          1,          -1 },
+        { "Condition Zero",     NULL,       NULL,           1 << 3,     0,          0,          1,          -1 },
+        { "hl_linux",			NULL,       NULL,           1 << 3,     0,          0,          1,          -1 },
+        { NULL,					NULL,       "Raid",         1 << 3,     0,          0,          1,          -1 },
         { NULL,                 NULL,       "ncmpcpp",      1 << 7,     0,          0,          1,          -1 },
         { NULL,                 NULL,       "trans",        0,          1,          1,          1,          -1 },                   // xterm
         { NULL,                 NULL,       "trans",        0,          1,          1,          1,          -1 },                    // urxvt
