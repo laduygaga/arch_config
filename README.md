@@ -169,3 +169,33 @@ Add 'ext4' to MODULES
 Add 'encrypt' and 'lvm2' to HOOKS before 'filesystems'
 # /etc/default/grub
 GRUB_CMDLINE_LINUX="cryptdevice=/dev/sda2:luks:allow-discards"
+
+# nvidia
+pms nvidia nvidia-utils nvidia-settings xorg-server-devel opencl-nvidia 
+
+# check disable nouveau
+cat /usr/lib/modprobe.d/nvidia.conf
+
+# /etc/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf
+Section "OutputClass"
+    Identifier "intel"
+    MatchDriver "i915"
+    Driver "modesetting"
+EndSection
+
+Section "OutputClass"
+    Identifier "nvidia"
+    MatchDriver "nvidia-drm"
+    Driver "nvidia"
+    Option "AllowEmptyInitialConfiguration"
+    Option "PrimaryGPU" "yes"
+    ModulePath "/usr/lib/nvidia/xorg"
+    ModulePath "/usr/lib/xorg/modules"
+EndSection
+
+# ~/.xinitrc
+xrandr --setprovideroutputsource modesetting NVIDIA-0
+xrandr --auto
+
+# check 3D
+glxinfo | grep NVIDIA

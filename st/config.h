@@ -7,8 +7,8 @@
  */
 // static char *font = "mono:pixelsize=15:antialias=true:autohint=true";
 // static char *font2[] = { "Inconsolata for Powerline:pixelsize=15:antialias=true:autohint=true" };
-static char *font = "mono:pixelsize=16:antialias=true:autohint=true";
-static char *font2[] = { "mono:pixelsize=10:antialias=true:autohint=true" };
+static char *font = "mono:pixelsize=18:antialias=true:autohint=true";
+static char *font2[] = { "mono:pixelsize=12:antialias=true:autohint=true" };
 
 static int borderpx = 2;
 

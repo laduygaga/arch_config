@@ -6,9 +6,9 @@ static const unsigned int snap      = 32;       /* snap pixel */
 static const int swallowfloating    = 1;        /* 1 means swallow floating windows by default */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 0;        /* 0 means bottom bar */
-static const char *fonts[]          = { "mono:size=8", "Ionicons:size=8" };
+static const char *fonts[]          = { "mono:size=10", "Ionicons:size=10" };
 // static const char *fonts[]          = { "Mononoki Nerd Font:size=8", "Symbola:size=8" };
-static const char dmenufont[]       = "mono:size=10";
+static const char dmenufont[]       = "mono:size=12";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
@@ -88,7 +88,7 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
-static const char *termcmd[]  = { "alacritty", NULL};
+static const char *termcmd[]  = { "st", NULL};
 
 #include <X11/XF86keysym.h>
 #include "movestack.c"

@@ -1,0 +1,4 @@
+#!/bin/bash
+
+sensors | awk '/temp2/ {print $2}'
+
