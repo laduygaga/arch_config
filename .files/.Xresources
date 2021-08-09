@@ -117,7 +117,7 @@ XTerm.vt100.metaSendsEscape: true
 XTerm.vt100.backarrowKey: false
 XTerm.ttyModes: erase ^?
 XTerm.vt100.saveLines: 16384
-XTerm.vt100.faceName: monospace:size=12:antialias=true
+XTerm.vt100.faceName: monospace:size=18:antialias=true
 XTerm.vt100.font: 7x13
 XTerm.vt100.bellIsUrgent: false
 XTerm*visualBell:  false
