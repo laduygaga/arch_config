@@ -291,7 +291,7 @@ augroup vim_autocmd
 
 set scrolloff=999
 " if !has('nvim')
-"     set mouse=a
+"     set mouse=
 "     set ttymouse=xterm2
 " endif
 set cmdheight=2
@@ -384,6 +384,17 @@ let g:netrw_liststyle=3
 " switch between normal file and hiding file: key: a
 let g:netrw_list_hide = '^\..*'
 let g:netrw_hide = 1
+
+augroup netrw_mapping
+    autocmd!
+    autocmd filetype netrw call NetrwMapping()
+augroup END
+
+function! NetrwMapping()
+    nmap <buffer> yy mf
+    nmap <buffer> P mtmm
+    nmap <buffer> p mtmc
+endfunction
 
 " Toggle Vexplore with Ctrl-E
 function! ToggleVExplorer()
