@@ -292,3 +292,21 @@ export FZF_DEFAULT_COMMAND="find -L"
 #
 export FLASK_APP=app
 export FLASK_ENV=development
+export PYTHONPATH=$PWD
+if [[ -d ./venv ]] ; then
+	source ./venv/bin/activate
+fi
+
+function cd() {
+  if [[ -d ./venv ]] ; then
+    deactivate
+  fi
+  builtin cd $1
+  if [[ -d ./venv ]] ; then
+    source ./venv/bin/activate
+	export PYTHONPATH=$PWD
+  fi
+}
+
+# source <(kubectl completion bash)
+# source <(kubectl completion zsh)
