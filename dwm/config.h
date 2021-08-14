@@ -33,7 +33,7 @@ static const Rule rules[] = {
     /* class                    instance    title           tags mask   isfloating  isterminal  noswallow   monitor */
         { "qutebrowser",        NULL,       NULL,           1 << 1,     0,          0,          1,          -1 },
         { "TelegramDesktop",    NULL,       NULL,           1 << 7,     0,          0,          1,          -1 },
-        { "battle.net.exe",     NULL,       NULL,           1 << 5,     0,          0,          1,          -1 },
+        { "battle.net.exe",     NULL,       NULL,           1 << 5,     1,          0,          1,          -1 },
         { "explorer.exe",       NULL,       NULL,           1 << 5,     0,          0,          1,          -1 },
         { "GoldenDict",         NULL,       NULL,           1 << 2,     0,          0,          1,          -1 },
         { "Zathura",            NULL,       NULL,           1 << 8,     0,          0,          1,          -1 },
