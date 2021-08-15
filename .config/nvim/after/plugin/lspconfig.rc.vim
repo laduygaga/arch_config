@@ -97,6 +97,10 @@ nvim_lsp.pyright.setup{
 nvim_lsp.gopls.setup{
   on_attach = on_attach,
 }
+
+nvim_lsp.ccls.setup{
+  on_attach = on_attach,
+}
 -- nvim_lsp.diagnosticls.setup {
 --   on_attach = on_attach,
 --   filetypes = { 'javascript', 'javascriptreact', 'json', 'typescript', 'typescriptreact', 'css', 'less', 'scss', 'markdown', 'pandoc' },
