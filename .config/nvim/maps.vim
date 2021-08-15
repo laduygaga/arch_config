@@ -11,6 +11,11 @@ map <leader><leader>p :Stop<CR>
 map <leader><leader>f :Finish<CR>
 vnoremap Y "+y
 inoremap jk <esc>
+vnoremap " <esc>`>a"<esc>`<i"<esc> 
+vnoremap ' <esc>`>a'<esc>`<i'<esc> 
+vnoremap ) <esc>`>a)<esc>`<i(<esc> 
+vnoremap } <esc>`>a}<esc>`<i{<esc> 
+vnoremap ] <esc>`>a]<esc>`<i[<esc> 
 nnoremap <silent> <leader>t :tabnew<CR>
 nnoremap <silent> <leader>d :tabclose<CR>
 nnoremap <silent> <leader>D :qa!<CR>
