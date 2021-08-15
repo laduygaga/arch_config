@@ -310,3 +310,6 @@ function cd() {
 
 # source <(kubectl completion bash)
 # source <(kubectl completion zsh)
+rm_pycache() {
+	rm -rf `find ./** -type d -name "__pycache__"`
+}
