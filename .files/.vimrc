@@ -12,7 +12,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin()
-Plug 'puremourning/vimspector'
+" Plug 'puremourning/vimspector'
 Plug 'joshdick/onedark.vim'
 Plug 'ap/vim-buftabline'
 Plug 'airblade/vim-gitgutter'
@@ -424,7 +424,7 @@ command! -bang -nargs=* GRg
   \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
   \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
 
-packadd! vimspector
-" let g:vimspector_enable_mappings = 'HUMAN'
-nnoremap <leader>dd :call vimspector#Launch()<CR>
-nmap <leader>dbp <Plug>VimspectorToggleBreakpoint
+" packadd! vimspector
+" " let g:vimspector_enable_mappings = 'HUMAN'
+" nnoremap <leader>dd :call vimspector#Launch()<CR>
+" nmap <leader>dbp <Plug>VimspectorToggleBreakpoint
