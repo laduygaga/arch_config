@@ -89,102 +89,11 @@ https://vips-livecdn.fptplay.net/hda1/vtv6hd_vhls.smil/chunklist_b5000000.m3u8
 #http://drfamaga5qliv.vcdn.cloud/vtv06/vtv06@1080p.m3u8
 #EXTINF:0 tvg-id="vtv7hd"group-title="VTV" tvg-logo="https://i.ibb.co/27xvxDJ/VTV7-HD-BEARTV.png",VTV7 HD
 https://vips-livecdn.fptplay.net/hda3/vtv7hd_vhls.smil/chunklist_b5000000.m3u8
-#http://drfamaga5qliv.vcdn.cloud/vtv07/vtv07@1080p.m3u8
-#EXTINF:0 tvg-id="vtv8hd"group-title="VTV" tvg-logo="https://i.ibb.co/frqfTd1/VTV8-HD-BEARTV.png",VTV8 HD
-https://vips-livecdn.fptplay.net/hda2/vtv8hd_vhls.smil/chunklist_b5000000.m3u8
-#http://drfamaga5qliv.vcdn.cloud/vtv08/vtv08@1080p.m3u8
-#EXTINF:0 tvg-id="vtv9hd"group-title="VTV" tvg-logo="https://i.ibb.co/6bFVqfq/VTV9-HD-BEARTV.png",VTV9 HD
-https://htv-drm-live-cdn.fptplay.net/CDN-FPT02/VTV9-HD-1080p/playlist.m3u8
 
-#EXTINF:0 tvg-id="vtv5hdtnb"group-title="VTV" tvg-logo="https://i.ibb.co/Hnc1LPG/VTV5-TNB-BEARTV.png",VTV5 Tây Nam Bộ
-https://mutixx5hq1liv.akamaized.net/vtv5tnb/vtv5tnb@720p.m3u8
-#EXTINF:-1 tvg-id="vtv5hdtn" group-title="VTV" tvg-logo="https://i.ibb.co/zVJz2CQ/VTV5-TN-BEARTV.png" ,VTV5 Tây Nguyên
-https://mutixx5hq1liv.akamaized.net/vtv5tn/vtv5tn@720p.m3u8
-
-#EXTINF:0 tvg-id="antvhd"group-title="THỜI SỰ - BEAR TV" tvg-logo="https://i.ibb.co/9wxKmLH/ANTV-BEARTV.png", ANTV HD
-https://vips-livecdn.fptplay.net/hda2/anninhtv_vhls.smil/chunklist_b5000000.m3u8
-#EXTINF:0 tvg-id="quochoi" group-title="THỜI SỰ - BEAR TV" tvg-logo="https://i.ibb.co/Dt2mVGQ/QUOCHOI-BEARTV.png", QUỐC HỘI
-http://113.164.225.140:1935/live/quochoitvlive.stream_360p/chunklist_w880738422.m3u8
-#EXTINF:0 tvg-id="qpvnhd" group-title="THỜI SỰ - BEAR TV" tvg-logo="https://i.ibb.co/SxyVmWr/QPVN-BEARTV.png", QUỐC PHÒNG VIỆT NAM
-https://vips-livecdn.fptplay.net/hda1/quocphongvnhd_vhls.smil/chunklist_b5000000.m3u8
-#EXTINF:0 tvg-id="vovtv"group-title="THỜI SỰ - BEAR TV" tvg-logo="https://i.ibb.co/TMVw5Hw/VOV-BEARTV.png",VOV TV HD
-http://cdn.vovtv.mediatech.vn/vovlive/tv1live.m3u8
-#EXTINF:-1 tvg-id="nhan_dan_tv"group-title="THỜI SỰ - BEAR TV" tvg-logo="https://i.ibb.co/Cwb7y50/NHANDAN-BEARTV.png",NHÂN DÂN HD
-https://video.nhandan.thienvietjsc.net/live/nhandan720/chunklist_w1915921234.m3u8
-#EXTINF:-1 tvg-id="ttxvnhd" group-title="THỜI SỰ - BEAR TV" tvg-logo="https://i.ibb.co/mFj98VJ/VNEWS-BEARTV.png" ,VNews
-https://vips-livecdn.fptplay.net/hda2/ttxvn_vhls.smil/chunklist_b5000000.m3u8
-#EXTINF:-1 tvg-id="k1hd" group-title="THỜI SỰ - BEAR TV" tvg-logo="https://i.ibb.co/sCyb2j3/BEARTVQR.jpg" ,Bear TV quét mã QR Zalo
-#https://rlink.vn/beartvchannel
-http://87.117.234.107:1935/live/StarMovies_SELECT_HD/playlists.m3u8
-#EXTINF:-1 tvg-id="knshd" group-title="THỜI SỰ - BEAR TV" tvg-logo="https://i.ibb.co/W0871Gj/5kcovid.png", PHÒNG CHỐNG COVID-19
-https://rlink.vn/beartv-ttcovid19
-#https://rlink.vn/beartvchannel2
-
-
-#EXTINF:0 tvg-id="vtvcab1hd"group-title="VTVCab" tvg-logo="https://i.ibb.co/NYSr7Kn/VTVCAB1-BEARTV.png",VTVCab1 - Vie Giải Trí
-https://rlink.vn/beartv-vtvcab1
-#EXTINF:0 tvg-id="vtvcab19hd"group-title="VTVCab" tvg-logo="  https://i.ibb.co/T84Wq4j/VTVCAB10-BEARTV.png",VTVCab19 - Vie Dramas
-https://rlink.vn/beartv-vtvcab19
-#EXTINF:-1 tvg-id="vtvcab6hd" group-title="VTVcab" tvg-logo="https://i.ibb.co/zs1CxVj/VTC3-SPORTS-BEARTV.png", VTVcab6 - On Sports + HD
-https://rlink.vn/beartv-vtvcab6
-#EXTINF:-1 tvg-id="vtvcab3hd" tvg-logo="https://i.ibb.co/F4YB7wH/thethaotv-BEARTV.png" group-title="VTVCab" , VTVCab3 - THỂ THAO TV
-https://e3.endpoint.cdn.sctvonline.vn/hls/vtvcab3/index.m3u8|Referer=http://sctvonline.vn/
-#EXTINF:-1 tvg-id="vtvcab16hd" tvg-logo="https://i.ibb.co/165qscC/VTVCAB16-BEARTV.png" group-title="VTVCab" , VTVCab16 - BÓNG ĐÁ TV
-https://e3.endpoint.cdn.sctvonline.vn/hls/vtvcab16/sd1/index.m3u8|Referer=http://sctvonline.vn/
-
-
-#EXTINF:0 tvg-id="sctv1hd" group-title="SCTV" tvg-logo="https://i.ibb.co/fX3N2C9/SCTV1-BEARTV.png", SCTV1 HD - Hài
-#https://rlink.vn/beartv-sctv1
-http://e1.endpoint.cdn.sctvonline.vn/hls/sctv1/sd1/index.m3u8|Referer=http://sctvonline.vn/
-#EXTINF:0 tvg-id="sctv3hd" group-title="SCTV" tvg-logo="https://i.ibb.co/HqxQX8C/SCTV3-BEARTV.png", SCTV3 HD - See TV
-#https://rlink.vn/beartv-sctv3
-http://e1.endpoint.cdn.sctvonline.vn/hls/sctv3/sd1/index.m3u8|Referer=http://sctvonline.vn/
-#EXTINF:-1 tvg-id="sctv4hd" group-title="SCTV" tvg-logo="https://i.ibb.co/3Sm2bkS/SCTV4-BEARTV.png",SCTV 4 HD - Giải Trí
-#https://rlink.vn/beartv-sctv4
-http://e1.endpoint.cdn.sctvonline.vn/hls/sctv4/sd1/index.m3u8|Referer=http://sctvonline.vn/
-#EXTINF:-1 tvg-id="sctv9hd" group-title="SCTV" tvg-logo="https://i.ibb.co/tzjMs9N/SCTV9-BEARTV.png",SCTV 9 HD - Phim TVB
-#https://rlink.vn/beartv-sctv9
-http://e1.endpoint.cdn.sctvonline.vn/hls/sctv9/sd1/index.m3u8|Referer=http://sctvonline.vn/
-#EXTINF:-1 tvg-id="sctv16hd" group-title="SCTV" tvg-logo="https://i.ibb.co/xJbbrHy/SCTV16-BEARTV.png", SCTV16 HD - Phim Nước Ngoài Đặc Sắc (Fox Action Movies)
-#https://rlink.vn/beartv-sctv16
-http://e1.endpoint.cdn.sctvonline.vn/hls/sctv16/sd1/index.m3u8|Referer=http://sctvonline.vn/
-#EXTINF:-1 tvg-id="sctv18hd" group-title="SCTV" tvg-logo="https://i.ibb.co/XkPQKgK/SCTV18-BEARTV.png", SCTV18 HD - Kênh 18
-#https://rlink.vn/beartv-sctv18
-http://e1.endpoint.cdn.sctvonline.vn/hls/sctv18/sd1/index.m3u8|Referer=http://sctvonline.vn/
-#EXTINF:-1 tvg-id="sctvhdpth" group-title="SCTV" tvg-logo="https://i.ibb.co/G561126/SCTVTH-BEARTV.png", SCTV HD Phim Tổng Hợp
-#https://rlink.vn/beartv-sctvth
-http://e1.endpoint.cdn.sctvonline.vn/hls/sctvphimtonghop/sd1/index.m3u8|Referer=http://sctvonline.vn/
-
-
-
-#EXTINF:-1 tvg-logo="https://i.ibb.co/bvTmmhm/Viva-TV-BEARTV.png" group-title="QUỐC TẾ - QNET",VIVA TV 
-#https://hls.myvideocontent.ru/hls2/vivarussia/index.m3u8
-http://195.9.195.19:8001/hls2/vivarussia/index.m3u8
 #EXTINF:-1 tvg-id="channelvhd" group-title="QUỐC TẾ - QNET" tvg-logo="https://i.ibb.co/wdwbLJM/Channel-V-BEARTV.png", Channel V HD
 https://livecdn.fptplay.net/foxlive/channelvhd_hls.smil/chunklist_b2500000.m3u8
-#EXTINF:-1 tvg-id="" group-title="QUỐC TẾ - QNET" tvg-logo="https://i.ibb.co/ggNS5F5/1hdtv-BEARTV.png", 1 HD Music TV
-http://1hdru-hls-otcnet.cdnvideo.ru/onehdmusic/mono.m3u8
-#EXTINF:-1 tvg-id="mtvhd" group-title="QUỐC TẾ - QNET" tvg-logo="https://i.ibb.co/4WsJKSP/MTV-VN-BEARTV.png", MTV
-https://live2cdn.todayplus.com.vn/hdb/smil:mtv.smil/chunklist_b1596000.m3u8
-
-#EXTINF:-1 tvg-id="abcaustralia" group-title="QUỐC TẾ - QNET" tvg-logo="https://i.ibb.co/gF4fGYx/ABC-Australia-BEARTV.png", ABC Australia
-https://livecdn.fptplay.net/qnetlive/australiaplus_hls.smil/chunklist_b2500000.m3u8
 #EXTINF:-1 tvg-id="bbcearth" group-title="QUỐC TẾ - QNET" tvg-logo="https://i.ibb.co/XynWD6F/BBC-Earth-BEARTV.png", BBC Earth
 https://livecdn.fptplay.net/hda2/bbcearth_vhls.smil/chunklist_b5000000.m3u8
-#EXTINF:-1 tvg-id="bbclifestyle" group-title="QUỐC TẾ - QNET" tvg-logo="https://i.ibb.co/F6N3vk3/BBC-Lifestyle-BEARTV.jpg", BBC Lifestyle
-https://livecdn.fptplay.net/qnetlive/bbclifestyle_2000.stream/chunklist.m3u8
-#EXTINF:-1 tvg-id="bbcworldnews" group-title="QUỐC TẾ - QNET" tvg-logo="https://i.ibb.co/K0qtvsf/BBC-Worldnews-BEARTV.png", BBC World News
-https://livecdn.fptplay.net/qnetlive/bbcnew_2000.stream/chunklist.m3u8
-#EXTINF:-1 tvg-id="" group-title="QUỐC TẾ - QNET" tvg-logo="https://i.ibb.co/t2MkYyX/CNA-BEARTV.png", CNA
-https://d2e1asnsl7br7b.cloudfront.net/7782e205e72f43aeb4a48ec97f66ebbe/index_5.m3u8
-#EXTINF:-1 tvg-id="france24eng" group-title="QUỐC TẾ - QNET" tvg-logo="https://i.ibb.co/BztxwvZ/FRANCE-24-BEARTV.png", France 24
-http://f24hls-i.akamaihd.net/hls/live/221147-b/F24_EN_HI_HLS/01.m3u8
-#EXTINF:-1 tvg-id="dw" group-title="QUỐC TẾ - QNET" tvg-logo="https://i.ibb.co/kGkh233/DWTV-BEARTV.png", DW
-https://dwamdstream102.akamaized.net/hls/live/2015525/dwstream102/index.m3u8
-#EXTINF:-1 tvg-id="cnn" group-title="QUỐC TẾ - QNET" tvg-logo="https://i.ibb.co/CJVkC79/CNN-BEARTV.png",CNN
-http://livecdn.fptplay.net/qnetlive/cnn_hls.smil/chunklist_b2500000.m3u8
-
-
 #EXTINF:0 tvg-id="VTC1-ClipTV" tvg-name="VTC1-Cliptv" group-title="VTC - BEARTV" tvg-logo="https://i.ibb.co/mH4XCCF/VTC1-BEARTV.png",VTC1 HD
 https://vips-livecdn.fptplay.net/hda1/vtc1_vhls.smil/chunklist_b5000000.m3u8
 #EXTINF:0 tvg-id="VTC2-ClipTV" group-title="VTC - BEARTV" tvg-logo="https://i.ibb.co/7WwzKSj/VTC2-BEARTV.png",VTC2 HD
