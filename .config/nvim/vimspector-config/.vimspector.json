@@ -1,0 +1,13 @@
+{
+	"configurations": {
+		"test":{
+			"adapter": "debugpy",
+			"configuration": {
+				"name": "this is a python test",
+				"type": "python",
+				"request": "launch",
+				"program": "~/cloud-loadbalancer-backend/resources/loadbalancers.py"
+			}
+		}
+	}
+}
