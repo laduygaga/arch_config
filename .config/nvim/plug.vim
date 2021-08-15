@@ -35,6 +35,7 @@ endif
 " Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
 "
 "
+" Plug 'puremourning/vimspector'
 Plug 'joshdick/onedark.vim'
 Plug 'ap/vim-buftabline'
 Plug 'airblade/vim-gitgutter'
