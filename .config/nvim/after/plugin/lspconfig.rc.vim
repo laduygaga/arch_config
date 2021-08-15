@@ -49,7 +49,7 @@ local on_attach = function(client, bufnr)
     vim.api.nvim_command [[augroup END]]
   end
 
-  -- require'completion'.on_attach(client, bufnr)
+  require'completion'.on_attach(client, bufnr)
 
   --protocol.SymbolKind = { }
   -- protocol.CompletionItemKind = {
@@ -85,15 +85,18 @@ nvim_lsp.flow.setup {
   on_attach = on_attach
 }
 
-nvim_lsp.tsserver.setup {
-  on_attach = on_attach,
-  filetypes = { "typescript", "typescriptreact", "typescript.tsx" }
-}
+--nvim_lsp.tsserver.setup {
+--  on_attach = on_attach,
+--  filetypes = { "typescript", "typescriptreact", "typescript.tsx" }
+--}
 
 nvim_lsp.pyright.setup{
   on_attach = on_attach,
 }
 
+nvim_lsp.gopls.setup{
+  on_attach = on_attach,
+}
 -- nvim_lsp.diagnosticls.setup {
 --   on_attach = on_attach,
 --   filetypes = { 'javascript', 'javascriptreact', 'json', 'typescript', 'typescriptreact', 'css', 'less', 'scss', 'markdown', 'pandoc' },

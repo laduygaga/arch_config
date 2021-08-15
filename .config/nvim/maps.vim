@@ -14,6 +14,8 @@ inoremap jk <esc>
 nnoremap <silent> <leader>t :tabnew<CR>
 nnoremap <silent> <leader>d :tabclose<CR>
 nnoremap <silent> <leader>D :qa!<CR>
+map <leader><leader>g :GFiles<CR>
+nnoremap <leader>r :GRg<CR>
 nnoremap <silent> <C-Tab> gt
 nnoremap <silent> <S-Tab> gT
 vnoremap <silent> <leader>,, :Trans :vi -b<CR> 
@@ -32,7 +34,7 @@ augroup vim_autocmd
 	autocmd VimLeave * call system("xsel -ib", getreg('+'))
 	" fix always tabs to spaces when start python file
 	" fuck /usr/share/vim/vim74/ftplugin/python.vim
-	autocmd FileType python setlocal ts=4 sts=4 sw=4 noexpandtab
+	" autocmd FileType python setlocal ts=4 sts=4 sw=4 noexpandtab
 	autocmd Filetype python inoremap <silent>  <buffer> <leader>2 <Esc>:%w !python3<CR>
 	autocmd Filetype python nnoremap <silent> <buffer> <leader>2 :%w !python3<CR>
 	autocmd Filetype python nnoremap <silent> <buffer> <F8> :w<CR>:!clear;python3 %<CR>

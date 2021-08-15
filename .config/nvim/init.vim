@@ -161,9 +161,9 @@ function ToggleExpandTab()
 endfunction
 
 " close scratch buffer YouCompleteMe
-let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_auto_trigger = 1
+" let g:ycm_autoclose_preview_window_after_insertion = 1
+" let g:ycm_autoclose_preview_window_after_completion = 1
+" let g:ycm_auto_trigger = 1
 " let g:SuperTabDefaultCompletionType = '<C-n>'
 
 let $FZF_DEFAULT_COMMAND = "find -L"
@@ -214,3 +214,12 @@ let g:ag_working_path_mode="r"
 runtime ./plug.vim
 runtime ./maps.vim
 " let g:completion_enable_snippet = 'UltiSnips'
+command! -bang -nargs=* GGrep
+  \ call fzf#vim#grep(
+  \   'git grep --line-number -- '.shellescape(<q-args>), 0,
+  \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
+command! -bang -nargs=* GRg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
+
