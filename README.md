@@ -199,3 +199,69 @@ xrandr --auto
 
 # check 3D
 glxinfo | grep NVIDIA
+
+
+
+
+
+# Markdown tutorials
+
+# H1
+## H2
+**bold** 
+__bold too__
+~~strikethrought~~
+
+
+## List
+1. hello
+2. world
+3. mother
+4. fucker
+
+## Link
+
+[hello, world](https://google.com)
+[api](http://wifimkt.bizflycloud.vn:5002/health)
+[test]: http://google.com
+
+
+## Images
+![image1](https://google.com/images1.png)
+## Code and Syntax Highlighting
+```python
+a="hello"
+print(a)
+```
+
+## Tables
+| Stt | Name | Age |
+| ------- | ------- | ------- |
+| 1 | Duy | 26 |
+
+## Blockquotes
+> Blockquotes are vrey handy in email to emulate
+> This line is part of the same quotes
+
+Quote break.
+
+> This is very long line that will sill be quoted properly when it wraps. Oh boy let's keep writeing to make sure this is long enough to actually wrap for everyone. Oh, you can *put* **Markdown** into blockquote.
+
+## Horizontal Rule
+Three or more...
+---
+Hyphens
+***
+Asterisks
+________
+Underscores
+
+## Line Breaks
+
+Here's aline for us to start with.
+
+This line is separated from the one above by two newlines, so it will be a "separate paragraph".
+
+This line is also a separate paragraph, but ...
+This line is only separated by a single newline, so
+It's separate line in the *same paragraph*.
