@@ -107,13 +107,24 @@ aria2c_() {
 alias t/vpn="cd ~/.trash/vpn"
 alias sdb5="cd /mnt/sdb5"
 alias sdb3="cd /mnt/sdb3"
-alias pscpu=" ps -eo cmd,%mem,%cpu --sort=-%cpu| less"
-alias psmem=" ps -eo cmd,%mem,%cpu --sort=-%mem| less"
+alias pscpu="ps -eo cmd,%mem,%cpu --sort=-%cpu| less"
+alias psmem="ps -eo cmd,%mem,%cpu --sort=-%mem| less"
 alias vi="vim -u NONE"
 alias youtube-dl="youtube-dl --write-auto-sub --external-downloader aria2c --external-downloader-args '-c -j 3 -x 3 -s 3 -k 1M'"
 alias emoji="cat ~/gits/arch_config/.local/share/emoji"
 push(){
     git pull && git add . && git commit -m "$*"  && git push;
+}
+dps() {sudo docker ps -a}
+dup() {sudo docker-compose up}
+drmi() {
+	[[ -z $(sudo docker ps -q) ]] && echo "No running container" && sudo docker rmi -f `sudo docker images -aq | paste -sd ' '`
+	[[ ! -z $(sudo docker ps -q) ]] && sudo docker stop `sudo docker ps -q | paste -st ' '` && sudo docker rmi -f `sudo docker images -aq | paste -sd ' '`
+}
+dstop() {sudo docker stop `sudo docker ps -q | paste -sd ' '`}
+drmc() {
+	[[ -z $(sudo docker ps -q) ]] && echo "No running container" && sudo docker container rm `sudo docker ps -aq | paste -sd ' '`
+	[[ ! -z $(sudo docker ps -q) ]] && sudo docker stop `sudo docker ps -q | paste -st ' '` && sudo docker container -rm `sudo docker ps -aq | paste -sd ' '`
 }
 alias t/sh="cd ~/.trash/sh"
 alias t/p="cd ~/.trash/p"
@@ -228,8 +239,14 @@ ytv()
 }
 yta()
 {
-    mpv --ytdl-format=bestaudio ytdl://ytsearch:"$*"
+    mpv --loop=inf --ytdl-format=bestaudio ytdl://ytsearch:"$*"
 }
+
+ytal()
+{
+    mpv --loop=inf --ytdl-format=bestaudio ytdl://ytsearch:"$*"
+}
+
 
 # color for manpages
 # export LESS_TERMCAP_mb=$'\e[1;32m'
@@ -270,3 +287,26 @@ export FZF_DEFAULT_COMMAND="find -L"
 
 
 # export KUBECONFIG=/home/duy/cluster1.kubeconfig
+# source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+#
+#
+export FLASK_APP=app
+export FLASK_ENV=development
+export PYTHONPATH=$PWD
+if [[ -d ./venv ]] ; then
+	source ./venv/bin/activate
+fi
+
+function cd() {
+  if [[ -d ./venv ]] ; then
+    deactivate
+  fi
+  builtin cd $1
+  if [[ -d ./venv ]] ; then
+    source ./venv/bin/activate
+	export PYTHONPATH=$PWD
+  fi
+}
+
+# source <(kubectl completion bash)
+# source <(kubectl completion zsh)

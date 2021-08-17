@@ -59,11 +59,41 @@ settings:
         g9: tab-focus 9
         j: scroll-page 0 0.5
         k: scroll-page 0 -0.5
-        m: enter-mode set_mark
+        m: mode-enter set_mark
+  colors.tabs.even.fg:
+    global: black
+  colors.tabs.odd.fg:
+    global: black
+  colors.tabs.selected.even.bg:
+    global: '#ededcc'
+  colors.tabs.selected.even.fg:
+    global: black
+  colors.tabs.selected.odd.bg:
+    global: '#ededcc'
+  colors.tabs.selected.odd.fg:
+    global: black
   colors.webpage.darkmode.enabled:
     global: false
   content.autoplay:
     global: false
+  content.blocking.adblock.lists:
+    global:
+    - https://easylist.to/easylist/easylist.txt
+    - https://easylist.to/easylist/easyprivacy.txt
+    - https://easylist.to/easylist/fanboy-annoyance.txt
+    - https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters.txt
+    - https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/annoyances.txt
+    - https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/badware.txt
+    - https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/privacy.txt
+    - https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/resource-abuse.txt
+    - https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/unbreak.txt
+    - https://www.malwaredomainlist.com/hostslist/hosts.txt
+    - https://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&showintro=1&mimetype=plaintext
+    - https://raw.githubusercontent.com/nmtrung/FMSF-2.0/master/fmsf_2.0.txt
+  content.blocking.enabled:
+    global: true
+  content.blocking.method:
+    global: adblock
   content.fullscreen.window:
     global: true
   content.geolocation:
@@ -73,8 +103,6 @@ settings:
   content.headers.user_agent:
     global: Mozilla/5.0 ({os_info}) AppleWebKit/{webkit_version} (KHTML, like Gecko)
       {qt_key}/{qt_version} {upstream_browser_key}/{upstream_browser_version} Safari/{webkit_version}
-  content.host_blocking.enabled:
-    global: true
   content.javascript.enabled:
     global: true
   content.media.audio_capture:
@@ -84,7 +112,7 @@ settings:
     https://meet.google.com: true
   content.media.video_capture:
     global: ask
-  content.notifications:
+  content.notifications.enabled:
     https://binhluan.live: false
     https://binhluan.tv: false
     https://binhluan.vip: false
@@ -161,8 +189,10 @@ settings:
     global: false
   tabs.background:
     global: true
+  tabs.position:
+    global: left
   url.default_page:
-    global: https://google.com/search
+    global: about:blank
   url.searchengines:
     global:
       DEFAULT: https://google.com/search?q={}

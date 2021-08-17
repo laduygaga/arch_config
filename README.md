@@ -1,171 +1,314 @@
-[abc.xyz](#q1)
-# Setup USB boot:
-dd if=/ARCHLINUX.iso  of=/dev/sdb status="progress" bs=4M
+##  Setup USB boot:
 
-# Format and partition:
-# if UEFI:
-   > gpt
-   > create /dev/sdxY (~250-512mb) for EFI filesystem ( fdisk -t) (FAT32 format (mkfs.fat -F32 /dev/sdxY( require dosfstools))
-mkfs.ext4 /dev/sdaX    - Arch linux partition
+`dd bs=4M if=/ARCHLINUX.iso  of=/dev/sdb oflag=direct status=progress`
 
-mkswap /dev/sdaY       - Swap partition
+## Format and partition:
 
+**create efi boot partition (/dev/sdxY 250~510MB) use fdisk, and format F32 (require dosfstools)**
+```
+mkfs.fat -F32 /dev/sdxY
+```
+
+**Arch linux partition**
+```
+mkfs.ext4 /dev/sdaX
+```
+**create swap partition**
+```
+mkswap /dev/sdaY
 swapon  /dev/sdaY
+```
 
-# Connect to internet:
-wifi-menu         # if use wifi
+**Connect to internet**
+*wifi*
+```
+wifi-menu
+```
 
-dhcpdp eth0      # if use ethenet
+*ethernet*
+```
+dhcpdp eth0
+```
 
-ping 1.1.1.1 -c 2  # test network
+*check network*
+```
+ping 1.1.1.1 -c 2
+```
 
-# Mount to installing partition
+**Mount to installing partition**
+```
 mount /dev/sdaX /mnt
+```
 
-# Choose mirror repository you like in:
-sudo reflector --country Taiwan --age 12 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
-
-# Install base linux linux-firmware 
+**Install base linux linux-firmware**
+```
 pacstrap /mnt base base-devel linux linux-firmware 
+```
 
-# Chroot to new system:
+**Create fstab file**
+```
+genfstab -U /mnt >> /mnt/etc/fstab
+```
+
+**Chroot to new system**
+```
 arch-chroot /mnt
-# Install some basic package
+```
 
+**Install some basic package**
+```
 pacman -S dialog wpa_supplicant ppp dhcpcd
+```
 
-vi /etc/hostname  #set name
+**set hostname**
+```
+vi /etc/hostname
+```
 
-ln -sf /usr/share//zoneinfo/Asia/Ho_Chi_Minh /etc/localtime  #config timezone
+**config timezone**
+```
+ln -sf /usr/share//zoneinfo/Asia/Ho_Chi_Minh /etc/localtime
+```
 
+**locale**
+*uncomment en_US.\* in /etc/locale.gen*
+```
 echo LANG=en_US.UTF-8 > /etc/locale.conf
-
-uncomment en_US.* in /etc/locale.gen
-
 locale-gen
+```
 
+**create an initial ramdisk environment**
+```
 mkinitcpio -P
+```
 
+**Grub**
+```
 pacman -S grub efibootmgr
-
 mkdir /boot/EFI
-mount /dev/sdaX /boot/EFI  #Mount FAT32 EFI partition 
-
-grub-install --target=i386-pc /dev/sdX # legacy boot
-grub-install --target=x86_64-efi  --bootloader-id=grub_uefi --recheck #UEFI boot
-# or
-grub-install --target=x86_64-efi --bootloader-id=GRUB --efi-directory=/boot/efi --no-nvram --removable
-
-
+mount /dev/sdaX /boot/EFI  *Mount FAT32 EFI partition*
+grub-install --target=i386-pc /dev/sdX *for legacy boot*
+grub-install --target=x86_64-efi  --bootloader-id=grub_uefi --recheck 
+*or*
+grub-install --target=x86_64-efi --bootloader-id=GRUB --efi-directory=/boot/efi --no-nvram --removable *for UEFI boot*
 grub-mkconfig -o /boot/grub/grub.cfg
 
-# Create fstab file:
-genfstab -U /mnt >> /mnt/etc/fstab
-
 exit
-
 umount -R /mnt
-
 reboot
+```
+## Install graphical enviroment:
 
+**Xorg**
+```
+sudo pacman -S xorg-server xorg-apps xorg-xinit
+```
 
-# Install graphical enviroment:
-
-sudo pacman -Syu
-# Xorg
-sudo pacman -S xorg-server xorg-apps xorg-xinit i3 numlockx
-
-# DM
+**DM**
+```
 sudo pacman -S lightdm lightdm-gtk-greeter
+```
 
-# fonts
+**fonts**
+```
 sudo pacman -S noto-fonts noto-fonts-emoji ttf-ubuntu-font-family ttf-dejavu ttf-freefont ttf-liberation ttf-droid ttf-inconsolata ttf-roboto terminus-font ttf-font-awesome ttf-nerd-fonts-symbols xorg-mkfontscale terminus-font 
-# Audio
-sudo pacman -S alsa alsa-utils alsa-plugins alsa-lib pavucontrol
+```
 
-# Tools
+**Audio**
+```
+sudo pacman -S alsa alsa-utils alsa-plugins alsa-lib pavucontrol
+```
+
+**Tools**
+```
 sudo pacman -S archlinux-keyring
 sudo pacman -S rxvt-unicode ranger rofi conky dmenu urxvt-perls perl-anyevent-i3 perl-json-xs atool highlight mediainfo w3m ffmpegthumbnailer zathura fzf firefox mpv mplayer feh sxiv scrot mtpfs gvfs-mtp pulseaudio git ibus-unikey ncmpcpp mpd mpc python-pip aria2 wget curl openvpn usbutils ctags youtube-dl streamlink  perl-file-mimeinfo perl-image-exiftool xclip xdotool notify-osd crda geoip p7zip xbindkeys python2-wheel python-wheel re2 fbreader  bash-completion zathura-pdf-mupdf zathura-djvu zathura-cb
+```
 
+**for pystatus i3**
+```
 pip install --user python-mpd2 
+```
 
-# config audio
-
+**config audio**
+```
 vim /etc/modprobe.d/alsa-base.conf
 
 options snd_mia index=0
-
 options snd_hda_intel index=1
+```
 
+**enable and start DM**
+```
 systemctl enable lightdm
-
 systemctl start lightdm
+```
 
-# create user:
-
+**create user**
+```
 useradd -m -g wheel duy
+```
 
-# install yay:
-
+**install yay**
+```
 git clone https://aur.archlinux.org/yay.git
-
 cd yay
-
 makepkg -si
-
 yay -Syyuu
+```
+**yay tools**
+```
+yay -S urxvt-font-size-git python-pdftotext scrcpy libxft-bgra-git  ttf-symbola xurls mtpfs ifuse android-file-transfer
 
-yay -S urxvt-font-size-git python-pdftotext scrcpy libxft-bgra-git  ttf-symbola
-# urls filter
+```
 
-yay -S xurls
 
-# Config files:
+## Note
+> fastest way transfe file 
+```
+**sender**
+tar czf - filename | netcat -l -p port -vvv -c
+**reciever**
+netcat host port | tar xz
+```
 
-git clone https://github.com/laduygaga/arch_config
-
-# Connect to android device and iphone
-
-yay -S mtpfs ifuse android-file-transfer
-
-yay -S jmtpfs
-
-# vimvuldle
-
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-
-# docker-ce
-
-pacman -S docker
-
-# ohmyzsh
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
-# fastest way transfe file 
-sender:     tar czf - filename | netcat -l -p port -vvv -c
-reciever:   netcat host port | tar xz
-#  misc
+> misc
+```
 aria2c --bt-metadata-only=true --bt-save-metadata=true
+> ssh with tar
+tar c | ssh user@server "tar x"
+tar c | ssh user@server "tar x -C /path"                        
+```
 
-# scp
-scp user@server:/path /path or scp /path user@server:/path
-ssh with tar
-tar c | ssh user@server "tar x"                                 # or 
-tar c | ssh user@server "tar x -C /path"                        # -C: changedir to /path
+> weechat
+```
+to load the script
+/python autoload
+to store the channels to join
+/autojoin --run  
+to store the order of the channels
+/layout store    
+to save your setting
+/save
+```
 
-# weechat
-/python autoload # to load the script
-/autojoin --run  # to store the channels to join
-/layout store    # to store the order of the channels
-/save            # to save your setting
-# qemu boot from usb
+> qemu boot from usb
+```
 sudo qemu-system-x86_64 -m 4096 -enable-kvm -usb -device usb-host,hostbus=1,hostaddr=21
+```
 
-# Encrypt LVM on LUKS
-https://wiki.archlinux.org/index.php/Dm-crypt/Encrypting_an_entire_system#LVM_on_LUKS
-# config /etc/mkinipico.conf
-# vim /etc/mkinitcpio.conf
-Add 'ext4' to MODULES
-Add 'encrypt' and 'lvm2' to HOOKS before 'filesystems'
-# /etc/default/grub
+## Encrypt LVM on LUKS
+[LVM on LUKS](https://wiki.archlinux.org/index.php/Dm-crypt/Encrypting_an_entire_system#LVM_on_LUKS)
+
+> config /etc/mkinipico.conf
+```
+vim /etc/mkinitcpio.conf
+```
+> Add 'ext4' to MODULES
+> Add 'encrypt' and 'lvm2' to HOOKS before 'filesystems'
+> etc/default/grub
+```
 GRUB_CMDLINE_LINUX="cryptdevice=/dev/sda2:luks:allow-discards"
+```
+
+> nvidia
+```
+pms nvidia nvidia-utils nvidia-settings xorg-server-devel opencl-nvidia 
+```
+
+> check disable nouveau
+```
+cat /usr/lib/modprobe.d/nvidia.conf
+```
+
+> etc/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf
+```
+Section "OutputClass"
+    Identifier "intel"
+    MatchDriver "i915"
+    Driver "modesetting"
+EndSection
+
+Section "OutputClass"
+    Identifier "nvidia"
+    MatchDriver "nvidia-drm"
+    Driver "nvidia"
+    Option "AllowEmptyInitialConfiguration"
+    Option "PrimaryGPU" "yes"
+    ModulePath "/usr/lib/nvidia/xorg"
+    ModulePath "/usr/lib/xorg/modules"
+EndSection
+```
+
+> .xinitrc
+```
+xrandr --setprovideroutputsource modesetting NVIDIA-0
+xrandr --auto
+```
+> check 3D
+```
+glxinfo | grep NVIDIA
+```
+
+
+# Markdown tutorials
+
+# H1
+## H2
+**bold** 
+__bold too__
+~~strikethrought~~
+
+
+## List
+1. hello
+2. world
+3. mother
+4. fucker
+
+## Link
+
+[hello, world](https://google.com)
+[api](http://wifimkt.bizflycloud.vn:5002/health)
+[test]: http://google.com
+
+
+## Images
+![image1](https://google.com/images1.png)
+## Code and Syntax Highlighting
+```python
+a="hello"
+print(a)
+```
+
+## Tables
+| Stt | Name | Age |
+| ------- | ------- | ------- |
+| 1 | Duy | 26 |
+
+## Blockquotes
+> Blockquotes are vrey handy in email to emulate
+> This line is part of the same quotes
+
+Quote break.
+
+> This is very long line that will sill be quoted properly when it wraps. Oh boy let's keep writeing to make sure this is long enough to actually wrap for everyone. Oh, you can *put* **Markdown** into blockquote.
+
+## Horizontal Rule
+Three or more...
+---
+Hyphens
+***
+Asterisks
+________
+Underscores
+
+## Line Breaks
+
+Here's aline for us to start with.
+
+This line is separated from the one above by two newlines, so it will be a "separate paragraph".
+
+This line is also a separate paragraph, but ...
+This line is only separated by a single newline, so
+It's separate line in the *same paragraph*.

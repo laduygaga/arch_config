@@ -4,10 +4,10 @@
 
 # terminal emulator
 alt + Return
-	urxvt
+	alacritty
 
 # program launcher
-super + d
+alt + d
 	dmenu_run
 
 # make sxhkd reload its configuration files:
@@ -23,7 +23,7 @@ alt +shift + {e,r}
 	bspc {quit,wm -r}
 
 # close and kill
-alt + shift + q
+alt + q
 	bspc node -{c,k}
 
 # alternate between the tiled and monocle layout
