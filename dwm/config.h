@@ -48,7 +48,7 @@ static const Rule rules[] = {
         // { "Sxiv",            NULL,       NULL,           0,          1,          0,         -1,          -1 },
         { "mpv",                NULL,       NULL,           1 << 7,     0,          0,          0,          -1 },
         { "Steam",              NULL,       NULL,           1 << 5,     0,          0,          1,          -1 },
-        { "dota2",              NULL,       NULL,           1 << 3,     0,          0,          1,          -1 },
+        { "dota2",              NULL,       NULL,           1 << 3,     1,          0,          1,          -1 },
         { "Condition Zero",     NULL,       NULL,           1 << 3,     0,          0,          1,          -1 },
         { "hl_linux",			NULL,       NULL,           1 << 3,     0,          0,          1,          -1 },
         { "csgo_linux64",		NULL,       NULL,           1 << 3,     0,          0,          1,          -1 },
