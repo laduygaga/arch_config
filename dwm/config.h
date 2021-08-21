@@ -30,34 +30,34 @@ static const Rule rules[] = {
      *  WM_CLASS(STRING) = instance, class
      *  WM_NAME(STRING) = title
      */
-    /* class                    instance    title           tags mask   isfloating  isterminal  noswallow   monitor */
-        { "qutebrowser",        NULL,       NULL,           1 << 1,     0,          0,          1,          -1 },
-        { "TelegramDesktop",    NULL,       NULL,           1 << 7,     0,          0,          1,          -1 },
-        { "battle.net.exe",     NULL,       NULL,           1 << 5,     1,          0,          1,          -1 },
-        { "explorer.exe",       NULL,       NULL,           1 << 5,     0,          0,          1,          -1 },
-        { "GoldenDict",         NULL,       NULL,           1 << 2,     0,          0,          1,          -1 },
-        { "Zathura",            NULL,       NULL,           1 << 8,     0,          0,          1,          -1 },
-        { "Evince",             NULL,       NULL,           1 << 8,     0,          0,          1,          -1 },
-        { "FBReader",           NULL,       NULL,           1 << 8,     0,          0,          1,          -1 },
-        { "firefox",            NULL,       NULL,           1 << 2,     0,          0,          1,          -1 },
-        { "chromium",           NULL,       NULL,           1 << 1,     0,          0,          1,          -1 },
-        { "St",                 NULL,       NULL,           0,          0,          1,          1,          -1 },
-        { "Alacritty",          NULL,       NULL,           0,          0,          1,          1,          -1 },
-        { "URxvt",              NULL,       NULL,           0,          0,          1,          1,          -1 },
-        { "Gimp",               NULL,       NULL,           0,          0,          0,          0,          -1 },
-        // { "Sxiv",            NULL,       NULL,           0,          1,          0,         -1,          -1 },
-        { "mpv",                NULL,       NULL,           1 << 7,     0,          0,          0,          -1 },
-        { "Steam",              NULL,       NULL,           1 << 5,     0,          0,          1,          -1 },
-        { "dota2",              NULL,       NULL,           1 << 3,     1,          0,          1,          -1 },
-        { "Condition Zero",     NULL,       NULL,           1 << 3,     0,          0,          1,          -1 },
-        { "hl_linux",			NULL,       NULL,           1 << 3,     0,          0,          1,          -1 },
-        { "csgo_linux64",		NULL,       NULL,           1 << 3,     0,          0,          1,          -1 },
-        { NULL,					NULL,       "Raid",         1 << 3,     0,          0,          1,          -1 },
-        { NULL,                 NULL,       "ncmpcpp",      1 << 7,     0,          0,          1,          -1 },
-        { NULL,                 NULL,       "trans",        0,          1,          1,          1,          -1 },                   // xterm
-        { NULL,                 NULL,       "trans",        0,          1,          1,          1,          -1 },                    // urxvt
-        { NULL,                 NULL,       "Event Tester", 0,          1,          0,          1,          -1 }, /*xev*/
-        { "Qemu-system-x86_64", NULL,       NULL,           1 << 6,     0,          0,          0,          -1 },
+    /* class                instance    title           tags mask   isfloating  isterminal  noswallow   monitor */
+    { "qutebrowser",        NULL,       NULL,           1 << 1,     0,          0,          1,          -1 },
+    { "TelegramDesktop",    NULL,       NULL,           1 << 7,     0,          0,          1,          -1 },
+    { "battle.net.exe",     NULL,       NULL,           1 << 5,     1,          0,          1,          -1 },
+    { "explorer.exe",       NULL,       NULL,           1 << 5,     0,          0,          1,          -1 },
+    { "GoldenDict",         NULL,       NULL,           1 << 2,     0,          0,          1,          -1 },
+    { "Zathura",            NULL,       NULL,           1 << 8,     0,          0,          1,          -1 },
+    { "Evince",             NULL,       NULL,           1 << 8,     0,          0,          1,          -1 },
+    { "FBReader",           NULL,       NULL,           1 << 8,     0,          0,          1,          -1 },
+    { "firefox",            NULL,       NULL,           1 << 2,     0,          0,          1,          -1 },
+    { "chromium",           NULL,       NULL,           1 << 1,     0,          0,          1,          -1 },
+    { "St",                 NULL,       NULL,           0,          0,          1,          1,          -1 },
+    { "Alacritty",          NULL,       NULL,           0,          0,          1,          1,          -1 },
+    { "URxvt",              NULL,       NULL,           0,          0,          1,          1,          -1 },
+    { "Gimp",               NULL,       NULL,           0,          0,          0,          0,          -1 },
+    // { "Sxiv",            NULL,       NULL,           0,          1,          0,         -1,          -1 },
+    { "mpv",                NULL,       NULL,           1 << 7,     0,          0,          0,          -1 },
+    { "Steam",              NULL,       NULL,           1 << 5,     0,          0,          1,          -1 },
+    { "dota2",              NULL,       NULL,           1 << 3,     1,          0,          1,          -1 },
+    { "Condition Zero",     NULL,       NULL,           1 << 3,     0,          0,          1,          -1 },
+    { "hl_linux",           NULL,       NULL,           1 << 3,     0,          0,          1,          -1 },
+    { "csgo_linux64",       NULL,       NULL,           1 << 3,     0,          0,          1,          -1 },
+    { NULL,                 NULL,       "Raid",         1 << 3,     0,          0,          1,          -1 },
+    { NULL,                 NULL,       "ncmpcpp",      1 << 7,     0,          0,          1,          -1 },
+    { NULL,                 NULL,       "trans",        0,          1,          1,          1,          -1 },                   // xterm
+    { NULL,                 NULL,       "trans",        0,          1,          1,          1,          -1 },                    // urxvt
+    { NULL,                 NULL,       "Event Tester", 0,          1,          0,          1,          -1 }, /*xev*/
+    { "Qemu-system-x86_64", NULL,       NULL,           1 << 6,     0,          0,          0,          -1 },
 
 
 };
@@ -83,10 +83,10 @@ static const Layout layouts[] = {
 /* key definitions */
 #define MODKEY Mod1Mask
 #define TAGKEYS(KEY,TAG) \
-    { MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
-    { MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
-    { MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
-    { MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
+{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
+{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
+{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
+{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
@@ -124,7 +124,7 @@ static Key keys[] = {
     { MODKEY,               XK_u,           setlayout,          {.v = &layouts[2]} },
     { MODKEY,               XK_y,           setlayout,          {.v = &layouts[3]} },
     { MODKEY|ShiftMask,     XK_y,           setlayout,          {.v = &layouts[4]} },
- // { MODKEY,               XK_space,       setlayout,          {0} },
+    // { MODKEY,               XK_space,       setlayout,          {0} },
     { MODKEY|ShiftMask,     XK_space,       togglefloating,     {0} },
     { MODKEY,               XK_f,           togglefullscr,      {0} },
     { MODKEY,               XK_0,           view,               {.ui = ~0 } },
@@ -134,66 +134,66 @@ static Key keys[] = {
     // { MODKEY|ShiftMask,  XK_comma,       tagmon,             {.i = -1 } },
     // { MODKEY|ShiftMask,  XK_period,      tagmon,             {.i = +1 } },
     TAGKEYS(                XK_1,                               0)
-    TAGKEYS(                XK_2,                               1)
-    TAGKEYS(                XK_3,                               2)
-    TAGKEYS(                XK_4,                               3)
-    TAGKEYS(                XK_5,                               4)
-    TAGKEYS(                XK_6,                               5)
-    TAGKEYS(                XK_7,                               6)
-    TAGKEYS(                XK_8,                               7)
-    TAGKEYS(                XK_9,                               8)
-    { MODKEY|ShiftMask,     XK_e,           quit,               {0} },
-    { MODKEY|ShiftMask,     XK_r,           quit,               {1} }, 
-    { MODKEY,               XK_minus,       scratchpad_show,    {0} },
-    { MODKEY|ShiftMask,     XK_minus,       scratchpad_hide,    {0} },
-    { MODKEY,               XK_equal,       scratchpad_remove,  {0} },
+        TAGKEYS(                XK_2,                               1)
+        TAGKEYS(                XK_3,                               2)
+        TAGKEYS(                XK_4,                               3)
+        TAGKEYS(                XK_5,                               4)
+        TAGKEYS(                XK_6,                               5)
+        TAGKEYS(                XK_7,                               6)
+        TAGKEYS(                XK_8,                               7)
+        TAGKEYS(                XK_9,                               8)
+        { MODKEY|ShiftMask,     XK_e,           quit,               {0} },
+        { MODKEY|ShiftMask,     XK_r,           quit,               {1} }, 
+        { MODKEY,               XK_minus,       scratchpad_show,    {0} },
+        { MODKEY|ShiftMask,     XK_minus,       scratchpad_hide,    {0} },
+        { MODKEY,               XK_equal,       scratchpad_remove,  {0} },
 
 
-/* Custom keybinding */
-    { MODKEY,               XK_p,                       spawn,  SHCMD("mpc toggle") },
-    { MODKEY,               XK_bracketleft,             spawn,  SHCMD("mpc prev") },
-    { MODKEY,               XK_bracketright,            spawn,  SHCMD("mpc next") },
-    // { MODKEY|ShiftMask,      XK_bracketleft,             spawn,  SHCMD("mpc seek -10 ") },
-    // { MODKEY|ShiftMask,      XK_bracketright,            spawn,  SHCMD("mpc seek +10") },
-    { MODKEY|ShiftMask,     XK_p,                       spawn,  SHCMD("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause") }, // required xbindkeys
-    { MODKEY|ShiftMask,     XK_bracketleft,             spawn,  SHCMD("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous") },
-    { MODKEY|ShiftMask,     XK_bracketright,            spawn,  SHCMD("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next") },
-    { MODKEY,               XK_n,                       spawn,  SHCMD("xterm -e ncmpcpp") },
-    { MODKEY,               XK_m,                       spawn,  SHCMD("st -e lf /mnt/sdb2/videos/tv_series") },
-    // { MODKEY,            XK_comma,                   spawn,  SHCMD("mpc prev") },
-    // { MODKEY|ShiftMask,  XK_comma,                   spawn,  SHCMD("mpc seek 0%") },
-    // { MODKEY,            XK_period,                  spawn,  SHCMD("mpc next") },
-    // { MODKEY|ShiftMask,  XK_period,                  spawn,  SHCMD("mpc repeat") },
-    // { 0,                 XF86XK_ScreenSaver,         spawn,  SHCMD("i3lock -k") },
-    { MODKEY,               XK_F2,                      spawn,  SHCMD("i3lock -k") },
-    { MODKEY,               XK_F4,                      spawn,  SHCMD("sudo systemctl suspend") },
-    // { 0,                    XF86XK_AudioMicMute,        spawn,  SHCMD("pactl set-source-mute 1 toggle") },
-    // { 0,                    XF86XK_AudioMute,           spawn,  SHCMD("pactl set-sink-mute 0 toggle") },
-    // { 0,                    XF86XK_AudioRaiseVolume,    spawn,  SHCMD("pactl set-sink-volume 0 +5%") },
-    // { 0,                    XF86XK_AudioLowerVolume,    spawn,  SHCMD("pactl set-sink-volume 0 -5%") },
-    { MODKEY,                XK_F10,         spawn,  SHCMD("amixer -D pulse -q set Master toggle" ) },
-    { MODKEY,                XK_F11,    spawn,   SHCMD("amixer -D pulse -q set Master 5%+    ") },
-    { MODKEY,                XK_F9,    spawn,    SHCMD("amixer -D pulse -q set Master 5%-    ") },
-    { MODKEY,                XK_F12,        spawn,  SHCMD("pactl set-source-mute 1 toggle") },
-    { MODKEY,               XK_F8,                      spawn,  SHCMD("touchpad_toggle.sh") },
-    { 0,                    XK_Print,                   spawn,  SHCMD("scrot ~/Pictures/ScreenShots/%b%d:%H%M%S.png") },
-    { MODKEY,               XK_Print,                   spawn,  SHCMD("scrot -s ~/Pictures/ScreenShots/%b%d:%H%M%S.png") },
-    { MODKEY,               XK_Delete,                  spawn,  SHCMD("turnoff_screen.sh") },
-    { MODKEY,               XK_r,                       spawn,  SHCMD("st -e lf") },
-    { MODKEY,               XK_g,                       spawn,  SHCMD("goldendict") },
-    // { MODKEY,                XK_z,                       spawn,  SHCMD("FBReader") },
-    { Mod4Mask,             XK_i,                       spawn,  SHCMD("ibus-daemon -drx") },
-    { Mod4Mask|ShiftMask,   XK_i,                       spawn,  SHCMD("ibus exit") },
-    { MODKEY,               XK_w,                       spawn,  SHCMD("$BROWSER") },
-    { MODKEY,               XK_period,                  spawn,  SHCMD("xterm_trans.sh") },
-    { MODKEY,               XK_z,                   spawn,  SHCMD("xterm_trans.sh") },
-    { MODKEY|ShiftMask,     XK_period,                  spawn,  SHCMD("xterm -e trans :vi -b --shell") },
-    { MODKEY,               XK_comma,                   spawn,  SHCMD("xterm_trans1.sh") },
-    { MODKEY|ShiftMask,     XK_comma,                   spawn,  SHCMD("xterm -e trans :vi --shell") },
-    { MODKEY,               XK_F1,                      spawn,  SHCMD("keylog.sh") },
-    { MODKEY|ShiftMask,     XK_F1,                      spawn,  SHCMD("sudo killall python3") },
-    { MODKEY|ControlMask,   XK_f,						spawn,  SHCMD("thePower.sh") },
-    { MODKEY|ControlMask,   XK_d,						spawn,  SHCMD("allUp.sh") },
+        /* Custom keybinding */
+        { MODKEY,               XK_p,                       spawn,  SHCMD("mpc toggle") },
+        { MODKEY,               XK_bracketleft,             spawn,  SHCMD("mpc prev") },
+        { MODKEY,               XK_bracketright,            spawn,  SHCMD("mpc next") },
+        // { MODKEY|ShiftMask,      XK_bracketleft,             spawn,  SHCMD("mpc seek -10 ") },
+        // { MODKEY|ShiftMask,      XK_bracketright,            spawn,  SHCMD("mpc seek +10") },
+        { MODKEY|ShiftMask,     XK_p,                       spawn,  SHCMD("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause") }, // required xbindkeys
+        { MODKEY|ShiftMask,     XK_bracketleft,             spawn,  SHCMD("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous") },
+        { MODKEY|ShiftMask,     XK_bracketright,            spawn,  SHCMD("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next") },
+        { MODKEY,               XK_n,                       spawn,  SHCMD("xterm -e ncmpcpp") },
+        { MODKEY,               XK_m,                       spawn,  SHCMD("st -e lf /mnt/sdb2/videos/tv_series") },
+        // { MODKEY,            XK_comma,                   spawn,  SHCMD("mpc prev") },
+        // { MODKEY|ShiftMask,  XK_comma,                   spawn,  SHCMD("mpc seek 0%") },
+        // { MODKEY,            XK_period,                  spawn,  SHCMD("mpc next") },
+        // { MODKEY|ShiftMask,  XK_period,                  spawn,  SHCMD("mpc repeat") },
+        // { 0,                 XF86XK_ScreenSaver,         spawn,  SHCMD("i3lock -k") },
+        { MODKEY,               XK_F2,                      spawn,  SHCMD("i3lock -k") },
+        { MODKEY,               XK_F4,                      spawn,  SHCMD("sudo systemctl suspend") },
+        // { 0,                    XF86XK_AudioMicMute,        spawn,  SHCMD("pactl set-source-mute 1 toggle") },
+        // { 0,                    XF86XK_AudioMute,           spawn,  SHCMD("pactl set-sink-mute 0 toggle") },
+        // { 0,                    XF86XK_AudioRaiseVolume,    spawn,  SHCMD("pactl set-sink-volume 0 +5%") },
+        // { 0,                    XF86XK_AudioLowerVolume,    spawn,  SHCMD("pactl set-sink-volume 0 -5%") },
+        { MODKEY,                XK_F10,         spawn,  SHCMD("amixer -D pulse -q set Master toggle" ) },
+        { MODKEY,                XK_F11,    spawn,   SHCMD("amixer -D pulse -q set Master 5%+    ") },
+        { MODKEY,                XK_F9,    spawn,    SHCMD("amixer -D pulse -q set Master 5%-    ") },
+        { MODKEY,                XK_F12,        spawn,  SHCMD("pactl set-source-mute 1 toggle") },
+        { MODKEY,               XK_F8,                      spawn,  SHCMD("touchpad_toggle.sh") },
+        { 0,                    XK_Print,                   spawn,  SHCMD("scrot ~/Pictures/ScreenShots/%b%d:%H%M%S.png") },
+        { MODKEY,               XK_Print,                   spawn,  SHCMD("scrot -s ~/Pictures/ScreenShots/%b%d:%H%M%S.png") },
+        { MODKEY,               XK_Delete,                  spawn,  SHCMD("turnoff_screen.sh") },
+        { MODKEY,               XK_r,                       spawn,  SHCMD("st -e lf") },
+        { MODKEY,               XK_g,                       spawn,  SHCMD("goldendict") },
+        // { MODKEY,                XK_z,                       spawn,  SHCMD("FBReader") },
+        { Mod4Mask,             XK_i,                       spawn,  SHCMD("ibus-daemon -drx") },
+        { Mod4Mask|ShiftMask,   XK_i,                       spawn,  SHCMD("ibus exit") },
+        { MODKEY,               XK_w,                       spawn,  SHCMD("$BROWSER") },
+        { MODKEY,               XK_period,                  spawn,  SHCMD("xterm_trans.sh") },
+        { MODKEY,               XK_z,                       spawn,  SHCMD("xterm_trans.sh") },
+        { MODKEY|ShiftMask,     XK_period,                  spawn,  SHCMD("xterm -e trans :vi -b --shell") },
+        { MODKEY,               XK_comma,                   spawn,  SHCMD("xterm_trans1.sh") },
+        { MODKEY|ShiftMask,     XK_comma,                   spawn,  SHCMD("xterm -e trans :vi --shell") },
+        { MODKEY,               XK_F1,                      spawn,  SHCMD("keylog.sh") },
+        { MODKEY|ShiftMask,     XK_F1,                      spawn,  SHCMD("sudo killall python3") },
+        { MODKEY|ControlMask,   XK_f,                       spawn,  SHCMD("thePower.sh") },
+        { MODKEY|ControlMask,   XK_d,                       spawn,  SHCMD("allUp.sh") },
 
 };
 
