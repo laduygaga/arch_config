@@ -19,9 +19,9 @@ sudo sh -c "echo 10   >  /sys/devices/platform/i8042/serio1/serio2/drift_time"  
 sudo sh -c "echo 200 > /sys/devices/platform/i8042/serio1/serio2/sensitivity"     # default 128
 sudo sh -c "echo 120 > /sys/devices/platform/i8042/serio1/serio2/speed"           # default 97
 
-export VISUAL=vim
+export VISUAL=nvim
 export EDITOR=$VISUAL
-export BROWSER="/usr/bin/qutebrowser --qt-flag ignore-gpu-blacklist --qt-flag enable-gpu-rasterization"
+export BROWSER=/usr/bin/firefox
 
 export SHELL=/bin/bash
 
