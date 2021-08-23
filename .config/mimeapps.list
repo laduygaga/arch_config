@@ -3,15 +3,18 @@
 
 [Default Applications]
 
-text/html=org.qutebrowser.qutebrowser.desktop
-x-scheme-handler/mailto=org.qutebrowser.qutebrowser.desktop
-x-scheme-handler/http=org.qutebrowser.qutebrowser.desktop
-x-scheme-handler/www=org.qutebrowser.qutebrowser.desktop
-x-scheme-handler/https=org.qutebrowser.qutebrowser.desktop
-x-scheme-handler/about=org.qutebrowser.qutebrowser.desktop
-x-scheme-handler/unknown=org.qutebrowser.qutebrowser.desktop
+text/html=firefox.desktop
+x-scheme-handler/mailto=firefox.desktop
+x-scheme-handler/http=firefox.desktop
+x-scheme-handler/www=firefox.desktop
+x-scheme-handler/https=firefox.desktop
+x-scheme-handler/about=firefox.desktop
+x-scheme-handler/unknown=firefox.desktop
 image/jpeg=sxiv.desktop;
 video/x-matroska=mpv.desktop;
 image/png=sxiv.desktop;
 image/gif=mpv-usercreated-1.desktop;
 application/epub+zip=FBReader-usercreated-2.desktop;
+application/pdf=org.pwmt.zathura-pdf-mupdf.desktop;
+text/csv=libreoffice-calc.desktop;
+text/plain=gvim.desktop;

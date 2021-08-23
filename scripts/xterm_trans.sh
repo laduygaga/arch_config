@@ -1,1 +1,1 @@
-xterm  -hold -e trans :vi -b "`xclip -o`"
+xterm -hold -e trans :vi -b "`xclip -o`"

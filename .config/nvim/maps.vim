@@ -2,14 +2,14 @@
 " nnoremap <space> za
 nnoremap ' `
 
-map <leader><leader>r :Run<CR>
-map <leader><leader>b :Break<CR>
-map <leader><leader>b :Clear<CR>
-map <leader><leader>s :Over<CR>
-map <leader><leader>c :Continue<CR>
-map <leader><leader>p :Stop<CR>
-map <leader><leader>f :Finish<CR>
-vnoremap Y "+y
+" map <leader><leader>r :Run<CR>
+" map <leader><leader>b :Break<CR>
+" map <leader><leader>b :Clear<CR>
+" map <leader><leader>s :Over<CR>
+" map <leader><leader>c :Continue<CR>
+" map <leader><leader>p :Stop<CR>
+" map <leader><leader>f :Finish<CR>
+vnoremap Y "*y
 inoremap jk <esc>
 vnoremap " <esc>`>a"<esc>`<i"<esc> 
 vnoremap ' <esc>`>a'<esc>`<i'<esc> 
