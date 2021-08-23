@@ -16,6 +16,17 @@ vnoremap ' <esc>`>a'<esc>`<i'<esc>
 vnoremap ) <esc>`>a)<esc>`<i(<esc> 
 vnoremap } <esc>`>a}<esc>`<i{<esc> 
 vnoremap ] <esc>`>a]<esc>`<i[<esc> 
+
+vnoremap <C-j> :m '>+1<CR>gv=gv
+vnoremap <C-k> '<-2<CR>gv=gv
+" inoremap <C-j> <esc>:m .+1<CR>
+" inoremap <C-k> <esc>:m .-2<CR>
+" nnoremap <C-j> :m .+1<CR>
+" nnoremap <C-k> :m .-2<CR>
+
+" nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . 'k'
+" nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j'
+
 nnoremap <silent> <leader>t :tabnew<CR>
 nnoremap <silent> <leader>d :tabclose<CR>
 nnoremap <silent> <leader>D :qa!<CR>
