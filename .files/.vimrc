@@ -215,12 +215,12 @@ vnoremap ) <esc>`>a)<esc>`<i(<esc>
 vnoremap } <esc>`>a}<esc>`<i{<esc> 
 vnoremap ] <esc>`>a]<esc>`<i[<esc> 
 
-vnoremap J :m '>+1<CR>gv=gv
-vnoremap K :m '<-2<CR>gv=gv
-inoremap <C-j> <esc>:m .+1<CR>
-inoremap <C-k> <esc>:m .-2<CR>
-nnoremap <C-j> :m .+1<CR>
-nnoremap <C-k> :m .-2<CR>
+vnoremap <C-j> :m '>+1<CR>gv=gv
+vnoremap <C-k> '<-2<CR>gv=gv
+" inoremap <C-j> <esc>:m .+1<CR>
+" inoremap <C-k> <esc>:m .-2<CR>
+" nnoremap <C-j> :m .+1<CR>
+" nnoremap <C-k> :m .-2<CR>
 
 " nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . 'k'
 " nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j'
@@ -425,6 +425,6 @@ command! -bang -nargs=* GRg
   \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
 
 " packadd! vimspector
-" let g:vimspector_enable_mappings = 'HUMAN'
+" " let g:vimspector_enable_mappings = 'HUMAN'
 " nnoremap <leader>dd :call vimspector#Launch()<CR>
 " nmap <leader>dbp <Plug>VimspectorToggleBreakpoint
