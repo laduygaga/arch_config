@@ -18,7 +18,7 @@ vnoremap } <esc>`>a}<esc>`<i{<esc>
 vnoremap ] <esc>`>a]<esc>`<i[<esc> 
 
 vnoremap <C-j> :m '>+1<CR>gv=gv
-vnoremap <C-k> '<-2<CR>gv=gv
+vnoremap <C-k> :m '<-2<CR>gv=gv
 " inoremap <C-j> <esc>:m .+1<CR>
 " inoremap <C-k> <esc>:m .-2<CR>
 " nnoremap <C-j> :m .+1<CR>
