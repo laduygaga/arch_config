@@ -162,6 +162,12 @@ yay -S urxvt-font-size-git python-pdftotext scrcpy libxft-bgra-git  ttf-symbola 
 
 ```
 
+**access onion use firefox**
+> enable tor service 
+> config proxy firefox localhost 9050 socks5
+> about:config, network.proxy.socks_remote_dns=true, network.trr.mode=0, network.dns.blockDotOnion=false
+					
+
 
 ## Note
 > fastest way transfe file 
