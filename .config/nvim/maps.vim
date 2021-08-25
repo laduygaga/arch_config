@@ -9,7 +9,7 @@ nnoremap ' `
 " map <leader><leader>c :Continue<CR>
 " map <leader><leader>p :Stop<CR>
 " map <leader><leader>f :Finish<CR>
-vnoremap Y "*y<esc>V"+y
+vnoremap Y "+y
 inoremap jk <esc>
 vnoremap " <esc>`>a"<esc>`<i"<esc> 
 vnoremap ' <esc>`>a'<esc>`<i'<esc> 
