@@ -113,6 +113,12 @@ function ToggleColorscheme()
 		echo "colorscheme default"
 		colorscheme default
 		let g:is_enable_colorscheme = 0
+		hi CursorLine	cterm=NONE ctermbg=227
+		hi CursorColumn cterm=NONE ctermbg=15
+		hi Visual ctermfg=NONE ctermbg=11
+		hi MatchParen ctermfg=Black ctermbg=LightCyan
+		hi CursorLineNr term=none cterm=none ctermfg=202 
+		hi Search term=none cterm=none ctermfg=Black ctermbg=LightCyan
 	endif
 endfunction
 
