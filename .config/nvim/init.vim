@@ -124,7 +124,7 @@ let &t_EI.="\e[1 q" "EI = NORMAL mode (ELSE)
 "  5 -> blinking vertical bar
 "  6 -> solid vertical bar
 
-set clipboard=unnamedplus
+set clipboard=unnamed
 set timeoutlen=400
 " Magic, Make Ctrl-S-Tab, Ctrl-Tab work on alacritty from https://stackoverflow.com/posts/31959285/revisions
 " set <F13>=[27;5;9~
