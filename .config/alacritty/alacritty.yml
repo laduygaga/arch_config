@@ -76,8 +76,8 @@ font:
 
 key_bindings:
   - { key: Return,   mods: Control|Alt, action: SpawnNewInstance }
-    # - { key: V,   mods: Control|Alt, action: Paste}
-  - { key: V,   mods: Control|Alt, action: PasteSelection}
+  - { key: V,   mods: Control|Alt, action: Paste}
+    # - { key: V,   mods: Control|Alt, action: PasteSelection}
   - { key: C,   mods: Control|Alt, action: Copy}
   - { key: K,   mods: Super, action: ScrollHalfPageUp}
   - { key: J,   mods: Super, action: ScrollHalfPageDown}
