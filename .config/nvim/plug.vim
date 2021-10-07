@@ -51,7 +51,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'ggreer/the_silver_searcher'
 Plug 'pamacs/vim-srt-sync'
 Plug 'rking/ag.vim'
-Plug 'SirVer/ultisnips'
+" Plug 'SirVer/ultisnips'
 
 
 call plug#end()
