@@ -1,11 +1,17 @@
 XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CONFIG_HOME
 export $(dbus-launch)
-ibus-daemon -drx
-export XMODIFIERS="@im=ibus"
-export GTK_IM_MODULE="ibus"
-export QT4_IM_MODULE="ibus"
-export QT_IM_MODULE="ibus"
+# ibus-daemon -drx
+fcitx5 -dr
+# export XMODIFIERS="@im=ibus"
+# export GTK_IM_MODULE="ibus"
+# export QT4_IM_MODULE="ibus"
+# export QT_IM_MODULE="ibus"
+
+
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
 
 
 # export _JAVA_AWT_WM_NONREPARENTING=1
@@ -21,9 +27,9 @@ sudo sh -c "echo 120 > /sys/devices/platform/i8042/serio1/serio2/speed"         
 
 export VISUAL=nvim
 export EDITOR=$VISUAL
-export BROWSER="/usr/bin/qutebrowser --qt-flag ignore-gpu-blacklist --qt-flag enable-gpu-rasterization"
+export BROWSER="/usr/bin/firefox"
 
-export SHELL=/bin/bash
+export SHELL=/usr/bin/zsh
 
 # ./.fehbg
 [ ! -e ~/.config/mpd/pid ] && mpd
