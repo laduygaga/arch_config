@@ -1,17 +1,17 @@
 XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CONFIG_HOME
 export $(dbus-launch)
-# ibus-daemon -drx
-fcitx5 -dr
-# export XMODIFIERS="@im=ibus"
-# export GTK_IM_MODULE="ibus"
-# export QT4_IM_MODULE="ibus"
-# export QT_IM_MODULE="ibus"
+ibus-daemon -drx
+# fcitx5 -dr
+export XMODIFIERS="@im=ibus"
+export GTK_IM_MODULE="ibus"
+export QT4_IM_MODULE="ibus"
+export QT_IM_MODULE="ibus"
 
 
-export GTK_IM_MODULE=fcitx
-export QT_IM_MODULE=fcitx
-export XMODIFIERS=@im=fcitx
+# export GTK_IM_MODULE=fcitx
+# export QT_IM_MODULE=fcitx
+# export XMODIFIERS=@im=fcitx
 
 
 # export _JAVA_AWT_WM_NONREPARENTING=1
