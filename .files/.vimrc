@@ -209,6 +209,7 @@ inoremap ? ?<C-g>u
 inoremap ! !<C-g>u
 
 vnoremap Y "+y
+vnoremap * y<esc>/<C-r>"<Cr>
 vnoremap " <esc>`>a"<esc>`<i"<esc> 
 vnoremap ' <esc>`>a'<esc>`<i'<esc> 
 vnoremap ) <esc>`>a)<esc>`<i(<esc> 
