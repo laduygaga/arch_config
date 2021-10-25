@@ -11,8 +11,9 @@ nnoremap ' `
 " map <leader><leader>f :Finish<CR>
 vnoremap Y "+y
 inoremap jk <esc>
-vnoremap " <esc>`>a"<esc>`<i"<esc> 
-vnoremap ' <esc>`>a'<esc>`<i'<esc> 
+vnoremap * y<esc>/<C-r>"<Cr>
+" vnoremap " <esc>`>a"<esc>`<i"<esc> 
+" vnoremap ' <esc>`>a'<esc>`<i'<esc> 
 vnoremap ) <esc>`>a)<esc>`<i(<esc> 
 vnoremap } <esc>`>a}<esc>`<i{<esc> 
 vnoremap ] <esc>`>a]<esc>`<i[<esc> 
