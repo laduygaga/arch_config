@@ -254,3 +254,6 @@ autocmd InsertLeave * call Fcitx2en_()
 autocmd InsertEnter * call Fcitx2zh_()
 "##### auto fcitx end ######
 
+" Floatterm
+hi FloatermBorder guibg=orange guifg=cyan
+let g:floaterm_width=0.9
