@@ -15,8 +15,10 @@ EOF
 
 nnoremap <silent> ]e :Lspsaga diagnostic_jump_next<CR>
 nnoremap <silent> [e :Lspsaga diagnostic_jump_prev<CR>
-nnoremap <silent> <C-j> :Lspsaga open_floaterm<CR>
-tnoremap <silent> <C-j> <C-\><C-n>:Lspsaga close_floaterm<CR>
+" nnoremap <silent> <C-j> :Lspsaga open_floaterm<CR>
+" tnoremap <silent> <C-j> <C-\><C-n>:Lspsaga close_floaterm<CR>
+nnoremap <silent> <C-j> :FloatermToggle<CR>
+tnoremap <silent> <C-j> <C-\><C-n>:FloatermToggle<CR>
 nnoremap <silent><leader><leader>r :Lspsaga rename<CR>
 " nnoremap <silent>K <Cmd>Lspsaga hover_doc<CR>
 nnoremap <silent> <C-k> <cmd>lua require'lspsaga.provider'.preview_definition()<CR>

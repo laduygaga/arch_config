@@ -13,6 +13,8 @@ call plug#begin()
 
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
+Plug 'voldikss/vim-floaterm'
+
 " Plug 'cohama/lexima.vim'
 
 if has("nvim")
