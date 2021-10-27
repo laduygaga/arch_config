@@ -14,6 +14,7 @@ call plug#begin()
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'voldikss/vim-floaterm'
+Plug 'rhysd/git-messenger.vim'
 
 " Plug 'cohama/lexima.vim'
 

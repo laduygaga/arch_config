@@ -1,7 +1,8 @@
 " Description: Keymaps
 " nnoremap <space> za
 nnoremap ' `
-
+" git-message
+nmap <C-m> <Plug>(git-messenger)
 " map <leader><leader>r :Run<CR>
 " map <leader><leader>b :Break<CR>
 " map <leader><leader>b :Clear<CR>
