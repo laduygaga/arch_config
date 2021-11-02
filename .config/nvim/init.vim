@@ -257,3 +257,8 @@ autocmd InsertEnter * call Fcitx2zh_()
 " Floatterm
 hi FloatermBorder guibg=orange guifg=cyan
 let g:floaterm_width=0.9
+
+" setf dosini
+augroup filetypedetect
+autocmd BufNewFile,BufRead *.conf setf dosini
+augroup END
