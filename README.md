@@ -110,7 +110,7 @@ sudo pacman -S lightdm lightdm-gtk-greeter
 
 **fonts**
 ```
-sudo pacman -S noto-fonts noto-fonts-emoji ttf-ubuntu-font-family ttf-dejavu ttf-freefont ttf-liberation ttf-droid ttf-inconsolata ttf-roboto terminus-font ttf-font-awesome ttf-nerd-fonts-symbols xorg-mkfontscale terminus-font 
+sudo pacman -S noto-fonts noto-fonts-emoji ttf-ubuntu-font-family ttf-dejavu ttf-freefont ttf-liberation ttf-droid ttf-inconsolata ttf-roboto terminus-font ttf-font-awesome ttf-nerd-fonts-symbols xorg-mkfontscale terminus-font ttf-joypixels ttf-ionicons $(pacman -Ssq xorg-font)
 ```
 
 **Audio**
@@ -121,7 +121,7 @@ sudo pacman -S alsa alsa-utils alsa-plugins alsa-lib pavucontrol
 **Tools**
 ```
 sudo pacman -S archlinux-keyring
-sudo pacman -S rxvt-unicode ranger rofi conky dmenu urxvt-perls perl-anyevent-i3 perl-json-xs atool highlight mediainfo w3m ffmpegthumbnailer zathura fzf firefox mpv mplayer feh sxiv scrot mtpfs gvfs-mtp pulseaudio git ibus-unikey ncmpcpp mpd mpc python-pip aria2 wget curl openvpn usbutils ctags youtube-dl streamlink  perl-file-mimeinfo perl-image-exiftool xclip xdotool notify-osd crda geoip p7zip xbindkeys python2-wheel python-wheel re2 fbreader  bash-completion zathura-pdf-mupdf zathura-djvu zathura-cb fcitx5 fcitx5-unikey fcitx5-configtool
+sudo pacman -S rxvt-unicode ranger rofi conky dmenu urxvt-perls perl-anyevent-i3 perl-json-xs atool highlight mediainfo w3m ffmpegthumbnailer zathura fzf firefox mpv mplayer feh sxiv scrot mtpfs gvfs-mtp pulseaudio git ibus-unikey ncmpcpp mpd mpc python-pip aria2 wget curl openvpn usbutils ctags youtube-dl streamlink  perl-file-mimeinfo perl-image-exiftool xclip xdotool notify-osd crda geoip p7zip xbindkeys python2-wheel python-wheel re2 fbreader  bash-completion zathura-pdf-mupdf zathura-djvu zathura-cb
 ```
 
 **for pystatus i3**
