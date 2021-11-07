@@ -110,7 +110,7 @@ sudo pacman -S lightdm lightdm-gtk-greeter
 
 **fonts**
 ```
-sudo pacman -S noto-fonts noto-fonts-emoji ttf-ubuntu-font-family ttf-dejavu ttf-freefont ttf-liberation ttf-droid ttf-inconsolata ttf-roboto terminus-font ttf-font-awesome ttf-nerd-fonts-symbols xorg-mkfontscale terminus-font ttf-joypixels ttf-ionicons $(pacman -Ssq xorg-font)
+sudo pacman -S noto-fonts noto-fonts-emoji ttf-ubuntu-font-family ttf-dejavu ttf-freefont ttf-liberation ttf-droid ttf-inconsolata ttf-roboto terminus-font ttf-font-awesome ttf-nerd-fonts-symbols xorg-mkfontscale  ttf-joypixels ttf-ionicons $(pacman -Ssq xorg-font) adobe-source-code-pro-fonts cantarell-fonts fontconfig gnu-free-fonts gsfonts lib32-fontconfig libfontenc libxfont2 xorg-fonts-encodings xorg-mkfontscale xorg-xlsfonts
 ```
 
 **Audio**
