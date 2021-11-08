@@ -1,9 +1,6 @@
-# mimetype file            # get type of file
-# mimeopen -d file          # set default app to open this type file
-
 [Default Applications]
-
 text/html=firefox.desktop
+text/markdown=firefox.desktop
 x-scheme-handler/mailto=firefox.desktop
 x-scheme-handler/http=firefox.desktop
 x-scheme-handler/www=firefox.desktop
@@ -18,3 +15,13 @@ application/epub+zip=FBReader-usercreated-2.desktop;
 application/pdf=org.pwmt.zathura-pdf-mupdf.desktop;
 text/csv=libreoffice-calc.desktop;
 text/plain=gvim.desktop;
+x-scheme-handler/tg=userapp-Telegram Desktop-OEAI20.desktop
+x-scheme-handler/discord-529050037532098580=discord-529050037532098580.desktop
+
+[Added Associations]
+x-scheme-handler/tg=userapp-Telegram Desktop-OEAI20.desktop;
+application/vnd.ms-publisher=gvim.desktop;
+video/mp4=mpv.desktop;
+application/epub+zip=FBReader.desktop;
+application/pdf=firefox.desktop;
+application/vnd.openxmlformats-officedocument.wordprocessingml.document=libreoffice-writer.desktop;firefox.desktop;
