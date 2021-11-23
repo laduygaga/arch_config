@@ -121,7 +121,7 @@ sudo pacman -S alsa alsa-utils alsa-plugins alsa-lib pavucontrol
 **Tools**
 ```
 sudo pacman -S archlinux-keyring
-sudo pacman -S rxvt-unicode ranger rofi conky dmenu urxvt-perls perl-anyevent-i3 perl-json-xs atool highlight mediainfo w3m ffmpegthumbnailer zathura fzf firefox mpv mplayer feh sxiv scrot mtpfs gvfs-mtp pulseaudio git ibus-unikey ncmpcpp mpd mpc python-pip aria2 wget curl openvpn usbutils ctags youtube-dl streamlink  perl-file-mimeinfo perl-image-exiftool xclip xdotool notify-osd crda geoip p7zip xbindkeys python2-wheel python-wheel re2 fbreader  bash-completion zathura-pdf-mupdf zathura-djvu zathura-cb cmake
+sudo pacman -S rxvt-unicode ranger rofi conky dmenu urxvt-perls perl-anyevent-i3 perl-json-xs atool highlight mediainfo w3m ffmpegthumbnailer zathura fzf firefox mpv mplayer feh sxiv scrot mtpfs gvfs-mtp pulseaudio git ibus-unikey ncmpcpp mpd mpc python-pip aria2 wget curl openvpn usbutils ctags youtube-dl streamlink  perl-file-mimeinfo perl-image-exiftool xclip xdotool notify-osd crda geoip p7zip xbindkeys python2-wheel python-wheel re2 fbreader  bash-completion zathura-pdf-mupdf zathura-djvu zathura-cb cmake telegram-desktop ipython ntfs-3g
 ```
 
 **for pystatus i3**
@@ -157,7 +157,8 @@ yay -Syyuu
 ```
 **yay tools**
 ```
-yay -S urxvt-font-size-git python-pdftotext scrcpy libxft-bgra-git  ttf-symbola xurls mtpfs ifuse android-file-transfer
+yay -S urxvt-font-size-git python-pdftotext scrcpy libxft-bgra-git  ttf-symbola xurls mtpfs ifuse android-file-transfer lf
+
 
 ```
 
