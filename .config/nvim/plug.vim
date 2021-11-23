@@ -32,6 +32,7 @@ if has("nvim")
   Plug 'nvim-lua/popup.nvim'
   Plug 'nvim-lua/plenary.nvim'
   " Plug 'nvim-telescope/telescope.nvim'
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
 endif
 
 " Plug 'groenewege/vim-less', { 'for': 'less' }
@@ -45,8 +46,6 @@ Plug 'airblade/vim-gitgutter'
 Plug 'majutsushi/tagbar'
 Plug 'mattn/emmet-vim'
 Plug 'lepture/vim-jinja'
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" Plug 'ycm-core/YouCompleteMe' 
 Plug 'tpope/vim-surround'
 Plug 'echuraev/translate-shell.vim'
 Plug 'junegunn/fzf.vim'
