@@ -8,7 +8,7 @@ Before=sleep.target
 User=duy
 Type=forking
 Environment="DISPLAY=:0"
-ExecStart=/usr/bin/i3lock -ki /mnt/sdb6/pictures/gnu_linux_resized.png
+ExecStart=/usr/bin/i3lock -k
 
 [Install]
 WantedBy=sleep.target
