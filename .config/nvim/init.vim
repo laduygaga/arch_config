@@ -50,6 +50,7 @@ endfunction
 
 
 " colorscheme onedark
+colorscheme peachpuff
 let g:is_enable_colorscheme = 0
 function ToggleColorscheme()
 	if g:is_enable_colorscheme == 0
@@ -57,8 +58,8 @@ function ToggleColorscheme()
 		colorscheme onedark
 		let g:is_enable_colorscheme = 1
 	else
-		echo "colorscheme default"
-		colorscheme default
+		echo "colorscheme peachpuff"
+		colorscheme peachpuff
 		let g:is_enable_colorscheme = 0
 	endif
 endfunction
