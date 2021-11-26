@@ -103,7 +103,7 @@ static Key keys[] = {
     { MODKEY,               XK_d,           spawn,              {.v = dmenucmd } },
     { MODKEY|ControlMask,   XK_y,           spawn,              SHCMD("clip.sh copy") },
     { MODKEY|ControlMask,   XK_p,           spawn,              SHCMD("clip.sh paste") },
-    { MODKEY|ControlMask,   XK_l,           spawn,              SHCMD("clip.sh clear") },
+    // { MODKEY|ControlMask,   XK_l,           spawn,              SHCMD("clip.sh clear") },
     { MODKEY,               XK_Return,      spawn,              {.v = termcmd } },
     { MODKEY|ShiftMask,     XK_Return,      spawn,              SHCMD("st -e tmux") },
     { MODKEY,               XK_b,           togglebar,          {0} },
