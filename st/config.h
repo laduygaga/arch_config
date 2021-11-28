@@ -7,8 +7,8 @@
  */
 // static char *font = "mono:pixelsize=15:antialias=true:autohint=true";
 // static char *font2[] = { "Inconsolata for Powerline:pixelsize=15:antialias=true:autohint=true" };
-static char *font = "mono:pixelsize=18:antialias=true:autohint=true";
-static char *font2[] = { "mono:pixelsize=12:antialias=true:autohint=true" };
+static char *font = "monospace:pixelsize=16:antialias=true:autohint=true";
+static char *font2[] = { "monospace:pixelsize=10:antialias=true:autohint=true" };
 
 static int borderpx = 2;
 
@@ -287,7 +287,7 @@ static Shortcut shortcuts[] = {
 	{ TERMMOD,              XK_k,           zoom,           {.f = +1} },
 	{ TERMMOD,              XK_j,           zoom,           {.f = -1} },
 	{ TERMMOD,              XK_u,           externalpipe,   {.v = openurlcmd } },
-	// { TERMMOD,              XK_l,           externalpipe,   {.v = copyurlcmd } },
+	{ TERMMOD,              XK_l,           externalpipe,   {.v = copyurlcmd } },
 	{ TERMMOD,              XK_o,           externalpipe,   {.v = copyoutput } },
 };
 
