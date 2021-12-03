@@ -50,7 +50,7 @@ endfunction
 
 
 " colorscheme onedark
-colorscheme peachpuff
+" colorscheme peachpuff
 let g:is_enable_colorscheme = 0
 function ToggleColorscheme()
 	if g:is_enable_colorscheme == 0
