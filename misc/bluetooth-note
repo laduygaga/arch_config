@@ -1,0 +1,2 @@
+install bluez bluez-utils pulseaudio-bluetooth
+trust device and reboot
