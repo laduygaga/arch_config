@@ -50,6 +50,7 @@ endfunction
 
 
 " colorscheme onedark
+colorscheme peachpuff
 let g:is_enable_colorscheme = 0
 function ToggleColorscheme()
 	if g:is_enable_colorscheme == 0
@@ -57,8 +58,8 @@ function ToggleColorscheme()
 		colorscheme onedark
 		let g:is_enable_colorscheme = 1
 	else
-		echo "colorscheme default"
-		colorscheme default
+		echo "colorscheme peachpuff"
+		colorscheme peachpuff
 		let g:is_enable_colorscheme = 0
 	endif
 endfunction
@@ -238,3 +239,19 @@ let g:floaterm_width=0.9
 augroup filetypedetect
 autocmd BufNewFile,BufRead *.conf setf dosini
 augroup END
+
+
+func! s:SetBreakpoint()
+	cal append('.', repeat(' ', strlen(matchstr(getline('.'), '^\s*'))) . 'import ipdb; ipdb.set_trace()')
+endf
+
+func! s:RemoveBreakpoint()
+	exe 'silent! g/^\s*import\sipdb\;\?\n*\s*ipdb.set_trace()/d'
+endf
+
+func! s:ToggleBreakpoint()
+	if getline('.')=~#'^\s*import\sipdb' | cal s:RemoveBreakpoint() | el | cal s:SetBreakpoint() | en
+endf
+
+nnoremap <leader>b :call <SID>ToggleBreakpoint()<CR>j
+
