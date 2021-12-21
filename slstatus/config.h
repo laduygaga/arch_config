@@ -82,6 +82,6 @@ static const struct arg args[] = {
         // { datetime,         " %s|",       "%Y %b %d (%a) %r"                      },
         { datetime,         " %s|",       "%b %d (%a) %r"                      },
         // { vol_perc,         " ♪:%s ",         "/dev/mixer"                       },
-        { run_command,      " %s",         "volume"                            },
+        { run_command,      " %s",         "volume | paste -sd ' '"                            },
         { run_command,      "%s",        "music"                                  },
 };
