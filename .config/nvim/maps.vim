@@ -3,21 +3,14 @@
 nnoremap ' `
 " git-message
 nmap <C-m> <Plug>(git-messenger)
-" map <leader><leader>r :Run<CR>
-" map <leader><leader>b :Break<CR>
-" map <leader><leader>b :Clear<CR>
-" map <leader><leader>s :Over<CR>
-" map <leader><leader>c :Continue<CR>
-" map <leader><leader>p :Stop<CR>
-" map <leader><leader>f :Finish<CR>
 vnoremap Y "+y
 inoremap jk <esc>
 vnoremap * y<esc>/<C-r>"<Cr>
-" vnoremap " <esc>`>a"<esc>`<i"<esc> 
-" vnoremap ' <esc>`>a'<esc>`<i'<esc> 
-vnoremap ) <esc>`>a)<esc>`<i(<esc> 
-vnoremap } <esc>`>a}<esc>`<i{<esc> 
-vnoremap ] <esc>`>a]<esc>`<i[<esc> 
+vnoremap g" <esc>`>a"<esc>`<i"<esc> 
+vnoremap g' <esc>`>a'<esc>`<i'<esc> 
+vnoremap g) <esc>`>a)<esc>`<i(<esc> 
+vnoremap g} <esc>`>a}<esc>`<i{<esc> 
+vnoremap g] <esc>`>a]<esc>`<i[<esc> 
 
 vnoremap <C-j> :m '>+1<CR>gv=gv
 vnoremap <C-k> :m '<-2<CR>gv=gv
