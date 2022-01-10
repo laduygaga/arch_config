@@ -42,6 +42,7 @@ static const Rule rules[] = {
     { "firefox",            NULL,       NULL,           1 << 2,     0,          0,          1,          -1 },
     { "chromium",           NULL,       NULL,           1 << 1,     0,          0,          1,          -1 },
     { "Google-chrome",      NULL,       NULL,           1 << 1,     0,          0,          1,          -1 },
+    { "gods.exe",			NULL,       NULL,           1 << 1,     0,          0,          1,          -1 },
     { "St",                 NULL,       NULL,           0,          0,          1,          1,          -1 },
     { "Alacritty",          NULL,       NULL,           0,          0,          1,          1,          -1 },
     { "URxvt",              NULL,       NULL,           0,          0,          1,          1,          -1 },
