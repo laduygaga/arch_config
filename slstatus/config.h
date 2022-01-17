@@ -74,7 +74,7 @@ static const struct arg args[] = {
         // { wifi_perc,        " :%s%%]",     "eno1"                               },
         { ipv4,             "%s",         "eno1"                                },
         { netspeed_rx,      "[%s/",         "eno1"                              },
-        { netspeed_tx,      "%s]|",        ""                               },
+        { netspeed_tx,      "%s]|",        "eno1"                               },
         // { battery_state,    " %s:",        "BAT0"                                  },
         // { battery_perc,     "%s|",        "BAT0"                                  },
         // { battery_remaining, "%s | ",    "BAT0"                                   },
