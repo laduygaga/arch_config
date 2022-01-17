@@ -157,7 +157,7 @@ yay -Syyuu
 ```
 **yay tools**
 ```
-yay -S urxvt-font-size-git python-pdftotext scrcpy libxft-bgra-git  ttf-symbola xurls mtpfs ifuse android-file-transfer lf
+yay -S urxvt-font-size-git python-pdftotext scrcpy libxft-bgra-git  ttf-symbola xurls mtpfs ifuse android-file-transfer lf ibus-bamboo
 
 
 ```
