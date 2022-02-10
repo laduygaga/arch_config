@@ -7,7 +7,7 @@ const unsigned int interval = 1000;
 static const char unknown_str[] = "";
 
 /* maximum output string length */
-#define MAXLEN 165
+#define MAXLEN 150
 
 /*
  * function            description                     argument (example)
@@ -36,8 +36,8 @@ static const char unknown_str[] = "";
  * keymap              layout (variant) of current     NULL
  *                     keymap
  * load_avg            load average                    NULL
- * netspeed_rx         receive network speed           interface name (wlp3s0)
- * netspeed_tx         transfer network speed          interface name (wlp3s0)
+ * netspeed_rx         receive network speed           interface name (wlan0)
+ * netspeed_tx         transfer network speed          interface name (wlan0)
  * num_files           number of files in a directory  path
  *                                                     (/home/foo/Inbox/cur)
  * ram_free            free memory in GB               NULL
@@ -58,30 +58,28 @@ static const char unknown_str[] = "";
  * uptime              system uptime                   NULL
  * username            username of current user        NULL
  * vol_perc            OSS/ALSA volume in percent      mixer file (/dev/mixer)
- * wifi_perc           WiFi signal in percent          interface name (wlp3s0)
- * wifi_essid          WiFi ESSID                      interface name (wlp3s0)
+ * wifi_perc           WiFi signal in percent          interface name (wlan0)
+ * wifi_essid          WiFi ESSID                      interface name (wlan0)
  */
 static const struct arg args[] = {
 	/* function         format          argument */
-        { run_command,      " %s|",        "ping.sh"                              }, 
-        // { run_command,      "GPU: %s ",         "gpu_temp"                            },
-        { cpu_perc,         "CPU: %s%%:",       "NULL"                                 }, 
-        { temp,             "%s°C|",      "/sys/class/thermal/thermal_zone3/temp" }, 
-        { ram_used,         " %s/",         "NULL"                                 },
+        { run_command,      " %s|",        "ping.sh"                               }, 
+        { cpu_perc,         "%s%%:",       "NULL"                                  }, 
+        { temp,             "%s°C|",      "/sys/class/thermal/thermal_zone0/temp" }, 
+        { ram_used,         "%s/",         "NULL"                                  },
         { ram_total,        "%s|",        "NULL"                                  },
-        { disk_free,        "%s|",        "/"                                     },
-        // { wifi_essid,       " [%s",         "eno1"                               },
-        // { wifi_perc,        " :%s%%]",     "eno1"                               },
-        { ipv4,             "%s",         "eno1"                                },
-        { netspeed_rx,      "[%s/",         "eno1"                              },
-        { netspeed_tx,      "%s]|",        "eno1"                               },
-        // { battery_state,    " %s:",        "BAT0"                                  },
-        // { battery_perc,     "%s|",        "BAT0"                                  },
-        // { battery_remaining, "%s | ",    "BAT0"                                   },
-        // { run_command,      " %s |",        "weather"                             },
-        // { datetime,         " %s|",       "%Y %b %d (%a) %r"                      },
-        { datetime,         " %s|",       "%b %d (%a) %r"                      },
-        // { vol_perc,         " ♪:%s ",         "/dev/mixer"                       },
-        { run_command,      " %s",         "volume | paste -sd ' '"                            },
-        { run_command,      "%s",        "music"                                  },
+        { disk_free,        "%s|",        "/"                                       },
+        { wifi_essid,       " [%s",         "wls1"                                },
+        { wifi_perc,        ":%s%%]",     "wls1"                                },
+        { ipv4,             "%s",         "wls1"                                },
+        { netspeed_rx,      "[%s/",         "wls1"                                },
+        { netspeed_tx,      "%s]|",        "wls1"                                },
+        { battery_state,    "%s:",        "BAT0"                                  },
+        { battery_perc,     "%s|",        "BAT0"                                  },
+        // { battery_remaining, "%s | ",    "BAT0"                                     },
+        // { run_command,      " %s |",        "weather"                               },
+        { datetime,         "%s|",       "%Y %b %d (%a) %T%p"                                 },
+        // { vol_perc,         " ♪:%s ",         "/dev/mixer1"},
+        { run_command,      "♪:%s",        "volume_x200"                                 },
+        { run_command,      "%s",        "music"                                 },
 };

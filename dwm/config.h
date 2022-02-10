@@ -98,7 +98,7 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
-static const char *termcmd[]  = { "alacritty", NULL};
+static const char *termcmd[]  = { "st", NULL};
 
 #include <X11/XF86keysym.h>
 #include "movestack.c"
@@ -172,12 +172,12 @@ static Key keys[] = {
         { MODKEY,               XK_F2,                      spawn,  SHCMD("i3lock -k") },
         { MODKEY,               XK_F4,                      spawn,  SHCMD("sudo systemctl suspend") },
         // { 0,                    XF86XK_AudioMicMute,        spawn,  SHCMD("pactl set-source-mute 1 toggle") },
-        // { 0,                    XF86XK_AudioMute,           spawn,  SHCMD("pactl set-sink-mute 0 toggle") },
-        // { 0,                    XF86XK_AudioRaiseVolume,    spawn,  SHCMD("pactl set-sink-volume 0 +5%") },
-        // { 0,                    XF86XK_AudioLowerVolume,    spawn,  SHCMD("pactl set-sink-volume 0 -5%") },
-        { MODKEY,                XK_F10,         spawn,  SHCMD("amixer -D pulse -q set Master toggle" ) },
-        { MODKEY,                XK_F11,    spawn,   SHCMD("amixer -D pulse -q set Master 5%+    ") },
-        { MODKEY,                XK_F9,    spawn,    SHCMD("amixer -D pulse -q set Master 5%-    ") },
+        { 0,                    XF86XK_AudioMute,           spawn,  SHCMD("pactl set-sink-mute 0 toggle") },
+        { 0,                    XF86XK_AudioRaiseVolume,    spawn,  SHCMD("pactl set-sink-volume 0 +5%") },
+        { 0,                    XF86XK_AudioLowerVolume,    spawn,  SHCMD("pactl set-sink-volume 0 -5%") },
+        // { MODKEY,                XK_F10,         spawn,  SHCMD("amixer -D pulse -q set Master toggle" ) },
+        // { MODKEY,                XK_F11,    spawn,   SHCMD("amixer -D pulse -q set Master 5%+    ") },
+        // { MODKEY,                XK_F9,    spawn,    SHCMD("amixer -D pulse -q set Master 5%-    ") },
         { MODKEY,                XK_F12,        spawn,  SHCMD("pactl set-source-mute 1 toggle") },
         { MODKEY,                XK_F8,        spawn,  SHCMD("toggle-card-profile.sh") },
         // { MODKEY,               XK_F8,                      spawn,  SHCMD("touchpad_toggle.sh") },
