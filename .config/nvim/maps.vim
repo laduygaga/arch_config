@@ -29,6 +29,8 @@ map <leader><leader>g :GFiles<CR>
 nnoremap <leader>r :GRg<CR>
 nnoremap <silent> <C-Tab> gt
 nnoremap <silent> <S-Tab> gT
+tnoremap <silent> <C-Tab> <C-\><C-n><C-w>h
+tnoremap <silent> <S-Tab> <C-\><C-n><C-w>l
 vnoremap <silent> <leader>,, :Trans :vi -b<CR> 
 nnoremap <leader>g :Ag <C-r>=expand('<cword>')<CR><CR>
 nnoremap <leader>s :AgFromSearch<CR>

@@ -242,7 +242,7 @@ augroup END
 
 
 func! s:SetBreakpoint()
-	cal append('.', repeat(' ', strlen(matchstr(getline('.'), '^\s*'))) . 'import ipdb; ipdb.set_trace()')
+	cal append('.', repeat(' ', strlen(matchstr(getline('.'), '^\s*'))) . 'import pdb; pdb.set_trace()')
 endf
 
 func! s:RemoveBreakpoint()
