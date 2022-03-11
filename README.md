@@ -250,6 +250,8 @@ xrandr --auto
 glxinfo | grep NVIDIA
 ```
 
+# lutris
+[install driver](https://github.com/lutris/docs/blob/master/InstallingDrivers.md)
 
 # Markdown tutorials
 
