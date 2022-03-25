@@ -104,6 +104,7 @@ source $ZSH/oh-my-zsh.sh
 aria2c_() {
     aria2c -x 8 --seed-time=0 $*
 }
+alias lf="lfub"
 alias t/vpn="cd ~/.trash/vpn"
 alias sdb5="cd /mnt/sdb5"
 alias sdb3="cd /mnt/sdb3"
