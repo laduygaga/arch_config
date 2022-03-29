@@ -16,6 +16,7 @@ Plug 'tpope/vim-rhubarb'
 " Plug 'cohama/lexima.vim'
 
 if has("nvim")
+  Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
   " Plug 'hoob3rt/lualine.nvim'
   " Plug 'kristijanhusak/defx-git'
   " Plug 'kristijanhusak/defx-icons'
