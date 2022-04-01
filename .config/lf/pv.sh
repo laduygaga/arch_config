@@ -8,5 +8,7 @@ case "$1" in
     *.pdf) pdftotext "$1" -;;
 	*.png|*.jpg) exiftool "$1" ;;
 	*.mkv|*.mp4|*.mp3|*.flac|*.webm|*.m4v) mediainfo "$1" ;;
+	*.html) lynx -dump $1 ;;
+	*.json) cat "$1" | jq ;;
     *) highlight -O ansi "$1" || cat "$1";;
 esac

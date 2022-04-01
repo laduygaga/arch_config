@@ -19,11 +19,11 @@ Plug 'rhysd/git-messenger.vim'
 " Plug 'cohama/lexima.vim'
 
 if has("nvim")
-  Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
   " Plug 'hoob3rt/lualine.nvim'
   " Plug 'kristijanhusak/defx-git'
   " Plug 'kristijanhusak/defx-icons'
   " Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
+  Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
   Plug 'neovim/nvim-lspconfig'
   Plug 'github/copilot.vim'
   " Plug 'glepnir/lspsaga.nvim'
@@ -34,6 +34,9 @@ if has("nvim")
   " Plug 'kyazdani42/nvim-web-devicons'
   Plug 'nvim-lua/popup.nvim'
   Plug 'nvim-lua/plenary.nvim'
+  Plug 'jmerle/competitive-companion'
+  Plug 'p00f/cphelper.nvim'
+  " Plug 'metakirby5/codi.vim'
   " Plug 'nvim-telescope/telescope.nvim'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
 endif
@@ -44,7 +47,7 @@ endif
 "
 " Plug 'puremourning/vimspector'
 Plug 'joshdick/onedark.vim'
-Plug 'ap/vim-buftabline'
+" Plug 'ap/vim-buftabline'
 Plug 'airblade/vim-gitgutter'
 Plug 'majutsushi/tagbar'
 Plug 'mattn/emmet-vim'

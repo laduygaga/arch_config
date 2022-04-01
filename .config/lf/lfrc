@@ -116,7 +116,7 @@ map A rename # at the very end
 map c push A<c-u> # new rename
 map I push A<c-a> # at the very beginning
 # map i push A<a-b><a-b><a-f> # before extention
-map i $~/.config/lf/pv.sh $f | less -R
+map i $~/.config/lf/pv.sh $fx | less -R
 map a push A<a-b> # after extention
 # map B bulkrename
 # map b $setbg $f

@@ -38,6 +38,8 @@ map <silent> <leader>e :call ToggleVExplorer()<CR>
 noremap <silent> <leader>m :call ToggleMouse()<CR>
 noremap <silent> <leader>w :call ToggleWrap()<CR>
 nnoremap <leader>T :TagbarToggle<CR>
+nnoremap <leader>v :MarkdownPreviewToggle<CR>
+nmap <leader>y :let @" = expand("%:p")<CR>
 map <F2> :call ToggleExpandTab()<CR>
 map <F4> :call ToggleColorscheme()<CR>
 
