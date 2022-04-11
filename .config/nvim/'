@@ -23,10 +23,9 @@ vnoremap <C-k> :m '<-2<CR>gv=gv
 " nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j'
 
 nnoremap <silent> <leader>t :tabnew<CR>
-nnoremap <silent> <leader><leader>d :tabclose<CR>
-nnoremap <silent> <leader><leader>D :qa!<CR>
+nnoremap <silent> <leader>d :tabclose<CR>
+nnoremap <silent> <leader>D :qa!<CR>
 map <leader><leader>g :GFiles<CR>
-map <leader><leader>f :Files<CR>
 nnoremap <leader>r :GRg<CR>
 nnoremap <silent> <C-Tab> gt
 nnoremap <silent> <S-Tab> gT
@@ -85,11 +84,11 @@ augroup vim_autocmd
 	autocmd Filetype go nnoremap <silent>  <buffer> <F9> :w<CR>:!go build %; ./%:r<CR>
 
 " Debugger remaps
-nnoremap <silent> <leader>db :lua require'dap'.toggle_breakpoint()<CR>
-nnoremap <silent> <leader>dc :lua require'dap'.continue()<CR>
-nnoremap <silent> <leader>dso :lua require'dap'.step_over()<CR>
-nnoremap <silent> <leader>dsi :lua require'dap'.step_into()<CR>
-nnoremap <silent> <leader>dr :lua require'dap'.repl.toggle()<CR>
-nnoremap <silent> <leader>du :lua require("dapui").toggle()<CR>
-nnoremap <silent> <leader>df :lua require('dap-python').test_method()<CR>
-nnoremap <silent> <leader>do :lua require('dap-python').test_class()<CR>
+nnoremap <silent> <leader><leader>db :lua require'dap'.toggle_breakpoint()<CR>
+nnoremap <silent> <leader><leader>dc :lua require'dap'.continue()<CR>
+nnoremap <silent> <leader><leader>ds :lua require'dap'.step_into()<CR>
+nnoremap <silent> <leader><leader>dr :lua require'dap'.repl.toggle()<CR>
+" nnoremap <silent> <leader><leader>du :lua require("dapui").toggle()<CR>
+nnoremap <silent> <leader><leader>du :lua require'dap.ui.widgets'.sidebar(require('dap.ui.widgets').scopes).toggle()<CR>
+nnoremap <silent> <leader><leader>df :lua require('dap-python').test_method()<CR>
+nnoremap <silent> <leader><leader>do :lua require('dap-python').test_class()<CR>

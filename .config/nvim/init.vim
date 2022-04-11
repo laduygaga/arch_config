@@ -249,9 +249,22 @@ func! s:RemoveBreakpoint()
 	exe 'silent! g/^\s*import\sipdb\;\?\n*\s*ipdb.set_trace()/d'
 endf
 
-func! s:ToggleBreakpoint()
-	if getline('.')=~#'^\s*import\sipdb' | cal s:RemoveBreakpoint() | el | cal s:SetBreakpoint() | en
-endf
+" func! s:ToggleBreakpoint()
+" 	if getline('.')=~#'^\s*import\sipdb' | cal s:RemoveBreakpoint() | el | cal s:SetBreakpoint() | en
+" endf
+" nnoremap <leader>b :call <SID>ToggleBreakpoint()<CR>j
 
-nnoremap <leader>b :call <SID>ToggleBreakpoint()<CR>j
 
+let g:coq_settings = { 'auto_start': 'shut-up' }
+lua require('dap-python').setup('~/.virtualenvs/debugpy/bin/python')
+lua require('dap-go').setup()
+lua <<EOF
+require("nvim-dap-virtual-text").setup()
+EOF
+
+lua <<EOF
+require("dapui").setup()
+-- local widgets = require('dap.ui.widgets')
+-- local my_sidebar = widgets.sidebar(widgets.scopes)
+--  my_sidebar.open()
+EOF
