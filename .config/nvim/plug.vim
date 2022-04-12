@@ -17,7 +17,7 @@ Plug 'voldikss/vim-floaterm'
 Plug 'rhysd/git-messenger.vim'
 " Plug 'cohama/lexima.vim' " auto close parentheses
 if has("nvim")
-  Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+  Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']} " call mkdp#util#install()
   Plug 'neovim/nvim-lspconfig'
   Plug 'github/copilot.vim'
   Plug 'tami5/lspsaga.nvim'
@@ -32,8 +32,6 @@ if has("nvim")
   Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
   Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
   Plug 'ms-jpq/coq.thirdparty', {'branch': '3p'}
-  Plug 'mfussenegger/nvim-dap'
-  Plug 'mfussenegger/nvim-dap-python' " require debuggy
   " mkdir .virtualenvs
   " cd .virtualenvs
   " python -m venv debugpy
@@ -44,9 +42,13 @@ if has("nvim")
   " mkdir -p ~/.config/nvim/parser
   " cc -O2 -o ~/.config/nvim/parser/python}.so -I./src src/parser.c src/scanner.cc -shared -Os -lstdc++ -fPIC
 
+  Plug 'mfussenegger/nvim-dap'
+  Plug 'mfussenegger/nvim-dap-python' " require debuggy
   Plug 'leoluz/nvim-dap-go' " require delve
   Plug 'theHamsta/nvim-dap-virtual-text'
   Plug 'rcarriga/nvim-dap-ui'
+  " Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+  " Plug 'sebdah/vim-delve'
 endif
 
 " Plug 'puremourning/vimspector'

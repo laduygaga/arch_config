@@ -249,10 +249,10 @@ func! s:RemoveBreakpoint()
 	exe 'silent! g/^\s*import\sipdb\;\?\n*\s*ipdb.set_trace()/d'
 endf
 
-" func! s:ToggleBreakpoint()
-" 	if getline('.')=~#'^\s*import\sipdb' | cal s:RemoveBreakpoint() | el | cal s:SetBreakpoint() | en
-" endf
-" nnoremap <leader>b :call <SID>ToggleBreakpoint()<CR>j
+func! s:ToggleBreakpoint()
+	if getline('.')=~#'^\s*import\sipdb' | cal s:RemoveBreakpoint() | el | cal s:SetBreakpoint() | en
+endf
+nnoremap <leader>b :call <SID>ToggleBreakpoint()<CR>j
 
 
 let g:coq_settings = { 'auto_start': 'shut-up' }
@@ -268,3 +268,9 @@ require("dapui").setup()
 -- local my_sidebar = widgets.sidebar(widgets.scopes)
 --  my_sidebar.open()
 EOF
+
+" let g:go_debug_windows = {
+"       \ 'vars':       'rightbelow 50vnew',
+"       \ 'stack':      'rightbelow 10new',
+"       \ 'goroutines':  'rightbelow 10new',
+"       \ }

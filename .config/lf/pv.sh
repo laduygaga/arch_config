@@ -2,6 +2,7 @@
 
 case "$1" in
     *.tar*) tar tf "$1";;
+    *.html) lynx -display_charset=utf-8 -dump   "$1";;
     *.zip) unzip -l "$1";;
     *.rar) unrar l "$1";;
     *.7z) 7z l "$1";;

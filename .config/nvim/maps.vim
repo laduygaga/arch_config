@@ -85,6 +85,7 @@ augroup vim_autocmd
 	autocmd Filetype go nnoremap <silent>  <buffer> <F9> :w<CR>:!go build %; ./%:r<CR>
 
 " Debugger remaps
+" use nvim-dap
 nnoremap <silent> <leader>db :lua require'dap'.toggle_breakpoint()<CR>
 nnoremap <silent> <leader>dc :lua require'dap'.continue()<CR>
 nnoremap <silent> <leader>dso :lua require'dap'.step_over()<CR>
@@ -93,3 +94,11 @@ nnoremap <silent> <leader>dr :lua require'dap'.repl.toggle()<CR>
 nnoremap <silent> <leader>du :lua require("dapui").toggle()<CR>
 nnoremap <silent> <leader>df :lua require('dap-python').test_method()<CR>
 nnoremap <silent> <leader>do :lua require('dap-python').test_class()<CR>
+
+" use vim-go
+" map <leader>ds :GoDebugStart<CR>
+" map <leader>dst :GoDebugStop<CR>
+" map <leader>dsi :GoDebugStep<CR>
+" map <leader>dso :GoDebugNext<CR>
+" map <leader>dc :GoDebugContinue<CR>
+" map <leader>db :GoDebugBreakpoint<CR>

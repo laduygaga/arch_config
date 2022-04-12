@@ -10,6 +10,17 @@ lua << EOF
 local nvim_lsp = require('lspconfig')
 
 require("coq_3p") {
+  { src = "bc", short_name = "MATH", precision = 6 }, --require bc
+  -- { src = "cow", trigger = "!cow" },				  -- require cowsay
+  -- { src = "figlet", short_name = "BIG" },		  -- require figlet
+  {
+    src = "repl",
+    sh = "bash",
+    shell = { p = "perl", n = "node", ... },
+    max_lines = 99,
+    deadline = 500,
+    unsafe = { "rm", "poweroff", "mv", ... }
+  },
   { src = "nvimlua", short_name = "nLUA" },
   { src = "vimtex", short_name = "vTEX" },
   { src = "copilot", short_name = "COP", accept_key = "<c-f>" },
