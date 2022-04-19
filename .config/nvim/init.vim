@@ -224,6 +224,11 @@ command! -bang -nargs=* GRg
   \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
   \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
 
+command! -bang -nargs=* FRg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview({'dir': systemlist('pwd')[0]}), <bang>0)
+
 
 " let g:vimspector_base_dir=expand( '$HOME/.config/nvim/vimspector-config' )
 " let g:vimspector_enable_mappings = 'HUMAN'

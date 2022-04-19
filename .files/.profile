@@ -17,7 +17,7 @@ export QT_IM_MODULE="ibus"
 # export _JAVA_AWT_WM_NONREPARENTING=1
 
 # From .zshrc
-export PATH="$PATH:$HOME/.rvm/bin:$HOME/.local/bin:$HOME/.gem/ruby/2.7.0/bin:$HOME/gits/arch_config/scripts:$HOME/gits/arch_config/.local/bin/statusbar:$HOME/.cargo/bin"
+export PATH="$PATH:$HOME/.rvm/bin:$HOME/.local/bin:$HOME/.gem/ruby/2.7.0/bin:$HOME/gits/arch_config/scripts:$HOME/gits/arch_config/.local/bin/statusbar:$HOME/.cargo/bin:/home/duy/go:$HOME/gits/arch_config/scripts/shell-queue"
 
 # setxkbmap -option ctrl:swapcaps
 

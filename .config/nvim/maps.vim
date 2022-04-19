@@ -28,6 +28,7 @@ nnoremap <silent> <leader><leader>D :qa!<CR>
 map <leader><leader>g :GFiles<CR>
 map <leader><leader>f :Files<CR>
 nnoremap <leader>r :GRg<CR>
+nnoremap <leader><leader>s :FRg<CR>
 nnoremap <silent> <C-Tab> gt
 nnoremap <silent> <S-Tab> gT
 tnoremap <silent> <C-Tab> <C-\><C-n><C-w>h

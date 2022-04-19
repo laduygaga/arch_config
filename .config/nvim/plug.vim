@@ -15,6 +15,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'voldikss/vim-floaterm'
 Plug 'rhysd/git-messenger.vim'
+Plug 'will133/vim-dirdiff'
 " Plug 'cohama/lexima.vim' " auto close parentheses
 if has("nvim")
   Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']} " call mkdp#util#install()
@@ -43,7 +44,7 @@ if has("nvim")
   " cc -O2 -o ~/.config/nvim/parser/python}.so -I./src src/parser.c src/scanner.cc -shared -Os -lstdc++ -fPIC
 
   Plug 'mfussenegger/nvim-dap'
-  Plug 'mfussenegger/nvim-dap-python' " require debuggy
+  Plug 'mfussenegger/nvim-dap-python' " require debugpy
   Plug 'leoluz/nvim-dap-go' " require delve
   Plug 'theHamsta/nvim-dap-virtual-text'
   Plug 'rcarriga/nvim-dap-ui'
