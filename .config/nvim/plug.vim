@@ -18,7 +18,8 @@ Plug 'rhysd/git-messenger.vim'
 Plug 'will133/vim-dirdiff'
 " Plug 'cohama/lexima.vim' " auto close parentheses
 if has("nvim")
-  Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']} " call mkdp#util#install()
+  " Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']} " call mkdp#util#install()
+  Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
   Plug 'neovim/nvim-lspconfig'
   Plug 'github/copilot.vim'
   Plug 'tami5/lspsaga.nvim'
