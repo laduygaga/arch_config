@@ -4,7 +4,7 @@
 function get_btc_price() {
 	btc=`curl -s https://api.coinbase.com/v2/prices/BTC-USD/spot | jq -r '.data.amount'`
 	gods=`curl -s https://api.coinbase.com/v2/prices/GODS-USD/spot | jq -r '.data.amount'`
-	echo "BTC: $btc" "GODS: $gods"
+	echo "BTC: $btc" "GODS: $gods" > /tmp/coin_price
 }
 
 get_btc_price
