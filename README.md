@@ -256,6 +256,13 @@ xrandr --auto
 glxinfo | grep NVIDIA
 ```
 
+# hibernate shutdown instead of wake by keyboard or mouse
+
+```
+# /etc/systemd/sleep.conf
+HibernateMode=shutdown
+```
+
 # lutris
 [install driver](https://github.com/lutris/docs/blob/master/InstallingDrivers.md)
 

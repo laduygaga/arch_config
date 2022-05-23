@@ -29,7 +29,7 @@ if has("nvim")
   Plug 'jmerle/competitive-companion'
   Plug 'p00f/cphelper.nvim'
   " Plug 'metakirby5/codi.vim' " interactive scratchpad for hackers. 
-  " Plug 'nvim-telescope/telescope.nvim'
+  Plug 'nvim-telescope/telescope.nvim'
   " Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
   Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
