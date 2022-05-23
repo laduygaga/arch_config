@@ -21,7 +21,7 @@ if has("nvim")
   " Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']} " call mkdp#util#install()
   Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
   Plug 'neovim/nvim-lspconfig'
-  Plug 'github/copilot.vim'
+  Plug 'github/copilot.vim' " required nodejs version > 16 except version 18
   Plug 'tami5/lspsaga.nvim'
   Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
   Plug 'nvim-lua/popup.nvim'
