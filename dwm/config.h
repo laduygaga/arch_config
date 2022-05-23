@@ -157,13 +157,13 @@ static Key keys[] = {
 
 /* Custom keybinding */
     { MODKEY,               XK_p,                       spawn,  SHCMD("mpc toggle") },
-    { MODKEY,               XK_bracketleft,             spawn,  SHCMD("mpc prev") },
-    { MODKEY,               XK_bracketright,            spawn,  SHCMD("mpc next") },
+    { MODKEY|ShiftMask,     XK_bracketleft,             spawn,  SHCMD("mpc prev") },
+    { MODKEY|ShiftMask,     XK_bracketright,            spawn,  SHCMD("mpc next") },
     // { MODKEY|ShiftMask,      XK_bracketleft,             spawn,  SHCMD("mpc seek -10 ") },
     // { MODKEY|ShiftMask,      XK_bracketright,            spawn,  SHCMD("mpc seek +10") },
-    { MODKEY|ShiftMask,     XK_p,                       spawn,  SHCMD("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause") }, // required xbindkeys
-    { MODKEY|ShiftMask,     XK_bracketleft,             spawn,  SHCMD("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous") },
-    { MODKEY|ShiftMask,     XK_bracketright,            spawn,  SHCMD("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next") },
+    // { MODKEY|ShiftMask,     XK_p,                       spawn,  SHCMD("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause") }, // required xbindkeys
+    // { MODKEY|ShiftMask,     XK_bracketleft,             spawn,  SHCMD("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous") },
+    // { MODKEY|ShiftMask,     XK_bracketright,            spawn,  SHCMD("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next") },
     { MODKEY,               XK_n,                       spawn,  SHCMD("xterm -e ncmpcpp") },
     { MODKEY,               XK_m,                       spawn,  SHCMD("st -e lf /mnt/sdb2/videos/tv_series") },
     // { MODKEY,            XK_comma,                   spawn,  SHCMD("mpc prev") },
