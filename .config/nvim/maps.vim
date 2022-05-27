@@ -1,28 +1,38 @@
 " Description: Keymaps
 " nnoremap <space> za
 nnoremap ' `
-
-map <leader><leader>r :Run<CR>
-map <leader><leader>b :Break<CR>
-map <leader><leader>b :Clear<CR>
-map <leader><leader>s :Over<CR>
-map <leader><leader>c :Continue<CR>
-map <leader><leader>p :Stop<CR>
-map <leader><leader>f :Finish<CR>
+" git-message
+nmap <C-m> <Plug>(git-messenger)
 vnoremap Y "+y
 inoremap jk <esc>
-vnoremap " <esc>`>a"<esc>`<i"<esc> 
-vnoremap ' <esc>`>a'<esc>`<i'<esc> 
-vnoremap ) <esc>`>a)<esc>`<i(<esc> 
-vnoremap } <esc>`>a}<esc>`<i{<esc> 
-vnoremap ] <esc>`>a]<esc>`<i[<esc> 
+vnoremap * y<esc>/<C-r>"<Cr>
+vnoremap g" <esc>`>a"<esc>`<i"<esc> 
+vnoremap g' <esc>`>a'<esc>`<i'<esc> 
+vnoremap g) <esc>`>a)<esc>`<i(<esc> 
+vnoremap g} <esc>`>a}<esc>`<i{<esc> 
+vnoremap g] <esc>`>a]<esc>`<i[<esc> 
+
+vnoremap <C-j> :m '>+1<CR>gv=gv
+vnoremap <C-k> :m '<-2<CR>gv=gv
+" inoremap <C-j> <esc>:m .+1<CR>
+" inoremap <C-k> <esc>:m .-2<CR>
+" nnoremap <C-j> :m .+1<CR>
+" nnoremap <C-k> :m .-2<CR>
+
+" nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . 'k'
+" nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j'
+
 nnoremap <silent> <leader>t :tabnew<CR>
-nnoremap <silent> <leader>d :tabclose<CR>
-nnoremap <silent> <leader>D :qa!<CR>
+nnoremap <silent> <leader><leader>d :tabclose<CR>
+nnoremap <silent> <leader><leader>D :qa!<CR>
 map <leader><leader>g :GFiles<CR>
+map <leader><leader>f :Files<CR>
 nnoremap <leader>r :GRg<CR>
+nnoremap <leader><leader>s :FRg<CR>
 nnoremap <silent> <C-Tab> gt
 nnoremap <silent> <S-Tab> gT
+tnoremap <silent> <C-Tab> <C-\><C-n><C-w>h
+tnoremap <silent> <S-Tab> <C-\><C-n><C-w>l
 vnoremap <silent> <leader>,, :Trans :vi -b<CR> 
 nnoremap <leader>g :Ag <C-r>=expand('<cword>')<CR><CR>
 nnoremap <leader>s :AgFromSearch<CR>
@@ -30,6 +40,8 @@ map <silent> <leader>e :call ToggleVExplorer()<CR>
 noremap <silent> <leader>m :call ToggleMouse()<CR>
 noremap <silent> <leader>w :call ToggleWrap()<CR>
 nnoremap <leader>T :TagbarToggle<CR>
+nnoremap <leader>v :MarkdownPreviewToggle<CR>
+nmap <leader>y :let @" = expand("%:p")<CR>
 map <F2> :call ToggleExpandTab()<CR>
 map <F4> :call ToggleColorscheme()<CR>
 
@@ -73,34 +85,21 @@ augroup vim_autocmd
 	autocmd Filetype go inoremap <silent>  <buffer> <F9> <Esc>:w<CR>:!go build %; ./%:r<CR>
 	autocmd Filetype go nnoremap <silent>  <buffer> <F9> :w<CR>:!go build %; ./%:r<CR>
 
-" fun! GotoWindow(id)
-"     call win_gotoid(a:id)
-"     MaximizerToggle
-" endfun
-
 " Debugger remaps
-" nnoremap <leader>m :MaximizerToggle!<CR>
-" nnoremap <leader>dd :call vimspector#Launch()<CR>
-" nnoremap <leader>dc :call GotoWindow(g:vimspector_session_windows.code)<CR>
-" nnoremap <leader>dt :call GotoWindow(g:vimspector_session_windows.tagpage)<CR>
-" nnoremap <leader>dv :call GotoWindow(g:vimspector_session_windows.variables)<CR>
-" nnoremap <leader>dw :call GotoWindow(g:vimspector_session_windows.watches)<CR>
-" nnoremap <leader>ds :call GotoWindow(g:vimspector_session_windows.stack_trace)<CR>
-" nnoremap <leader>do :call GotoWindow(g:vimspector_session_windows.output)<CR>
-" nnoremap <leader>de :call vimspector#Reset()<CR>
-" 
-" nnoremap <leader>dtcb :call vimspector#CleanLineBreakpoint()<CR>
-" 
-" nmap <leader>dl <Plug>VimspectorStepInto
-" nmap <leader>dj <Plug>VimspectorStepOver
-" nmap <leader>dk <Plug>VimspectorStepOut
-" nmap <leader>d_ <Plug>VimspectorRestart
-" nnoremap <leader>d<space> :call vimspector#Continue()<CR>
-" 
-" nmap <leader>drc <Plug>VimspectorRunToCursor
-" nmap <leader>dbp <Plug>VimspectorToggleBreakpoint
-" nmap <leader>dcbp <Plug>VimspectorToggleConditionalBreakpoint
+" use nvim-dap
+nnoremap <silent> <leader>db :lua require'dap'.toggle_breakpoint()<CR>
+nnoremap <silent> <leader>dc :lua require'dap'.continue()<CR>
+nnoremap <silent> <leader>dso :lua require'dap'.step_over()<CR>
+nnoremap <silent> <leader>dsi :lua require'dap'.step_into()<CR>
+nnoremap <silent> <leader>dr :lua require'dap'.repl.toggle()<CR>
+nnoremap <silent> <leader>du :lua require("dapui").toggle()<CR>
+nnoremap <silent> <leader>df :lua require('dap-python').test_method()<CR>
+nnoremap <silent> <leader>do :lua require('dap-python').test_class()<CR>
 
-" <Plug>VimspectorStop
-" <Plug>VimspectorPause
-" <Plug>VimspectorAddFunctionBreakpoint
+" use vim-go
+" map <leader>ds :GoDebugStart<CR>
+" map <leader>dst :GoDebugStop<CR>
+" map <leader>dsi :GoDebugStep<CR>
+" map <leader>dso :GoDebugNext<CR>
+" map <leader>dc :GoDebugContinue<CR>
+" map <leader>db :GoDebugBreakpoint<CR>

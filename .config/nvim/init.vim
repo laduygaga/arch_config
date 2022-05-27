@@ -50,6 +50,7 @@ endfunction
 
 
 " colorscheme onedark
+colorscheme peachpuff
 let g:is_enable_colorscheme = 0
 function ToggleColorscheme()
 	if g:is_enable_colorscheme == 0
@@ -57,8 +58,8 @@ function ToggleColorscheme()
 		colorscheme onedark
 		let g:is_enable_colorscheme = 1
 	else
-		echo "colorscheme default"
-		colorscheme default
+		echo "colorscheme peachpuff"
+		colorscheme peachpuff
 		let g:is_enable_colorscheme = 0
 	endif
 endfunction
@@ -119,7 +120,7 @@ let &t_EI.="\e[1 q" "EI = NORMAL mode (ELSE)
 "  5 -> blinking vertical bar
 "  6 -> solid vertical bar
 
-set clipboard=unnamed
+" set clipboard=unnamed
 set timeoutlen=400
 " Magic, Make Ctrl-S-Tab, Ctrl-Tab work on alacritty from https://stackoverflow.com/posts/31959285/revisions
 " set <F13>=[27;5;9~
@@ -223,7 +224,58 @@ command! -bang -nargs=* GRg
   \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
   \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
 
+command! -bang -nargs=* FRg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview({'dir': systemlist('pwd')[0]}), <bang>0)
+
 
 " let g:vimspector_base_dir=expand( '$HOME/.config/nvim/vimspector-config' )
 " let g:vimspector_enable_mappings = 'HUMAN'
 " packadd! vimspector
+"
+"
+
+" Floatterm
+hi FloatermBorder guibg=orange guifg=cyan
+let g:floaterm_width=0.9
+
+" setf dosini
+augroup filetypedetect
+autocmd BufNewFile,BufRead *.conf setf dosini
+augroup END
+
+
+func! s:SetBreakpoint()
+	cal append('.', repeat(' ', strlen(matchstr(getline('.'), '^\s*'))) . 'import pdb; pdb.set_trace()')
+endf
+
+func! s:RemoveBreakpoint()
+	exe 'silent! g/^\s*import\sipdb\;\?\n*\s*ipdb.set_trace()/d'
+endf
+
+func! s:ToggleBreakpoint()
+	if getline('.')=~#'^\s*import\sipdb' | cal s:RemoveBreakpoint() | el | cal s:SetBreakpoint() | en
+endf
+nnoremap <leader>b :call <SID>ToggleBreakpoint()<CR>j
+
+
+let g:coq_settings = { 'auto_start': 'shut-up' }
+lua require('dap-python').setup('~/.virtualenvs/debugpy/bin/python')
+lua require('dap-go').setup()
+lua <<EOF
+require("nvim-dap-virtual-text").setup()
+EOF
+
+lua <<EOF
+require("dapui").setup()
+-- local widgets = require('dap.ui.widgets')
+-- local my_sidebar = widgets.sidebar(widgets.scopes)
+--  my_sidebar.open()
+EOF
+
+" let g:go_debug_windows = {
+"       \ 'vars':       'rightbelow 50vnew',
+"       \ 'stack':      'rightbelow 10new',
+"       \ 'goroutines':  'rightbelow 10new',
+"       \ }
