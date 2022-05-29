@@ -2,7 +2,7 @@
 " nnoremap <space> za
 nnoremap ' `
 " git-message
-nmap <C-m> <Plug>(git-messenger)
+nnoremap <CR> :GitMessenger<CR>
 vnoremap Y "+y
 inoremap jk <esc>
 vnoremap * y<esc>/<C-r>"<Cr>
