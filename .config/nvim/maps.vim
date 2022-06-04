@@ -44,6 +44,7 @@ nnoremap <leader>v :MarkdownPreviewToggle<CR>
 nmap <leader>y :let @" = expand("%:p")<CR>
 map <F2> :call ToggleExpandTab()<CR>
 map <F4> :call ToggleColorscheme()<CR>
+nnoremap <leader>db :call <SID>ToggleBreakpoint()<CR>j
 
 
 augroup vim_autocmd
@@ -54,26 +55,26 @@ augroup vim_autocmd
 	" autocmd FileType python setlocal ts=4 sts=4 sw=4 noexpandtab
 	autocmd Filetype python inoremap <silent>  <buffer> <leader>2 <Esc>:%w !python3<CR>
 	autocmd Filetype python nnoremap <silent> <buffer> <leader>2 :%w !python3<CR>
-	autocmd Filetype python nnoremap <silent> <buffer> <F8> :w<CR>:!clear;python3 %<CR>
+	" autocmd Filetype python nnoremap <silent> <buffer> <F8> :w<CR>:!clear;python3 %<CR>
 	autocmd Filetype python vnoremap <silent> <buffer> <leader>2 !python3<CR>
-	autocmd Filetype python inoremap <silent> <buffer> <F5> <Esc>:%w !sudo python3<CR>
-	autocmd Filetype python nnoremap <silent> <buffer> <F5> :%w !sudo python3<CR>
+	" autocmd Filetype python inoremap <silent> <buffer> <F5> <Esc>:%w !sudo python3<CR>
+	" autocmd Filetype python nnoremap <silent> <buffer> <F5> :%w !sudo python3<CR>
 	autocmd Filetype php inoremap <silent> <buffer> <leader>2 <Esc>:%w !php<CR>
 	autocmd Filetype php nnoremap <silent> <buffer> <leader>2 :%w !php<CR>
 	autocmd Filetype php vnoremap <silent> <buffer> <leader>2 !php<CR>
-	autocmd Filetype php inoremap <silent> <buffer> <F5> <Esc>:%w !sudo php<CR>
-	autocmd Filetype php nnoremap <silent> <buffer> <F5> :%w !sudo php<CR>
+	autocmd Filetype php inoremap <silent> <buffer> <leader>2 <Esc>:%w !sudo php<CR>
+	autocmd Filetype php nnoremap <silent> <buffer> <leader>2 :%w !sudo php<CR>
 	autocmd Filetype sh inoremap <silent> <buffer> <leader>2 <Esc>:%w !bash<CR>
 	autocmd Filetype sh nnoremap <silent> <buffer> <leader>2 :%w !bash<CR>
 	autocmd Filetype sh vnoremap <silent> <buffer> <leader>2 !bash<CR>
-	autocmd Filetype sh nnoremap <silent> <buffer> <F8> :w<CR>:!clear; bash %<CR>
+	" autocmd Filetype sh nnoremap <silent> <buffer> <F8> :w<CR>:!clear; bash %<CR>
 	autocmd Filetype javascript inoremap <silent> <buffer> <leader>2 <Esc>:%w !node<CR>
 	autocmd Filetype javascript nnoremap <silent> <buffer> <leader>2 :%w !node<CR>
 	autocmd Filetype javascript vnoremap <silent> <buffer> <leader>2 !node<CR>
 	autocmd Filetype perl inoremap <silent> <buffer> <leader>2 <Esc>:%w !perl<CR>
 	autocmd Filetype perl nnoremap <silent> <buffer> <leader>2 :%w !perl<CR>
 	autocmd Filetype perl vnoremap <silent> <buffer> <leader>2 !perl<CR>
-	autocmd Filetype perl nnoremap <silent> <buffer> <F8> :w<CR>:!perl %<CR>
+	" autocmd Filetype perl nnoremap <silent> <buffer> <F8> :w<CR>:!perl %<CR>
 	autocmd Filetype c nnoremap  <leader>2 :w<CR>:!clear;gcc -o %:r %:p<CR>:!./%:r<CR>
 	autocmd Filetype c inoremap  <leader>2 <Esc>:w<CR>:!clear;gcc -o %:r %:p<CR>:!./%:r<CR>
 	autocmd Filetype cpp nnoremap  <leader>2 :w<CR>:!clear;g++ -o %:r %:p<CR>:!./%:r<CR>
@@ -82,15 +83,19 @@ augroup vim_autocmd
 	autocmd Filetype rust inoremap	<leader>2 <Esc>:w<CR>:!clear; rustc % <CR>:!./%:r<CR>
 	autocmd Filetype go inoremap <silent>  <buffer> <leader>2 <Esc>:w<CR>:%w !go run %<CR>
 	autocmd Filetype go nnoremap <silent> <buffer> <leader>2 :w<CR>:%w !go run %<CR>
-	autocmd Filetype go inoremap <silent>  <buffer> <F9> <Esc>:w<CR>:!go build %; ./%:r<CR>
-	autocmd Filetype go nnoremap <silent>  <buffer> <F9> :w<CR>:!go build %; ./%:r<CR>
+	autocmd Filetype go inoremap <silent>  <buffer> <leader>2 <Esc>:w<CR>:!go build %; ./%:r<CR>
+	autocmd Filetype go nnoremap <silent>  <buffer> <leader>2 :w<CR>:!go build %; ./%:r<CR>
 
 " Debugger remaps
 " use nvim-dap
-nnoremap <silent> <leader>db :lua require'dap'.toggle_breakpoint()<CR>
+nnoremap <silent> <leader>b :lua require'dap'.toggle_breakpoint()<CR>
+nnoremap <silent> <leader>B :lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint Condition: '))<CR>
+nnoremap <silent> <leader>dl :lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>
+vnoremap <silent> <CR> :lua require("dapui").eval()<CR>
 nnoremap <silent> <leader>dc :lua require'dap'.continue()<CR>
-nnoremap <silent> <leader>dso :lua require'dap'.step_over()<CR>
-nnoremap <silent> <leader>dsi :lua require'dap'.step_into()<CR>
+nnoremap <silent> <F8> :lua require'dap'.step_over()<CR>
+nnoremap <silent> <F9> :lua require'dap'.step_into()<CR>
+nnoremap <silent> <F10> :lua require'dap'.step_out()<CR>
 nnoremap <silent> <leader>dr :lua require'dap'.repl.toggle()<CR>
 nnoremap <silent> <leader>du :lua require("dapui").toggle()<CR>
 nnoremap <silent> <leader>df :lua require('dap-python').test_method()<CR>
