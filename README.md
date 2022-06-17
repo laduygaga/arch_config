@@ -121,7 +121,7 @@ sudo pacman -S alsa alsa-utils alsa-plugins alsa-lib pavucontrol
 **Tools**
 ```
 sudo pacman -S archlinux-keyring
-sudo pacman -S rxvt-unicode ranger rofi conky dmenu urxvt-perls perl-anyevent-i3 perl-json-xs highlight mediainfo w3m ffmpegthumbnailer zathura fzf firefox mpv mplayer feh sxiv scrot mtpfs gvfs-mtp git ibus-unikey ncmpcpp mpd mpc python-pip aria2 wget curl openvpn usbutils ctags youtube-dl streamlink  perl-file-mimeinfo perl-image-exiftool xclip xdotool notify-osd crda geoip p7zip xbindkeys  python-wheel re2 fbreader  bash-completion zathura-pdf-mupdf zathura-djvu zathura-cb cmake telegram-desktop ipython ntfs-3g the_silver_searcher npm yarn nodejs gopls ccls bash-language-server pyright ripgrep odt2txt jq ffmpeg delve cowsay figlet bc pipewire pipewire-media-session pipewire-alsa pipewire-pulse bluez bluez-utils wireless-regdb 
+sudo pacman -S rxvt-unicode ranger rofi conky dmenu urxvt-perls perl-anyevent-i3 perl-json-xs highlight mediainfo w3m ffmpegthumbnailer zathura fzf firefox mpv mplayer feh sxiv scrot mtpfs gvfs-mtp git ibus-unikey ncmpcpp mpd mpc python-pip aria2 wget curl openvpn usbutils ctags youtube-dl streamlink  perl-file-mimeinfo perl-image-exiftool xclip xdotool notify-osd crda geoip p7zip xbindkeys  python-wheel re2 fbreader  bash-completion zathura-pdf-mupdf zathura-djvu zathura-cb cmake telegram-desktop ipython ntfs-3g the_silver_searcher npm yarn nodejs lua-language-server gopls ccls bash-language-server pyright ripgrep odt2txt jq ffmpeg delve cowsay figlet bc pipewire pipewire-media-session pipewire-alsa pipewire-pulse bluez bluez-utils wireless-regdb 
 
 ```
 

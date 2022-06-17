@@ -19,6 +19,7 @@ Plug 'will133/vim-dirdiff'
 " Plug 'cohama/lexima.vim' " auto close parentheses
 if has("nvim")
   " Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']} " call mkdp#util#install()
+  Plug 'jbyuki/one-small-step-for-vimkind'
   Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
   Plug 'neovim/nvim-lspconfig'
   Plug 'github/copilot.vim' " required nodejs version > 16 except version 18

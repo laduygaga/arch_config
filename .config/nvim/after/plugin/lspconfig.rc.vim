@@ -94,13 +94,24 @@ nvim_lsp.ccls.setup{
 }
 
 -- npm install -g @volar/vue-language-server
-nvim_lsp.volar.setup{
+-- nvim_lsp.volar.setup{
+--   on_attach = on_attach,
+--   -- filetypes = {'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json'}
+-- }
+
+-- sudo npm install -g vls
+nvim_lsp.vuels.setup{
   on_attach = on_attach,
   -- filetypes = {'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json'}
 }
 
 -- npm install -g typescript typescript-language-server
 nvim_lsp.tsserver.setup{
+  on_attach = on_attach,
+}
+
+-- pms lua-language-server
+nvim_lsp.sumneko_lua.setup {
   on_attach = on_attach,
 }
 
