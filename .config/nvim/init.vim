@@ -278,29 +278,27 @@ require("dapui").setup({
     repl = "r",
     toggle = "t",
   },
-  -- Expand lines larger than the window
-  -- Requires >= 0.7
   expand_lines = vim.fn.has("nvim-0.7"),
-  sidebar = {
-    -- You can change the order of elements in the sidebar
-    elements = {
-      -- Provide as ID strings or tables with "id" and "size" keys
-      { id = "watches", size = 0.4 },
-      {
-        id = "scopes",
-        size = 0.4, -- Can be float or integer > 1
+  layouts = {
+    {
+      elements = {
+      -- Elements can be strings or table with id and size keys.
+        { id = "scopes", size = 0.4},
+        "breakpoints", size = 0.2,
+        -- "stacks",
+        "watches", size = 0.4,
       },
-      { id = "breakpoints", size = 0.2 },
-      -- { id = "stacks", size = 0.25 },
+      size = 70,
+      position = "left",
     },
-    size = 70,
-    position = "left", -- Can be "left", "right", "top", "bottom"
-  },
-  tray = {
-	  elements = { "repl" },
-    -- elements = { "repl", "console" },
-    size = 10,
-    position = "bottom", -- Can be "left", "right", "top", "bottom"
+    {
+      elements = {
+        "repl",
+        -- "console",
+      },
+      size = 10,
+      position = "bottom",
+    },
   },
   floating = {
     max_height = nil, -- These can be integers or a float between 0 and 1.
@@ -311,14 +309,11 @@ require("dapui").setup({
     },
   },
   windows = { indent = 1 },
-  render = { 
+  render = {
     max_type_length = nil, -- Can be integer or nil.
   }
 })
--- require("dapui").setup()
--- local widgets = require('dap.ui.widgets')
--- local my_sidebar = widgets.sidebar(widgets.scopes)
---  my_sidebar.open()
+
 EOF
 
 lua <<EOF
