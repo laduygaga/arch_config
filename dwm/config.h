@@ -193,7 +193,7 @@ static Key keys[] = {
         // { Mod4Mask,             XK_i,                       spawn,  SHCMD("fcitx5 -dr") },
         // { Mod4Mask|ShiftMask,   XK_i,                       spawn,  SHCMD("sudo killall fcitx5") },
         { MODKEY,               XK_w,                       spawn,  SHCMD("$BROWSER") },
-        { MODKEY,               XK_period,                  spawn,  SHCMD("xterm_trans.sh") },
+        { MODKEY,               XK_period,                  spawn,  SHCMD("dumb_trans.sh") },
         { MODKEY,               XK_z,                       spawn,  SHCMD("xterm_trans.sh") },
         { MODKEY|ShiftMask,     XK_period,                  spawn,  SHCMD("xterm -e trans :vi -b --shell") },
         { MODKEY,               XK_comma,                   spawn,  SHCMD("xterm_trans1.sh") },
