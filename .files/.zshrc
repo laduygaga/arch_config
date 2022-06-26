@@ -288,7 +288,7 @@ ssl_check() {
 	openssl s_client -connect $*
 }
 
-export FZF_DEFAULT_COMMAND="find -L"
+export FZF_DEFAULT_COMMAND="fd --type f"
 
 
 # export KUBECONFIG=/home/duy/cluster1.kubeconfig

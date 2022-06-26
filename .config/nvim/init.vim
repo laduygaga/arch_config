@@ -167,7 +167,7 @@ endfunction
 " let g:ycm_auto_trigger = 1
 " let g:SuperTabDefaultCompletionType = '<C-n>'
 
-let $FZF_DEFAULT_COMMAND = "find -L"
+let $FZF_DEFAULT_COMMAND = "fd --type f"
 
 
 

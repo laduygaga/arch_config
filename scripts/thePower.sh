@@ -1,13 +1,7 @@
 #!/bin/bash
 # file =$(locate $HOME | dmenu -i -l 10)
 
-file=$(find $HOME \
-	-not -path '/home/duy/.local*'\
-	-not -path '/home/duy/.oh-my-zsh*'\
-	-not -path '/home/duy/.cache*'\
-	-not -path '*/__pycache__*'\
-	-not -path '*/.git/*'\
-	-type f | dmenu -i -l 10)
+[[ ! -z `command -v fd` ]] &&  file=$(fd | dmenu -i -l 10) # fd -HI if want to search hidden file
 
 [[ ! -z $file ]] &&
 case $(file --mime-type "$file" -b) in
