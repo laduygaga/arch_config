@@ -64,7 +64,7 @@ static const char unknown_str[] = "";
 static const struct arg args[] = {
     /* function         format          argument */
     {run_command, " %s|", "ping.sh"},
-    {run_command, " %s|", "cat /tmp/coin_price"},
+    {run_command, " %s|", "cat /tmp/coin_price.txt"},
     // {run_command, "GPU: %s ", "gpu_temp"},
     {cpu_perc, "CPU: %s%%:", "NULL"},
     {temp, "%s°C|", "/sys/class/thermal/thermal_zone2/temp"},

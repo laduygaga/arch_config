@@ -165,7 +165,7 @@ static Key keys[] = {
     // { MODKEY|ShiftMask,     XK_bracketleft,             spawn,  SHCMD("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous") },
     // { MODKEY|ShiftMask,     XK_bracketright,            spawn,  SHCMD("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next") },
     { MODKEY,               XK_n,                       spawn,  SHCMD("xterm -e ncmpcpp") },
-    { MODKEY,               XK_m,                       spawn,  SHCMD("st -e lf /mnt/sdb2/videos/tv_series") },
+    { MODKEY,               XK_m,                       spawn,  SHCMD("alacritty -e lfub /mnt/sda2/movies") },
     // { MODKEY,            XK_comma,                   spawn,  SHCMD("mpc prev") },
     // { MODKEY|ShiftMask,  XK_comma,                   spawn,  SHCMD("mpc seek 0%") },
     // { MODKEY,            XK_period,                  spawn,  SHCMD("mpc next") },
