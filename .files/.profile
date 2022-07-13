@@ -21,13 +21,13 @@ export PATH="$PATH:$HOME/.rvm/bin:$HOME/.local/bin:$HOME/.gem/ruby/2.7.0/bin:$HO
 
 # setxkbmap -option ctrl:swapcaps
 
-sudo sh -c "echo 10   >  /sys/devices/platform/i8042/serio1/serio2/drift_time"       # default 5 
-sudo sh -c "echo 200 > /sys/devices/platform/i8042/serio1/serio2/sensitivity"     # default 128
-sudo sh -c "echo 120 > /sys/devices/platform/i8042/serio1/serio2/speed"           # default 97
+# sudo sh -c "echo 10   >  /sys/devices/platform/i8042/serio1/serio2/drift_time"       # default 5 
+# sudo sh -c "echo 200 > /sys/devices/platform/i8042/serio1/serio2/sensitivity"     # default 128
+# sudo sh -c "echo 120 > /sys/devices/platform/i8042/serio1/serio2/speed"           # default 97
 
 export VISUAL=nvim
 export EDITOR=$VISUAL
-export BROWSER="/usr/bin/firefox"
+export BROWSER="/usr/bin/google-chrome-stable"
 
 export SHELL=/usr/bin/zsh
 

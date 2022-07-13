@@ -6,7 +6,7 @@ static const unsigned int snap      = 32;       /* snap pixel */
 static const int swallowfloating    = 1;        /* 1 means swallow floating windows by default */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 0;        /* 0 means bottom bar */
-static const char *fonts[]          = { "mono:size=10", "Ionicons:size=10" };
+static const char *fonts[]          = { "mono:size=9", "Ionicons:size=9" };
 // static const char *fonts[]          = { "Mononoki Nerd Font:size=8", "Symbola:size=8" };
 static const char dmenufont[]       = "mono:size=13";
 static const char col_gray1[]       = "#222222";
@@ -178,10 +178,11 @@ static Key keys[] = {
         { MODKEY,                XK_F10,					spawn,  SHCMD("amixer -D pulse -q set Master toggle" ) },
         { MODKEY,                XK_F11,					spawn,  SHCMD("amixer -D pulse -q set Master 5%+    ") },
         { MODKEY,                XK_F9,                     spawn,  SHCMD("amixer -D pulse -q set Master 5%-    ") },
-        { MODKEY,                XK_F12,                    spawn,  SHCMD("pactl set-source-mute bluez_input.E8_D0_3C_FE_28_4E.headset-head-unit toggle") },
-        { MODKEY,                XK_F8,                     spawn,  SHCMD("toggle-card-profile.sh switch_sink") },
+        // { MODKEY,                XK_F12,                    spawn,  SHCMD("pactl set-source-mute bluez_input.E8_D0_3C_FE_28_4E.headset-head-unit toggle") },
+        { MODKEY,                XK_F12,					spawn,  SHCMD("pactl set-source-mute 1 toggle") },
         { MODKEY,                XK_F7,                     spawn,  SHCMD("toggle-card-profile.sh toggle_jbl_go_mic") },
-        // { MODKEY,               XK_F8,                      spawn,  SHCMD("touchpad_toggle.sh") },
+        { MODKEY,                XK_F8,                      spawn,  SHCMD("touchpad_toggle.sh") },
+        // { MODKEY,                XK_F8,                     spawn,  SHCMD("toggle-card-profile.sh switch_sink") },
         { 0,                    XK_Print,                   spawn,  SHCMD("scrot ~/Pictures/ScreenShots/%b%d:%H%M%S.png -e 'xclip -selection clipboard -target image/png -i $f'") },
         { MODKEY,               XK_Print,                   spawn,  SHCMD("scrot -s ~/Pictures/ScreenShots/%b%d:%H%M%S.png -e 'xclip -selection clipboard -target image/png -i $f'") },
         { MODKEY,               XK_Delete,                  spawn,  SHCMD("turnoff_screen.sh") },
