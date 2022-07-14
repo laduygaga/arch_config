@@ -140,8 +140,8 @@ alias start='sudo systemctl start'
 alias restart='sudo systemctl restart'
 alias status='sudo systemctl status'
 alias stop='sudo systemctl stop'
-# alias wifi='sudo wifi-menu wlp3s0'
-alias wifi-menu='sudo wifi-menu'
+alias wifi='sudo wifi-menu'
+# alias wifi-menu='sudo wifi-menu'
 alias rst='sudo netctl stop-all && sudo netctl start wlp3s0-Tenda_106570'
 alias rsa='sudo netctl stop-all && sudo netctl start wlp3s0-abc.xyz'
 alias rsn='sudo netctl stop-all && sudo netctl start wlp3s0-TP-LINK_F946'
@@ -318,8 +318,8 @@ function cd() {
 rm_pycache() {
 	rm -rf `find ./** -type d -name "__pycache__"`
 }
-function wifi() {
-	sudo rfkill block wlan &&
-	sudo rfkill unblock wlan &&
-	sudo wifi-menu wlp3s0
-}
+# function wifi() {
+# 	sudo rfkill block wlan &&
+# 	sudo rfkill unblock wlan &&
+# 	sudo wifi-menu wlp3s0
+# }

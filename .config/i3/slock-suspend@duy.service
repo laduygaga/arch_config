@@ -2,7 +2,7 @@
 #/etc/systemd/system/i3lock@duy.service
 [Unit]
 Description=slock
-Before=hibernate.target
+Before=suspend.target
 
 [Service]
 User=duy
@@ -11,6 +11,6 @@ Environment="DISPLAY=:0"
 ExecStart=/home/duy/gits/arch_config/scripts/SLOCK
 
 [Install]
-WantedBy=hibernate.target
+WantedBy=suspend.target
 
 #systemctl enable i3lock@duy.service

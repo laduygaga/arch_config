@@ -36,7 +36,7 @@ export SHELL=/usr/bin/zsh
 # sh -c mpd > /dev/null
 # ./.config/polybar/launch_polybar > /dev/null 2>&1 
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+# [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 export LF_ICONS="di=:\
 fi=:\
 tw=🤝:\
