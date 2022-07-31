@@ -1,0 +1,1 @@
+cat ~/gits/arch_config/.local/share/emoji | dmenu -l 10 | awk -F ' ' '{print $1}'| xclip -selection clipboard 
