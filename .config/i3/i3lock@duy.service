@@ -1,16 +1,16 @@
 # lock screen
 #/etc/systemd/system/i3lock@duy.service
 [Unit]
-Description=slock
-Before=hibernate.target
+Description=i3lock
+Before=sleep.target
 
 [Service]
 User=duy
 Type=forking
 Environment="DISPLAY=:0"
-ExecStart=/home/duy/gits/arch_config/scripts/SLOCK
+ExecStart=/usr/bin/i3lock -k
 
 [Install]
-WantedBy=hibernate.target
+WantedBy=sleep.target
 
 #systemctl enable i3lock@duy.service

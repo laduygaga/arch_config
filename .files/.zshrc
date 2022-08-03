@@ -313,3 +313,8 @@ function cd() {
 rm_pycache() {
 	rm -rf `find ./** -type d -name "__pycache__"`
 }
+export PVC_FILEPATH=/home/duy/gits/moodle-operator/deploy/moodle-default/pvc.yaml
+export SERVICE_FILEPATH=/home/duy/gits/moodle-operator/deploy/moodle-default/service.yaml
+export STATEFULSET_FILEPATH=/home/duy/gits/moodle-operator/deploy/moodle
+export KUBECONFIG=/home/duy/moodle-cluster.kubeconfig
+export OPENAI_API_KEY=
