@@ -50,6 +50,7 @@ endfunction
 
 
 " colorscheme onedark
+colorscheme peachpuff
 let g:is_enable_colorscheme = 0
 function ToggleColorscheme()
 	if g:is_enable_colorscheme == 0
@@ -57,8 +58,8 @@ function ToggleColorscheme()
 		colorscheme onedark
 		let g:is_enable_colorscheme = 1
 	else
-		echo "colorscheme default"
-		colorscheme default
+		echo "colorscheme peachpuff"
+		colorscheme peachpuff
 		let g:is_enable_colorscheme = 0
 	endif
 endfunction
@@ -166,7 +167,7 @@ endfunction
 " let g:ycm_auto_trigger = 1
 " let g:SuperTabDefaultCompletionType = '<C-n>'
 
-let $FZF_DEFAULT_COMMAND = "find -L"
+let $FZF_DEFAULT_COMMAND = "fd --type f"
 
 
 
@@ -223,37 +224,141 @@ command! -bang -nargs=* GRg
   \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
   \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
 
+command! -bang -nargs=* FRg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview({'dir': systemlist('pwd')[0]}), <bang>0)
+
 
 " let g:vimspector_base_dir=expand( '$HOME/.config/nvim/vimspector-config' )
 " let g:vimspector_enable_mappings = 'HUMAN'
 " packadd! vimspector
 "
 "
-"##### auto fcitx  ###########
-let g:input_toggle = 1
-function! Fcitx2en_()
-   let s:input_status = system("fcitx-remote")
-   if s:input_status == 2
-      let g:input_toggle = 1
-      let l:a = system("fcitx-remote -c")
-   endif
-endfunction
-
-function! Fcitx2zh_()
-   let s:input_status = system("fcitx-remote")
-   if s:input_status != 2 && g:input_toggle == 1
-      let l:a = system("fcitx-remote -o")
-      let g:input_toggle = 0
-   endif
-endfunction
-
-set ttimeoutlen=150
-"Exit insert mode
-autocmd InsertLeave * call Fcitx2en_()
-"Enter insert mode
-autocmd InsertEnter * call Fcitx2zh_()
-"##### auto fcitx end ######
 
 " Floatterm
 hi FloatermBorder guibg=orange guifg=cyan
 let g:floaterm_width=0.9
+
+" setf dosini
+augroup filetypedetect
+autocmd BufNewFile,BufRead *.conf setf dosini
+augroup END
+
+
+func! s:SetBreakpoint()
+	cal append('.', repeat(' ', strlen(matchstr(getline('.'), '^\s*'))) . 'import pdb; pdb.set_trace()')
+endf
+
+func! s:RemoveBreakpoint()
+	exe 'silent! g/^\s*import\sipdb\;\?\n*\s*ipdb.set_trace()/d'
+endf
+
+func! s:ToggleBreakpoint()
+	if getline('.')=~#'^\s*import\sipdb' | cal s:RemoveBreakpoint() | el | cal s:SetBreakpoint() | en
+endf
+
+
+let g:coq_settings = { 'auto_start': 'shut-up' }
+lua require('dap-python').setup('~/.virtualenvs/debugpy/bin/python')
+lua require('dap-go').setup()
+lua <<EOF
+require("nvim-dap-virtual-text").setup()
+EOF
+
+lua <<EOF
+require("dapui").setup({
+  icons = { expanded = "▾", collapsed = "▸" },
+  mappings = {
+    -- Use a table to apply multiple mappings
+    expand = { "<CR>", "<2-LeftMouse>" },
+    open = "o",
+    remove = "d",
+    edit = "e",
+    repl = "r",
+    toggle = "t",
+  },
+  expand_lines = vim.fn.has("nvim-0.7"),
+  layouts = {
+    {
+      elements = {
+      -- Elements can be strings or table with id and size keys.
+        { id = "scopes", size = 0.4},
+        "breakpoints", size = 0.2,
+        -- "stacks",
+        "watches", size = 0.4,
+      },
+      size = 70,
+      position = "left",
+    },
+    {
+      elements = {
+        "repl",
+        -- "console",
+      },
+      size = 10,
+      position = "bottom",
+    },
+  },
+  floating = {
+    max_height = nil, -- These can be integers or a float between 0 and 1.
+    max_width = nil, -- Floats will be treated as percentage of your screen.
+    border = "single", -- Border style. Can be "single", "double" or "rounded"
+    mappings = {
+      close = { "q", "<Esc>" },
+    },
+  },
+  windows = { indent = 1 },
+  render = {
+    max_type_length = nil, -- Can be integer or nil.
+  }
+})
+
+EOF
+
+lua <<EOF
+local dap, dapui = require("dap"), require("dapui")
+dap.listeners.after.event_initialized["dapui_config"] = function()
+  dapui.open()
+end
+dap.listeners.before.event_terminated["dapui_config"] = function()
+  dapui.close()
+end
+dap.listeners.before.event_exited["dapui_config"] = function()
+  dapui.close()
+end
+EOF
+" let g:go_debug_windows = {
+"       \ 'vars':       'rightbelow 50vnew',
+"       \ 'stack':      'rightbelow 10new',
+"       \ 'goroutines':  'rightbelow 10new',
+"       \ }
+
+
+
+lua <<EOF
+local dap = require"dap"
+dap.configurations.lua = { 
+  { 
+    type = 'nlua', 
+    request = 'attach',
+    name = "Attach to running Neovim instance",
+    host = function()
+      local value = vim.fn.input('Host [127.0.0.1]: ')
+      if value ~= "" then
+        return value
+      end
+      return '127.0.0.1'
+    end,
+    port = function()
+      local val = tonumber(vim.fn.input('Port: '))
+      assert(val, "Please provide a port number")
+      return val
+    end,
+  }
+}
+
+dap.adapters.nlua = function(callback, config)
+  callback({ type = 'server', host = config.host, port = config.port })
+end
+EOF

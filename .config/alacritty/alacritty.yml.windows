@@ -18,11 +18,9 @@ colors:
     focused_match:
       foreground: CellBackground
       background: CellForeground
-
     bar:
       background: '#c5c8c6'
       foreground: '#1d1f21'
-
   normal:
     black:      '#696c77' # mono-2
     red:        '#e45649' # red 1
@@ -32,31 +30,24 @@ colors:
     magenta:    '#a626a4'
     cyan:       '#0184bc'
     white:      '#a0a1a7' # mono-3
-
 font:
   normal:
-    family: monospace
+    family: cascadia mono
     style: Regular
-
   bold:
-    family: monospace
+    family: cascadia mono
     style: Bold
-
   italic:
-    family: monospace
+    family: cascadia mono
     style: Italic
-
   bold_italic:
-    family: monospace
+    family: cascadia mono
     style: Bold Italic
-
-  size: 9
+  size: 12
   offset:
     x: -1
     y: -1
-
 # background_opacity: 0.92
-
 #bell:
 #  animation: EaseOutExpo
 #  duration: 200
@@ -73,7 +64,17 @@ font:
   #   - EaseOutExpo
   #   - EaseOutCirc
   #   - Linear
-
+window:
+   dimensions:
+     columns: 160
+     lines: 40
+shell:
+  program: wsl
+  args:
+    - -d
+    - arch
+    - -u
+    - duy
 key_bindings:
   - { key: Return,   mods: Control|Alt, action: SpawnNewInstance }
   - { key: V,   mods: Control|Alt, action: Paste}
@@ -87,4 +88,4 @@ key_bindings:
   - { key: U,   mods: Control|Alt, action: ToggleViMode}
   - { key: Tab, mods: Control,        chars: "\x1b[27;5;9~" }
   - { key: Tab, mods: Control|Shift,  chars: "\x1b[27;6;9~" }
-  - { key: I,   mods: Control|Alt, command: {program: "alacritty-invert-colours", args: [] }}
+  - { key: I,   mods: Control|Alt, command: {program: "sudo alacritty-invert-colours", args: [] }}
