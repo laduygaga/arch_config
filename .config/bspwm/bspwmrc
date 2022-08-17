@@ -21,4 +21,3 @@ bspc rule -a qutebrowser desktop='^2' follow=false
 bspc rule -a Zathura desktop='^9' state=tiled follow=true
 bspc rule -a GoldenDict desktop='^3' follow=false
 bspc rule -a scratchpad sticky=on state=floating hidden=on
-st -c scratchpad -e ~/bin/scratch &
