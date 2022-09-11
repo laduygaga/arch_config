@@ -104,6 +104,7 @@ source $ZSH/oh-my-zsh.sh
 aria2c_() {
     aria2c -x 8 --seed-time=0 $*
 }
+alias lf="lfub"
 alias t/vpn="cd ~/.trash/vpn"
 alias sdb5="cd /mnt/sdb5"
 alias sdb3="cd /mnt/sdb3"
@@ -139,7 +140,7 @@ alias start='sudo systemctl start'
 alias restart='sudo systemctl restart'
 alias status='sudo systemctl status'
 alias stop='sudo systemctl stop'
-alias wifi='sudo wifi-menu wlp3s0'
+# alias wifi='sudo wifi-menu wlp3s0'
 alias wifi-menu='sudo wifi-menu'
 alias rst='sudo netctl stop-all && sudo netctl start wlp3s0-Tenda_106570'
 alias rsa='sudo netctl stop-all && sudo netctl start wlp3s0-abc.xyz'
@@ -157,7 +158,7 @@ alias D='~/Documents'
 alias mv='mv -iv'
 alias cp='cp -iv'
 alias rm='rm -v'
-alias ka='killall'
+alias ka='sudo killall'
 alias cf='cd ~/.config'
 alias aircrack="aircrack-ng -w ~/gits/wordlists/wifi-chua.txt"
 
@@ -282,8 +283,12 @@ ari() {
 yays() { yay -Fy; yay -Slq | fzf --height=100% --multi --preview 'yay -Si {1}' | xargs -ro yay -S --needed ;}
 pmss() { sudo pacman -Fy; pacman -Slq | fzf --height=100% --multi --preview 'pacman -Si {1}' | xargs -ro sudo pacman -S --needed ;}
 
+ssl_check() {
+	# $* = host:port
+	openssl s_client -connect $*
+}
 
-export FZF_DEFAULT_COMMAND="find -L"
+export FZF_DEFAULT_COMMAND="fd --type f"
 
 
 # export KUBECONFIG=/home/duy/cluster1.kubeconfig

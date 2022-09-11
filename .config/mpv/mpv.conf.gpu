@@ -1,0 +1,10 @@
+# .config/mpv
+
+sub-font-size=30
+--ytdl-raw-options=write-sub=,write-auto-sub=,sub-lang=en
+# save-position-on-quit  # or shift+q  instead of q
+
+# use gpu for render video
+vo=gpu
+gpu-api=vulkan
+hwdec-codecs=all

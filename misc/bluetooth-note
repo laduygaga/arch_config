@@ -1,0 +1,8 @@
+install bluez bluez-utils pulseaudio-bluetooth
+trust device and reboot
+
+
+## solved mic issues
+1. install pulseaudio-modules-bt insteads of pulseaudio-bluetooth
+2. use Headset Head Unit (HSP/HFP)
+

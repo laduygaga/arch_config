@@ -97,6 +97,9 @@ XTerm.vt100.colorUL: rgb:e4/e4/e4
 ! similarly use colorIT for italics
 
 ! VT Font Menu: Unreadable
+!
+xterm*faceName: Monospace
+xterm*faceSize: 12
 xterm*faceSize1: 8
 ! VT font menu: Tiny
 xterm*faceSize2: 10
@@ -117,7 +120,7 @@ XTerm.vt100.metaSendsEscape: true
 XTerm.vt100.backarrowKey: false
 XTerm.ttyModes: erase ^?
 XTerm.vt100.saveLines: 16384
-XTerm.vt100.faceName: monospace:size=12:antialias=true
+XTerm.vt100.faceName: monospace:size=18:antialias=true
 XTerm.vt100.font: 7x13
 XTerm.vt100.bellIsUrgent: false
 XTerm*visualBell:  false

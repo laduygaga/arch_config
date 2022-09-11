@@ -22,10 +22,31 @@ require'nvim-treesitter.configs'.setup {
     "yaml",
     "swift",
     "html",
-    "scss"
+    "scss",
+	"python",
+	"c",
+	"cpp",
+	"go",
+	"bash",
+	"lua",
+	"rust",
+	"typescript",
+	"javascript",
+	"vue",
+	"proto",
+	"regex",
+	"latex",
+	"markdown",
+	"perl",
+	"haskell",
+	"ruby",
+	"graphql",
+	"cmake",
+	"vim",
+	"dockerfile",
   },
 }
 
-local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
-parser_config.tsx.used_by = { "javascript", "typescript.tsx" }
+--local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+--parser_config.tsx.used_by = { "javascript", "typescript.tsx" }
 EOF

@@ -2,28 +2,34 @@ XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CONFIG_HOME
 export $(dbus-launch)
 ibus-daemon -drx
+# fcitx5 -dr
 export XMODIFIERS="@im=ibus"
 export GTK_IM_MODULE="ibus"
 export QT4_IM_MODULE="ibus"
 export QT_IM_MODULE="ibus"
 
 
+# export GTK_IM_MODULE=fcitx
+# export QT_IM_MODULE=fcitx
+# export XMODIFIERS=@im=fcitx
+
+
 # export _JAVA_AWT_WM_NONREPARENTING=1
 
 # From .zshrc
-export PATH="$PATH:$HOME/.rvm/bin:$HOME/.local/bin:$HOME/.gem/ruby/2.7.0/bin:$HOME/gits/arch_config/scripts:$HOME/gits/arch_config/.local/bin/statusbar:$HOME/.cargo/bin"
+export PATH="$PATH:$HOME/.rvm/bin:$HOME/.local/bin:$HOME/.gem/ruby/2.7.0/bin:$HOME/gits/arch_config/scripts:$HOME/gits/arch_config/.local/bin/statusbar:$HOME/.cargo/bin:/home/duy/go:$HOME/gits/arch_config/scripts/shell-queue"
 
 # setxkbmap -option ctrl:swapcaps
 
-sudo sh -c "echo 10   >  /sys/devices/platform/i8042/serio1/serio2/drift_time"       # default 5 
-sudo sh -c "echo 200 > /sys/devices/platform/i8042/serio1/serio2/sensitivity"     # default 128
-sudo sh -c "echo 120 > /sys/devices/platform/i8042/serio1/serio2/speed"           # default 97
+# sudo sh -c "echo 10   >  /sys/devices/platform/i8042/serio1/serio2/drift_time"       # default 5 
+# sudo sh -c "echo 200 > /sys/devices/platform/i8042/serio1/serio2/sensitivity"     # default 128
+# sudo sh -c "echo 120 > /sys/devices/platform/i8042/serio1/serio2/speed"           # default 97
 
-export VISUAL=vim
+export VISUAL=nvim
 export EDITOR=$VISUAL
-export BROWSER="/usr/bin/qutebrowser --qt-flag ignore-gpu-blacklist --qt-flag enable-gpu-rasterization"
+export BROWSER="/usr/bin/google-chrome-stable"
 
-export SHELL=/bin/bash
+export SHELL=/usr/bin/zsh
 
 # ./.fehbg
 [ ! -e ~/.config/mpd/pid ] && mpd

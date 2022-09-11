@@ -137,6 +137,9 @@ nnoremap <silent> <S-Tab> gT
 vnoremap <silent> ,, :Trans :vi -b<CR> 
 map ,f ,t:FZF ~/<CR>
 augroup vim_autocmd
+augroup vim_autocmd
+	" Prevent Vim from clearing the clipboard on exit
+	autocmd VimLeave * call system("xsel -ib", getreg('+'))
 	" fix always tabs to spaces when start python file
 	" fuck /usr/share/vim/vim74/ftplugin/python.vim
 	autocmd FileType python setlocal ts=4 sts=4 sw=4 noexpandtab

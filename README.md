@@ -92,7 +92,6 @@ grub-install --target=x86_64-efi  --bootloader-id=grub_uefi --recheck
 *or*
 grub-install --target=x86_64-efi --bootloader-id=GRUB --efi-directory=/boot/efi --no-nvram --removable *for UEFI boot*
 grub-mkconfig -o /boot/grub/grub.cfg
-
 exit
 umount -R /mnt
 reboot

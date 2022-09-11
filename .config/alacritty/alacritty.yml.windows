@@ -1,0 +1,91 @@
+# Colors (One Light)
+colors:
+  primary:
+    background: '#ededcc'
+    foreground: '#000000'
+  cursor:
+    text:       CellBackground
+    cursor:     '#000000' # syntax-cursor-color
+  selection:
+    text:       CellForeground
+    background : '#ecf024' # syntax-selection-color
+  search:
+    # Allowed values are CellForeground and CellBackground, which reference the
+    # affected cell, or hexadecimal colors like #ff00ff.
+    matches:
+      foreground: '#000000'
+      background: '#ecf024'
+    focused_match:
+      foreground: CellBackground
+      background: CellForeground
+    bar:
+      background: '#c5c8c6'
+      foreground: '#1d1f21'
+  normal:
+    black:      '#696c77' # mono-2
+    red:        '#e45649' # red 1
+    green:      '#50a14f'
+    yellow:     '#c18401' # orange 2
+    blue:       '#199aa6'
+    magenta:    '#a626a4'
+    cyan:       '#0184bc'
+    white:      '#a0a1a7' # mono-3
+font:
+  normal:
+    family: cascadia mono
+    style: Regular
+  bold:
+    family: cascadia mono
+    style: Bold
+  italic:
+    family: cascadia mono
+    style: Italic
+  bold_italic:
+    family: cascadia mono
+    style: Bold Italic
+  size: 12
+  offset:
+    x: -1
+    y: -1
+# background_opacity: 0.92
+#bell:
+#  animation: EaseOutExpo
+#  duration: 200
+#  color: '0xff0000'
+  
+  # Values for `animation`:
+  #   - Ease
+  #   - EaseOut
+  #   - EaseOutSine
+  #   - EaseOutQuad
+  #   - EaseOutCubic
+  #   - EaseOutQuart
+  #   - EaseOutQuint
+  #   - EaseOutExpo
+  #   - EaseOutCirc
+  #   - Linear
+window:
+   dimensions:
+     columns: 160
+     lines: 40
+shell:
+  program: wsl
+  args:
+    - -d
+    - arch
+    - -u
+    - duy
+key_bindings:
+  - { key: Return,   mods: Control|Alt, action: SpawnNewInstance }
+  - { key: V,   mods: Control|Alt, action: Paste}
+    # - { key: V,   mods: Control|Alt, action: PasteSelection}
+  - { key: C,   mods: Control|Alt, action: Copy}
+  - { key: K,   mods: Super, action: ScrollHalfPageUp}
+  - { key: J,   mods: Super, action: ScrollHalfPageDown}
+  - { key: J,   mods: Control|Alt, action: DecreaseFontSize }
+  - { key: K,   mods: Control|Alt, action: IncreaseFontSize }
+  - { key: H,   mods: Control|Alt, action: ResetFontSize}
+  - { key: U,   mods: Control|Alt, action: ToggleViMode}
+  - { key: Tab, mods: Control,        chars: "\x1b[27;5;9~" }
+  - { key: Tab, mods: Control|Shift,  chars: "\x1b[27;6;9~" }
+  - { key: I,   mods: Control|Alt, command: {program: "sudo alacritty-invert-colours", args: [] }}

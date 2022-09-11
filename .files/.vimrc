@@ -44,18 +44,8 @@ filetype plugin indent on
 filetype on
 syntax on
 
-if need_to_install_plugins == 1
-	echo "Installing plugins..."
-	silent! PlugInstall
-	echo "Done!"
-	q
-endif
-
 " always show the status bar
-set statusline+=%F,%l,%v
 set laststatus=2
-set title
-set titlestring=%F
 
 " enable 256 colors
 set t_Co=256
@@ -81,7 +71,7 @@ set shiftwidth=4
 set softtabstop=4
 set colorcolumn=80
 set viminfo='25,\"50,n~/.viminfo
-set autoread
+
 
 " mouse
 set ttymouse=sgr
@@ -90,36 +80,18 @@ set mouse=a
 let g:is_mouse_enabled = 0
 noremap <silent> <leader>m :call ToggleMouse()<CR>
 function ToggleMouse()
-	if g:is_mouse_enabled == 0
-		echo "Mouse ON"
-		set mouse=a
-		let g:is_mouse_enabled = 1
-	else
+	if g:is_mouse_enabled == 1
 		echo "Mouse OFF"
 		set mouse=
 		let g:is_mouse_enabled = 0
-	endif
-endfunction
-
-
-" colorscheme onedark
-let g:is_enable_colorscheme = 0
-function ToggleColorscheme()
-	if g:is_enable_colorscheme == 0
-		echo "colorscheme onedark"
-		colorscheme onedark
-		let g:is_enable_colorscheme = 1
 	else
-		echo "colorscheme default"
-		colorscheme default
-		let g:is_enable_colorscheme = 0
+		echo "Mouse ON"
+		set mouse=a
+		let g:is_mouse_enabled = 1
 	endif
 endfunction
 
 
-" lightline
-" set noshowmode
-" let g:lightline = { 'colorscheme': 'onedark' }
 
 " code folding
 set foldmethod=indent
@@ -127,10 +99,9 @@ set foldlevel=99
 " zM close all and set foldlevel to 0
 " zR open all and set highest foldlevel
 nnoremap <space> za
-nnoremap ' `
 " wrap toggle
 " setlocal nowrap
-noremap <silent> <leader>w :call ToggleWrap()<CR>
+noremap <silent> ,w :call ToggleWrap()<CR>
 function ToggleWrap()
 	if &wrap
 		echo "Wrap OFF"
@@ -148,18 +119,6 @@ endfunction
 " restore place in file from previous session
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
-" syntastic
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 1
-" let g:syntastic_check_on_open = 0
-" let g:syntastic_check_on_wq = 0
-" map <leader>s :SyntasticCheck<CR>
-" map <leader>d :SyntasticReset<CR>
-" map <leader>e :lnext<CR>
-" map <leader>r :lprev<CR>
-
-" tag list
-nnoremap <leader>T :TagbarToggle<CR>
 
 " copy, cut and paste
 vmap <leader>x "+c
@@ -193,54 +152,32 @@ let &t_EI.="\e[1 q" "EI = NORMAL mode (ELSE)
 "  5 -> blinking vertical bar
 "  6 -> solid vertical bar
 
-map <leader><leader>r :Run<CR>
-map <leader><leader>b :Break<CR>
-map <leader><leader>b :Clear<CR>
-map <leader><leader>s :Over<CR>
-map <leader><leader>c :Continue<CR>
-map <leader><leader>p :Stop<CR>
-map <leader><leader>f :Finish<CR>
-let g:termdebug_wide=1
+" map <leader>r :Run<CR>
+" map <leader>b :Break<CR>
+" map <leader><leader>b :Clear<CR>
+" map <leader>s :Over<CR>
+" map <leader>c :Continue<CR>
+" map <leader>p :Stop<CR>
+" map <leader>f :Finish<CR>
+" let g:termdebug_wide=1
 
-" undo break point
-inoremap , ,<C-g>u
-inoremap . .<C-g>u
-inoremap ? ?<C-g>u
-inoremap ! !<C-g>u
-
+vnoremap <leader>y "+y
 vnoremap Y "+y
-vnoremap " <esc>`>a"<esc>`<i"<esc> 
-vnoremap ' <esc>`>a'<esc>`<i'<esc> 
-vnoremap ) <esc>`>a)<esc>`<i(<esc> 
-vnoremap } <esc>`>a}<esc>`<i{<esc> 
-vnoremap ] <esc>`>a]<esc>`<i[<esc> 
-
-vnoremap J :m '>+1<CR>gv=gv
-vnoremap K :m '<-2<CR>gv=gv
-inoremap <C-j> <esc>:m .+1<CR>
-inoremap <C-k> <esc>:m .-2<CR>
-nnoremap <C-j> :m .+1<CR>
-nnoremap <C-k> :m .-2<CR>
-
-" nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . 'k'
-" nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j'
-set clipboard=unnamed
 inoremap jk <esc>
 set timeoutlen=400
-nnoremap <silent> <leader>t :tabnew<CR>
-nnoremap <silent> <leader>d :tabclose<CR>
-nnoremap <silent> <leader>D :qa!<CR>
+nnoremap <silent> ,t :tabnew<CR>
+nnoremap <silent> ,d :tabclose<CR>
+nnoremap <silent> ,D :qa!<CR>
 " Magic, Make Ctrl-S-Tab, Ctrl-Tab work on alacritty from https://stackoverflow.com/posts/31959285/revisions
 " set <F13>=[27;5;9~
 " nnoremap <F13> gt
 " set <F14>=[27;6;9~
 " nnoremap <F14> gT
-nnoremap <silent> <C-Tab> gt
+nnoremap <silent> <Tab> gt
 nnoremap <silent> <S-Tab> gT
-vnoremap <silent> <leader>,, :Trans :vi -b<CR> 
-"map <leader>f :FZF ~/<CR>
-map <leader><leader>f :Files<CR>
-map <leader><leader>g :GFiles<CR>
+vnoremap <silent> ,, :Trans :vi -b<CR> 
+map ,f ,t:FZF ~/<CR>
+augroup vim_autocmd
 augroup vim_autocmd
 	" Prevent Vim from clearing the clipboard on exit
 	autocmd VimLeave * call system("xsel -ib", getreg('+'))
@@ -250,45 +187,35 @@ augroup vim_autocmd
 	autocmd Filetype python inoremap <silent>  <buffer> <leader>2 <Esc>:%w !python3<CR>
 	autocmd Filetype python nnoremap <silent> <buffer> <leader>2 :%w !python3<CR>
 	autocmd Filetype python nnoremap <silent> <buffer> <F8> :w<CR>:!clear;python3 %<CR>
-	autocmd Filetype python vnoremap <silent> <buffer> <leader>2 !python3<CR>
+	autocmd Filetype python vnoremap <silent> <buffer> <F9> !python3<CR>
 	autocmd Filetype python inoremap <silent> <buffer> <F5> <Esc>:%w !sudo python3<CR>
 	autocmd Filetype python nnoremap <silent> <buffer> <F5> :%w !sudo python3<CR>
-	autocmd Filetype php inoremap <silent> <buffer> <leader>2 <Esc>:%w !php<CR>
-	autocmd Filetype php nnoremap <silent> <buffer> <leader>2 :%w !php<CR>
-	autocmd Filetype php vnoremap <silent> <buffer> <leader>2 !php<CR>
+	autocmd Filetype php inoremap <silent> <buffer> <F9> <Esc>:%w !php<CR>
+	autocmd Filetype php nnoremap <silent> <buffer> <F9> :%w !php<CR>
+	autocmd Filetype php vnoremap <silent> <buffer> <F9> !php<CR>
 	autocmd Filetype php inoremap <silent> <buffer> <F5> <Esc>:%w !sudo php<CR>
 	autocmd Filetype php nnoremap <silent> <buffer> <F5> :%w !sudo php<CR>
-	autocmd Filetype sh inoremap <silent> <buffer> <leader>2 <Esc>:%w !bash<CR>
-	autocmd Filetype sh nnoremap <silent> <buffer> <leader>2 :%w !bash<CR>
-	autocmd Filetype sh vnoremap <silent> <buffer> <leader>2 !bash<CR>
+	autocmd Filetype sh inoremap <silent> <buffer> <F9> <Esc>:%w !bash<CR>
+	autocmd Filetype sh nnoremap <silent> <buffer> <F9> :%w !bash<CR>
+	autocmd Filetype sh vnoremap <silent> <buffer> <F9> !bash<CR>
 	autocmd Filetype sh nnoremap <silent> <buffer> <F8> :w<CR>:!clear; bash %<CR>
-	autocmd Filetype javascript inoremap <silent> <buffer> <leader>2 <Esc>:%w !node<CR>
-	autocmd Filetype javascript nnoremap <silent> <buffer> <leader>2 :%w !node<CR>
-	autocmd Filetype javascript vnoremap <silent> <buffer> <leader>2 !node<CR>
-	autocmd Filetype perl inoremap <silent> <buffer> <leader>2 <Esc>:%w !perl<CR>
-	autocmd Filetype perl nnoremap <silent> <buffer> <leader>2 :%w !perl<CR>
-	autocmd Filetype perl vnoremap <silent> <buffer> <leader>2 !perl<CR>
+	autocmd Filetype javascript inoremap <silent> <buffer> <F9> <Esc>:%w !node<CR>
+	autocmd Filetype javascript nnoremap <silent> <buffer> <F9> :%w !node<CR>
+	autocmd Filetype javascript vnoremap <silent> <buffer> <F9> !node<CR>
+	autocmd Filetype perl inoremap <silent> <buffer> <F9> <Esc>:%w !perl<CR>
+	autocmd Filetype perl nnoremap <silent> <buffer> <F9> :%w !perl<CR>
+	autocmd Filetype perl vnoremap <silent> <buffer> <F9> !perl<CR>
 	autocmd Filetype perl nnoremap <silent> <buffer> <F8> :w<CR>:!perl %<CR>
-	" autocmd Filetype c nnoremap  <F8> :w<CR>:Shell gcc -g % >/dev/null;./a.out<CR><C-w><C-w>
-	" autocmd Filetype c inoremap  <F8> <Esc>:w<CR>:Shell gcc -g % >/dev/null;./a.out<CR><C-w><C-w>
-	" autocmd Filetype c nnoremap  <leader>2 :w<CR>:!clear;gcc -g % ;./a.out<CR>
-	" autocmd Filetype c inoremap  <leader>2 <Esc>:w<CR>:!clear; gcc -g % ;./a.out<CR>
-	" autocmd Filetype c nnoremap  <F5> :w<CR>:!gcc -g %<CR>:packadd termdebug<CR>:Termdebug<CR>
-	" autocmd Filetype cpp nnoremap  <F8> :w<CR>:Shell g++ -g % >/dev/null;./a.out<CR><C-w><C-w>
-	" autocmd Filetype cpp inoremap  <F8> <Esc>:w<CR>:Shell g++ -g % >/dev/null;./a.out<CR><C-w><C-w>
-	" autocmd Filetype cpp nnoremap  <leader>2 :w<CR>:!clear;g++ -g % ;./a.out<CR>
-	" autocmd Filetype cpp inoremap  <leader>2 <Esc>:w<CR>:!clear; g++ -g % ;./a.out<CR>
-	" autocmd Filetype cpp nnoremap  <F5> :w<CR>:!g++ -g %<CR>:packadd termdebug<CR>:Termdebug<CR>
-	autocmd Filetype c nnoremap  <leader>2 :w<CR>:!clear;gcc -o %:r %:p<CR>:!./%:r<CR>
-	autocmd Filetype c inoremap  <leader>2 <Esc>:w<CR>:!clear;gcc -o %:r %:p<CR>:!./%:r<CR>
-	autocmd Filetype cpp nnoremap  <leader>2 :w<CR>:!clear;g++ -o %:r %:p<CR>:!./%:r<CR>
-	autocmd Filetype cpp inoremap  <leader>2 <Esc>:w<CR>:!clear;g++ -o %:r %:p<CR>:!./%:r<CR>
-	autocmd Filetype rust nnoremap  <leader>2 :w<CR>:!clear; rustc % <CR>:!./%:r<CR>
-	autocmd Filetype rust inoremap  <leader>2 <Esc>:w<CR>:!clear; rustc % <CR>:!./%:r<CR>
-	autocmd Filetype go inoremap <silent>  <buffer> <leader>2 <Esc>:w<CR>:%w !go run %<CR>
-	autocmd Filetype go nnoremap <silent> <buffer> <leader>2 :w<CR>:%w !go run %<CR>
-	autocmd Filetype go inoremap <silent>  <buffer> <F9> <Esc>:w<CR>:!go build %; ./%:r<CR>
-	autocmd Filetype go nnoremap <silent>  <buffer> <F9> :w<CR>:!go build %; ./%:r<CR>
+	autocmd Filetype c nnoremap  <F8> :w<CR>:Shell gcc -g % >/dev/null;./a.out<CR><C-w><C-w>
+	autocmd Filetype c inoremap  <F8> <Esc>:w<CR>:Shell gcc -g % >/dev/null;./a.out<CR><C-w><C-w>
+	autocmd Filetype c nnoremap  <F9> :w<CR>:!clear;gcc -g % ;./a.out<CR>
+	autocmd Filetype c inoremap  <F9> <Esc>:w<CR>:!clear; gcc -g % ;./a.out<CR>
+	autocmd Filetype c nnoremap  <F5> :w<CR>:!gcc -g %<CR>:packadd termdebug<CR>:Termdebug<CR>
+	autocmd Filetype cpp nnoremap  <F8> :w<CR>:Shell g++ -g % >/dev/null;./a.out<CR><C-w><C-w>
+	autocmd Filetype cpp inoremap  <F8> <Esc>:w<CR>:Shell g++ -g % >/dev/null;./a.out<CR><C-w><C-w>
+	autocmd Filetype cpp nnoremap  <F9> :w<CR>:!clear;g++ -g % ;./a.out<CR>
+	autocmd Filetype cpp inoremap  <F9> <Esc>:w<CR>:!clear; g++ -g % ;./a.out<CR>
+	autocmd Filetype cpp nnoremap  <F5> :w<CR>:!g++ -g %<CR>:packadd termdebug<CR>:Termdebug<CR>
 
 set scrolloff=999
 " if !has('nvim')
@@ -302,9 +229,7 @@ set path+=**
 set hlsearch incsearch
 set nrformats-=octal "fix when <c-a> auto add 07 to 10
 set cursorline
-set cursorcolumn
 hi CursorLine	cterm=NONE ctermbg=227
-hi CursorColumn cterm=NONE ctermbg=15
 hi Visual ctermfg=NONE ctermbg=11
 hi MatchParen ctermfg=Black ctermbg=LightCyan
 hi CursorLineNr term=none cterm=none ctermfg=202 
@@ -330,13 +255,11 @@ function ToggleExpandTab()
 endfunction
 
 " close scratch buffer YouCompleteMe
-let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_auto_trigger = 1
-" let g:SuperTabDefaultCompletionType = '<C-n>'
-
-:command! -complete=file -nargs=1 Rpdf :r !pdftotext -nopgbrk <q-args> -
-:command! -complete=file -nargs=1 Rpdf :r !pdftotext -nopgbrk <q-args> - |fmt -csw78
+" let g:ycm_autoclose_preview_window_after_insertion = 1
+" let g:ycm_autoclose_preview_window_after_completion = 1
+" 
+" :command! -complete=file -nargs=1 Rpdf :r !pdftotext -nopgbrk <q-args> -
+" :command! -complete=file -nargs=1 Rpdf :r !pdftotext -nopgbrk <q-args> - |fmt -csw78
 
 
 " let $FZF_DEFAULT_COMMAND = "find -L"
@@ -370,7 +293,7 @@ function! s:ExecuteInShell(command)
   " silent! execute 'resize ' . line('$')
   silent! redraw
   silent! execute 'au BufUnload <buffer> execute bufwinnr(' . bufnr('#') . ') . ''wincmd w'''
-  silent! execute 'nnoremap <silent> <buffer> <Localkeader>r :call <SID>ExecuteInShell(''' . command . ''')<CR>'
+  silent! execute 'nnoremap <silent> <buffer> <LocalLeader>r :call <SID>ExecuteInShell(''' . command . ''')<CR>'
   echo 'Shell command ' . command . ' executed.'
 endfunction
 command! -complete=shellcmd -nargs=+ Shell call s:ExecuteInShell(<q-args>)
@@ -382,8 +305,7 @@ command! -complete=shellcmd -nargs=+ Shell call s:ExecuteInShell(<q-args>)
 
 let g:netrw_banner=0
 let g:netrw_liststyle=3
-" switch between normal file and hiding file: key: a
-let g:netrw_list_hide = '^\..*'
+" let g:netrw_list_hide = '^\..*'
 let g:netrw_hide = 1
 
 augroup netrw_mapping

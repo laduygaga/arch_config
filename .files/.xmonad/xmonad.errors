@@ -1,0 +1,8 @@
+$ ghc --make xmonad.hs -i -ilib -fforce-recomp -main-is main -dynamic -v0 -outputdir /home/duybsp/.xmonad/build-x86_64-linux -o /home/duybsp/.xmonad/xmonad-x86_64-linux
+
+xmonad.hs:105:14: warning: [-Wtabs]
+    Tab character found here, and in three further locations.
+    Please use spaces instead.
+    |
+105 |     [ ((modm,               xK_Return), spawn $ XMonad.terminal conf)
+    |              ^^^

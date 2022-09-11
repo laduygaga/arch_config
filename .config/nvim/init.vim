@@ -50,6 +50,7 @@ endfunction
 
 
 " colorscheme onedark
+colorscheme peachpuff
 let g:is_enable_colorscheme = 0
 function ToggleColorscheme()
 	if g:is_enable_colorscheme == 0
@@ -57,8 +58,8 @@ function ToggleColorscheme()
 		colorscheme onedark
 		let g:is_enable_colorscheme = 1
 	else
-		echo "colorscheme default"
-		colorscheme default
+		echo "colorscheme peachpuff"
+		colorscheme peachpuff
 		let g:is_enable_colorscheme = 0
 	endif
 endfunction
@@ -119,7 +120,7 @@ let &t_EI.="\e[1 q" "EI = NORMAL mode (ELSE)
 "  5 -> blinking vertical bar
 "  6 -> solid vertical bar
 
-set clipboard=unnamed
+" set clipboard=unnamed
 set timeoutlen=400
 " Magic, Make Ctrl-S-Tab, Ctrl-Tab work on alacritty from https://stackoverflow.com/posts/31959285/revisions
 " set <F13>=[27;5;9~
@@ -166,7 +167,7 @@ endfunction
 " let g:ycm_auto_trigger = 1
 " let g:SuperTabDefaultCompletionType = '<C-n>'
 
-let $FZF_DEFAULT_COMMAND = "find -L"
+let $FZF_DEFAULT_COMMAND = "fd --type f"
 
 
 

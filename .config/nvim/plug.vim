@@ -16,16 +16,14 @@ Plug 'tpope/vim-rhubarb'
 " Plug 'cohama/lexima.vim'
 
 if has("nvim")
-  " Plug 'hoob3rt/lualine.nvim'
-  " Plug 'kristijanhusak/defx-git'
-  " Plug 'kristijanhusak/defx-icons'
-  " Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
+  " Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']} " call mkdp#util#install()
+  Plug 'jbyuki/one-small-step-for-vimkind'
+  Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
   Plug 'neovim/nvim-lspconfig'
   Plug 'glepnir/lspsaga.nvim'
   " Plug 'folke/lsp-colors.nvim'
   Plug 'nvim-lua/completion-nvim'
   Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
-  " Plug 'kyazdani42/nvim-web-devicons'
   Plug 'nvim-lua/popup.nvim'
   Plug 'nvim-lua/plenary.nvim'
   " Plug 'nvim-telescope/telescope.nvim'
@@ -37,7 +35,6 @@ endif
 "
 " Plug 'puremourning/vimspector'
 Plug 'joshdick/onedark.vim'
-Plug 'ap/vim-buftabline'
 Plug 'airblade/vim-gitgutter'
 Plug 'majutsushi/tagbar'
 Plug 'mattn/emmet-vim'
@@ -51,8 +48,5 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'ggreer/the_silver_searcher'
 Plug 'pamacs/vim-srt-sync'
 Plug 'rking/ag.vim'
-Plug 'SirVer/ultisnips'
-
-
 call plug#end()
 

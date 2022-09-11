@@ -1,0 +1,6 @@
+
+a=`xclip -o`
+
+
+echo $a | xargs -I {} \
+	curl -s 'https://api.tracau.vn/WBBcwnwQpV89/s/{}/en' | jq  -r '.sentences[0] # .fields.vi'

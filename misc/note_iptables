@@ -1,0 +1,5 @@
+# allow ips to port 2019
+iptables -A INPUT --src localhost,103.148.57.196,14.225.27.182 -m tcp -p tcp --dport 2019 -j ACCEP
+
+# block others from port 2019
+iptables -A INPUT -m tcp -p tcp --dport 2019 -j DROP

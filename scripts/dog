@@ -1,1 +1,1 @@
-streamlink --player mpv https://www.twitch.tv/dogdog ${BASH_ARGV[*]}
+streamlink -p mpv --twitch-disable-ads https://www.twitch.tv/dogdog ${BASH_ARGV[*]}
