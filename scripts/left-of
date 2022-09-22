@@ -1,0 +1,8 @@
+#!/bin/bash
+laptop_screen=eDP1
+mirror_screen=$1
+mode=$2
+
+xrandr --output $mirror_screen --mode $mode --scale 1x1 --output $laptop_screen --mode 1366x768 --scale 1x1 --left-of $mirror_screen
+
+
