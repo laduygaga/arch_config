@@ -1,8 +1,8 @@
 #!/bin/bash
+
 laptop_screen=eDP1
 mirror_screen=$1
-mode=$2
+laptop_mode=$(xrandr | grep $laptop_screen | cut -d' ' -f4 | cut -d'+' -f1)
+mirror_mode=$(xrandr | grep $mirror_screen | cut -d' ' -f4 | cut -d'+' -f1)
 
-xrandr --output $mirror_screen --mode $mode --scale 1x1 --output $laptop_screen --mode 1366x768 --scale 1x1 --right-of $mirror_screen
-
-
+xrandr --output $mirror_screen --mode $mirror_mode --scale 1x1 --output $laptop_screen --mode $laptop_mode --scale 1x1 --right-of $mirror_screen

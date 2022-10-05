@@ -1,7 +1,10 @@
 #!/bin/bash
 laptop_screen=eDP1
 mirror_screen=$1
-mode=$2
-scale=$3
-xrandr --output $laptop_screen --mode 1366x768 --scale 1x1 --output $mirror_screen --same-as $laptop_screen --mode $mode --scale ${scale}x${scale}
+laptop_mode=$(xrandr | grep $laptop_screen | cut -d' ' -f4 | cut -d'+' -f1)
+mirror_mode=$(xrandr | grep $mirror_screen | cut -d' ' -f4 | cut -d'+' -f1)
+laptop_screen_width=$(xrandr | grep $laptop_screen | cut -d' ' -f4 | cut -d'x' -f1)
+mirror_screen_width=$(xrandr | grep $laptop_screen | cut -d' ' -f4 | cut -d'x' -f1)
+scale=`awk -v var1=$laptop_screen_width -v var2=$mirror_screen_width 'BEGIN { print  ( var1 / var2 ) }'`
+xrandr --output $laptop_screen --mode $laptop_mode --scale 1x1 --output $mirror_screen --same-as $laptop_screen --mode $mirror_mode --scale ${scale}x${scale}
 
