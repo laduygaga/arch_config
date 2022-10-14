@@ -19,7 +19,7 @@ colors:
       foreground: CellBackground
       background: CellForeground
 
-    bar:
+    colors.footer_bar:
       background: '#c5c8c6'
       foreground: '#1d1f21'
 
