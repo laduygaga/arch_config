@@ -1,1 +1,1 @@
-read otp; echo -e "duynn@bizflycloud.vn\n${otp}0776222946" > ~/.trash/vpn/auth-vpn.txt &&  sudo openvpn --config ~/.trash/vpn/bizflycloud-bac.ovpn  --auth-user-pass ~/.trash/vpn/auth-vpn.txt
+read otp; echo -e "duynn@bizflycloud.vn\n${otp}0776222946" > ~/.trash/vpn/auth-vpn.txt &&  sudo openvpn --tls-cert-profile insecure --config ~/.trash/vpn/bizflycloud-bac.ovpn  --auth-user-pass ~/.trash/vpn/auth-vpn.txt

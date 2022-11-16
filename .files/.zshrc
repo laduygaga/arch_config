@@ -133,15 +133,15 @@ alias t/c="cd ~/.trash/c"
 alias sdb/v="cd ~/sdb/videos/"
 alias lsf="ls -ap | grep -v '/'"
 alias lsd="la -p | grep '/'"
-alias p='cd /home/duy/gits/python'
+alias p='cd /home/duy/projects'
 alias t='cd /home/duy/.trash'
 alias a='cd /home/duy/gits/arch_config'
 alias start='sudo systemctl start'
 alias restart='sudo systemctl restart'
 alias status='sudo systemctl status'
 alias stop='sudo systemctl stop'
-# alias wifi='sudo wifi-menu wlp3s0'
-alias wifi-menu='sudo wifi-menu'
+alias wifi='sudo wifi-menu'
+# alias wifi-menu='sudo wifi-menu'
 alias rst='sudo netctl stop-all && sudo netctl start wlp3s0-Tenda_106570'
 alias rsa='sudo netctl stop-all && sudo netctl start wlp3s0-abc.xyz'
 alias rsn='sudo netctl stop-all && sudo netctl start wlp3s0-TP-LINK_F946'
@@ -211,6 +211,8 @@ function vi_mode_prompt_info() {
 }
 # 
 # # define right prompt, regardless of whether the theme defined it
+PS1='%F{blue}%*%f %F{green}%~%f $(git_prompt_info)
+$ '
 RPS1='$(vi_mode_prompt_info)'
 RPS2=$RPS1
 #
@@ -318,8 +320,14 @@ function cd() {
 rm_pycache() {
 	rm -rf `find ./** -type d -name "__pycache__"`
 }
-function wifi() {
-	sudo rfkill block wlan &&
-	sudo rfkill unblock wlan &&
-	sudo wifi-menu wlp3s0
-}
+# function wifi() {
+# 	sudo rfkill block wlan &&
+# 	sudo rfkill unblock wlan &&
+# 	sudo wifi-menu wlp3s0
+# }
+export PVC_FILEPATH="$HOME/gits/moodle-operator/deploy/moodle-default/pvc.yaml"
+export STATEFULSET_FILEPATH="$HOME/gits/moodle-operator/deploy/moodle"
+export SERVICE_FILEPATH="$HOME/gits/moodle-operator/deploy/moodle-default/service.yaml"
+
+export KUBECONFIG="$HOME/moodle-cluster.kubeconfig"
+
