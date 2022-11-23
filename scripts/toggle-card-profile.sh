@@ -13,13 +13,13 @@ switch_sink() {
 	# switch ouput|sink
 	pactl info | grep `echo $a` && pactl set-default-sink `echo $b` || pactl set-default-sink `echo $a`
 }
-toggle_jbl_go_mic() {
-	jbl_source='bluez_input.E8_D0_3C_FE_28_4E.headset-head-unit'
+toggle_mx3_mic() {
+	mx3_source='bluez_source.38_18_4C_FC_A5_2A.handsfree_head_unit'
 	default_source='alsa_input.pci-0000_00_1f.3.analog-stereo'
-	# switch ouput|sink
-	pactl info | grep `echo $jbl_source` && pactl set-card-profile  bluez_card.E8_D0_3C_FE_28_4E  a2dp-sink-sbc_xq && pactl set-default-source `echo $default_source` || pactl set-card-profile  bluez_card.E8_D0_3C_FE_28_4E headset-head-unit-cvsd && pactl set-default-source `echo $jbl_source`
+	# switch input|source
+	pactl info | grep `echo $mx3_source` && pactl set-card-profile  bluez_card.38_18_4C_FC_A5_2A  a2dp_sink && pactl set-default-source `echo $default_source` || pactl set-card-profile  bluez_card.38_18_4C_FC_A5_2A handsfree_head_unit && pactl set-default-source `echo $mx3_source`
 }
 
 # switch_sink
-# toggle_jbl_go_mic
+# toggle_mx3_mic
 $*

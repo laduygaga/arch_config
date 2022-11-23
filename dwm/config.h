@@ -19,7 +19,7 @@ static const char *colors[][3]      = {
     [SchemeNorm] = { col_gray3, col_gray1, col_gray2 }, // status color
     // [SchemeSel]  = { col_gray4, col_cyan,  col_cyan  }, // title color
     // [SchemeNorm] = { "#18B218", "#000000", col_gray2 },
-    [SchemeSel]  = { col_gray4, col_cyan,  "#00A5FF"}, // neon blue
+    [SchemeSel]  = { col_gray4, col_cyan,  "#FF3131"}, // neon blue
 };
 
 /* tagging */
@@ -175,13 +175,14 @@ static Key keys[] = {
         // { 0,                    XF86XK_AudioMute,           spawn,  SHCMD("pactl set-sink-mute 0 toggle") },
         // { 0,                    XF86XK_AudioRaiseVolume,    spawn,  SHCMD("pactl set-sink-volume 0 +5%") },
         // { 0,                    XF86XK_AudioLowerVolume,    spawn,  SHCMD("pactl set-sink-volume 0 -5%") },
-        { MODKEY,                XK_F10,					spawn,  SHCMD("amixer -D pulse -q set Master toggle" ) },
-        { MODKEY,                XK_F11,					spawn,  SHCMD("amixer -D pulse -q set Master 5%+    ") },
-        { MODKEY,                XK_F9,                     spawn,  SHCMD("amixer -D pulse -q set Master 5%-    ") },
-        // { MODKEY,                XK_F12,                    spawn,  SHCMD("pactl set-source-mute bluez_input.E8_D0_3C_FE_28_4E.headset-head-unit toggle") },
-        { MODKEY,                XK_F12,					spawn,  SHCMD("pactl set-source-mute 1 toggle") },
-        { MODKEY,                XK_F7,                     spawn,  SHCMD("toggle-card-profile.sh toggle_jbl_go_mic") },
-        { MODKEY,                XK_F8,                      spawn,  SHCMD("touchpad_toggle.sh") },
+        { MODKEY,               XK_F10,					spawn,  SHCMD("amixer -D pulse -q set Master toggle" ) },
+        { MODKEY,               XK_F11,					spawn,  SHCMD("amixer -D pulse -q set Master 5%+    ") },
+        { MODKEY,               XK_F9,                     spawn,  SHCMD("amixer -D pulse -q set Master 5%-    ") },
+        // { MODKEY,               XK_F12,                    spawn,  SHCMD("pactl set-source-mute bluez_input.E8_D0_3C_FE_28_4E.headset-head-unit toggle") },
+        { MODKEY,               XK_F12,					spawn,  SHCMD("pactl set-source-mute 1 toggle") },
+        { MODKEY,               XK_F7,                     spawn,  SHCMD("toggle-card-profile.sh switch_sink") },
+        { MODKEY|ShiftMask,     XK_F7,                     spawn,  SHCMD("toggle-card-profile.sh toggle_mx3_mic") },
+        { MODKEY,               XK_F8,                      spawn,  SHCMD("touchpad_toggle.sh") },
         // { MODKEY,                XK_F8,                     spawn,  SHCMD("toggle-card-profile.sh switch_sink") },
         { 0,                    XK_Home,                   spawn,  SHCMD("scrot ~/Pictures/ScreenShots/%b%d:%H%M%S.png -e 'xclip -selection clipboard -target image/png -i $f'") },
         { MODKEY,               XK_Home,                   spawn,  SHCMD("scrot -s ~/Pictures/ScreenShots/%b%d:%H%M%S.png -e 'xclip -selection clipboard -target image/png -i $f'") },
