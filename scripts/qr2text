@@ -1,2 +1,7 @@
 #!/bin/bash
-curl qrenco.de/"$*"
+
+stringEncode=`echo "$*" | perl -MURI::Escape -ne 'print uri_escape($_)'`
+# stringEncode=`echo -n "$*" | od -An -t x1 | tr ' ' % | tr -d '\n'`
+
+
+curl qrenco.de/"$stringEncode"
