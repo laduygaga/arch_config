@@ -18,4 +18,4 @@ static const char * message = "Duy Dep Trai VCL";
 static const char * text_color = "#ffffff";
 
 /* text size (must be a valid size) */
-static const char * font_name = "12x24";
+static const char * font_name = "6x13";
