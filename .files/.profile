@@ -8,6 +8,7 @@ export GTK_IM_MODULE="ibus"
 export QT4_IM_MODULE="ibus"
 export QT_IM_MODULE="ibus"
 
+# setxkbmap -option "ctrl:swapcaps"
 
 # export GTK_IM_MODULE=fcitx
 # export QT_IM_MODULE=fcitx
@@ -17,7 +18,13 @@ export QT_IM_MODULE="ibus"
 # export _JAVA_AWT_WM_NONREPARENTING=1
 
 # From .zshrc
-export PATH="$PATH:$HOME/.rvm/bin:$HOME/.local/bin:$HOME/.gem/ruby/2.7.0/bin:$HOME/gits/arch_config/scripts:$HOME/gits/arch_config/.local/bin/statusbar:$HOME/.cargo/bin:/home/duy/go:$HOME/gits/arch_config/scripts/shell-queue"
+export ANDROID_SDK_ROOT='/opt/android-sdk'
+export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools/
+export PATH=$PATH:$ANDROID_SDK_ROOT/tools/bin/
+export PATH=$PATH:$ANDROID_ROOT/emulator
+export PATH=$PATH:$ANDROID_SDK_ROOT/tools/
+export PATH="$PATH:$HOME/.rvm/bin:$HOME/.local/bin:$HOME/.gem/ruby/2.7.0/bin:$HOME/gits/arch_config/scripts:$HOME/gits/arch_config/.local/bin/statusbar:$HOME/.cargo/bin:/home/duy/go:$HOME/gits/arch_config/scripts/shell-queue:/opt/flutter/bin"
+export CHROME_EXECUTABLE=/usr/bin/google-chrome-stable
 
 # setxkbmap -option ctrl:swapcaps
 
