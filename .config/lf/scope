@@ -27,7 +27,7 @@ case "$(file --dereference --brief --mime-type -- "$1")" in
 	text/troff) man ./ "$1" | col -b ;;
 	application/json) cat "$1" | jq ;;
 	text/* | */xml | application/json) highlight -O ansi "$1" || cat "$1";;
-	application/zip) atool --list -- "$1" ;;
+	application/zip| application/gzip) atool --list -- "$1" ;;
     audio/* | application/octet-stream) mediainfo "$1" || exit 1;;
 	video/* )
 		CACHE="${XDG_CACHE_HOME:-$HOME/.cache}/lf/thumb.$(stat --printf '%n\0%i\0%F\0%s\0%W\0%Y' -- "$(readlink -f "$1")" | sha256sum | awk '{print $1}')"
