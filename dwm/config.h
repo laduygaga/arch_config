@@ -22,6 +22,13 @@ static const char *colors[][3]      = {
 	[SchemeSel]  = { col_gray4, col_cyan,  "#00A5FF"}, // neon blue
 };
 
+/*   Display modes of the tab bar: never shown, always shown, shown only in  */
+/*   monocle mode in presence of several windows.                            */
+/*   A mode can be disabled by moving it after the showtab_nmodes end marker */
+enum showtab_modes { showtab_never, showtab_auto, showtab_nmodes, showtab_always};
+static const int showtab            = showtab_auto; /* Default tab bar show mode  */
+static const Bool toptab            = True;         /* False means bottom tab bar */
+
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
@@ -81,7 +88,7 @@ static const Layout layouts[] = {
 	{ "HHH",      grid},    
 	{ "|M|",      centeredmaster },
 	{ ">M>",      centeredfloatingmaster },
-	// { "[M]",      monocle },
+	{ "[M]",      monocle },
 };
 
 /* key definitions */
@@ -128,6 +135,7 @@ static Key keys[] = {
 	{ MODKEY,               XK_u,           setlayout,          {.v = &layouts[2]} },
 	{ MODKEY,               XK_y,           setlayout,          {.v = &layouts[3]} },
 	{ MODKEY|ShiftMask,     XK_y,           setlayout,          {.v = &layouts[4]} },
+	{ MODKEY|ShiftMask,     XK_u,           setlayout,          {.v = &layouts[5]} },
 	// { MODKEY,               XK_space,       setlayout,          {0} },
 	{ MODKEY|ShiftMask,     XK_space,       togglefloating,     {0} },
 	{ MODKEY,               XK_f,           togglefullscr,      {0} },
