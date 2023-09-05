@@ -83,12 +83,12 @@ static int attachbelow = 0;    /* 1 means attach after the currently active wind
 #include "grid.c"
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "[]=",      tile },    /* first entry is default */
+	{ "[M]",      monocle },
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ "HHH",      grid},    
 	{ "|M|",      centeredmaster },
 	{ ">M>",      centeredfloatingmaster },
-	{ "[M]",      monocle },
+	{ "[]=",      tile },    /* first entry is default */
 };
 
 /* key definitions */
@@ -229,4 +229,6 @@ static Button buttons[] = {
 	{ ClkTagBar,            0,              Button3,        toggleview,                     {0} },
 	{ ClkTagBar,            MODKEY,         Button1,        tag,                            {0} },
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,                      {0} },
+	{ ClkTabBar,			0,				Button1,		focuswin,						{0} },
+
 };
