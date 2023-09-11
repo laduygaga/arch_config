@@ -7,7 +7,7 @@ const unsigned int interval = 1000;
 static const char unknown_str[] = "";
 
 /* maximum output string length */
-#define MAXLEN 165
+#define MAXLEN 999
 
 /*
  * function            description                     argument (example)
@@ -63,26 +63,17 @@ static const char unknown_str[] = "";
  */
 static const struct arg args[] = {
 	/* function         format          argument */
-        { run_command,      " %s|",        "ping.sh"                              }, 
-        // { run_command,      " %s|",        "cat /tmp/coin_price.txt"                }, 
-        // { run_command,      "GPU: %s ",         "gpu_temp"                            },
-        { cpu_perc,         "CPU: %s%%:",       "NULL"                                 }, 
-        { temp,             "%s°C|",      "/sys/class/thermal/thermal_zone3/temp" }, 
-        { ram_used,         " %s/",         "NULL"                                 },
+        { run_command,      "^c#18f553^ %s|",        "ping.sh"                              }, 
+        { cpu_perc,         "^c#ed516b^ %s%%:",       "NULL"                                 }, 
+        { run_command,             "%s|",      "cpu_temp" }, 
+        { ram_used,         "^c#f731f4^ %s/",         "NULL"                                 },
         { ram_total,        "%s|",        "NULL"                                  },
-        { disk_free,        "%s|",        "/"                                     },
-        // { wifi_essid,       " [%s",         "eno1"                               },
-        // { wifi_perc,        " :%s%%]",     "eno1"                               },
-        { ipv4,             "%s",         "eno1"                                },
-        { netspeed_rx,      "[%s/",         "eno1"                              },
-        { netspeed_tx,      "%s]|",        "eno1"                               },
-        // { battery_state,    " %s:",        "BAT0"                                  },
-        // { battery_perc,     "%s|",        "BAT0"                                  },
-        // { battery_remaining, "%s | ",    "BAT0"                                   },
-        // { run_command,      " %s |",        "weather"                             },
-        // { datetime,         " %s|",       "%Y %b %d (%a) %r"                      },
-        { datetime,         " %s|",       "%b %d (%a) %r"                      },
-        // { vol_perc,         " ♪:%s ",         "/dev/mixer"                       },
-        { run_command,      " %s",         "volume | paste -sd ' '"                            },
-        { run_command,      "%s",        "music"                                  },
+        { disk_free,        "^c#d65c20^ %s|",        "/"                                     },
+        { ipv4,             "^c#ffffff^ %s",         "eno1"                                },
+        { netspeed_rx,      "[%s/",         "eno1"                              },
+        { netspeed_tx,      "%s]|",        "eno1"                               },
+        { run_command,      "^c#f5da42^ %s |",        "music"                                  },
+		{ run_command,      "^c#ffffff^ %s | ",         "volume | paste -sd ' '"                            },
+        { datetime,         "^c#ef42f5^ %s",       "%b %d (%a) %r"                      },
 };
+
