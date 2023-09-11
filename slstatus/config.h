@@ -7,7 +7,7 @@ const unsigned int interval = 1000;
 static const char unknown_str[] = "";
 
 /* maximum output string length */
-#define MAXLEN 165
+#define MAXLEN 999
 
 /*
  * function            description                     argument (example)
@@ -69,21 +69,20 @@ static const struct arg args[] = {
         { cpu_perc,         "CPU: %s%%:",       "NULL"                                 }, 
         // { temp,             "%s°C|",      "/sys/class/thermal/thermal_zone3/temp" }, 
         { run_command,             "%s|",      "cpu_temp" }, 
-        { ram_used,         " %s/",         "NULL"                                 },
+        { ram_used,         "^c#f731f4^ %s/",         "NULL"                                 },
         { ram_total,        "%s|",        "NULL"                                  },
-        { disk_free,        "%s|",        "/"                                     },
+        { disk_free,        "^c#d65c20^ %s|",        "/"                                     },
         // { wifi_essid,       " [%s",         "eno1"                               },
         // { wifi_perc,        " :%s%%]",     "eno1"                               },
-        { ipv4,             "%s",         "wlo1"                                },
+        { ipv4,             "^c#ffffff^ %s",         "wlo1"                                },
         { netspeed_rx,      "[%s/",         "wlo1"                              },
         { netspeed_tx,      "%s]|",        "wlo1"                               },
-        { battery_state,    " %s:",        "BAT1"                                  },
+        { battery_state,    " ^c#05f230^ %s:",        "BAT1"                                  },
         { battery_perc,     "%s|",        "BAT1"                                  },
         { battery_remaining, "%s | ",    "BAT1"                                   },
         // { run_command,      " %s |",        "weather"                             },
-        // { datetime,         " %s|",       "%Y %b %d (%a) %r"                      },
-        { datetime,         " %s|",       "%b %d (%a) %r"                      },
         // { vol_perc,         " ♪:%s ",         "/dev/mixer"                       },
-        { run_command,      " %s",         "volume | paste -sd ' '"                            },
-        { run_command,      "%s",        "music"                                  },
+        { run_command,      "^c#f5da42^ %s |",        "music"                                  },
+		{ run_command,      "^c#ffffff^ %s | ",         "volume | paste -sd ' '"                            },
+        { datetime,         "^c#ef42f5^ %s",       "%b %d (%a) %r"                      },
 };
