@@ -93,6 +93,8 @@ cmd copyto ${{
 cmd setbg "$1"
 cmd bulkrename $vidir
 
+# filter
+map <c-f> :filter
 # Bindings
 map zz :set info size:time; set sortby time
 # map <c-f> $lf -remote "send $id select '$(fzf)'"
