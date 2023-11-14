@@ -265,6 +265,7 @@ HibernateMode=shutdown
 
 # lutris
 [install driver](https://github.com/lutris/docs/blob/master/InstallingDrivers.md)
+[dependencies ](https://github.com/lutris/docs/blob/master/WineDependencies.md)
 
 # Markdown tutorials
 
