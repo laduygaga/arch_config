@@ -110,18 +110,18 @@ sudo pacman -S lightdm lightdm-gtk-greeter
 
 **fonts**
 ```
-sudo pacman -S noto-fonts noto-fonts-emoji ttf-ubuntu-font-family ttf-dejavu ttf-freefont ttf-liberation ttf-droid ttf-inconsolata ttf-roboto terminus-font ttf-font-awesome ttf-nerd-fonts-symbols xorg-mkfontscale  ttf-joypixels  $(pacman -Ssq xorg-font) adobe-source-code-pro-fonts cantarell-fonts fontconfig gnu-free-fonts gsfonts lib32-fontconfig libfontenc libxfont2 xorg-fonts-encodings xorg-mkfontscale xorg-xlsfonts
+sudo pacman -S --needed noto-fonts noto-fonts-emoji ttf-ubuntu-font-family ttf-dejavu ttf-freefont ttf-liberation ttf-droid ttf-inconsolata ttf-roboto terminus-font ttf-font-awesome ttf-nerd-fonts-symbols xorg-mkfontscale  ttf-joypixels  $(pacman -Ssq xorg-font) adobe-source-code-pro-fonts cantarell-fonts fontconfig gnu-free-fonts gsfonts lib32-fontconfig libfontenc libxfont2 xorg-fonts-encodings xorg-mkfontscale xorg-xlsfonts
 ```
 
 **Audio**
 ```
-sudo pacman -S alsa alsa-utils alsa-plugins alsa-lib pavucontrol
+sudo pacman -S alsa-utils alsa-plugins alsa-lib pavucontrol
 ```
 
 **Tools**
 ```
 sudo pacman -S archlinux-keyring
-sudo pacman -S rxvt-unicode ranger rofi conky dmenu urxvt-perls perl-anyevent-i3 perl-json-xs highlight mediainfo w3m ffmpegthumbnailer zathura fzf firefox mpv mplayer sxiv scrot mtpfs gvfs-mtp git ibus-unikey ncmpcpp mpd mpc python-pip aria2 wget curl openvpn usbutils ctags youtube-dl streamlink  perl-file-mimeinfo perl-image-exiftool xclip xdotool notify-osd crda geoip p7zip xbindkeys  python-wheel re2 fbreader  bash-completion zathura-pdf-mupdf zathura-djvu zathura-cb cmake telegram-desktop ipython ntfs-3g the_silver_searcher npm yarn nodejs lua-language-server rust-analyzer gopls ccls bash-language-server pyright ripgrep odt2txt jq ffmpeg delve cowsay figlet bc pulseaudio pulseaudio-bluetooth bluez bluez-utils wireless-regdb fd atool lynx
+sudo pacman -S --needed rxvt-unicode ranger rofi conky dmenu urxvt-perls perl-anyevent-i3 perl-json-xs highlight mediainfo w3m ffmpegthumbnailer zathura fzf firefox mpv mplayer sxiv scrot mtpfs gvfs-mtp git ibus-unikey ncmpcpp mpd mpc python-pip aria2 wget curl openvpn usbutils ctags streamlink  perl-file-mimeinfo perl-image-exiftool xclip xdotool notify-osd crda geoip p7zip xbindkeys  python-wheel re2 fbreader  bash-completion zathura-pdf-mupdf zathura-djvu zathura-cb cmake telegram-desktop ipython ntfs-3g the_silver_searcher npm yarn nodejs lua-language-server rust-analyzer gopls ccls bash-language-server pyright ripgrep odt2txt jq ffmpeg delve cowsay figlet bc pulseaudio pulseaudio-alsa pulseaudio-bluetooth pulseaudio-equalizer pulseaudio-jack pulseaudio-lirc  bluez bluez-utils wireless-regdb fd atool lynx
 
 ```
 
