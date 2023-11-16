@@ -121,8 +121,13 @@ sudo pacman -S alsa-utils alsa-plugins alsa-lib pavucontrol
 **Tools**
 ```
 sudo pacman -S archlinux-keyring
-sudo pacman -S --needed rxvt-unicode ranger rofi conky dmenu urxvt-perls perl-anyevent-i3 perl-json-xs highlight mediainfo w3m ffmpegthumbnailer zathura fzf firefox mpv mplayer sxiv scrot mtpfs gvfs-mtp git ibus-unikey ncmpcpp mpd mpc python-pip aria2 wget curl openvpn usbutils ctags streamlink  perl-file-mimeinfo perl-image-exiftool xclip xdotool notify-osd crda geoip p7zip xbindkeys  python-wheel re2 fbreader  bash-completion zathura-pdf-mupdf zathura-djvu zathura-cb cmake telegram-desktop ipython ntfs-3g the_silver_searcher npm yarn nodejs lua-language-server rust-analyzer gopls ccls bash-language-server pyright ripgrep odt2txt jq ffmpeg delve cowsay figlet bc pulseaudio pulseaudio-alsa pulseaudio-bluetooth pulseaudio-equalizer pulseaudio-jack pulseaudio-lirc  bluez bluez-utils wireless-regdb fd atool lynx
+sudo pacman -S --needed rxvt-unicode ranger rofi conky dmenu urxvt-perls perl-anyevent-i3 perl-json-xs highlight mediainfo w3m ffmpegthumbnailer zathura fzf firefox mpv mplayer sxiv scrot mtpfs gvfs-mtp git ibus-unikey ncmpcpp mpd mpc python-pip aria2 wget curl openvpn usbutils ctags streamlink  perl-file-mimeinfo perl-image-exiftool xclip xdotool notify-osd crda geoip p7zip xbindkeys  python-wheel re2 fbreader  bash-completion zathura-pdf-mupdf zathura-djvu zathura-cb cmake telegram-desktop ipython ntfs-3g the_silver_searcher npm yarn nodejs lua-language-server rust-analyzer gopls ccls bash-language-server pyright ripgrep odt2txt jq ffmpeg delve cowsay figlet bc pulseaudio pulseaudio-alsa pulseaudio-bluetooth pulseaudio-equalizer pulseaudio-jack pulseaudio-lirc  bluez bluez-utils wireless-regdb fd atool lynx  translate-shell alacritty
 
+```
+**Check resolve start or not**
+```
+sudo systemctl status systemd-resolved.service
+sudo systemctl enable  systemd-resolved.service
 ```
 
 **for pystatus i3**
