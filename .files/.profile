@@ -18,6 +18,7 @@ export QT_IM_MODULE="ibus"
 # export _JAVA_AWT_WM_NONREPARENTING=1
 
 # From .zshrc
+export ANDROID_AVD_HOME=$HOME/.config/.android/avd
 export ANDROID_SDK_ROOT='/opt/android-sdk'
 export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools/
 export PATH=$PATH:$ANDROID_SDK_ROOT/tools/bin/
