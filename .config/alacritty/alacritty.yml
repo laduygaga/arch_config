@@ -35,22 +35,22 @@ colors:
 
 font:
   normal:
-    family: Source Code Pro
+    family: Inconsolata
     style: Regular
 
   bold:
-    family: Source Code Pro
+    family: Inconsolata
     style: Bold
 
   italic:
-    family: Source Code Pro
+    family: Inconsolata
     style: Italic
 
   bold_italic:
-    family: Source Code Pro
+    family: Inconsolata
     style: Bold Italic
 
-  size: 12
+  size: 13
   offset:
     x: -1
     y: -1
@@ -88,3 +88,4 @@ key_bindings:
   - { key: Tab, mods: Control,        chars: "\x1b[27;5;9~" }
   - { key: Tab, mods: Control|Shift,  chars: "\x1b[27;6;9~" }
   - { key: I,   mods: Control|Alt, command: {program: "alacritty-invert-colours", args: [] }}
+
