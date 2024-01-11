@@ -198,7 +198,7 @@ static Key keys[] = {
     { MODKEY,               XK_Print,                   spawn,  SHCMD("scrot -s ~/Pictures/ScreenShots/%b%d:%H%M%S.png -e 'xclip -selection clipboard -target image/png -i $f'") },
     { MODKEY,               XK_F12,                     spawn,  SHCMD("textsnatcher --screenshot | cut -d':' -f2 | xsel -b") },
     { MODKEY,               XK_Delete,                  spawn,  SHCMD("turnoff_screen.sh") },
-    { MODKEY,               XK_r,                       spawn,  SHCMD("st -e lf") },
+    // { MODKEY,               XK_r,                       spawn,  SHCMD("st -e lf") },
     { MODKEY,               XK_g,                       spawn,  SHCMD("goldendict") },
     // { MODKEY,                XK_z,                       spawn,  SHCMD("FBReader") },
     { Mod4Mask,             XK_i,                       spawn,  SHCMD("ibus-daemon -drx") },
