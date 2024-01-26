@@ -1,0 +1,118 @@
+[colors.cursor]
+cursor = "#000000"
+text = "CellBackground"
+
+[colors.normal]
+black = "#696c77"
+blue = "#199aa6"
+cyan = "#0184bc"
+green = "#50a14f"
+magenta = "#a626a4"
+red = "#e45649"
+white = "#a0a1a7"
+yellow = "#c18401"
+
+[colors.primary]
+background = "#ededcc"
+foreground = "#000000"
+
+# [colors.search."colors.footer_bar"]
+# background = "#c5c8c6"
+# foreground = "#1d1f21"
+
+[colors.search.focused_match]
+background = "CellForeground"
+foreground = "CellBackground"
+
+[colors.search.matches]
+background = "#ecf024"
+foreground = "#000000"
+
+[colors.selection]
+background = "#ecf024"
+text = "CellForeground"
+
+[font]
+size = 7
+
+[font.bold]
+family = "Jetbrains Mono"
+style = "Bold"
+
+[font.bold_italic]
+family = "Jetbrains Mono"
+style = "Bold Italic"
+
+[font.italic]
+family = "Jetbrains Mono"
+style = "Italic"
+
+[font.normal]
+family = "Jetbrains Mono"
+style = "Regular"
+
+[font.offset]
+x = -1
+y = -1
+
+[[keyboard.bindings]]
+action = "SpawnNewInstance"
+key = "Return"
+mods = "Control|Alt"
+
+[[keyboard.bindings]]
+action = "Paste"
+key = "V"
+mods = "Control|Alt"
+
+[[keyboard.bindings]]
+action = "Copy"
+key = "C"
+mods = "Control|Alt"
+
+[[keyboard.bindings]]
+action = "ScrollHalfPageUp"
+key = "K"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "ScrollHalfPageDown"
+key = "J"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "DecreaseFontSize"
+key = "J"
+mods = "Control|Alt"
+
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "K"
+mods = "Control|Alt"
+
+[[keyboard.bindings]]
+action = "ResetFontSize"
+key = "H"
+mods = "Control|Alt"
+
+[[keyboard.bindings]]
+action = "ToggleViMode"
+key = "U"
+mods = "Control|Alt"
+
+[[keyboard.bindings]]
+chars = "\u001B[27;5;9~"
+key = "Tab"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u001B[27;6;9~"
+key = "Tab"
+mods = "Control|Shift"
+
+[[keyboard.bindings]]
+key = "I"
+mods = "Control|Alt"
+
+[keyboard.bindings.command]
+program = "alacritty-invert-colours"
