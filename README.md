@@ -136,6 +136,7 @@ pip install --user python-mpd2
 ```
 
 **config audio**
+*** remember if cp .config from arch_config. remove .config/pulse 
 ```
 vim /etc/modprobe.d/alsa-base.conf
 
