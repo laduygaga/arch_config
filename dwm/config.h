@@ -53,6 +53,7 @@ static const Rule rules[] = {
     { "Lutris",             NULL,       NULL,           1 << 5,     0,          0,          1,           0 },
     { "leagueclientux.exe", NULL,       NULL,           1 << 5,     0,          0,          1,           0 },
     { "riotclientux.exe",   NULL,       NULL,           1 << 5,     0,          0,          1,           0 },
+    { "riot client.exe",   NULL,       NULL,           1 << 5,     0,          0,          1,           0 },
     { "league of legends.exe", NULL,       NULL,           1 << 5,     0,          0,          1,           0 },
     { "immutable.exe",      NULL,       NULL,           1 << 5,     0,          0,          1,           0 },
     { "St",                 NULL,       NULL,           0,          0,          1,          1,          -1 },
