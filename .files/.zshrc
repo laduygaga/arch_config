@@ -70,6 +70,7 @@ ZSH_THEME="robbyrussell"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
 
+DISABLE_MAGIC_FUNCTIONS=true
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -108,8 +109,8 @@ alias lf="lfub"
 alias t/vpn="cd ~/.trash/vpn"
 alias sdb5="cd /mnt/sdb5"
 alias sdb3="cd /mnt/sdb3"
-alias pscpu="ps -eo cmd,%mem,%cpu --sort=-%cpu| less"
-alias psmem="ps -eo cmd,%mem,%cpu --sort=-%mem| less"
+alias pscpu="ps -eo pid,cmd,%mem,%cpu --sort=-%cpu| less"
+alias psmem="ps -eo pid,cmd,%mem,%cpu --sort=-%mem| less"
 alias vi="vim -u NONE"
 alias youtube-dl="youtube-dl --write-auto-sub --external-downloader aria2c --external-downloader-args '-c -j 3 -x 3 -s 3 -k 1M'"
 alias emoji="cat ~/gits/arch_config/.local/share/emoji"
@@ -329,5 +330,6 @@ export PVC_FILEPATH="$HOME/gits/moodle-operator/deploy/moodle-default/pvc.yaml"
 export STATEFULSET_FILEPATH="$HOME/gits/moodle-operator/deploy/moodle"
 export SERVICE_FILEPATH="$HOME/gits/moodle-operator/deploy/moodle-default/service.yaml"
 
-export KUBECONFIG="$HOME/moodle-cluster.kubeconfig"
-
+# export KUBECONFIG="$HOME/moodle-cluster.kubeconfig"
+export KUBECONFIG="$HOME/ota.kubeconfig:$HOME/ota.kubeconfig.new"
+# export KUBECONFIG="$HOME/ota.kubeconfig.new"
