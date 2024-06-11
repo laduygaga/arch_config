@@ -63,6 +63,7 @@ static const char unknown_str[] = "";
  */
 static const struct arg args[] = {
 	/* function         format          argument */
+        { run_command,      "^c#fcba03^ %s|",        "cat /tmp/coin_price.txt"                }, 
         { run_command,      "^c#18f553^ %s|",        "ping.sh"                              }, 
         { cpu_perc,         "^c#ed516b^ %s%%:",       "NULL"                                 }, 
         { run_command,             "%s|",      "cpu_temp" }, 
