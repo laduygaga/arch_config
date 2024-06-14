@@ -6,7 +6,8 @@ function get_btc_price() {
 	# gods=`curl -s https://api.coinbase.com/v2/prices/GODS-USD/spot | jq -r '.data.amount'`
 	strk=`curl -s https://api.coinbase.com/v2/prices/STRK-USD/spot | jq -r '.data.amount'`
 	eth=`curl -s https://api.coinbase.com/v2/prices/ETH-USD/spot | jq -r '.data.amount'`
-	echo "BTC: $btc" "ETH: $eth" "STRK: $strk" > /tmp/coin_price.txt
+	not=`curl -s https://api.coinbase.com/v2/prices/NOT-USD/spot | jq -r '.data.amount'`
+	echo "BTC:$btc" "ETH:$eth" "STRK:$strk" "NOT:$not" > /tmp/coin_price.txt
 }
 
 get_btc_price
