@@ -115,7 +115,13 @@ sudo pacman -S noto-fonts noto-fonts-emoji ttf-ubuntu-font-family ttf-dejavu ttf
 
 **Audio**
 ```
-sudo pacman -S alsa alsa-utils alsa-plugins alsa-lib pavucontrol
+sudo pacman -S alsa alsa-utils alsa-plugins alsa-lib pavucontrol alsa-ucm-conf sof-firmware
+```
+
+**fix no sound fresh install 
+```
+You need to install sof-firmware and alsa-ucm-conf for the device to be detected on a kernel level 
+https://wiki.archlinux.org/index.php/Advanced_Linux_Sound_Architecture#ALSA_Firmware
 ```
 
 **Tools**
