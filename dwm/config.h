@@ -183,7 +183,7 @@ static Key keys[] = {
 	// { 0,                 XF86XK_ScreenSaver,         spawn,  SHCMD("i3lock -k") },
 	{ MODKEY,               XK_F2,                      spawn,  SHCMD("SLOCK") },
 	{ MODKEY,               XK_F4,                      spawn,  SHCMD("sudo systemctl suspend") },
-	{ MODKEY,                    XK_F12,        spawn,  SHCMD("pactl set-source-mute 1 toggle") },
+	// { MODKEY,                    XK_F12,        spawn,  SHCMD("pactl set-source-mute 0 toggle") },
 	{ MODKEY,                    XK_F10,           spawn,  SHCMD("pactl set-sink-mute 0 toggle") },
 	{ MODKEY,                    XK_F11,    spawn,  SHCMD("pactl set-sink-volume 0 +5%") },
 	{ MODKEY,                    XK_F9,    spawn,  SHCMD("pactl set-sink-volume 0 -5%") },
