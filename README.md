@@ -115,7 +115,7 @@ sudo pacman -S noto-fonts noto-fonts-emoji ttf-ubuntu-font-family ttf-dejavu ttf
 
 **Audio**
 ```
-sudo pacman -S alsa alsa-utils alsa-plugins alsa-lib pavucontrol
+sudo pacman -S alsa-utils alsa-plugins alsa-lib pavucontrol # remove alsa because of is integrated to os
 ```
 
 **Tools**

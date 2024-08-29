@@ -1,6 +1,19 @@
 #!/bin/sh
 icon="🔊"
-volstat="$(pactl list sinks)"
-vol=$(pactl list sinks | awk '/^\tVolume/ {print $5}')
-echo "$volstat" | grep -q "Mute: yes" && printf "🔇" && exit
-printf "%s %s\n" "$icon""$vol"
+# volstat="$(pactl list sinks)"
+# vol=$(pactl list sinks | awk '/^\tVolume/ {print $5}' | head -n 1)
+# vol=$(pactl list sinks | awk '/^\tVolume/ {print $5}')
+# echo "$volstat" | grep -q "Mute: yes" && printf "🔇" && exit
+# printf "%s %s\n" "$icon""$vol"
+
+# only show active sink
+# Get the name of the default sink
+default_sink=$(pactl info | grep "Default Sink" | awk '{print $3}')
+
+# Get the volume percentage of the default sink
+volume=$(pactl list sinks | grep -A 15 "$default_sink" | grep "Volume:" | head -n 1 | awk '{print $5}')
+
+# Print the volume percentage
+echo "$volume"
+
+
