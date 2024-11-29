@@ -59,6 +59,15 @@ cmd extract ${{
 	[ $ans = "y" ] && aunpack $fx
 }}
 
+cmd compress ${{
+	clear; tput cup $(($(tput lines)/3)); tput bold
+	set -f
+	printf "%s\n\t" "$fx"
+	printf "compress?[y/N]"
+	read ans
+	[ $ans = "y" ] && tar -czvf $fx.tar.gz $fx
+}}
+
 cmd delete ${{
 	clear; tput cup $(($(tput lines)/3)); tput bold
 	set -f
@@ -93,6 +102,8 @@ cmd copyto ${{
 cmd setbg "$1"
 cmd bulkrename $vidir
 
+# filter
+map <c-f> :filter
 # Bindings
 map zz :set info size:time; set sortby time
 # map <c-f> $lf -remote "send $id select '$(fzf)'"
@@ -101,6 +112,7 @@ map zz :set info size:time; set sortby time
 map g top
 map D delete
 map E extract
+map C compress
 # map C copyto
 # map M moveto
 # map <c-n> push :mkdir<space>
