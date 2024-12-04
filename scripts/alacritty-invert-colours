@@ -2,16 +2,16 @@
 set -e
 
 # config="/mnt/c/Users/duy/AppData/Roaming/alacritty/alacritty.yml"
-config="/home/duy/.config/alacritty/alacritty.yml"
+config="/home/duy/.config/alacritty/alacritty.toml"
 
 
 switch_colours() {
     sed -i "s/$1/__TMP__/g ; s/$2/$1/g ; s/__TMP__/$2/g" "$config"
 }
 
-switch_colours foreground: background:
+switch_colours foreground background
 switch_colours white black
 switch_colours cyan red
 switch_colours magenta green
 switch_colours blue yellow
-switch_colours cursor "#ffffff"
+switch_colours 'cursor = "#ffffff"' 'cursor = "#000000"'
