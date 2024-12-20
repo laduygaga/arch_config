@@ -1,4 +1,4 @@
-# ~/.ipython3/profile_default/startup/keybindings.py
+# ~/.config/ipython/profile_default/startup/keybindings.py
 from IPython import get_ipython
 from prompt_toolkit.enums import DEFAULT_BUFFER
 from prompt_toolkit.filters import HasFocus, ViInsertMode
