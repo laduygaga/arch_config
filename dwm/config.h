@@ -209,7 +209,7 @@ static Key keys[] = {
     { Mod4Mask|ShiftMask,   XK_i,                       spawn,  SHCMD("ibus exit") },
     // { Mod4Mask,             XK_i,                       spawn,  SHCMD("fcitx5 -dr") },
     // { Mod4Mask|ShiftMask,   XK_i,                       spawn,  SHCMD("sudo killall fcitx5") },
-    // { MODKEY,               XK_w,                       spawn,  SHCMD("$BROWSER") },
+    { MODKEY,               XK_w,                       spawn,  SHCMD("$BROWSER") },
     { MODKEY,               XK_z,                       spawn,  SHCMD("xterm_trans.sh") },
     { MODKEY,               XK_comma,                   spawn,  SHCMD("xterm -geometry 50x20+0+590 -e trans :vi -b --shell") },
     { MODKEY|ShiftMask,     XK_comma,                   spawn,  SHCMD("xterm -geometry 50x20+0+590 -e trans :vi --shell") },
