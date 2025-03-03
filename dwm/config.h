@@ -185,7 +185,7 @@ static Key keys[] = {
     // { MODKEY|ShiftMask,  XK_period,                  spawn,  SHCMD("mpc repeat") },
     // { 0,                 XF86XK_ScreenSaver,         spawn,  SHCMD("i3lock -k") },
     { MODKEY,               XK_F2,                      spawn,  SHCMD("SLOCK") },
-    { MODKEY,               XK_F4,                      spawn,  SHCMD("sudo systemctl suspend") },
+    { MODKEY|ShiftMask,     XK_F4,                      spawn,  SHCMD("sudo systemctl suspend") },
     // { 0,                    XF86XK_AudioMicMute,        spawn,  SHCMD("pactl set-source-mute 1 toggle") },
     { 0,                    XF86XK_AudioRaiseVolume,    spawn,  SHCMD("amixer -D pulse -q set Master 5%+" ) },
     { 0,                    XF86XK_AudioMute,           spawn,  SHCMD("amixer -D pulse -q set Master toggle") },
