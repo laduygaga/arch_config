@@ -65,7 +65,15 @@ cmd compress ${{
 	printf "%s\n\t" "$fx"
 	printf "compress?[y/N]"
 	read ans
-	[ $ans = "y" ] && tar -czvf $fx.tar.gz $fx
+	printf "compress with password?[y/N]"
+	read ans2
+	if [ $ans = "y" ]; then
+		if [ $ans2 = "y" ]; then
+			zip -r --encrypt $fx.zip $(basename $fx)
+		else
+			tar -czvf $fx.tar.gz $(basename $fx)
+		fi
+	fi
 }}
 
 cmd delete ${{
