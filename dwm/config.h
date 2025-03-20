@@ -214,6 +214,7 @@ static Key keys[] = {
     { MODKEY,               XK_comma,                   spawn,  SHCMD("xterm -geometry 50x20+0+590 -e trans :vi -b --shell") },
     { MODKEY|ShiftMask,     XK_comma,                   spawn,  SHCMD("xterm -geometry 50x20+0+590 -e trans :vi --shell") },
     { MODKEY,               XK_period,                  spawn,  SHCMD("xterm -geometry 50x20+0+590 -e trans :en -b --shell") },
+    // { MODKEY,               XK_period,                  spawn,  SHCMD("xterm -geometry 50x20+0+590") },
     { MODKEY,               XK_F1,                      spawn,  SHCMD("keylog.sh") },
     { MODKEY|ShiftMask,     XK_F1,                      spawn,  SHCMD("sudo killall python3") },
     { MODKEY|ControlMask,   XK_f,                       spawn,  SHCMD("thePower.sh") },
