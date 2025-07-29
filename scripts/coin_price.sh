@@ -1,26 +1,46 @@
 #!/bin/bash
-
-# function get_btc_price() {
-# 	btc=`curl -s https://api.coinbase.com/v2/prices/BTC-USD/spot | jq -r '.data.amount'`
-# 	eth=`curl -s https://api.coinbase.com/v2/prices/ETH-USD/spot | jq -r '.data.amount'`
-# 	not=`curl -s https://api.coinbase.com/v2/prices/NOT-USD/spot | jq -r '.data.amount' | awk '{printf "%.5f\n", $1}'`
-# 	pepe=`curl -s https://api.coinbase.com/v2/prices/PEPE-USD/spot | jq -r '.data.amount' | awk '{printf "%.7f\n", $1}'`
-# 	echo "BTC: $btc" "ETH: $eth" "NOT: $not" "PEPE:$pepe" > /tmp/coin_price.txt
-# }
-
-# get price from binance instead
 function get_btc_price() {
-	btc=`curl -s https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT | jq -r '.price' | awk '{printf "%.2f\n", $1}'`
-	# eth=`curl -s https://api.binance.com/api/v3/ticker/price?symbol=ETHUSDT | jq -r '.price' | awk '{printf "%.2f\n", $1}'`
-	# not=`curl -s https://api.binance.com/api/v3/ticker/price?symbol=NOTUSDT | jq -r '.price' | awk '{printf "%.5f\n", $1}'`
-	# pepe=`curl -s https://api.binance.com/api/v3/ticker/price?symbol=PEPEUSDT | jq -r '.price' | awk '{printf "%.7f\n", $1}'`
-	ton=`curl -s https://api.binance.com/api/v3/ticker/price?symbol=TONUSDT | jq -r '.price' | awk '{printf "%.2f\n", $1}'`
-	io=`curl -s https://api.binance.com/api/v3/ticker/price?symbol=IOUSDT | jq -r '.price' | awk '{printf "%.2f\n", $1}'`
-	# sol=`curl -s https://api.binance.com/api/v3/ticker/price?symbol=SOLUSDT | jq -r '.price' | awk '{printf "%.2f\n", $1}'`
-	# doge=`curl -s https://api.binance.com/api/v3/ticker/price?symbol=DOGEUSDT | jq -r '.price' | awk '{printf "%.4f\n", $1}'`
-	# xrp=`curl -s https://api.binance.com/api/v3/ticker/price?symbol=XRPUSDT | jq -r '.price' | awk '{printf "%.4f\n", $1}'`
-	# echo "BTC: $btc" "SOL: $sol" "DOGE: $doge" "TON: $ton" "XRP: $xrp" > /tmp/coin_price.txt
-	echo "BTC: $btc" "TON: $ton" "IO: $io" > /tmp/coin_price.txt
+	local tmp_file="/tmp/coin_price.txt"
+	local old_prices=""
+	if [ -f "$tmp_file" ]; then
+		old_prices=$(cat "$tmp_file")
+	fi
+
+	local old_btc=$(echo "$old_prices" | grep -o 'BTC: [0-9.]*' | awk '{print $2}')
+	local old_eth=$(echo "$old_prices" | grep -o 'ETH: [0-9.]*' | awk '{print $2}')
+	local old_ton=$(echo "$old_prices" | grep -o 'TON: [0-9.]*' | awk '{print $2}')
+	local old_io=$(echo "$old_prices" | grep -o 'IO: [0-9.]*' | awk '{print $2}')
+
+	# Fetch all prices in one go
+	local prices=$(curl -s -G 'https://api.binance.com/api/v3/ticker/price' --data-urlencode 'symbols=["BTCUSDT","ETHUSDT","TONUSDT","IOUSDT"]')
+
+	# Extract prices
+	local btc=$(echo "$prices" | jq -r '.[] | select(.symbol=="BTCUSDT") | .price' | awk '{printf "%.2f\n", $1}')
+	local eth=$(echo "$prices" | jq -r '.[] | select(.symbol=="ETHUSDT") | .price' | awk '{printf "%.2f\n", $1}')
+	local ton=$(echo "$prices" | jq -r '.[] | select(.symbol=="TONUSDT") | .price' | awk '{printf "%.2f\n", $1}')
+	local io=$(echo "$prices" | jq -r '.[] | select(.symbol=="IOUSDT") | .price' | awk '{printf "%.2f\n", $1}')
+
+	compare_prices() {
+		local name=$1
+		local old_price=${2:-0}
+		local new_price=$3
+		local arrow=""
+
+		# Ensure prices are not empty before comparing
+		if [ -n "$new_price" ] && [ -n "$old_price" ] && (( $(echo "$new_price > $old_price" | bc -l) )); then
+			arrow="↑"
+		elif [ -n "$new_price" ] && [ -n "$old_price" ] && (( $(echo "$new_price < $old_price" | bc -l) )); then
+			arrow="↓"
+		fi
+		echo "$name: $new_price$arrow"
+	}
+
+	local btc_str=$(compare_prices "BTC" "$old_btc" "$btc")
+	local eth_str=$(compare_prices "ETH" "$old_eth" "$eth")
+	local ton_str=$(compare_prices "TON" "$old_ton" "$ton")
+	local io_str=$(compare_prices "IO" "$old_io" "$io")
+
+	echo "$btc_str $eth_str $ton_str $io_str" > "$tmp_file"
 }
 
 
