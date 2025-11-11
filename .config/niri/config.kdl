@@ -1,0 +1,126 @@
+// ==== CẤU HÌNH NIRI 25.11 – TOP 1 VIỆT NAM THÁNG 11/2025 ====
+
+// Spawn programs on startup
+spawn-at-startup "waybar"
+
+input {
+    focus-follows-mouse
+    // thêm touchpad {} keyboard {} nếu cần
+}
+
+binds {
+    // Launcher + Terminal (giữ nguyên Alt vì đẹp hơn Mod)
+    Alt+D { spawn "fuzzel"; }
+    Alt+Return { spawn "alacritty"; }
+    Alt+Shift+Return { spawn "alacritty --command tmux"; }
+
+    // Window actions (tên đúng 2025)
+    Alt+Q { close-window; }
+    Alt+F { fullscreen-window; }                    // đổi thành fullscreen-window
+    Alt+Shift+Space { toggle-window-floating; }     // tên này đổi thành toggle-window-floating
+    Alt+Tab { focus-workspace-previous; }           // chuẩn 2025 (hoặc dùng switch-workspace-recent nếu thích)
+
+    // Focus navigation (siêu mượt 2025)
+    Alt+J { focus-window-down; }
+    Alt+K { focus-window-up; }
+    Alt+H { focus-column-left; }
+    Alt+L { focus-column-right; }
+
+    // Move windows/columns
+    Alt+Shift+J { move-window-down; }
+    Alt+Shift+K { move-window-up; }
+    Alt+Shift+H { move-column-left; }
+    Alt+Shift+L { move-column-right; }
+
+    // Bar + Overview
+    Alt+B { show-hotkey-overlay; }                    // show hotkey overlay
+    Alt+Space { toggle-overview; }
+
+    // System
+    Alt+Shift+E { quit; }
+    // Alt+Shift+R { load-config-file; }               // not available in niri 25.08
+
+    // Workspace 1-9 (chuẩn không đổi)
+    Alt+1 { focus-workspace 1; }
+    Alt+2 { focus-workspace 2; }
+    Alt+3 { focus-workspace 3; }
+    Alt+4 { focus-workspace 4; }
+    Alt+5 { focus-workspace 5; }
+    Alt+6 { focus-workspace 6; }
+    Alt+7 { focus-workspace 7; }
+    Alt+8 { focus-workspace 8; }
+    Alt+9 { focus-workspace 9; }
+
+    Alt+Shift+1 { move-column-to-workspace 1; }
+    Alt+Shift+2 { move-column-to-workspace 2; }
+    Alt+Shift+3 { move-column-to-workspace 3; }
+    Alt+Shift+4 { move-column-to-workspace 4; }
+    Alt+Shift+5 { move-column-to-workspace 5; }
+    Alt+Shift+6 { move-column-to-workspace 6; }
+    Alt+Shift+7 { move-column-to-workspace 7; }
+    Alt+Shift+8 { move-column-to-workspace 8; }
+    Alt+Shift+9 { move-column-to-workspace 9; }
+
+    // Scratchpad + Media (playerctl thống nhất, ngon nhất 2025)
+    Alt+Minus { spawn "your_scratchpad_toggle_script --show"; }
+    Alt+Shift+Minus { spawn "your_scratchpad_toggle_script --hide"; }
+
+    Alt+P { spawn "playerctl play-pause"; }
+    Alt+bracketleft { spawn "playerctl previous"; }
+    Alt+bracketright { spawn "playerctl next"; }
+
+    // Utility spawns (giữ nguyên, quá đẹp)
+    Alt+N { spawn "alacritty --command ncmpcpp"; }
+    Alt+M { spawn "alacritty --command lfub"; }
+    Alt+R { spawn "alacritty --command lf"; }
+    Alt+W { spawn "$BROWSER"; }
+    Alt+G { spawn "goldendict"; }
+    Alt+Z { spawn "xterm_trans.sh"; }
+
+    // Translate thần thánh cho người Việt
+    Alt+T { spawn "sh -c 'wl-paste | trans -b :vi | wl-copy && notify-send \"ĐÃ DỊCH TIẾNG VIỆT\" \"$(wl-paste)\"'"; }
+    Alt+Shift+T { spawn "sh -c 'wl-paste | trans -b :en | wl-copy && notify-send \"Translated to English\" \"$(wl-paste)\"'"; }
+
+    // Volume & Brightness
+    Alt+F10 { spawn "pactl set-sink-mute @DEFAULT_SINK@ toggle"; }
+    Alt+F11 { spawn "pactl set-sink-volume @DEFAULT_SINK@ +5%"; }
+    Alt+F9  { spawn "pactl set-sink-volume @DEFAULT_SINK@ -5%"; }
+    Alt+F5  { spawn "brightnessctl s 5%-"; }
+    Alt+F6  { spawn "brightnessctl s +5%"; }
+
+    // Power & lock
+    Alt+F2 { spawn "swaylock"; }
+    Alt+Shift+F4 { spawn "systemctl suspend"; }
+
+    // Screenshot & OCR chuẩn ricer VN 2025
+    Print { spawn "sh -c 'grim -g \"$(slurp -d)\" ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H%M%S).png && wl-copy < ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H%M%S).png && notify-send -i camera \"Screenshot\" \"Đã lưu + copy\"'"; }
+    Alt+Print { spawn "sh -c 'grim -g \"$(slurp -d)\" - | tesseract - -l eng+vie - | wl-copy && notify-send \"OCR\" \"Đã copy text\"'"; }
+
+    Alt+V { spawn "cliphist list | fuzzel --dmenu | cliphist decode | wl-copy"; }
+
+    // IME
+    Mod+I { spawn "ibus-daemon -drx"; }
+    Mod+Shift+I { spawn "ibus exit"; }
+}
+
+layout {
+    gaps 16;
+    center-focused-column "always";
+    preset-column-widths {
+        proportion 0.33333;
+        proportion 0.5;
+        proportion 0.66667;
+    }
+    focus-ring {
+        width 4;
+        active-color "#89b4fa";
+        inactive-color "#45475a";
+    }
+    border {
+        width 3;
+        active-color "#89b4fa";
+        inactive-color "#45475a";
+    }
+}
+
+prefer-no-csd;
