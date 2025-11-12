@@ -9,6 +9,7 @@ input {
 }
 
 binds {
+    Alt+U { switch-preset-column-width; }
     // Launcher + Terminal (giữ nguyên Alt vì đẹp hơn Mod)
     Alt+D { spawn "fuzzel"; }
     Alt+Return { spawn "alacritty"; }
@@ -104,7 +105,8 @@ binds {
 }
 
 layout {
-    gaps 16;
+    default-column-width { proportion 0.5; }
+    gaps 5;
     center-focused-column "always";
     preset-column-widths {
         proportion 0.33333;
@@ -112,12 +114,12 @@ layout {
         proportion 0.66667;
     }
     focus-ring {
-        width 4;
+        width 2;
         active-color "#89b4fa";
         inactive-color "#45475a";
     }
     border {
-        width 3;
+        width 1;
         active-color "#89b4fa";
         inactive-color "#45475a";
     }
