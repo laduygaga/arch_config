@@ -1,7 +1,7 @@
 // ==== CẤU HÌNH NIRI 25.11 – TOP 1 VIỆT NAM THÁNG 11/2025 ====
 
 // Spawn programs on startup
-spawn-at-startup "waybar"
+// spawn-at-startup "waybar"
 
 input {
     focus-follows-mouse
@@ -35,32 +35,32 @@ binds {
 
     // Bar + Overview
     Alt+B { show-hotkey-overlay; }                    // show hotkey overlay
-    Alt+Space { toggle-overview; }
+    Alt+O { toggle-overview; }
 
     // System
     Alt+Shift+E { quit; }
     // Alt+Shift+R { load-config-file; }               // not available in niri 25.08
 
     // Workspace 1-9 (chuẩn không đổi)
-    Alt+1 { focus-workspace 1; }
-    Alt+2 { focus-workspace 2; }
-    Alt+3 { focus-workspace 3; }
+    Alt+1 { focus-workspace "1:code"; }
+    Alt+2 { focus-workspace "2:web"; }
+    Alt+3 { focus-workspace "3:misc"; }
     Alt+4 { focus-workspace 4; }
     Alt+5 { focus-workspace 5; }
     Alt+6 { focus-workspace 6; }
     Alt+7 { focus-workspace 7; }
-    Alt+8 { focus-workspace 8; }
-    Alt+9 { focus-workspace 9; }
+    Alt+8 { focus-workspace "8:chat"; }
+    Alt+9 { focus-workspace "9:db"; }
 
-    Alt+Shift+1 { move-column-to-workspace 1; }
-    Alt+Shift+2 { move-column-to-workspace 2; }
-    Alt+Shift+3 { move-column-to-workspace 3; }
+    Alt+Shift+1 { move-column-to-workspace "1:code"; }
+    Alt+Shift+2 { move-column-to-workspace "2:web"; }
+    Alt+Shift+3 { move-column-to-workspace "3:misc"; }
     Alt+Shift+4 { move-column-to-workspace 4; }
     Alt+Shift+5 { move-column-to-workspace 5; }
     Alt+Shift+6 { move-column-to-workspace 6; }
     Alt+Shift+7 { move-column-to-workspace 7; }
-    Alt+Shift+8 { move-column-to-workspace 8; }
-    Alt+Shift+9 { move-column-to-workspace 9; }
+    Alt+Shift+8 { move-column-to-workspace "8:chat"; }
+    Alt+Shift+9 { move-column-to-workspace "9:db"; }
 
     // Scratchpad + Media (playerctl thống nhất, ngon nhất 2025)
     Alt+Minus { spawn "your_scratchpad_toggle_script --show"; }
@@ -126,3 +126,23 @@ layout {
 }
 
 prefer-no-csd;
+
+workspace "1:code"
+workspace "2:web"
+workspace "3:misc"
+workspace "8:chat"
+workspace "9:db"
+
+// open google-chrome on workspace browser
+window-rule {
+	match app-id="google-chrome"
+	open-on-workspace "2:web"
+}
+window-rule {
+	match app-id="Alacritty"
+	open-on-workspace "1:code"
+}
+window-rule {
+	match app-id="org.telegram.desktop"
+	open-on-workspace "8:chat"
+}
