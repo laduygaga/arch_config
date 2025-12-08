@@ -52,7 +52,7 @@ static const Rule rules[] = {
     { "gods.exe",           NULL,       NULL,           1 << 5,     0,          1,          1,           0 },
     { "Lutris",             NULL,       NULL,           1 << 5,     0,          0,          1,           0 },
     { "leagueclientux.exe", NULL,       NULL,           1 << 5,     0,          0,          1,           0 },
-    { "hearthstone.exe",	NULL,       NULL,           1 << 5,     0,          0,          1,           0 },
+    { "hearthstone.exe",    NULL,       NULL,           1 << 5,     0,          0,          1,           0 },
     { "riotclientux.exe",   NULL,       NULL,           1 << 5,     0,          0,          1,           0 },
     { "riot client.exe",   NULL,       NULL,           1 << 5,     0,          0,          1,           0 },
     { "league of legends.exe", NULL,       NULL,           1 << 5,     0,          0,          1,           0 },
@@ -225,18 +225,19 @@ static Key keys[] = {
 /* button definitions */
 /* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */
 static Button buttons[] = {
-    /* click                event mask      button          function                        argument */
-    { ClkLtSymbol,          0,              Button1,        setlayout,                      {0} },
-    { ClkLtSymbol,          0,              Button3,        setlayout,                      {.v = &layouts[2]} },
-    { ClkWinTitle,          0,              Button2,        zoom,                           {0} },
-    { ClkStatusText,        0,              Button2,        spawn,                          {.v = termcmd } },
-    { ClkClientWin,         MODKEY,         Button1,        movemouse,                      {0} },
-    { ClkClientWin,         MODKEY,         Button2,        togglefloating,                 {0} },
-    { ClkClientWin,         MODKEY,         Button3,        resizemouse,                    {0} },
-    { ClkTagBar,            0,              Button1,        view,                           {0} },
-    { ClkTagBar,            0,              Button3,        toggleview,                     {0} },
-    { ClkTagBar,            MODKEY,         Button1,        tag,                            {0} },
-    { ClkTagBar,            MODKEY,         Button3,        toggletag,                      {0} },
-    { ClkTabBar,            0,              Button1,        focuswin,                       {0} },
+    /* click                event mask              button          function                        argument */
+    { ClkLtSymbol,          0,                      Button1,        setlayout,                      {0} },
+    { ClkLtSymbol,          0,                      Button3,        setlayout,                      {.v = &layouts[2]} },
+    { ClkWinTitle,          0,                      Button2,        zoom,                           {0} },
+    { ClkStatusText,        0,                      Button2,        spawn,                          {.v = termcmd } },
+    { ClkClientWin,         MODKEY,                 Button1,        movemouse,                      {0} },
+    { ClkClientWin,         MODKEY,                 Button2,        togglefloating,                 {0} },
+    { ClkClientWin,         MODKEY,                 Button3,        resizemouse,                    {0} },
+    { ClkClientWin,         MODKEY|ControlMask,     Button2,        spawn,                          SHCMD("boomer") },
+    { ClkTagBar,            0,                      Button1,        view,                           {0} },
+    { ClkTagBar,            0,                      Button3,        toggleview,                     {0} },
+    { ClkTagBar,            MODKEY,                 Button1,        tag,                            {0} },
+    { ClkTagBar,            MODKEY,                 Button3,        toggletag,                      {0} },
+    { ClkTabBar,            0,                      Button1,        focuswin,                       {0} },
 
 };
