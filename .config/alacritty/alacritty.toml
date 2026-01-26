@@ -33,22 +33,22 @@ background = "#ecf024"
 text = "CellForeground"
 
 [font]
-size = 13
+size = 11
 
 [font.bold]
-family = "Inconsolata"
+family = "JetBrains Mono"
 style = "Bold"
 
 [font.bold_italic]
-family = "Inconsolata"
+family = "JetBrains Mono"
 style = "Bold Italic"
 
 [font.italic]
-family = "Inconsolata"
+family = "JetBrains Mono"
 style = "Italic"
 
 [font.normal]
-family = "Inconsolata"
+family = "JetBrains Mono"
 style = "Regular"
 
 [font.offset]
