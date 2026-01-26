@@ -5,6 +5,15 @@
 set -C -f
 IFS="$(printf '%b_' '\n')"; IFS="${IFS%_}"
 
+# Skip preview for files larger than 100MB or specific files that cause lag
+FILE_SIZE=$(stat --printf '%s' -- "$1" 2>/dev/null || echo 0)
+MAX_SIZE=$((100 * 1024 * 1024))  # 100MB
+
+if [ "$FILE_SIZE" -gt "$MAX_SIZE" ]; then
+	echo "File too large to preview ($(( FILE_SIZE / 1024 / 1024 ))MB)"
+	exit 1
+fi
+
 image() {
 	if [ -n "$DISPLAY" ] && [ -z "$WAYLAND_DISPLAY" ] && command -V ueberzug >/dev/null 2>&1; then
 		printf '{"action": "add", "identifier": "PREVIEW", "x": "%s", "y": "%s", "width": "%s", "height": "%s", "scaler": "contain", "path": "%s"}\n' "$4" "$5" "$(($2-1))" "$(($3-1))" "$1" > "$FIFO_UEBERZUG"
@@ -26,6 +35,7 @@ case "$(file --dereference --brief --mime-type -- "$1")" in
 	text/html) lynx -width="$4" -display_charset=utf-8 -dump "$1"  ;;
 	text/troff) man ./ "$1" | col -b ;;
 	application/json) cat "$1" | jq ;;
+	application/x-ndjson) cat "$1";;
 	text/* | */xml | application/json) highlight -O ansi "$1" || cat "$1";;
 	application/zip| application/gzip) atool --list -- "$1" ;;
     audio/* | application/octet-stream) mediainfo "$1" || exit 1;;
