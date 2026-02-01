@@ -41,7 +41,7 @@ echo "KEYMAP=us" > /mnt/etc/vconsole.conf
 
 echo "Step 4: Pacstrap..."
 pacman -Sy
-pacstrap /mnt base base-devel linux linux-firmware btrfs-progs grub efibootmgr networkmanager nano
+pacstrap /mnt base base-devel linux linux-firmware btrfs-progs grub efibootmgr netctl dialog wpa_supplicant ppp dhcpcd
 
 genfstab -U /mnt >> /mnt/etc/fstab
 
@@ -85,7 +85,7 @@ grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB 
 grub-mkconfig -o /boot/grub/grub.cfg
 
 echo "root:password" | chpasswd
-systemctl enable NetworkManager
+# systemctl enable NetworkManager
 EOF
 
 echo "Done! Unmounting..."
