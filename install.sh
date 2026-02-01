@@ -41,7 +41,7 @@ echo "KEYMAP=us" > /mnt/etc/vconsole.conf
 
 echo "Step 4: Pacstrap..."
 pacman -Sy
-pacstrap /mnt base base-devel linux linux-firmware btrfs-progs grub efibootmgr netctl dialog wpa_supplicant ppp dhcpcd
+pacstrap /mnt base base-devel linux linux-firmware btrfs-progs grub efibootmgr dialog wpa_supplicant ppp dhcpcd
 
 genfstab -U /mnt >> /mnt/etc/fstab
 
