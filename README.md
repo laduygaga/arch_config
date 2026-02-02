@@ -1,3 +1,11 @@
+# Auto install arch linux with btrfs
+```
+bash install.sh # have to partitioned disk
+```
+
+
+# Manual install arch linux:
+
 ##  Setup USB boot:
 
 `dd bs=4M if=/ARCHLINUX.iso  of=/dev/sdb oflag=direct status=progress`
@@ -67,7 +75,7 @@ vi /etc/hostname
 
 **config timezone**
 ```
-ln -sf /usr/share//zoneinfo/Asia/Ho_Chi_Minh /etc/localtime
+ln -sf /usr/share/zoneinfo/Asia/Ho_Chi_Minh /etc/localtime
 ```
 
 **locale**
@@ -88,9 +96,7 @@ pacman -S grub efibootmgr
 mkdir /boot/EFI
 mount /dev/sdaX /boot/EFI  *Mount FAT32 EFI partition*
 grub-install --target=i386-pc /dev/sdX *for legacy boot*
-grub-install --target=x86_64-efi  --bootloader-id=grub_uefi --recheck 
-*or*
-grub-install --target=x86_64-efi --bootloader-id=GRUB --efi-directory=/boot/efi --no-nvram --removable *for UEFI boot*
+grub-install --target=x86_64-efi  --bootloader-id=grub_uefi --recheck || grub-install --target=x86_64-efi --bootloader-id=GRUB --efi-directory=/boot/efi --no-nvram --removable #for UEFI boot
 grub-mkconfig -o /boot/grub/grub.cfg
 exit
 umount -R /mnt
@@ -103,14 +109,9 @@ reboot
 sudo pacman -S xorg-server xorg-apps xorg-xinit
 ```
 
-**DM**
-```
-sudo pacman -S lightdm lightdm-gtk-greeter
-```
-
 **fonts**
 ```
-sudo pacman -S --needed noto-fonts-cjk noto-fonts noto-fonts-emoji ttf-ubuntu-font-family ttf-dejavu ttf-freefont ttf-liberation ttf-droid ttf-inconsolata ttf-roboto terminus-font ttf-font-awesome ttf-nerd-fonts-symbols xorg-mkfontscale  ttf-joypixels  $(pacman -Ssq xorg-font) adobe-source-code-pro-fonts cantarell-fonts fontconfig gnu-free-fonts gsfonts lib32-fontconfig libfontenc libxfont2 xorg-fonts-encodings xorg-mkfontscale xorg-xlsfonts
+sudo pacman -S --needed noto-fonts-cjk noto-fonts noto-fonts-emoji ttf-ubuntu-font-family ttf-dejavu ttf-freefont ttf-liberation ttf-droid ttf-inconsolata ttf-roboto terminus-font ttf-font-awesome ttf-nerd-fonts-symbols xorg-mkfontscale  $(pacman -Ssq xorg-font) adobe-source-code-pro-fonts cantarell-fonts fontconfig gnu-free-fonts gsfonts libfontenc libxfont2 xorg-fonts-encodings xorg-mkfontscale xorg-xlsfonts ttf-jetbrains-mono
 ```
 
 **Audio**
@@ -121,18 +122,13 @@ sudo pacman -S alsa-utils alsa-plugins alsa-lib pavucontrol
 **Tools**
 ```
 sudo pacman -S archlinux-keyring
-sudo pacman -S --needed rxvt-unicode ranger rofi conky dmenu urxvt-perls perl-anyevent-i3 perl-json-xs highlight mediainfo w3m ffmpegthumbnailer zathura fzf firefox mpv mplayer sxiv scrot mtpfs gvfs-mtp git ibus-unikey ncmpcpp mpd mpc python-pip aria2 wget curl openvpn usbutils ctags streamlink  perl-file-mimeinfo perl-image-exiftool xclip xdotool notify-osd crda geoip p7zip xbindkeys  python-wheel re2 fbreader  bash-completion zathura-pdf-mupdf zathura-djvu zathura-cb cmake telegram-desktop ipython ntfs-3g the_silver_searcher npm yarn nodejs lua-language-server rust-analyzer gopls ccls bash-language-server pyright ripgrep odt2txt jq ffmpeg delve cowsay figlet bc pulseaudio pulseaudio-alsa pulseaudio-bluetooth pulseaudio-equalizer pulseaudio-jack pulseaudio-lirc  bluez bluez-utils wireless-regdb fd atool lynx  translate-shell alacritty ueberzugpp imagemagick openslide
+sudo pacman -S --needed zsh rxvt-unicode ranger rofi conky dmenu urxvt-perls perl-anyevent-i3 perl-json-xs highlight mediainfo w3m ffmpegthumbnailer zathura fzf firefox mpv mplayer sxiv scrot mtpfs gvfs-mtp git ibus-unikey ncmpcpp mpd mpc python-pip aria2 wget curl openvpn usbutils ctags streamlink  perl-file-mimeinfo perl-image-exiftool xclip xdotool notify-osd crda geoip p7zip xbindkeys  python-wheel re2 fbreader  bash-completion zathura-pdf-mupdf zathura-djvu zathura-cb cmake telegram-desktop ipython ntfs-3g the_silver_searcher npm yarn nodejs lua-language-server rust-analyzer gopls ccls bash-language-server pyright ripgrep odt2txt jq ffmpeg delve cowsay figlet bc pulseaudio pulseaudio-alsa pulseaudio-bluetooth pulseaudio-equalizer pulseaudio-jack pulseaudio-lirc  bluez bluez-utils wireless-regdb fd atool lynx translate-shell alacritty ueberzugpp imagemagick openslide
 
 ```
 **Check resolve start or not**
 ```
 sudo systemctl status systemd-resolved.service
 sudo systemctl enable  systemd-resolved.service
-```
-
-**for pystatus i3**
-```
-pip install --user python-mpd2 
 ```
 
 **config audio**
@@ -147,12 +143,6 @@ options snd_hda_intel index=1
 ```
 systemctl --user enable pipewire-media-session.service
 systemctl --user start pipewire-media-session.service
-```
-
-**enable and start DM**
-```
-systemctl enable lightdm
-systemctl start lightdm
 ```
 
 **create user**
@@ -174,41 +164,6 @@ yay -S lf ibus-bamboo urxvt-font-size-git python-pdftotext scrcpy libxft-bgra-gi
 
 ```
 
-
-## Note
-> fastest way transfe file 
-```
-**sender**
-tar czf - filename | netcat -l -p port -vvv -c
-**reciever**
-netcat host port | tar xz
-```
-
-> misc
-```
-aria2c --bt-metadata-only=true --bt-save-metadata=true
-> ssh with tar
-tar c | ssh user@server "tar x"
-tar c | ssh user@server "tar x -C /path"                        
-```
-
-> weechat
-```
-to load the script
-/python autoload
-to store the channels to join
-/autojoin --run  
-to store the order of the channels
-/layout store    
-to save your setting
-/save
-```
-
-> qemu boot from usb
-```
-sudo qemu-system-x86_64 -m 4096 -enable-kvm -usb -device usb-host,hostbus=1,hostaddr=21
-```
-
 ## Encrypt LVM on LUKS
 [LVM on LUKS](https://wiki.archlinux.org/index.php/Dm-crypt/Encrypting_an_entire_system#LVM_on_LUKS)
 
@@ -223,45 +178,6 @@ vim /etc/mkinitcpio.conf
 GRUB_CMDLINE_LINUX="cryptdevice=/dev/sda2:luks:allow-discards"
 ```
 
-> nvidia
-```
-pms nvidia nvidia-utils nvidia-settings xorg-server-devel opencl-nvidia 
-```
-
-> check disable nouveau
-```
-cat /usr/lib/modprobe.d/nvidia.conf
-```
-
-> etc/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf
-```
-Section "OutputClass"
-    Identifier "intel"
-    MatchDriver "i915"
-    Driver "modesetting"
-EndSection
-
-Section "OutputClass"
-    Identifier "nvidia"
-    MatchDriver "nvidia-drm"
-    Driver "nvidia"
-    Option "AllowEmptyInitialConfiguration"
-    Option "PrimaryGPU" "yes"
-    ModulePath "/usr/lib/nvidia/xorg"
-    ModulePath "/usr/lib/xorg/modules"
-EndSection
-```
-
-> .xinitrc
-```
-xrandr --setprovideroutputsource modesetting NVIDIA-0
-xrandr --auto
-```
-> check 3D
-```
-glxinfo | grep NVIDIA
-```
-
 # hibernate shutdown instead of wake by keyboard or mouse
 
 ```
@@ -272,69 +188,6 @@ HibernateMode=shutdown
 # lutris
 [install driver](https://github.com/lutris/docs/blob/master/InstallingDrivers.md)
 [dependencies ](https://github.com/lutris/docs/blob/master/WineDependencies.md)
-
-# Markdown tutorials
-
-# H1
-## H2
-**bold** 
-__bold too__
-~~strikethrought~~
-
-
-## List
-1. hello
-2. world
-3. mother
-4. fucker
-
-## Link
-
-[hello, world](https://google.com)
-[api](http://wifimkt.bizflycloud.vn:5002/health)
-[test]: http://google.com
-
-
-## Images
-![image1](https://google.com/images1.png)
-## Code and Syntax Highlighting
-```python
-a="hello"
-print(a)
-```
-
-## Tables
-| Stt | Name | Age |
-| ------- | ------- | ------- |
-| 1 | Duy | 26 |
-
-## Blockquotes
-> Blockquotes are vrey handy in email to emulate
-> This line is part of the same quotes
-
-Quote break.
-
-> This is very long line that will sill be quoted properly when it wraps. Oh boy let's keep writeing to make sure this is long enough to actually wrap for everyone. Oh, you can *put* **Markdown** into blockquote.
-
-## Horizontal Rule
-Three or more...
----
-Hyphens
-***
-Asterisks
-________
-Underscores
-
-## Line Breaks
-
-Here's aline for us to start with.
-
-This line is separated from the one above by two newlines, so it will be a "separate paragraph".
-
-This line is also a separate paragraph, but ...
-This line is only separated by a single newline, so
-It's separate line in the *same paragraph*.
-
 
  tcpdump -n -vv -i eth0 port 514
  tcpdump  -vvAls0 port -n 8912
