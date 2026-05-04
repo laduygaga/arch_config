@@ -337,3 +337,15 @@ It's separate line in the *same paragraph*.
 
  tcpdump -n -vv -i eth0 port 514
  tcpdump  -vvAls0 port -n 8912
+
+
+
+ ## Use iwd instead of netctl + wpa_supplicant
+ ```bash
+sudo pacman -S iwd
+sudo systemctl enable --now iwd
+sudo nvim /etc/iwd/main.conf
+# put this to 
+# [General]
+# EnableNetworkConfiguration=true
+```
