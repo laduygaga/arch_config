@@ -74,6 +74,7 @@ static const Rule rules[] = {
     { NULL,                 NULL,       "trans",        0,          1,          1,          1,          -1 },                    // urxvt
     { NULL,                 NULL,       "Event Tester", 0,          1,          0,          1,          -1 }, /*xev*/
     { "Qemu-system-x86_64", NULL,       NULL,           1 << 6,     0,          0,          0,          -1 },
+    { NULL,                 NULL,       "S-Project",    0,          1,          1,          1,          -1 },
 
 
 };
