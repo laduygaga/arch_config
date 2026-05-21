@@ -1,30 +1,32 @@
 XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CONFIG_HOME
 export $(dbus-launch)
-ibus-daemon -drx
-# fcitx5 -dr
-export XMODIFIERS="@im=ibus"
-export GTK_IM_MODULE="ibus"
-export QT4_IM_MODULE="ibus"
-export QT_IM_MODULE="ibus"
+
+# export XMODIFIERS="@im=ibus"
+# export GTK_IM_MODULE="ibus"
+# export QT_IM_MODULE="ibus"
+# export QT4_IM_MODULE="ibus"
+# ibus-daemon -drxR &
 
 # setxkbmap -option "ctrl:swapcaps"
+export IMSETTING_MODULE=fcitx
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
 
-# export GTK_IM_MODULE=fcitx
-# export QT_IM_MODULE=fcitx
-# export XMODIFIERS=@im=fcitx
+# Khởi động fcitx5 ngầm (chế độ daemon)
+fcitx5 -d &
 
-
-# export _JAVA_AWT_WM_NONREPARENTING=1
+export _JAVA_AWT_WM_NONREPARENTING=1
 
 # From .zshrc
-export ANDROID_AVD_HOME=$HOME/.config/.android/avd
-export ANDROID_SDK_ROOT='/opt/android-sdk'
-export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools/
-export PATH=$PATH:$ANDROID_SDK_ROOT/tools/bin/
-export PATH=$PATH:$ANDROID_ROOT/emulator
-export PATH=$PATH:$ANDROID_SDK_ROOT/tools/
-export PATH="$PATH:$HOME/.rvm/bin:$HOME/.local/bin:$HOME/.gem/ruby/2.7.0/bin:$HOME/gits/arch_config/scripts:$HOME/gits/arch_config/.local/bin/statusbar:$HOME/.cargo/bin:/home/duy/go:$HOME/gits/arch_config/scripts/shell-queue:/opt/flutter/bin"
+# export ANDROID_AVD_HOME=$HOME/.config/.android/avd
+# export ANDROID_SDK_ROOT='/opt/android-sdk'
+# export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools/
+# export PATH=$PATH:$ANDROID_SDK_ROOT/tools/bin/
+# export PATH=$PATH:$ANDROID_ROOT/emulator
+# export PATH=$PATH:$ANDROID_SDK_ROOT/tools/
+export PATH="$PATH:$HOME/.rvm/bin:$HOME/.local/bin:$HOME/.gem/ruby/2.7.0/bin:$HOME/gits/arch_config/scripts:$HOME/gits/arch_config/.local/bin/statusbar:$HOME/.cargo/bin:/home/duy/go:$HOME/gits/arch_config/scripts/shell-queue:/opt/flutter/bin:$HOME/go/bin"
 export CHROME_EXECUTABLE=/usr/bin/google-chrome-stable
 
 # setxkbmap -option ctrl:swapcaps
@@ -40,7 +42,7 @@ export BROWSER="/usr/bin/google-chrome-stable"
 export SHELL=/usr/bin/zsh
 
 # ./.fehbg
-[ ! -e ~/.config/mpd/pid ] && mpd
+# [ ! -e ~/.config/mpd/pid ] && mpd
 # sh -c mpd > /dev/null
 # ./.config/polybar/launch_polybar > /dev/null 2>&1 
 
