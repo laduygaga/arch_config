@@ -326,10 +326,8 @@ rm_pycache() {
 # 	sudo rfkill unblock wlan &&
 # 	sudo wifi-menu wlp3s0
 # }
-export PVC_FILEPATH="$HOME/gits/moodle-operator/deploy/moodle-default/pvc.yaml"
-export STATEFULSET_FILEPATH="$HOME/gits/moodle-operator/deploy/moodle"
-export SERVICE_FILEPATH="$HOME/gits/moodle-operator/deploy/moodle-default/service.yaml"
 
-# export KUBECONFIG="$HOME/moodle-cluster.kubeconfig"
-export KUBECONFIG="$HOME/ota.kubeconfig:$HOME/ota.kubeconfig.new"
-# export KUBECONFIG="$HOME/ota.kubeconfig.new"
+# Export WINDOWID for WezTerm under X11 to make ueberzug work
+if [ -n "$WEZTERM_PANE" ] && [ -n "$DISPLAY" ] && [ -z "$WAYLAND_DISPLAY" ]; then
+    export WINDOWID=$(xdotool getactivewindow)
+fi
