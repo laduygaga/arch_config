@@ -111,7 +111,7 @@ sudo pacman -S xorg-server xorg-apps xorg-xinit
 
 **fonts**
 ```
-sudo pacman -S --needed noto-fonts-cjk noto-fonts noto-fonts-emoji ttf-ubuntu-font-family ttf-dejavu ttf-freefont ttf-liberation ttf-droid ttf-inconsolata ttf-roboto terminus-font ttf-font-awesome ttf-nerd-fonts-symbols xorg-mkfontscale  $(pacman -Ssq xorg-font) adobe-source-code-pro-fonts cantarell-fonts fontconfig gnu-free-fonts gsfonts libfontenc libxfont2 xorg-fonts-encodings xorg-mkfontscale xorg-xlsfonts ttf-jetbrains-mono
+sudo pacman -S --needed noto-fonts-cjk noto-fonts noto-fonts-emoji ttf-ubuntu-font-family ttf-dejavu ttf-freefont ttf-liberation ttf-droid ttf-inconsolata ttf-roboto terminus-font ttf-font-awesome ttf-nerd-fonts-symbols xorg-mkfontscale  $(pacman -Ssq xorg-font) adobe-source-code-pro-fonts cantarell-fonts fontconfig gnu-free-fonts gsfonts libfontenc libxfont2 xorg-fonts-encodings xorg-mkfontscale xorg-xlsfonts ttf-jetbrains-mono ttf-jetbrains-mono-nerd
 ```
 
 **Audio**
