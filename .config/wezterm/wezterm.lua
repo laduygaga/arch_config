@@ -103,7 +103,7 @@ config.keys = {
   },
   -- Unbind the default Quick Select shortcut
   {
-    key = ' ',
+    key = 'Space',
     mods = 'CTRL|SHIFT',
     action = wezterm.action.DisableDefaultAssignment,
   },
