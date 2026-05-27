@@ -1,3 +1,5 @@
+# # Amazon Q pre block. Keep at the top of this file.
+# [[ -f "${HOME}/.local/share/amazon-q/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/.local/share/amazon-q/shell/zshrc.pre.zsh"
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -183,6 +185,7 @@ bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 export KEYTIMEOUT=10
 bindkey -M viins '^r' history-incremental-search-backward
+# bindkey '^F' autosuggest-accept
 # echo -ne '\e[4 q' # Cursor is underscore instead of Block
 # Cursor settings:
 #   1 -> blinking block
@@ -214,7 +217,7 @@ function vi_mode_prompt_info() {
 # # define right prompt, regardless of whether the theme defined it
 PS1='%F{blue}%*%f %F{green}%~%f $(git_prompt_info)
 $ '
-RPS1='$(vi_mode_prompt_info)'
+# RPS1='$(vi_mode_prompt_info)'
 RPS2=$RPS1
 #
 # PROMPT='%{$fg[blue]%}%D{[%X]} %{$reset_color%}:%{$fg_bold[green]%}%~%{$reset_color%}$(hg_prompt_info)$(git_prompt_info)
@@ -293,25 +296,17 @@ ssl_check() {
 
 export FZF_DEFAULT_COMMAND="fd --type f"
 
-
-# export KUBECONFIG=/home/duy/cluster1.kubeconfig
-# source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-#
-#
-export FLASK_APP=app
-export FLASK_ENV=development
-export PYTHONPATH=$PWD
-if [[ -d ./venv ]] ; then
-	source ./venv/bin/activate
-fi
-
 function cd() {
-  if [[ -d ./venv ]] ; then
+  if [[ -d ./.venv ]] ; then
     deactivate
   fi
   builtin cd $1
   if [[ -d ./venv ]] ; then
     source ./venv/bin/activate
+	export PYTHONPATH=$PWD
+  fi
+  if [[ -d ./.venv ]] ; then
+    source ./.venv/bin/activate
 	export PYTHONPATH=$PWD
   fi
 }
@@ -327,7 +322,8 @@ rm_pycache() {
 # 	sudo wifi-menu wlp3s0
 # }
 
-# Export WINDOWID for WezTerm under X11 to make ueberzug work
-if [ -n "$WEZTERM_PANE" ] && [ -n "$DISPLAY" ] && [ -z "$WAYLAND_DISPLAY" ]; then
-    export WINDOWID=$(xdotool getactivewindow)
-fi
+export KUBECONFIG=/home/duy/kube_config
+# export PATH="$HOME/.pyenv/bin:$PATH" && eval "$(pyenv init -)"
+
+# Amazon Q post block. Keep at the bottom of this file.
+# [[ -f "${HOME}/.local/share/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/.local/share/amazon-q/shell/zshrc.post.zsh"
