@@ -3,6 +3,15 @@ local config = wezterm.config_builder()
 
 config.term = "wezterm"
 
+-- Cursor style
+config.cursor_blink_rate = 0
+config.default_cursor_style = "SteadyBlock"
+
+config.scrollback_lines = 10000
+
+-- Disable font ligatures to prevent != from rendering as ≠, etc
+config.harfbuzz_features = { 'calt=0', 'liga=0' }
+
 -- Fonts
 -- config.font = wezterm.font('JetBrainsMono Nerd Font Mono')
 config.font = wezterm.font_with_fallback({
@@ -22,7 +31,7 @@ config.window_padding = {
   top    = 0,
   bottom = 0,
 }
--- config.warn_about_missing_glyphs = false
+config.warn_about_missing_glyphs = false
 config.font_size   = 11.0
 config.cell_width  = 0.88
 config.line_height = 0.9
@@ -72,12 +81,6 @@ config.colors = {
   copy_mode_inactive_highlight_fg = { Color = '#000000' },
 }
 
--- Environment Variables
-config.set_environment_variables = {
-  MESA_GL_VERSION_OVERRIDE = '3.3',
-  MESA_GLSL_VERSION_OVERRIDE = '330',
-}
-
 -- Keybindings
 config.keys = {
   -- Spawn new instance: Ctrl+Alt+Return -> Spawn new window
@@ -97,6 +100,12 @@ config.keys = {
     key = 'c',
     mods = 'CTRL|ALT',
     action = wezterm.action.CopyTo 'Clipboard',
+  },
+  -- Unbind the default Quick Select shortcut
+  {
+    key = ' ',
+    mods = 'CTRL|SHIFT',
+    action = wezterm.action.DisableDefaultAssignment,
   },
   -- Disable default Ctrl+Shift+C / Ctrl+Shift+V
   {
