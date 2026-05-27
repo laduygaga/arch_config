@@ -40,6 +40,10 @@ case "$(file --dereference --brief --mime-type -- "$1")" in
 	text/troff) man ./ "$1" | col -b ;;
 	application/json) cat "$1" | jq ;;
 	application/x-ndjson) cat "$1";;
+	text/csv)
+		ENCODING=$(file -b --mime-encoding -- "$1" 2>/dev/null || echo "utf-8")
+		head -n 100 -- "$1" | iconv -f "$ENCODING" -t utf-8 -c 2>/dev/null
+		;;
 	text/* | */xml | application/json) highlight -O ansi "$1" || cat "$1";;
 	application/zip| application/gzip) atool --list -- "$1" ;;
     audio/* | application/octet-stream) mediainfo "$1" || exit 1;;
