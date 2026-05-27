@@ -4,18 +4,29 @@ local config = wezterm.config_builder()
 config.term = "wezterm"
 
 -- Fonts
-config.font = wezterm.font('JetBrainsMono Nerd Font Mono')
+-- config.font = wezterm.font('JetBrainsMono Nerd Font Mono')
 config.font = wezterm.font_with_fallback({
   { family = 'JetBrainsMono Nerd Font', weight = 'Regular' },
-  { family = 'Symbols Nerd Font Mono' }, -- The absolute fallback for all icons
+  { family = 'Symbols Nerd Font' }, -- The absolute fallback for all icons
   -- for CJK characters, fallback to a font that supports them
   { family = 'Noto Sans Mono CJK SC', weight = 'Regular' },
+  { family = 'Noto Sans Mono CJK HK', weight = 'Regular' },
+  { family = 'Noto Sans Mono CJK JP', weight = 'Regular' },
+  { family = 'Noto Sans Mono CJK KR', weight = 'Regular' },
+  { family = 'Noto Sans Mono CJK TC', weight = 'Regular' },
 })
+-- change padding to 0 to make it more compact
+config.window_padding = {
+  left   = 0,
+  right  = 0,
+  top    = 0,
+  bottom = 0,
+}
 -- config.warn_about_missing_glyphs = false
-config.font_size = 13.0
-config.cell_width = 0.92
-config.line_height = 0.92
-config.freetype_load_target = 'Light'
+config.font_size   = 11.0
+config.cell_width  = 0.88
+config.line_height = 0.9
+config.freetype_load_target   = 'Light'
 config.freetype_render_target = 'HorizontalLcd'
 
 -- Tab bar
