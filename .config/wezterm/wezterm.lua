@@ -81,8 +81,57 @@ config.colors = {
   copy_mode_inactive_highlight_fg = { Color = '#000000' },
 }
 
+local function extract_json_from_pane(window, pane)
+  local text = pane:get_lines_as_text(10000)
+  local i = #text
+  
+  while i >= 1 do
+    local char = text:sub(i, i)
+    
+    if char == '}' or char == ']' then
+      local json_end = i
+      local brace_count = 0
+      local in_string = false
+      local escape_next = false
+      local end_char = char
+      local start_char = char == '}' and '{' or '['
+      
+      while i >= 1 do
+        char = text:sub(i, i)
+        
+        if escape_next then
+          escape_next = false
+        elseif char == '\\' and in_string then
+          escape_next = true
+        elseif char == '"' then
+          in_string = not in_string
+        elseif not in_string then
+          if char == end_char then
+            brace_count = brace_count + 1
+          elseif char == start_char then
+            brace_count = brace_count - 1
+            if brace_count == 0 then
+              local json_str = text:sub(i, json_end)
+              window:copy_to_clipboard(json_str, 'Clipboard')
+              return
+            end
+          end
+        end
+        i = i - 1
+      end
+    end
+    i = i - 1
+  end
+end
+
 -- Keybindings
 config.keys = {
+  -- JSON Copy: Ctrl+Shift+J
+  {
+    key = 'j',
+    mods = 'CTRL|SHIFT',
+    action = wezterm.action_callback(extract_json_from_pane),
+  },
   -- Spawn new instance: Ctrl+Alt+Return -> Spawn new window
   {
     key = 'Return',
