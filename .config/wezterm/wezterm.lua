@@ -32,7 +32,7 @@ config.window_padding = {
   bottom = 0,
 }
 config.warn_about_missing_glyphs = false
-config.font_size   = 11.0
+config.font_size   = 13.0
 config.cell_width  = 0.88
 config.line_height = 0.9
 config.freetype_load_target   = 'Light'
@@ -126,12 +126,6 @@ end
 
 -- Keybindings
 config.keys = {
-  -- JSON Copy: Ctrl+Shift+J
-  {
-    key = 'j',
-    mods = 'CTRL|SHIFT',
-    action = wezterm.action_callback(extract_json_from_pane),
-  },
   -- Spawn new instance: Ctrl+Alt+Return -> Spawn new window
   {
     key = 'Return',
@@ -228,6 +222,33 @@ config.keys = {
       wezterm.background_child_process { 'alacritty-invert-colours' }
     end),
   },
+  -- Open URL under cursor: Ctrl+Alt+O
+  {
+    key = 'o',
+    mods = 'CTRL|ALT',
+    action = wezterm.action.QuickSelectArgs {
+      patterns = { 'https?://\\S+' },
+      action = wezterm.action_callback(function(window, pane)
+        local url = window:get_selection_text_for_pane(pane)
+        wezterm.open_with(url)
+      end),
+    },
+  },
+  -- JSON Copy: Ctrl+Shift+J
+  {
+    key = 'j',
+    mods = 'CTRL|SHIFT',
+    action = wezterm.action_callback(extract_json_from_pane),
+  },
+  -- Select and copy JSON: Ctrl+Shift+J
+  -- {
+  --   key = 'j',
+  --   mods = 'CTRL|SHIFT',
+  --   action = wezterm.action.QuickSelectArgs {
+  --     patterns = { '\\{[^}]*\\}|\\[[^\\]]*\\]' },
+  --     action = wezterm.action.CopyTo 'Clipboard',
+  --   },
+  -- },
 }
 
 return config
