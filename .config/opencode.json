@@ -3,7 +3,7 @@
   "plugin": [
     "opencode-gemini-auth@latest",
     "opencode-antigravity-auth@latest",
-    "oh-my-opencode"
+    "oh-my-openagent@latest"
   ],
   "keybinds": {
     "leader": "\\",
