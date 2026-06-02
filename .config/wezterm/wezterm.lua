@@ -150,6 +150,12 @@ config.keys = {
     mods = 'CTRL|SHIFT',
     action = wezterm.action.DisableDefaultAssignment,
   },
+  -- Open native QuickSelect overlay: Ctrl+Alt+S
+  {
+    key = 's',
+    mods = 'CTRL|ALT',
+    action = wezterm.action.QuickSelect,
+  },
   -- Disable default Ctrl+Shift+C / Ctrl+Shift+V
   {
     key = 'c',
