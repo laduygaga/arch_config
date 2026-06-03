@@ -32,7 +32,7 @@ config.window_padding = {
   bottom = 0,
 }
 config.warn_about_missing_glyphs = false
-config.font_size   = 13.0
+config.font_size   = 11.0
 config.cell_width  = 0.88
 config.line_height = 0.9
 config.freetype_load_target   = 'Light'
@@ -150,6 +150,12 @@ config.keys = {
     mods = 'CTRL|SHIFT',
     action = wezterm.action.DisableDefaultAssignment,
   },
+  -- Open native QuickSelect overlay: Ctrl+Alt+S
+  {
+    key = 's',
+    mods = 'CTRL|ALT',
+    action = wezterm.action.QuickSelect,
+  },
   -- Disable default Ctrl+Shift+C / Ctrl+Shift+V
   {
     key = 'c',
@@ -227,10 +233,14 @@ config.keys = {
     key = 'o',
     mods = 'CTRL|ALT',
     action = wezterm.action.QuickSelectArgs {
-      patterns = { 'https?://\\S+' },
+      patterns = { 
+        'https?://[^\\s\\)\\]]+', -- Matches web URLs excluding trailing ) or ]
+        'file://[^\\s\\)\\]]+'    -- Matches file paths excluding trailing ) or ]
+      },
       action = wezterm.action_callback(function(window, pane)
         local url = window:get_selection_text_for_pane(pane)
-        wezterm.open_with(url)
+        -- wezterm.open_with(url)
+        window:copy_to_clipboard(url)
       end),
     },
   },
