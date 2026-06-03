@@ -1,10 +1,11 @@
-#! /bin/bash
+#!/bin/bash
 
 file=$HOME/.dclip_cache
 size=100
 
 if [ "$1" == "copy" ]; then
-    sel_clip=$(xsel -o)
+    # -o outputs the selection, -selection clipboard targets the system clipboard
+    sel_clip=$(xclip -selection clipboard -o)
     sel_file=$(echo -n "$sel_clip"|tr '\n' '\034')
 fi
 touch $file
@@ -15,7 +16,7 @@ if [ "$1" == "paste" ]; then
 fi
 
 if [ "$1" == "clear" ]; then
-	echo -n > $file
+    echo -n > $file
 fi
 
 [ "$sel_clip" == "" ] && exit 1
@@ -25,7 +26,10 @@ cut=$(head -n $(($size-1)) $file)
 echo "$sel_file" > $file
 echo -n "$cut" >> $file
 
-echo -n "$sel_clip" | xsel -p -i
-echo -n "$sel_clip" | xsel -b -i
+# -quiet prevents the script from locking up on large payloads
+# -selection primary replaces xsel -p
+echo -n "$sel_clip" | xclip -quiet -selection primary
+# -selection clipboard replaces xsel -b
+echo -n "$sel_clip" | xclip -quiet -selection clipboard
 
-exit 0 
+exit 0
