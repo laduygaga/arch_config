@@ -20,7 +20,7 @@ image() {
 		printf '{"action": "add", "identifier": "PREVIEW", "x": "%s", "y": "%s", "width": "%s", "height": "%s", "scaler": "contain", "path": "%s"}\n' "$4" "$5" "$(($2-1))" "$(($3-1))" "$1" > "$FIFO_UEBERZUG"
 	elif command -v chafa >/dev/null 2>&1; then
 		# Fallback to Chafa (Wayland, SSH, etc.)
-		chafa -s "${2}x${3}" "$1"
+		chafa -f sixel -s "${2}x${3}" "$1"
 	else
 		mediainfo "$1"
 	fi
