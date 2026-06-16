@@ -15,8 +15,18 @@ if [ "$FILE_SIZE" -gt "$MAX_SIZE" ]; then
 fi
 
 image() {
+	# 1. If inside a TMUX session, completely bypass the slow X11 Ueberzug overlay.
+	# WezTerm processes inline protocols instantly inside tmux panes.
+	if [ -n "$TMUX" ]; then
+		if command -v chafa >/dev/null 2>&1; then
+			chafa -f sixel -s "${2}x${3}" "$1"
+			exit 1  # Crucial: Tells lf not to wait or try to cache text layout
+		fi
+	fi
+
+	# 2. Native Outside-TMUX Logic (Your original code)
 	if [ -n "$DISPLAY" ] && [ -z "$WAYLAND_DISPLAY" ] && command -v ueberzug >/dev/null 2>&1; then
-		# X11 Ueberzug (works in WezTerm via exported WINDOWID and Alacritty out-of-the-box)
+		# X11 Ueberzug (works outside tmux out-of-the-box)
 		printf '{"action": "add", "identifier": "PREVIEW", "x": "%s", "y": "%s", "width": "%s", "height": "%s", "scaler": "contain", "path": "%s"}\n' "$4" "$5" "$(($2-1))" "$(($3-1))" "$1" > "$FIFO_UEBERZUG"
 	elif command -v chafa >/dev/null 2>&1; then
 		# Fallback to Chafa (Wayland, SSH, etc.)
