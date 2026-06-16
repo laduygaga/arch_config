@@ -239,5 +239,5 @@ static Button buttons[] = {
     { ClkTagBar,            MODKEY,         Button1,        tag,                            {0} },
     { ClkTagBar,            MODKEY,         Button3,        toggletag,                      {0} },
     { ClkTabBar,            0,              Button1,        focuswin,                       {0} },
-
+    { ClkClientWin,         MODKEY|ControlMask,     Button2,        spawn,                  SHCMD("boomer") },
 };
