@@ -1,8 +1,8 @@
 local wezterm = require 'wezterm'
 local config = wezterm.config_builder()
-config.enable_wayland = false
 
 config.term = "wezterm"
+config.enable_wayland = false
 
 -- Cursor style
 config.cursor_blink_rate = 0
@@ -33,7 +33,7 @@ config.window_padding = {
   bottom = 0,
 }
 config.warn_about_missing_glyphs = false
-config.font_size   = 11.0
+config.font_size   = 12.0
 config.cell_width  = 0.88
 config.line_height = 0.9
 config.freetype_load_target   = 'Light'
@@ -261,5 +261,33 @@ config.keys = {
   --   },
   -- },
 }
+
+config.key_tables = wezterm.gui.default_key_tables()
+
+table.insert(config.key_tables.copy_mode, {
+  key = '/',
+  mods = 'NONE',
+  action = wezterm.action.Multiple {
+    wezterm.action.CopyMode 'ClearPattern',
+    wezterm.action.CopyMode 'EditPattern',
+  },
+})
+
+table.insert(config.key_tables.search_mode, {
+  key = 'Enter',
+  mods = 'NONE',
+  action = wezterm.action.CopyMode 'AcceptPattern',
+})
+
+table.insert(config.key_tables.copy_mode, {
+  key = 'n',
+  mods = 'NONE',
+  action = wezterm.action.CopyMode 'NextMatch',
+})
+table.insert(config.key_tables.copy_mode, {
+  key = 'N',
+  mods = 'SHIFT',
+  action = wezterm.action.CopyMode 'PriorMatch',
+})
 
 return config
