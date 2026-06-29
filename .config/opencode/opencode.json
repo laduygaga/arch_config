@@ -1,0 +1,127 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "plugin": [
+    "oh-my-openagent@latest",
+    "opencode-gpt-imagegen@latest",
+    "opencode-antigravity-auth@latest"
+  ],
+  "provider": {
+    "google": {
+      "npm": "@ai-sdk/google",
+      "name": "Google Antigravity Auth",
+      "models": {
+        "antigravity-gemini-3-flash": {
+          "name": "Gemini 3 Flash (Oauth)"
+        },
+        "antigravity-gemini-3.1-pro": {
+          "name": "Gemini 3.1 pro (low,high) (Oauth)"
+        },
+        "antigravity-claude-sonnet-4-6": {
+          "name": "Claude Sonnet 4.6 (Oauth)"
+        },
+        
+
+        "gemini-2.5-flash": {
+          "name": "Gemini 2.5 Flash (Oauth)"
+        },
+        "gemini-3-flash-preview": {
+          "name": "Gemini 3 Flash Preview (Oauth)"
+        },
+        "gemini-3.1-flash-lite": {
+          "name": "Gemini 3.1 Flash Lite (Oauth)"
+        },
+        "gemma-4-31b": {
+          "name": "Gemma 4 31B (Oauth)"
+        },
+        "gemini-3.1-pro-preview": {
+          "name": "Gemini 3.1 Pro Preview (Oauth)"
+        }
+      }
+    },
+    "gemini-pool": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Gemini Multi-Key Pool",
+      "options": {
+        "baseURL": "http://127.0.0.1:4000/v1",
+        "apiKey": "placeholder-token"
+      },
+      "models": {
+        "gemini-2.5-flash": {
+          "name": "Gemini 2.5 Flash (Pooled)"
+        },
+        "gemini-3-flash": {
+          "name": "Gemini 3 Flash (Stable 3.5 Routing Pooled)"
+        },
+        "gemini-3.5-flash": {
+          "name": "Gemini 3.5 Flash (Pooled)"
+        },
+        "gemini-3.1-flash-lite": {
+          "name": "Gemini 3.1 Flash Lite (Pooled)"
+        },
+        "gemini-2.5-flash-lite": {
+          "name": "Gemini 2.5 Flash Lite (Pooled)"
+        },
+        "gemma-4-31b": {
+          "name": "Gemma 4 31B (Pooled)"
+        }
+      }
+    },
+    "gemini-pool1": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Gemini Multi-Key Pool1",
+      "options": {
+        "baseURL": "http://127.0.0.1:4001/v1",
+        "apiKey": "placeholder-token"
+      },
+      "models": {
+        "gemini-2.5-flash": {
+          "name": "Gemini 2.5 Flash (Pooled1)"
+        },
+        "gemini-3-flash": {
+          "name": "Gemini 3 Flash (Stable 3.5 Routing Pooled1)"
+        },
+        "gemini-3.5-flash": {
+          "name": "Gemini 3.5 Flash (Pooled1)"
+        },
+        "gemini-3.1-flash-lite": {
+          "name": "Gemini 3.1 Flash Lite (Pooled1)"
+        },
+        "gemini-2.5-flash-lite": {
+          "name": "Gemini 2.5 Flash Lite (Pooled1)"
+        },
+        "gemma-4-31b": {
+          "name": "Gemma 4 31B (Pooled1)"
+        }
+      }
+    },
+    "gemini-pool2": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Gemini Multi-Key Pool2",
+      "options": {
+        "baseURL": "http://127.0.0.1:4002/v1",
+        "apiKey": "placeholder-token"
+      },
+      "models": {
+        "gemini-2.5-flash": {
+          "name": "Gemini 2.5 Flash (Pooled2)"
+        },
+        "gemini-3-flash": {
+          "name": "Gemini 3 Flash (Stable 3.5 Routing Pooled2)"
+        },
+        "gemini-3.5-flash": {
+          "name": "Gemini 3.5 Flash (Pooled2)"
+        },
+        "gemini-3.1-flash-lite": {
+          "name": "Gemini 3.1 Flash Lite (Pooled2)"
+        },
+        "gemini-2.5-flash-lite": {
+          "name": "Gemini 2.5 Flash Lite (Pooled2)"
+        },
+        "gemma-4-31b": {
+          "name": "Gemma 4 31B (Pooled2)"
+        }
+      }
+    }
+  },
+  "model": "gemini-pool/gemini-3.5-flash"
+}
