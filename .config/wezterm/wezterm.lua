@@ -1,8 +1,8 @@
 local wezterm = require 'wezterm'
 local config = wezterm.config_builder()
+config.enable_wayland = false
 
 config.term = "wezterm"
-config.enable_wayland = false
 
 -- Cursor style
 config.cursor_blink_rate = 0
@@ -33,7 +33,7 @@ config.window_padding = {
   bottom = 0,
 }
 config.warn_about_missing_glyphs = false
-config.font_size   = 12.0
+config.font_size   = 11.0
 config.cell_width  = 0.88
 config.line_height = 0.9
 config.freetype_load_target   = 'Light'
@@ -289,5 +289,23 @@ table.insert(config.key_tables.copy_mode, {
   mods = 'SHIFT',
   action = wezterm.action.CopyMode 'PriorMatch',
 })
+
+config.mouse_bindings = {
+  {
+    event = { Down = { streak = 1, button = 'Left' } },
+    mods = 'CTRL',
+    action = wezterm.action.SelectTextAtMouseCursor 'Block',
+  },
+  {
+    event = { Drag = { streak = 1, button = 'Left' } },
+    mods = 'CTRL',
+    action = wezterm.action.ExtendSelectionToMouseCursor 'Block',
+  },
+  {
+    event = { Up = { streak = 1, button = 'Left' } },
+    mods = 'CTRL',
+    action = wezterm.action.CompleteSelection 'ClipboardAndPrimarySelection',
+  },
+}
 
 return config
