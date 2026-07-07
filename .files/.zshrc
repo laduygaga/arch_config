@@ -108,17 +108,11 @@ aria2c_() {
     aria2c -x 8 --seed-time=0 $*
 }
 alias lf="lfub"
-alias t/vpn="cd ~/.trash/vpn"
-alias sdb5="cd /mnt/sdb5"
-alias sdb3="cd /mnt/sdb3"
 alias pscpu="ps -eo pid,cmd,%mem,%cpu --sort=-%cpu| less"
 alias psmem="ps -eo pid,cmd,%mem,%cpu --sort=-%mem| less"
 alias vi="vim -u NONE"
-alias youtube-dl="youtube-dl --write-auto-sub --external-downloader aria2c --external-downloader-args '-c -j 3 -x 3 -s 3 -k 1M'"
 alias emoji="cat ~/gits/arch_config/.local/share/emoji"
-push(){
-    git pull && git add . && git commit -m "$*"  && git push;
-}
+
 dps() {sudo docker ps -a}
 dup() {sudo docker-compose up}
 drmi() {
@@ -130,13 +124,6 @@ drmc() {
 	[[ -z $(sudo docker ps -q) ]] && echo "No running container" && sudo docker container rm `sudo docker ps -aq | paste -sd ' '`
 	[[ ! -z $(sudo docker ps -q) ]] && sudo docker stop `sudo docker ps -q | paste -st ' '` && sudo docker container -rm `sudo docker ps -aq | paste -sd ' '`
 }
-alias t/sh="cd ~/.trash/sh"
-alias t/p="cd ~/.trash/p"
-alias t/c="cd ~/.trash/c"
-alias sdb/v="cd ~/sdb/videos/"
-alias lsf="ls -ap | grep -v '/'"
-alias lsd="la -p | grep '/'"
-alias p='cd /home/duy/projects'
 alias t='cd /home/duy/.trash'
 alias a='cd /home/duy/gits/arch_config'
 alias start='sudo systemctl start'
@@ -144,10 +131,6 @@ alias restart='sudo systemctl restart'
 alias status='sudo systemctl status'
 alias stop='sudo systemctl stop'
 alias wifi='sudo wifi-menu'
-# alias wifi-menu='sudo wifi-menu'
-alias rst='sudo netctl stop-all && sudo netctl start wlp3s0-Tenda_106570'
-alias rsa='sudo netctl stop-all && sudo netctl start wlp3s0-abc.xyz'
-alias rsn='sudo netctl stop-all && sudo netctl start wlp3s0-TP-LINK_F946'
 alias emacs='emacs -nw'
 alias -s gif='mpv --loop=0'
 alias -s webm='mpv --loop=0'
@@ -155,18 +138,13 @@ alias pmsyu='sudo pacman -Syu'
 alias pmsy='sudo pacman -Sy'
 alias pms='sudo pacman -S'
 alias pmr='sudo pacman -R'
-# alias i3lock="i3lock -ti /home/duy/Pictures/my_liberty.png"
 alias d='~/Downloads'
 alias D='~/Documents'
 alias mv='mv -iv'
 alias cp='cp -iv'
 alias rm='rm -v'
 alias ka='sudo killall'
-alias cf='cd ~/.config'
-alias aircrack="aircrack-ng -w ~/gits/wordlists/wifi-chua.txt"
 
-#
-# alias mpv="mpv --ytdl-format='bestvideo[ext=mp4][height<=?720]+bestaudio[ext=m4a]'"
 alias mpvi="mpv --ytdl-raw-options=write-sub=,write-auto-sub=,sub-lang=vi" 
 alias mpvh="mpv --ytdl-format='[height<=1080]'"
 alias mpvm="mpv --ytdl-format='[height<=720]'"
@@ -174,8 +152,6 @@ alias mpvl="mpv --ytdl-format='[height<=360]'"
 alias mpvc="proxychains mpv --ytdl-format='[height<=?720]'"
 
 
-# alias gvim='gvim -u NONE'
-# set -o vi
 bindkey -v
 bindkey -M viins 'jk' vi-cmd-mode
 bindkey '^e' edit-command-line
@@ -207,9 +183,6 @@ function zle-keymap-select() {
 
 zle -N zle-keymap-select
 
-# function vi_mode_prompt_info() {
-#   echo "${${KEYMAP/vicmd/[% NORMAL]%}/(main|viins)/[% INSERT]%}"
-# }
 function vi_mode_prompt_info() {
 	[[ $? -ne 0 ]] && echo "${${KEYMAP/vicmd/[% NORMAL]%}/(main|viins)/[% INSERT]%} :(" || echo "${${KEYMAP/vicmd/[% NORMAL]%}/(main|viins)/[% INSERT]%} :)"
 }
@@ -219,17 +192,7 @@ PS1='%F{blue}%*%f %F{green}%~%f $(git_prompt_info)
 $ '
 # RPS1='$(vi_mode_prompt_info)'
 RPS2=$RPS1
-#
-# PROMPT='%{$fg[blue]%}%D{[%X]} %{$reset_color%}:%{$fg_bold[green]%}%~%{$reset_color%}$(hg_prompt_info)$(git_prompt_info)
-# %(?,,%{${fg_bold[white]}%}[%?]%{$reset_color%} )$ '
 
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-# export PATH="$PATH:$HOME/.rvm/bin"
-# export PATH="$PATH:$HOME/.local/bin"
-# export PATH="$PATH:$HOME/.gem/ruby/2.7.0/bin"
-# export PATH="$PATH:$HOME/gits/arch_config/scripts"
-# export PATH="$PATH:$HOME/gits/arch_config/.local/bin/statusbar"
 export HISTFILE=~/.zsh_history
 export HISTSIZE=999999999
 export SAVEHIST=$HISTSIZE
@@ -254,16 +217,6 @@ ytal()
     mpv --loop=inf --ytdl-format=bestaudio ytdl://ytsearch:"$*"
 }
 
-
-# color for manpages
-# export LESS_TERMCAP_mb=$'\e[1;32m'
-# export LESS_TERMCAP_md=$'\e[1;32m'
-# export LESS_TERMCAP_me=$'\e[0m'
-# export LESS_TERMCAP_se=$'\e[0m'
-# export LESS_TERMCAP_so=$'\e[01;33m'
-# export LESS_TERMCAP_ue=$'\e[0m'
-# export LESS_TERMCAP_us=$'\e[1;4;31m'
- 
 # Manpages in vim
 vman() {
   /usr/bin/man $@ | \
@@ -311,19 +264,32 @@ function cd() {
   fi
 }
 
-# source <(kubectl completion bash)
-# source <(kubectl completion zsh)
 rm_pycache() {
 	rm -rf `find ./** -type d -name "__pycache__"`
 }
-# function wifi() {
-# 	sudo rfkill block wlan &&
-# 	sudo rfkill unblock wlan &&
-# 	sudo wifi-menu wlp3s0
-# }
 
-export KUBECONFIG=/home/duy/kube_config
-# export PATH="$HOME/.pyenv/bin:$PATH" && eval "$(pyenv init -)"
-
-# Amazon Q post block. Keep at the bottom of this file.
-# [[ -f "${HOME}/.local/share/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/.local/share/amazon-q/shell/zshrc.post.zsh"
+psfind() {
+    # Extract the first letter and the rest of the string cleanly
+    local first="${1:0:1}"
+    local rest="${1:1}"
+    
+    # Run the command
+    ps aux | awk "NR==1 || /[$first]$rest/"
+}
+treefind() {
+    # Default to line 1 if the second argument is missing
+    local line_num="${2:-1}"
+    
+    # Get the PID from the specific line using sed
+    local pid=$(pgrep -f "$1" | sed -n "${line_num}p")
+    
+    if [ -z "$pid" ]; then
+        echo "No running process found for '$1' at line $line_num"
+        echo "Available PIDs for '$1':"
+        pgrep -fl "$1"
+        return 1
+    fi
+    
+    # Show the parent tree for that specific PID
+    pstree -sp "$pid"
+}
