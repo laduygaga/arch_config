@@ -202,6 +202,7 @@ static void manage(Window w, XWindowAttributes *wa);
 static void mappingnotify(XEvent *e);
 static void maprequest(XEvent *e);
 static void monocle(Monitor *m);
+static void scroll(Monitor *m);
 static void motionnotify(XEvent *e);
 static void movemouse(const Arg *arg);
 static Client *nexttiled(Client *c);
@@ -1168,6 +1169,8 @@ focus(Client *c)
 		XDeleteProperty(dpy, root, netatom[NetActiveWindow]);
 	}
 	selmon->sel = c;
+	if (selmon->lt[selmon->sellt]->arrange == scroll)
+		arrange(selmon); /* scroll layout centers the view on the focused client */
 	drawbars();
 	drawtabs();
 }
@@ -1448,10 +1451,19 @@ manage(Window w, XWindowAttributes *wa)
 		c->isfloating = c->oldstate = trans != None || c->isfixed;
 	if (c->isfloating)
 		XRaiseWindow(dpy, c->win);
-	if( attachbelow )
+	if (c->mon->lt[c->mon->sellt]->arrange == scroll) {
+		/* scroll layout: spawn on the right (tail); the new window
+		 * becomes focused and centered, pushing earlier windows left */
+		Client **tc;
+		for (tc = &c->mon->clients; *tc; tc = &(*tc)->next)
+			;
+		*tc = c;
+		c->next = NULL;
+	} else if (attachbelow) {
 		attachBelow(c);
-	else
+	} else {
 		attach(c);
+	}
 	attachstack(c);
 	XChangeProperty(dpy, root, netatom[NetClientList], XA_WINDOW, 32, PropModeAppend,
 		(unsigned char *) &(c->win), 1);
@@ -1504,6 +1516,44 @@ monocle(Monitor *m)
 		snprintf(m->ltsymbol, sizeof m->ltsymbol, "[%d]", n);
 	for (c = nexttiled(m->clients); c; c = nexttiled(c->next))
 		resize(c, m->wx, m->wy, m->ww - 2 * c->bw, m->wh - 2 * c->bw, 0);
+}
+
+void
+scroll(Monitor *m)
+{
+	unsigned int n = 0, i = 0, selidx = 0;
+	Client *c;
+	int fw, x;
+
+	for (c = m->clients; c; c = c->next)
+		if (ISVISIBLE(c) && !c->isfloating && !c->isfullscreen)
+			n++;
+	if (n == 0)
+		return;
+
+	/* find the index of the currently focused tiled client; the view
+	 * centers on it so scrolling follows focus (e.g. MOD+j / MOD+k) */
+	for (c = m->clients; c; c = c->next) {
+		if (!ISVISIBLE(c) || c->isfloating || c->isfullscreen)
+			continue;
+		if (c == m->sel)
+			selidx = i;
+		i++;
+	}
+
+	/* focused column takes scrollfact of the monitor width; immediate
+	 * neighbours peek at the edges. Width is constant regardless of count. */
+	fw = (int)(m->ww * scrollfact);
+	if (fw > m->ww)
+		fw = m->ww;
+
+	for (i = 0, c = m->clients; c; c = c->next) {
+		if (!ISVISIBLE(c) || c->isfloating || c->isfullscreen)
+			continue;
+		x = m->wx + (m->ww - fw) / 2 + (int)i * fw - (int)selidx * fw;
+		resize(c, x, m->wy, fw - 2 * c->bw, m->wh - 2 * c->bw, 0);
+		i++;
+	}
 }
 
 void

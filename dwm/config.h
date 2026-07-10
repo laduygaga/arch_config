@@ -84,6 +84,7 @@ static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] 
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
 static int attachbelow = 0;    /* 1 means attach after the currently active window */
+static const float scrollfact  = 0.72; /* scroll layout: focused column width as fraction of monitor (wider; neighbour just peeks at right/left edges) */
 
 
 #include "grid.c"
@@ -94,7 +95,8 @@ static const Layout layouts[] = {
     { "HHH",      grid},    
     { "|M|",      centeredmaster },
     { ">M>",      centeredfloatingmaster },
-    { "[]=",      tile },    /* first entry is default */
+	{ "[]=",      tile },    /* first entry is default */
+	{ "⟨⟩",       scroll },  /* multi-column peek; view follows focus (MOD+j / MOD+k) */
 };
 
 /* key definitions */
@@ -141,7 +143,8 @@ static Key keys[] = {
     { MODKEY,               XK_u,           setlayout,          {.v = &layouts[2]} },
     { MODKEY,               XK_y,           setlayout,          {.v = &layouts[3]} },
     { MODKEY|ShiftMask,     XK_y,           setlayout,          {.v = &layouts[4]} },
-    { MODKEY|ShiftMask,     XK_u,           setlayout,          {.v = &layouts[5]} },
+	{ MODKEY|ShiftMask,     XK_u,           setlayout,          {.v = &layouts[5]} },
+	{ MODKEY,               XK_o,           setlayout,          {.v = &layouts[6]} }, /* scroll layout */
     // { MODKEY,               XK_space,       setlayout,          {0} },
     { MODKEY|ShiftMask,     XK_space,       togglefloating,     {0} },
     { MODKEY,               XK_f,           togglefullscr,      {0} },
