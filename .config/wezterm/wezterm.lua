@@ -9,6 +9,7 @@ config.cursor_blink_rate = 0
 config.default_cursor_style = "SteadyBlock"
 
 config.scrollback_lines = 10000
+config.check_for_updates = false
 
 -- Disable font ligatures to prevent != from rendering as ≠, etc
 config.harfbuzz_features = { 'calt=0', 'liga=0' }
@@ -33,7 +34,7 @@ config.window_padding = {
   bottom = 0,
 }
 config.warn_about_missing_glyphs = false
-config.font_size   = 11.0
+config.font_size   = 12.0
 config.cell_width  = 0.88
 config.line_height = 0.9
 config.freetype_load_target   = 'Light'
@@ -84,44 +85,51 @@ config.colors = {
 
 local function extract_json_from_pane(window, pane)
   local text = pane:get_lines_as_text(10000)
-  local i = #text
-  
-  while i >= 1 do
+  -- Copy the last complete top-level JSON value (nested fragments are skipped).
+  local last_json = nil
+  local i = 1
+  local n = #text
+  while i <= n do
     local char = text:sub(i, i)
-    
-    if char == '}' or char == ']' then
-      local json_end = i
-      local brace_count = 0
+    if char == '{' or char == '[' then
+      local end_char = char == '{' and '}' or ']'
+      local depth = 0
       local in_string = false
       local escape_next = false
-      local end_char = char
-      local start_char = char == '}' and '{' or '['
-      
-      while i >= 1 do
-        char = text:sub(i, i)
-        
+      local j = i
+      while j <= n do
+        local c = text:sub(j, j)
         if escape_next then
           escape_next = false
-        elseif char == '\\' and in_string then
+        elseif c == '\\' and in_string then
           escape_next = true
-        elseif char == '"' then
+        elseif c == '"' then
           in_string = not in_string
         elseif not in_string then
-          if char == end_char then
-            brace_count = brace_count + 1
-          elseif char == start_char then
-            brace_count = brace_count - 1
-            if brace_count == 0 then
-              local json_str = text:sub(i, json_end)
-              window:copy_to_clipboard(json_str, 'Clipboard')
-              return
+          if char == '{' and c == '{' or char == '[' and c == '[' then
+            depth = depth + 1
+          elseif c == end_char then
+            depth = depth - 1
+            if depth == 0 then
+              last_json = text:sub(i, j)
+              i = j + 1
+              break
             end
           end
         end
-        i = i - 1
+        j = j + 1
       end
+      if j > n then break end
+    else
+      i = i + 1
     end
-    i = i - 1
+  end
+
+  if last_json then
+    window:copy_to_clipboard(last_json, 'Clipboard')
+    window:toast_notification('wezterm', 'Copied JSON to clipboard', nil, 2000)
+  else
+    window:toast_notification('wezterm', 'No JSON found in scrollback', nil, 2000)
   end
 end
 
@@ -144,12 +152,6 @@ config.keys = {
     key = 'c',
     mods = 'CTRL|ALT',
     action = wezterm.action.CopyTo 'Clipboard',
-  },
-  -- Unbind the default Quick Select shortcut
-  {
-    key = 'Space',
-    mods = 'CTRL|SHIFT',
-    action = wezterm.action.DisableDefaultAssignment,
   },
   -- Open native QuickSelect overlay: Ctrl+Alt+S
   {
@@ -221,14 +223,6 @@ config.keys = {
     mods = 'SHIFT',
     action = wezterm.action.SendString '\x1b\r',
   },
-  -- Execute alacritty-invert-colours script in the background: Ctrl+Alt+I
-  {
-    key = 'i',
-    mods = 'CTRL|ALT',
-    action = wezterm.action_callback(function(window, pane)
-      wezterm.background_child_process { 'alacritty-invert-colours' }
-    end),
-  },
   -- Open URL under cursor: Ctrl+Alt+O
   {
     key = 'o',
@@ -251,15 +245,6 @@ config.keys = {
     mods = 'CTRL|SHIFT',
     action = wezterm.action_callback(extract_json_from_pane),
   },
-  -- Select and copy JSON: Ctrl+Shift+J
-  -- {
-  --   key = 'j',
-  --   mods = 'CTRL|SHIFT',
-  --   action = wezterm.action.QuickSelectArgs {
-  --     patterns = { '\\{[^}]*\\}|\\[[^\\]]*\\]' },
-  --     action = wezterm.action.CopyTo 'Clipboard',
-  --   },
-  -- },
 }
 
 config.key_tables = wezterm.gui.default_key_tables()
