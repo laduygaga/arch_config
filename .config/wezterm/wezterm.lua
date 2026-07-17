@@ -9,6 +9,7 @@ config.cursor_blink_rate = 0
 config.default_cursor_style = "SteadyBlock"
 
 config.scrollback_lines = 10000
+config.check_for_updates = false
 
 -- Disable font ligatures to prevent != from rendering as ≠, etc
 config.harfbuzz_features = { 'calt=0', 'liga=0' }
@@ -33,7 +34,7 @@ config.window_padding = {
   bottom = 0,
 }
 config.warn_about_missing_glyphs = false
-config.font_size   = 11.0
+config.font_size   = 14.0
 config.cell_width  = 0.88
 config.line_height = 0.9
 config.freetype_load_target   = 'Light'
@@ -82,47 +83,174 @@ config.colors = {
   copy_mode_inactive_highlight_fg = { Color = '#000000' },
 }
 
+-- Replicates the st terminal flow: extract all URLs from the scrollback with
+-- xurls, list them in dmenu, and copy the one you pick. wezterm force-wraps
+-- long URLs into physical rows, so we pull the scrollback via
+-- get_text_from_region, which returns it UNWRAPPED (width-independent); xurls
+-- then sees each URL as one contiguous line. run_child_process inherits DISPLAY
+-- so dmenu renders on X11.
+local function find_url_near_cursor(window, pane)
+  local dims = pane:get_dimensions()
+  local top = dims.scrollback_top
+  local region = pane:get_text_from_region(
+    0, top,
+    dims.cols - 1, top + dims.scrollback_rows - 1
+  )
+  if not region or #region == 0 then
+    window:toast_notification('wezterm', 'No scrollback to scan', nil, 2000)
+    return
+  end
+
+  local tmp = '/tmp/opencode/wez_url_in.txt'
+  local tf = io.open(tmp, 'w')
+  if not tf then
+    window:toast_notification('wezterm', 'Cannot write temp file', nil, 2000)
+    return
+  end
+  tf:write(region)
+  tf:close()
+
+  -- stdout is the chosen dmenu line (with trailing newline); empty => cancelled.
+  local success, stdout = wezterm.run_child_process {
+    '/bin/sh', '-c',
+    string.format("xurls '%s' | sort -u | dmenu -i -p 'Copy which url?' -l 10", tmp),
+  }
+  os.remove(tmp)
+
+  if not success or not stdout or #stdout == 0 then
+    -- dmenu cancelled or no URLs: nothing to do.
+    return
+  end
+
+  local url = stdout:match('[^\n]*')
+  if #url == 0 then return end
+  window:copy_to_clipboard(url)
+  window:toast_notification('wezterm', 'Copied (' .. #url .. ' chars)', nil, 2000)
+end
+
+-- Strip insignificant whitespace while preserving string contents, so a
+-- pretty-printed (multi-line) value collapses to one dmenu row. JSON allows
+-- removing ALL whitespace outside of string literals.
+local function minify_json(s)
+  local out = {}
+  local in_string = false
+  local escape_next = false
+  local n = #s
+  for i = 1, n do
+    local c = s:sub(i, i)
+    if escape_next then
+      escape_next = false
+      out[#out + 1] = c
+    elseif c == '\\' and in_string then
+      escape_next = true
+      out[#out + 1] = c
+    elseif c == '"' then
+      in_string = not in_string
+      out[#out + 1] = c
+    elseif in_string then
+      out[#out + 1] = c
+    elseif not c:match('%s') then
+      out[#out + 1] = c
+    end
+  end
+  return table.concat(out)
+end
+
+-- Same flow as the URL extractor: pull the UNWRAPPED scrollback via
+-- get_text_from_region (force-wrap-safe), collect every complete top-level
+-- JSON value, list them in dmenu, and copy the one you pick.
 local function extract_json_from_pane(window, pane)
-  local text = pane:get_lines_as_text(10000)
-  local i = #text
-  
-  while i >= 1 do
-    local char = text:sub(i, i)
-    
-    if char == '}' or char == ']' then
-      local json_end = i
-      local brace_count = 0
+  local dims = pane:get_dimensions()
+  local top = dims.scrollback_top
+  local region = pane:get_text_from_region(
+    0, top,
+    dims.cols - 1, top + dims.scrollback_rows - 1
+  )
+  if not region or #region == 0 then
+    window:toast_notification('wezterm', 'No scrollback to scan', nil, 2000)
+    return
+  end
+
+  -- Collect every complete top-level {..} or [..] value, respecting strings.
+  local values = {}
+  local n = #region
+  local i = 1
+  while i <= n do
+    local char = region:sub(i, i)
+    if char == '{' or char == '[' then
+      local end_char = char == '{' and '}' or ']'
+      local depth = 0
       local in_string = false
       local escape_next = false
-      local end_char = char
-      local start_char = char == '}' and '{' or '['
-      
-      while i >= 1 do
-        char = text:sub(i, i)
-        
+      local j = i
+      while j <= n do
+        local c = region:sub(j, j)
         if escape_next then
           escape_next = false
-        elseif char == '\\' and in_string then
+        elseif c == '\\' and in_string then
           escape_next = true
-        elseif char == '"' then
+        elseif c == '"' then
           in_string = not in_string
         elseif not in_string then
-          if char == end_char then
-            brace_count = brace_count + 1
-          elseif char == start_char then
-            brace_count = brace_count - 1
-            if brace_count == 0 then
-              local json_str = text:sub(i, json_end)
-              window:copy_to_clipboard(json_str, 'Clipboard')
-              return
+          if char == '{' and c == '{' or char == '[' and c == '[' then
+            depth = depth + 1
+          elseif c == end_char then
+            depth = depth - 1
+            if depth == 0 then
+              values[#values + 1] = region:sub(i, j)
+              i = j + 1
+              break
             end
           end
         end
-        i = i - 1
+        j = j + 1
       end
+      if j > n then break end
+    else
+      i = i + 1
     end
-    i = i - 1
   end
+
+  if #values == 0 then
+    window:toast_notification('wezterm', 'No JSON found in scrollback', nil, 2000)
+    return
+  end
+
+  -- Feed the candidates to dmenu; stdout is the chosen value (trailing newline).
+  local tmp = '/tmp/opencode/wez_json_in.txt'
+  local tf = io.open(tmp, 'w')
+  if not tf then
+    window:toast_notification('wezterm', 'Cannot write temp file', nil, 2000)
+    return
+  end
+  for k, v in ipairs(values) do
+    values[k] = minify_json(v)
+  end
+  -- Drop duplicates (stable: keep first occurrence).
+  local seen, uniq = {}, {}
+  for _, v in ipairs(values) do
+    if not seen[v] then
+      seen[v] = true
+      uniq[#uniq + 1] = v
+    end
+  end
+  tf:write(table.concat(uniq, '\n') .. '\n')
+  tf:close()
+
+  local success, stdout = wezterm.run_child_process {
+    '/bin/sh', '-c',
+    string.format("dmenu -i -p 'Copy which json?' -l 10 < '%s'", tmp),
+  }
+  os.remove(tmp)
+
+  if not success or not stdout or #stdout == 0 then
+    return
+  end
+
+  local json = stdout:match('[^\n]*')
+  if #json == 0 then return end
+  window:copy_to_clipboard(json)
+  window:toast_notification('wezterm', 'Copied JSON (' .. #json .. ' chars)', nil, 2000)
 end
 
 -- Keybindings
@@ -145,12 +273,6 @@ config.keys = {
     mods = 'CTRL|ALT',
     action = wezterm.action.CopyTo 'Clipboard',
   },
-  -- Unbind the default Quick Select shortcut
-  {
-    key = 'Space',
-    mods = 'CTRL|SHIFT',
-    action = wezterm.action.DisableDefaultAssignment,
-  },
   -- Open native QuickSelect overlay: Ctrl+Alt+S
   {
     key = 's',
@@ -168,31 +290,26 @@ config.keys = {
     mods = 'CTRL|SHIFT',
     action = wezterm.action.DisableDefaultAssignment,
   },
-  -- Scroll half page up: Super+K
   {
     key = 'k',
     mods = 'SUPER',
-    action = wezterm.action.ScrollByPage(-0.5),
+    action = wezterm.action.ScrollToPrompt(-1),
   },
-  -- Scroll half page down: Super+J
   {
     key = 'j',
     mods = 'SUPER',
-    action = wezterm.action.ScrollByPage(0.5),
+    action = wezterm.action.ScrollToPrompt(1),
   },
-  -- Decrease font size: Ctrl+Alt+J
   {
     key = 'j',
     mods = 'CTRL|ALT',
     action = wezterm.action.DecreaseFontSize,
   },
-  -- Increase font size: Ctrl+Alt+K
   {
     key = 'k',
     mods = 'CTRL|ALT',
     action = wezterm.action.IncreaseFontSize,
   },
-  -- Reset font size: Ctrl+Alt+H
   {
     key = 'h',
     mods = 'CTRL|ALT',
@@ -221,29 +338,11 @@ config.keys = {
     mods = 'SHIFT',
     action = wezterm.action.SendString '\x1b\r',
   },
-  -- Execute alacritty-invert-colours script in the background: Ctrl+Alt+I
-  {
-    key = 'i',
-    mods = 'CTRL|ALT',
-    action = wezterm.action_callback(function(window, pane)
-      wezterm.background_child_process { 'alacritty-invert-colours' }
-    end),
-  },
-  -- Open URL under cursor: Ctrl+Alt+O
+  -- Copy wrapped/long URL from scrollback: Ctrl+Alt+O
   {
     key = 'o',
     mods = 'CTRL|ALT',
-    action = wezterm.action.QuickSelectArgs {
-      patterns = { 
-        'https?://[^\\s\\)\\]]+', -- Matches web URLs excluding trailing ) or ]
-        'file://[^\\s\\)\\]]+'    -- Matches file paths excluding trailing ) or ]
-      },
-      action = wezterm.action_callback(function(window, pane)
-        local url = window:get_selection_text_for_pane(pane)
-        -- wezterm.open_with(url)
-        window:copy_to_clipboard(url)
-      end),
-    },
+    action = wezterm.action_callback(find_url_near_cursor),
   },
   -- JSON Copy: Ctrl+Shift+J
   {
@@ -251,15 +350,6 @@ config.keys = {
     mods = 'CTRL|SHIFT',
     action = wezterm.action_callback(extract_json_from_pane),
   },
-  -- Select and copy JSON: Ctrl+Shift+J
-  -- {
-  --   key = 'j',
-  --   mods = 'CTRL|SHIFT',
-  --   action = wezterm.action.QuickSelectArgs {
-  --     patterns = { '\\{[^}]*\\}|\\[[^\\]]*\\]' },
-  --     action = wezterm.action.CopyTo 'Clipboard',
-  --   },
-  -- },
 }
 
 config.key_tables = wezterm.gui.default_key_tables()
@@ -307,5 +397,12 @@ config.mouse_bindings = {
     action = wezterm.action.CompleteSelection 'ClipboardAndPrimarySelection',
   },
 }
+
+local act = wezterm.action
+config.key_tables = config.key_tables or {}
+config.key_tables.copy_mode = config.key_tables.copy_mode or {}
+table.insert(config.key_tables.copy_mode, {
+  key = '%', mods = 'NONE', action = act.CopyMode 'JumpToMatchingBracket',
+})
 
 return config
