@@ -398,4 +398,11 @@ config.mouse_bindings = {
   },
 }
 
+local act = wezterm.action
+config.key_tables = config.key_tables or {}
+config.key_tables.copy_mode = config.key_tables.copy_mode or {}
+table.insert(config.key_tables.copy_mode, {
+  key = '%', mods = 'NONE', action = act.CopyMode 'JumpToMatchingBracket',
+})
+
 return config
