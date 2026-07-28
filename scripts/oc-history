@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+
+DB_PATH="$HOME/.local/share/opencode/opencode.db"
+
+if [[ ! -f "$DB_PATH" ]]; then
+  echo "Error: OpenCode database not found at $DB_PATH" >&2
+  exit 1
+fi
+
+# Function to copy text to clipboard across X11 & Wayland
+copy_to_clipboard() {
+  local text="$1"
+
+  if [[ -n "$WAYLAND_DISPLAY" ]] && command -v wl-copy &>/dev/null; then
+    echo -n "$text" | wl-copy
+  elif command -v xclip &>/dev/null; then
+    echo -n "$text" | xclip -selection clipboard
+  elif command -v xsel &>/dev/null; then
+    echo -n "$text" | xsel --clipboard --input
+  else
+    echo "Error: No clipboard utility found. Please install xclip or xsel." >&2
+    return 1
+  fi
+}
+
+# 1. Query user prompts from OpenCode's SQLite DB
+# 2. Pipe to fzf with line wrapping preview
+selected_prompt=$(sqlite3 -separator ' | ' "$DB_PATH" "
+  SELECT 
+    replace(replace(json_extract(p.data, '$.text'), char(10), ' '), char(13), ' ') AS prompt
+  FROM part p
+  JOIN message m ON m.id = p.message_id
+  WHERE json_extract(m.data, '$.role') = 'user'
+    AND json_extract(p.data, '$.text') IS NOT NULL
+    AND TRIM(json_extract(p.data, '$.text')) != ''
+  ORDER BY p.id DESC;
+" | fzf \
+    --height=50% \
+    --layout=reverse \
+    --border \
+    --header="[OpenCode Prompt History] Enter to copy" \
+    --preview="echo {}" \
+    --preview-window=down:3:wrap)
+
+# Strip prefix and copy
+if [[ -n "$selected_prompt" ]]; then
+  clean_prompt="${selected_prompt#* | }"  # Remove everything before the first ' | '
+
+  copy_to_clipboard "$clean_prompt" && \
+    echo -e "\nCopied to clipboard:\n$clean_prompt"
+fi
