@@ -34,7 +34,7 @@ config.window_padding = {
   bottom = 0,
 }
 config.warn_about_missing_glyphs = false
-config.font_size   = 12.0
+config.font_size   = 11.0
 config.cell_width  = 0.88
 config.line_height = 0.9
 config.freetype_load_target   = 'Light'
@@ -118,7 +118,7 @@ local function find_url_near_cursor(window, pane)
   -- stdout is the chosen dmenu line (with trailing newline); empty => cancelled.
   local success, stdout = wezterm.run_child_process {
     '/bin/sh', '-c',
-    string.format("xurls '%s' | sort -u | dmenu -i -p 'Copy which url?' -l 10", tmp),
+    string.format("xurls -r '%s' | sort -u | dmenu -i -p 'Copy which url?' -l 10", tmp),
   }
   os.remove(tmp)
 
