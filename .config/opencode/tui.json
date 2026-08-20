@@ -89,7 +89,7 @@
     "history_next": "down",
     "terminal_suspend": "ctrl+z",
     "terminal_title_toggle": "none",
-    "tips_toggle": "<leader>h",
+    "tips_toggle": "<leader>?",
     "display_thinking": "none"
   }
 }
