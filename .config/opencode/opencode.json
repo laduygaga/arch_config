@@ -55,6 +55,9 @@
         "gemini-3.5-flash": {
           "name": "Gemini 3.5 Flash (Pooled)"
         },
+        "gemini-3.6-flash": {
+          "name": "Gemini 3.6 Flash (Pooled)"
+        },
         "gemini-3.1-flash-lite": {
           "name": "Gemini 3.1 Flash Lite (Pooled)"
         },
@@ -83,6 +86,9 @@
         "gemini-3.5-flash": {
           "name": "Gemini 3.5 Flash (Pooled1)"
         },
+        "gemini-3.6-flash": {
+          "name": "Gemini 3.6 Flash (Pooled1)"
+        },
         "gemini-3.1-flash-lite": {
           "name": "Gemini 3.1 Flash Lite (Pooled1)"
         },
@@ -110,6 +116,9 @@
         },
         "gemini-3.5-flash": {
           "name": "Gemini 3.5 Flash (Pooled2)"
+        },
+        "gemini-3.6-flash": {
+          "name": "Gemini 3.6 Flash (Pooled2)"
         },
         "gemini-3.1-flash-lite": {
           "name": "Gemini 3.1 Flash Lite (Pooled2)"
