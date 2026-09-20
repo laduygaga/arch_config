@@ -1,18 +1,2 @@
 #EXTINF:-1 tvg-id="VTV3.vn@HD",VTV3 HD (1080p) [Geo-blocked]
-https://live.fptplay53.net/fnxch2/vtv3hd_abr.smil/chunklist.m3u8
-#EXTINF:-1 tvg-id="VTV3.vn@HD",VTV3 HD (1080p)
-https://live.fptplay53.net/live/media/vtv3/live247-hls-avc/index.m3u8
-#EXTINF:-1 tvg-id="VTV3.vn@HD",VTV3 HD (1080p)
-https://vips-livecdn.fptplay.net/live/media/vtv3/live247-hls-avc/index.m3u8
-#EXTINF:-1 tvg-id="VTV3.vn@HD",VTV3 HD (720p)
-https://vtvgolive-failover.vtvdigital.vn/vtvgo/vtv3-manifest.m3u8
-#EXTINF:-1 tvg-id="VTV3.vn@HD",VTV3 HD
-https://live-a.fptplay53.net/live/media/vtv3/live247-hls-avc/index.m3u8
-#EXTINF:-1 tvg-id="VTV6.vn@HD",VTV6 (1080p) [Geo-blocked]
-https://live.fptplay53.net/fnxhd1/vtv6hd_vhls.smil/chunklist.m3u8
-#EXTINF:-1 tvg-id="VTV6.vn@HD",VTV6 (1080p)
-https://live-a.fptplay53.net/live/media/vtv6/live247-hls-avc/index.m3u8
-#EXTINF:-1 tvg-id="VTV6.vn@HD",VTV6 (1080p)
-https://live.fptplay53.net/live/media/vtv6/live247-hls-avc/index.m3u8
-#EXTINF:-1 tvg-id="VTV6.vn@HD",VTV6 (1080p)
-https://vips-livecdn.fptplay.net/live/media/vtv6/live247-hls-avc/index.m3u8
+https://playback.livetl004.com/live/69ef10b47146e04fbe6d4363.m3u8
