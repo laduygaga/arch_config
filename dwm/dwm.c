@@ -240,6 +240,7 @@ static void tag(const Arg *arg);
 static void tagmon(const Arg *arg);
 static void tile(Monitor *);
 static void togglebar(const Arg *arg);
+static void togglepassthrough(const Arg *arg);
 static void togglefloating(const Arg *arg);
 static void togglefullscr(const Arg *arg);
 static void toggletag(const Arg *arg);
@@ -303,6 +304,7 @@ static void (*handler[LASTEvent]) (XEvent *) = {
 static Atom wmatom[WMLast], netatom[NetLast];
 static int restart = 0;
 static int running = 1;
+static int passthrough = 0;
 static Cur *cursor[CurLast];
 static Clr **scheme;
 static Display *dpy;
@@ -1336,10 +1338,11 @@ grabkeys(void)
 
 		XUngrabKey(dpy, AnyKey, AnyModifier, root);
 		for (i = 0; i < LENGTH(keys); i++)
-			if ((code = XKeysymToKeycode(dpy, keys[i].keysym)))
-				for (j = 0; j < LENGTH(modifiers); j++)
-					XGrabKey(dpy, code, keys[i].mod | modifiers[j], root,
-						True, GrabModeAsync, GrabModeAsync);
+			if (!passthrough || keys[i].func == togglepassthrough)
+				if ((code = XKeysymToKeycode(dpy, keys[i].keysym)))
+					for (j = 0; j < LENGTH(modifiers); j++)
+						XGrabKey(dpy, code, keys[i].mod | modifiers[j], root,
+							True, GrabModeAsync, GrabModeAsync);
 	}
 }
 
@@ -2227,6 +2230,13 @@ togglebar(const Arg *arg)
 	updatebarpos(selmon);
 	XMoveResizeWindow(dpy, selmon->barwin, selmon->wx, selmon->by, selmon->ww, bh);
 	arrange(selmon);
+}
+
+void
+togglepassthrough(const Arg *arg)
+{
+	passthrough = !passthrough;
+	grabkeys();
 }
 
 void
