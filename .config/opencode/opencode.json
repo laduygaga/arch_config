@@ -122,6 +122,9 @@
     "sisyphus": {
       "model": "kiro-auth/gpt-5.6-sol"
     },
+    "sisyphus-junior": {
+      "model": "kiro-auth/gpt-5.6-sol"
+    },
     "oracle": {
       "model": "kiro-auth/gpt-5.6-terra"
     },
@@ -129,9 +132,7 @@
       "model": "kiro-auth/qwen3-coder-next"
     },
     "librarian": {
-      "models": [
-        "kiro-auth/qwen3-coder-next"
-      ]
+      "model": "kiro-auth/qwen3-coder-next"
     }
   }
 }
