@@ -1,13 +1,19 @@
 {
-  "default_model": "kiro-auth/gpt-5.6-sol",
+  "default_model": "kiro-auth/gpt-5.6-luna",
   "agents": {
     "sisyphus": {
-      "model": "kiro-auth/gpt-5.6-sol"
+      "model": "kiro-auth/gpt-5.6-luna"
+    },
+    "sisyphus-junior": {
+      "model": "kiro-auth/gpt-5.6-luna"
     },
     "oracle": {
-      "model": "kiro-auth/gpt-5.6-terra"
+      "model": "kiro-auth/gpt-5.6-luna"
     },
     "explore": {
+      "model": "kiro-auth/qwen3-coder-next"
+    },
+    "librarian": {
       "model": "kiro-auth/qwen3-coder-next"
     }
   }

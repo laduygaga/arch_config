@@ -83,33 +83,24 @@
       "name": "Kiro Auth Provider",
       "models": {
         "gpt-5.6-sol": {
-          "name": "GPT 5.6 Sol (Kiro)"
+          "name": "GPT 5.6 sol (Kiro)"
         },
         "gpt-5.6-terra": {
-          "name": "GPT 5.6 Terra (Kiro)"
+          "name": "GPT 5.6 terra (Kiro)"
         },
         "gpt-5.6-luna": {
           "name": "GPT 5.6 Luna (Kiro)"
         },
         "qwen3-coder-next": {
           "name": "Qwen3 Coder Next (Kiro)"
-        },
-        "auto": {
-          "name": "Auto / Default (Kiro)"
-        },
-        "claude-3-5-sonnet": {
-          "name": "Claude 3.5 Sonnet (Kiro)"
-        },
-        "claude-3-7-sonnet": {
-          "name": "Claude 3.7 Sonnet (Kiro)"
         }
       }
     }
   },
-  "model": "kiro-auth/gpt-5.6-sol",
+  "model": "kiro-auth/gpt-5.6-luna",
   "categories": {
     "ultrabrain": {
-      "model": "kiro-auth/gpt-5.6-terra"
+      "model": "kiro-auth/gpt-5.6-luna"
     },
     "quick": {
       "model": "kiro-auth/qwen3-coder-next"
@@ -120,18 +111,19 @@
   },
   "agents": {
     "sisyphus": {
-      "model": "kiro-auth/gpt-5.6-sol"
+      "model": "kiro-auth/gpt-5.6-luna"
+    },
+    "sisyphus-junior": {
+      "model": "kiro-auth/gpt-5.6-luna"
     },
     "oracle": {
-      "model": "kiro-auth/gpt-5.6-terra"
+      "model": "kiro-auth/gpt-5.6-luna"
     },
     "explore": {
       "model": "kiro-auth/qwen3-coder-next"
     },
     "librarian": {
-      "models": [
-        "kiro-auth/qwen3-coder-next"
-      ]
+      "model": "kiro-auth/qwen3-coder-next"
     }
   }
 }
