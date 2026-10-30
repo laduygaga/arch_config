@@ -2,8 +2,8 @@
   "$schema": "https://opencode.ai/config.json",
   "plugin": [
     "oh-my-openagent@latest",
-    "opencode-gpt-imagegen@latest",
-    "opencode-antigravity-auth@latest"
+    "opencode-antigravity-auth@latest",
+    "@sunerpy/opencode-kiro-auth"
   ],
   "provider": {
     "google": {
@@ -19,8 +19,6 @@
         "antigravity-claude-sonnet-4-6": {
           "name": "Claude Sonnet 4.6 (Oauth)"
         },
-        
-
         "gemini-2.5-flash": {
           "name": "Gemini 2.5 Flash (Oauth)"
         },
@@ -38,7 +36,7 @@
         }
       }
     },
-    "gemini-pool": {
+    "bifrost-gemini": {
       "npm": "@ai-sdk/openai-compatible",
       "name": "Gemini Multi-Key Pool",
       "options": {
@@ -47,90 +45,93 @@
       },
       "models": {
         "gemini-2.5-flash": {
-          "name": "Gemini 2.5 Flash (Pooled)"
+          "name": "Gemini 2.5 Flash (bifrost)"
+        },
+        "gemini-3-flash-preview": {
+          "name": "Gemini 3 Flash Preview(bifrost)"
         },
         "gemini-3-flash": {
-          "name": "Gemini 3 Flash (Stable 3.5 Routing Pooled)"
+          "name": "Gemini 3 Flash (bifrost)"
+        },
+        "gemini-3.5-flash-lite": {
+          "name": "Gemini 3.5 Flash Lite (bifrost)"
         },
         "gemini-3.5-flash": {
-          "name": "Gemini 3.5 Flash (Pooled)"
+          "name": "Gemini 3.5 Flash (bifrost)"
         },
         "gemini-3.6-flash": {
-          "name": "Gemini 3.6 Flash (Pooled)"
+          "name": "Gemini 3.6 Flash (bifrost)"
+        },
+        "gemini-3.7-flash": {
+          "name": "Gemini 3.7 Flash (bifrost)"
+        },
+        "gemini-3.8-flash": {
+          "name": "Gemini 3.8 Flash (bifrost)"
         },
         "gemini-3.1-flash-lite": {
-          "name": "Gemini 3.1 Flash Lite (Pooled)"
+          "name": "Gemini 3.1 Flash Lite (bifrost)"
         },
         "gemini-2.5-flash-lite": {
-          "name": "Gemini 2.5 Flash Lite (Pooled)"
+          "name": "Gemini 2.5 Flash Lite (bifrost)"
         },
         "gemma-4-31b": {
-          "name": "Gemma 4 31B (Pooled)"
+          "name": "Gemma 4 31B (bifrost)"
         }
       }
     },
-    "gemini-pool1": {
-      "npm": "@ai-sdk/openai-compatible",
-      "name": "Gemini Multi-Key Pool1",
-      "options": {
-        "baseURL": "http://127.0.0.1:4001/v1",
-        "apiKey": "placeholder-token"
-      },
+    "kiro-auth": {
+      "name": "Kiro Auth Provider",
       "models": {
-        "gemini-2.5-flash": {
-          "name": "Gemini 2.5 Flash (Pooled1)"
+        "gpt-5.6-sol": {
+          "name": "GPT 5.6 Sol (Kiro)"
         },
-        "gemini-3-flash": {
-          "name": "Gemini 3 Flash (Stable 3.5 Routing Pooled1)"
+        "gpt-5.6-terra": {
+          "name": "GPT 5.6 Terra (Kiro)"
         },
-        "gemini-3.5-flash": {
-          "name": "Gemini 3.5 Flash (Pooled1)"
+        "gpt-5.6-luna": {
+          "name": "GPT 5.6 Luna (Kiro)"
         },
-        "gemini-3.6-flash": {
-          "name": "Gemini 3.6 Flash (Pooled1)"
+        "qwen3-coder-next": {
+          "name": "Qwen3 Coder Next (Kiro)"
         },
-        "gemini-3.1-flash-lite": {
-          "name": "Gemini 3.1 Flash Lite (Pooled1)"
+        "auto": {
+          "name": "Auto / Default (Kiro)"
         },
-        "gemini-2.5-flash-lite": {
-          "name": "Gemini 2.5 Flash Lite (Pooled1)"
+        "claude-3-5-sonnet": {
+          "name": "Claude 3.5 Sonnet (Kiro)"
         },
-        "gemma-4-31b": {
-          "name": "Gemma 4 31B (Pooled1)"
-        }
-      }
-    },
-    "gemini-pool2": {
-      "npm": "@ai-sdk/openai-compatible",
-      "name": "Gemini Multi-Key Pool2",
-      "options": {
-        "baseURL": "http://127.0.0.1:4002/v1",
-        "apiKey": "placeholder-token"
-      },
-      "models": {
-        "gemini-2.5-flash": {
-          "name": "Gemini 2.5 Flash (Pooled2)"
-        },
-        "gemini-3-flash": {
-          "name": "Gemini 3 Flash (Stable 3.5 Routing Pooled2)"
-        },
-        "gemini-3.5-flash": {
-          "name": "Gemini 3.5 Flash (Pooled2)"
-        },
-        "gemini-3.6-flash": {
-          "name": "Gemini 3.6 Flash (Pooled2)"
-        },
-        "gemini-3.1-flash-lite": {
-          "name": "Gemini 3.1 Flash Lite (Pooled2)"
-        },
-        "gemini-2.5-flash-lite": {
-          "name": "Gemini 2.5 Flash Lite (Pooled2)"
-        },
-        "gemma-4-31b": {
-          "name": "Gemma 4 31B (Pooled2)"
+        "claude-3-7-sonnet": {
+          "name": "Claude 3.7 Sonnet (Kiro)"
         }
       }
     }
   },
-  "model": "gemini-pool/gemini-3.5-flash"
+  "model": "kiro-auth/gpt-5.6-sol",
+  "categories": {
+    "ultrabrain": {
+      "model": "kiro-auth/gpt-5.6-terra"
+    },
+    "quick": {
+      "model": "kiro-auth/qwen3-coder-next"
+    },
+    "visual-engineering": {
+      "model": "kiro-auth/gpt-5.6-luna"
+    }
+  },
+  "agents": {
+    "sisyphus": {
+      "model": "kiro-auth/gpt-5.6-sol"
+    },
+    "oracle": {
+      "model": "kiro-auth/gpt-5.6-terra"
+    },
+    "explore": {
+      "model": "kiro-auth/qwen3-coder-next"
+    },
+    "librarian": {
+      "models": [
+        "kiro-auth/qwen3-coder-next"
+      ]
+    }
+  }
 }
