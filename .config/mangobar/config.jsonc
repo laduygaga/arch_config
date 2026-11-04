@@ -8,7 +8,6 @@
         "window"
     ],
     "modules-right": [
-        "custom/coin",
         "custom/ping",
         "cpu",
         "memory",
@@ -25,12 +24,8 @@
     "window": {
         "format": "{}"
     },
-    "custom/coin": {
-        "exec": "cat /tmp/coin_price.txt 2>/dev/null || echo ''",
-        "interval": 5
-    },
     "custom/ping": {
-        "exec": "/home/duy/gits/arch_config/scripts/ping.sh 2>/dev/null || echo ''",
+        "exec": "ping.sh 2>/dev/null || echo ''",
         "interval": 5
     },
     "cpu": {
@@ -47,20 +42,20 @@
     },
     "network": {
         "interface": "eno1",
-        "format": "{ipaddr} [{down}/{up}]",
+        "format": "{ipaddr} ",
         "format-disconnected": "Disconnected",
         "interval": 2
     },
     "custom/music": {
-        "exec": "/home/duy/gits/arch_config/scripts/music 2>/dev/null || echo ''",
-        "interval": 3
+        "exec": "music 2>/dev/null || echo ''",
+        "interval": 1
     },
     "pulseaudio": {
         "format": "{volume}%",
         "format-muted": "Muted"
     },
     "clock": {
-        "format": "{:%b %d (%a) %r}",
+        "format": "%b %d (%a) %r",
         "interval": 1
     }
 }
