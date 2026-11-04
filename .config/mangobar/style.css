@@ -1,0 +1,78 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family: monospace, Symbola;
+    font-size: 12px;
+    min-height: 0;
+}
+
+#mangobar, window {
+    background-color: #222222;
+    color: #eeeeee;
+}
+
+#tags button, #workspaces button {
+    padding: 0 6px;
+    background-color: transparent;
+    color: #bbbbbb;
+}
+
+#tags button.focused, #tags button.active, #workspaces button.active, #workspaces button.focused {
+    background-color: #005577;
+    color: #eeeeee;
+}
+
+#tags button.urgent, #workspaces button.urgent {
+    background-color: #ed516b;
+    color: #ffffff;
+}
+
+#title, #window {
+    color: #eeeeee;
+    padding: 0 8px;
+}
+
+#custom-coin {
+    color: #fcba03;
+    padding: 0 4px;
+}
+
+#custom-ping {
+    color: #18f553;
+    padding: 0 4px;
+}
+
+#cpu {
+    color: #ed516b;
+    padding: 0 4px;
+}
+
+#memory {
+    color: #f731f4;
+    padding: 0 4px;
+}
+
+#disk, #custom-disk {
+    color: #d65c20;
+    padding: 0 4px;
+}
+
+#network {
+    color: #ffffff;
+    padding: 0 4px;
+}
+
+#custom-music {
+    color: #f5da42;
+    padding: 0 4px;
+}
+
+#volume, #pulseaudio, #wireplumber {
+    color: #ffffff;
+    padding: 0 4px;
+}
+
+#clock {
+    color: #ef42f5;
+    padding: 0 4px;
+}

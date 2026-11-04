@@ -1,0 +1,66 @@
+{
+    "layer": "top",
+    "position": "bottom", // requires the patched /usr/local/bin/mangobar (upstream hardcodes top)
+    "height": 24,
+    "spacing": 4,
+    "modules-left": [
+        "workspaces",
+        "window"
+    ],
+    "modules-right": [
+        "custom/coin",
+        "custom/ping",
+        "cpu",
+        "memory",
+        "custom/disk",
+        "network",
+        "custom/music",
+        "pulseaudio",
+        "clock"
+    ],
+    "workspaces": {
+        "on-click": "activate",
+        "on-click-right": "toggle"
+    },
+    "window": {
+        "format": "{}"
+    },
+    "custom/coin": {
+        "exec": "cat /tmp/coin_price.txt 2>/dev/null || echo ''",
+        "interval": 5
+    },
+    "custom/ping": {
+        "exec": "/home/duy/gits/arch_config/scripts/ping.sh 2>/dev/null || echo ''",
+        "interval": 5
+    },
+    "cpu": {
+        "format": "{load}%:",
+        "interval": 2
+    },
+    "memory": {
+        "format": "{percent}%",
+        "interval": 2
+    },
+    "custom/disk": {
+        "exec": "df -h / | awk 'NR==2 {print $4}'",
+        "interval": 10
+    },
+    "network": {
+        "interface": "eno1",
+        "format": "{ipaddr} [{down}/{up}]",
+        "format-disconnected": "Disconnected",
+        "interval": 2
+    },
+    "custom/music": {
+        "exec": "/home/duy/gits/arch_config/scripts/music 2>/dev/null || echo ''",
+        "interval": 3
+    },
+    "pulseaudio": {
+        "format": "{volume}%",
+        "format-muted": "Muted"
+    },
+    "clock": {
+        "format": "{:%b %d (%a) %r}",
+        "interval": 1
+    }
+}

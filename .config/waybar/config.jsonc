@@ -1,0 +1,56 @@
+{
+    "layer": "top",
+    "position": "bottom",
+    "height": 24,
+    "spacing": 4,
+    "modules-left": ["mango/tags", "mango/window"],
+    "modules-right": [
+        "custom/coin",
+        "custom/ping",
+        "cpu",
+        "memory",
+        "disk",
+        "network",
+        "custom/music",
+        "wireplumber",
+        "clock"
+    ],
+    "custom/coin": {
+        "exec": "cat /tmp/coin_price.txt 2>/dev/null || echo ''",
+        "interval": 5
+    },
+    "custom/ping": {
+        "exec": "/home/duy/gits/arch_config/scripts/ping.sh 2>/dev/null || echo ''",
+        "interval": 5
+    },
+    "cpu": {
+        "format": "{usage}%:",
+        "tooltip": true
+    },
+    "memory": {
+        "format": "{used:0.1f}G/{total:0.1f}G",
+        "tooltip": true
+    },
+    "disk": {
+        "format": "{free}",
+        "path": "/"
+    },
+    "network": {
+        "interface": "eno1",
+        "format": "{ipaddr} [{bandwidthDownBytes}/{bandwidthUpBytes}]",
+        "format-disconnected": "Disconnected",
+        "interval": 2
+    },
+    "custom/music": {
+        "exec": "/home/duy/gits/arch_config/scripts/music 2>/dev/null || echo ''",
+        "interval": 3
+    },
+    "wireplumber": {
+        "format": "{volume}%",
+        "format-muted": "Muted"
+    },
+    "clock": {
+        "format": "{:%b %d (%a) %r}",
+        "interval": 1
+    }
+}

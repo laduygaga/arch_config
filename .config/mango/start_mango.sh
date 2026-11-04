@@ -1,0 +1,104 @@
+#!/bin/bash
+# Startup script for launching MangoWM (Wayland) under user `mango`
+
+export XDG_CURRENT_DESKTOP=mango
+export XDG_SESSION_TYPE=wayland
+export MOZ_ENABLE_WAYLAND=1
+export QT_QPA_PLATFORM="wayland;xcb"
+export GDK_BACKEND="wayland,x11"
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+export PATH="$PATH:$HOME/.local/bin:$HOME/gits/arch_config/scripts:$HOME/gits/arch_config/.local/bin/statusbar:$HOME/go/bin"
+export VISUAL=nvim
+export EDITOR=$VISUAL
+export BROWSER="/usr/bin/google-chrome-stable"
+export SHELL=/usr/bin/zsh
+export LF_ICONS="di=:\
+fi=:\
+tw=🤝:\
+ow=:\
+ln=:\
+or=❌:\
+ex=:\
+*.conf=:\
+*.db=:\
+*.sh=:\
+*.txt=:\
+*.json={;}:\
+*.xml=</>:\
+*.py=:\
+*.php=:\
+*.js=:\
+*.c=:\
+*.cpp=:\
+*.mom=✍:\
+*.me=✍:\
+*.ms=✍:\
+*.png=:\
+*.webp=🖼:\
+*.ico=🖼:\
+*.jpg=:\
+*.jpe=:\
+*.jpeg=:\
+*.gif=🖼:\
+*.svg=🗺:\
+*.tif=🖼:\
+*.tiff=🖼:\
+*.xcf=🖌:\
+*.html=🌎:\
+*.gpg=:\
+*.css=:\
+*.pdf=:\
+*.djvu=📚:\
+*.epub=:\
+*.csv=:\
+*.xlsx=:\
+*.docx=:\
+*.doc=:\
+*.tex=📜:\
+*.md=:\
+*.r=📊:\
+*.R=📊:\
+*.rmd=📊:\
+*.Rmd=📊:\
+*.m=📊:\
+*.mp3=♬:\
+*.opus=♬:\
+*.ogg=♬:\
+*.m4a=♬:\
+*.flac=:\
+*.mkv=:\
+*.mp4=:\
+*.webm=🎬:\
+*.mpeg=🎬:\
+*.avi=🎬:\
+*.m4v=🎬:\
+*.zip=📦:\
+*.rar=📦:\
+*.7z=📦:\
+*.gz=📦:\
+*.tar=📦:\
+*.tar.gz=📦:\
+*.z64=🎮:\
+*.v64=🎮:\
+*.n64=🎮:\
+*.gba=🎮:\
+*.nes=🎮:\
+*.gdi=🎮:\
+*.1=:\
+*.nfo=:\
+*.info=:\
+*.log=📙:\
+*.iso=💿:\
+*.img=:\
+*.bib=🎓:\
+*.ged=👪:\
+*.part=💔:\
+*.torrent=:\
+*.jar=♨:\
+*.java=♨:\
+"
+
+
+exec mango
