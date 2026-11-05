@@ -89,11 +89,10 @@ config.color_schemes = {
 config.color_scheme = 'Custom'
 
 -- Replicates the st terminal flow: extract all URLs from the scrollback with
--- xurls, list them in dmenu, and copy the one you pick. wezterm force-wraps
+-- xurls, list them in rofi, and copy the one you pick. wezterm force-wraps
 -- long URLs into physical rows, so we pull the scrollback via
 -- get_text_from_region, which returns it UNWRAPPED (width-independent); xurls
--- then sees each URL as one contiguous line. run_child_process inherits DISPLAY
--- so dmenu renders on X11.
+-- then sees each URL as one contiguous line.
 local function find_url_near_cursor(window, pane)
   local dims = pane:get_dimensions()
   local top = dims.scrollback_top
@@ -106,7 +105,7 @@ local function find_url_near_cursor(window, pane)
     return
   end
 
-  local tmp = '/tmp/opencode/wez_url_in.txt'
+  local tmp = '/tmp/wez_url_in.txt'
   local tf = io.open(tmp, 'w')
   if not tf then
     window:toast_notification('wezterm', 'Cannot write temp file', nil, 2000)
@@ -115,26 +114,30 @@ local function find_url_near_cursor(window, pane)
   tf:write(region)
   tf:close()
 
-  -- stdout is the chosen dmenu line (with trailing newline); empty => cancelled.
+  -- stdout is the chosen line (with trailing newline); empty => cancelled.
+  -- Uses fuzzel in dmenu mode for native Wayland layer-shell support on mangowm.
   local success, stdout = wezterm.run_child_process {
     '/bin/sh', '-c',
-    string.format("xurls -r '%s' | sort -u | dmenu -i -p 'Copy which url?' -l 10", tmp),
+    string.format("xurls -r '%s' | sort -u | fuzzel --dmenu -p 'Copy which url?' -l 10", tmp),
   }
   os.remove(tmp)
 
-  if not success or not stdout or #stdout == 0 then
-    -- dmenu cancelled or no URLs: nothing to do.
+  if not stdout or #stdout == 0 then
     return
   end
 
-  local url = stdout:match('[^\n]*')
+  local url = stdout:gsub('[\r\n]+$', '')
   if #url == 0 then return end
   window:copy_to_clipboard(url)
+  wezterm.run_child_process {
+    '/bin/sh', '-c',
+    string.format("printf '%%s' %s | wl-copy", wezterm.shell_quote_arg(url)),
+  }
   window:toast_notification('wezterm', 'Copied (' .. #url .. ' chars)', nil, 2000)
 end
 
 -- Strip insignificant whitespace while preserving string contents, so a
--- pretty-printed (multi-line) value collapses to one dmenu row. JSON allows
+-- pretty-printed (multi-line) value collapses to one rofi row. JSON allows
 -- removing ALL whitespace outside of string literals.
 local function minify_json(s)
   local out = {}
@@ -163,7 +166,7 @@ end
 
 -- Same flow as the URL extractor: pull the UNWRAPPED scrollback via
 -- get_text_from_region (force-wrap-safe), collect every complete top-level
--- JSON value, list them in dmenu, and copy the one you pick.
+-- JSON value, list them in rofi, and copy the one you pick.
 local function extract_json_from_pane(window, pane)
   local dims = pane:get_dimensions()
   local top = dims.scrollback_top
@@ -221,8 +224,8 @@ local function extract_json_from_pane(window, pane)
     return
   end
 
-  -- Feed the candidates to dmenu; stdout is the chosen value (trailing newline).
-  local tmp = '/tmp/opencode/wez_json_in.txt'
+  -- Feed the candidates to fuzzel; stdout is the chosen value (trailing newline).
+  local tmp = '/tmp/wez_json_in.txt'
   local tf = io.open(tmp, 'w')
   if not tf then
     window:toast_notification('wezterm', 'Cannot write temp file', nil, 2000)
@@ -244,17 +247,21 @@ local function extract_json_from_pane(window, pane)
 
   local success, stdout = wezterm.run_child_process {
     '/bin/sh', '-c',
-    string.format("dmenu -i -p 'Copy which json?' -l 10 < '%s'", tmp),
+    string.format("fuzzel --dmenu -p 'Copy which json?' -l 10 < '%s'", tmp),
   }
   os.remove(tmp)
 
-  if not success or not stdout or #stdout == 0 then
+  if not stdout or #stdout == 0 then
     return
   end
 
-  local json = stdout:match('[^\n]*')
+  local json = stdout:gsub('[\r\n]+$', '')
   if #json == 0 then return end
   window:copy_to_clipboard(json)
+  wezterm.run_child_process {
+    '/bin/sh', '-c',
+    string.format("printf '%%s' %s | wl-copy", wezterm.shell_quote_arg(json)),
+  }
   window:toast_notification('wezterm', 'Copied JSON (' .. #json .. ' chars)', nil, 2000)
 end
 
