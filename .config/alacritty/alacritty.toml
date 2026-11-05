@@ -16,10 +16,6 @@ yellow = "#c18401"
 background = "#ededcc"
 foreground = "#000000"
 
-# [colors.search."colors.footer_bar"]
-# background = "#c5c8c6"
-# foreground = "#1d1f21"
-
 [colors.search.focused_match]
 background = "CellForeground"
 foreground = "CellBackground"
@@ -54,6 +50,10 @@ style = "Regular"
 [font.offset]
 x = -1
 y = -1
+
+[window]
+decorations = "None"
+dynamic_title = true
 
 [[keyboard.bindings]]
 action = "SpawnNewInstance"
@@ -112,9 +112,9 @@ mods = "Control|Shift"
 
 # Binding 1: Shift+Enter workaround
 [[keyboard.bindings]]
+chars = "\u001b\r"
 key = "Enter"
 mods = "Shift"
-chars = "\u001b\r"
 
 [[keyboard.bindings]]
 key = "I"
@@ -122,8 +122,3 @@ mods = "Control|Alt"
 
 [keyboard.bindings.command]
 program = "alacritty-invert-colours"
-[env]
-WINIT_UNIX_BACKEND = "x11"          # or "wayland"
-MESA_GL_VERSION_OVERRIDE = "3.3"    # forces core profile
-MESA_GLSL_VERSION_OVERRIDE = "330"
-

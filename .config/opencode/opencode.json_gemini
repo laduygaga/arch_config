@@ -1,0 +1,111 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "plugin": [
+    "oh-my-openagent@latest",
+    "opencode-antigravity-auth@latest",
+  ],
+  "provider": {
+    "google": {
+      "npm": "@ai-sdk/google",
+      "name": "Google Antigravity Auth",
+      "models": {
+        "antigravity-gemini-3-flash": {
+          "name": "Gemini 3 Flash (Oauth)"
+        },
+        "antigravity-gemini-3.1-pro": {
+          "name": "Gemini 3.1 pro (low,high) (Oauth)"
+        },
+        "antigravity-claude-sonnet-4-6": {
+          "name": "Claude Sonnet 4.6 (Oauth)"
+        },
+        "gemini-2.5-flash": {
+          "name": "Gemini 2.5 Flash (Oauth)"
+        },
+        "gemini-3-flash-preview": {
+          "name": "Gemini 3 Flash Preview (Oauth)"
+        },
+        "gemini-3.1-flash-lite": {
+          "name": "Gemini 3.1 Flash Lite (Oauth)"
+        },
+        "gemma-4-31b": {
+          "name": "Gemma 4 31B (Oauth)"
+        },
+        "gemini-3.1-pro-preview": {
+          "name": "Gemini 3.1 Pro Preview (Oauth)"
+        }
+      }
+    },
+    "bifrost-gemini": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Gemini Multi-Key Pool",
+      "options": {
+        "baseURL": "http://127.0.0.1:4000/v1",
+        "apiKey": "placeholder-token"
+      },
+      "models": {
+        "gemini-2.5-flash": {
+          "name": "Gemini 2.5 Flash (bifrost)"
+        },
+        "gemini-3-flash-preview": {
+          "name": "Gemini 3 Flash Preview(bifrost)"
+        },
+        "gemini-3-flash": {
+          "name": "Gemini 3 Flash (bifrost)"
+        },
+        "gemini-3.5-flash-lite": {
+          "name": "Gemini 3.5 Flash Lite (bifrost)"
+        },
+        "gemini-3.5-flash": {
+          "name": "Gemini 3.5 Flash (bifrost)"
+        },
+        "gemini-3.6-flash": {
+          "name": "Gemini 3.6 Flash (bifrost)"
+        },
+        "gemini-3.7-flash": {
+          "name": "Gemini 3.7 Flash (bifrost)"
+        },
+        "gemini-3.8-flash": {
+          "name": "Gemini 3.8 Flash (bifrost)"
+        },
+        "gemini-3.1-flash-lite": {
+          "name": "Gemini 3.1 Flash Lite (bifrost)"
+        },
+        "gemini-2.5-flash-lite": {
+          "name": "Gemini 2.5 Flash Lite (bifrost)"
+        },
+        "gemma-4-31b": {
+          "name": "Gemma 4 31B (bifrost)"
+        }
+      }
+    },
+  },
+  "model": "bifrost-gemini/gemini-3.6-flash",
+  "categories": {
+    "ultrabrain": {
+      "model": "bifrost-gemini/gemini-3.6-flash"
+    },
+    "quick": {
+      "model": "bifrost-gemini/gemini-3.5-flash-lite"
+    },
+    "visual-engineering": {
+      "model": "bifrost-gemini/gemini-3.6-flash"
+    }
+  },
+  "agents": {
+    "sisyphus": {
+      "model": "bifrost-gemini/gemini-3.6-flash"
+    },
+    "sisyphus-junior": {
+      "model": "bifrost-gemini/gemini-3.6-flash"
+    },
+    "oracle": {
+      "model": "bifrost-gemini/gemini-3.6-flash"
+    },
+    "explore": {
+      "model": "bifrost-gemini/gemini-3.5-flash-lite"
+    },
+    "librarian": {
+      "model": "bifrost-gemini/gemini-3.5-flash-lite"
+    }
+  }
+}
