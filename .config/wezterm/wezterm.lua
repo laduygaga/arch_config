@@ -1,6 +1,7 @@
 local wezterm = require 'wezterm'
 local config = wezterm.config_builder()
 config.enable_wayland = true
+config.adjust_window_size_when_changing_font_size = false
 
 config.term = "wezterm"
 
@@ -118,7 +119,7 @@ local function find_url_near_cursor(window, pane)
   -- Uses fuzzel in dmenu mode for native Wayland layer-shell support on mangowm.
   local success, stdout = wezterm.run_child_process {
     '/bin/sh', '-c',
-    string.format("xurls -r '%s' | sort -u | fuzzel --dmenu -p 'Copy which url?' -l 10", tmp),
+    string.format("xurls -r '%s' | sort -u | fuzzel --dmenu -p 'Copy which url?: ' -l 10", tmp),
   }
   os.remove(tmp)
 
@@ -247,7 +248,7 @@ local function extract_json_from_pane(window, pane)
 
   local success, stdout = wezterm.run_child_process {
     '/bin/sh', '-c',
-    string.format("fuzzel --dmenu -p 'Copy which json?' -l 10 < '%s'", tmp),
+    string.format("fuzzel --dmenu -p 'Copy which json: ?' -l 10 < '%s'", tmp),
   }
   os.remove(tmp)
 

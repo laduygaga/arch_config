@@ -1,14 +1,6 @@
 #!/bin/bash
 # Startup script for launching MangoWM (Wayland) under user `mango`
 
-export XDG_CURRENT_DESKTOP=mango
-export XDG_SESSION_TYPE=wayland
-export MOZ_ENABLE_WAYLAND=1
-export QT_QPA_PLATFORM="wayland;xcb"
-export GDK_BACKEND="wayland,x11"
-export GTK_IM_MODULE=fcitx
-export QT_IM_MODULE=fcitx
-export XMODIFIERS=@im=fcitx
 export PATH="$PATH:$HOME/.local/bin:$HOME/gits/arch_config/scripts:$HOME/gits/arch_config/.local/bin/statusbar:$HOME/go/bin"
 export VISUAL=nvim
 export EDITOR=$VISUAL
