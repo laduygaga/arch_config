@@ -1,6 +1,7 @@
 local wezterm = require 'wezterm'
 local config = wezterm.config_builder()
-config.enable_wayland = false
+config.enable_wayland = true
+config.adjust_window_size_when_changing_font_size = false
 
 config.term = "wezterm"
 
@@ -46,49 +47,53 @@ config.enable_tab_bar = false
 -- Shell
 config.default_prog = { '/usr/bin/zsh', '-l' }
 
--- Colors
-config.colors = {
-  foreground = '#000000',
-  background = '#ededcc',
-  cursor_bg = '#000000',
-  cursor_fg = '#ededcc',
-  selection_bg = '#ecf024',
-  selection_fg = '#000000',
-  
-  ansi = {
-    '#696c77', -- black
-    '#e45649', -- red
-    '#50a14f', -- green
-    '#c18401', -- yellow
-    '#199aa6', -- blue
-    '#a626a4', -- magenta
-    '#0184bc', -- cyan
-    '#a0a1a7', -- white
+-- Register the hand-tuned palette as its own named scheme so that
+-- switching `color_scheme` (via the keymap or overrides) actually takes
+-- effect. Setting `config.colors` directly would shadow `color_scheme`.
+config.color_schemes = {
+  ['Custom'] = {
+    foreground = '#000000',
+    background = '#ededcc',
+    cursor_bg = '#000000',
+    cursor_fg = '#ededcc',
+    selection_bg = '#ecf024',
+    selection_fg = '#000000',
+
+    ansi = {
+      '#696c77', -- black
+      '#e45649', -- red
+      '#50a14f', -- green
+      '#c18401', -- yellow
+      '#199aa6', -- blue
+      '#a626a4', -- magenta
+      '#0184bc', -- cyan
+      '#a0a1a7', -- white
+    },
+    brights = {
+      '#696c77',
+      '#e45649',
+      '#50a14f',
+      '#c18401',
+      '#199aa6',
+      '#a626a4',
+      '#0184bc',
+      '#a0a1a7',
+    },
+
+    -- Search/Copy Mode Highlights matching focused_match and matches
+    copy_mode_active_highlight_bg = { Color = '#000000' },
+    copy_mode_active_highlight_fg = { Color = '#ededcc' },
+    copy_mode_inactive_highlight_bg = { Color = '#ecf024' },
+    copy_mode_inactive_highlight_fg = { Color = '#000000' },
   },
-  brights = {
-    '#696c77',
-    '#e45649',
-    '#50a14f',
-    '#c18401',
-    '#199aa6',
-    '#a626a4',
-    '#0184bc',
-    '#a0a1a7',
-  },
-  
-  -- Search/Copy Mode Highlights matching focused_match and matches
-  copy_mode_active_highlight_bg = { Color = '#000000' },
-  copy_mode_active_highlight_fg = { Color = '#ededcc' },
-  copy_mode_inactive_highlight_bg = { Color = '#ecf024' },
-  copy_mode_inactive_highlight_fg = { Color = '#000000' },
 }
+config.color_scheme = 'Custom'
 
 -- Replicates the st terminal flow: extract all URLs from the scrollback with
--- xurls, list them in dmenu, and copy the one you pick. wezterm force-wraps
+-- xurls, list them in rofi, and copy the one you pick. wezterm force-wraps
 -- long URLs into physical rows, so we pull the scrollback via
 -- get_text_from_region, which returns it UNWRAPPED (width-independent); xurls
--- then sees each URL as one contiguous line. run_child_process inherits DISPLAY
--- so dmenu renders on X11.
+-- then sees each URL as one contiguous line.
 local function find_url_near_cursor(window, pane)
   local dims = pane:get_dimensions()
   local top = dims.scrollback_top
@@ -101,7 +106,7 @@ local function find_url_near_cursor(window, pane)
     return
   end
 
-  local tmp = '/tmp/opencode/wez_url_in.txt'
+  local tmp = '/tmp/wez_url_in.txt'
   local tf = io.open(tmp, 'w')
   if not tf then
     window:toast_notification('wezterm', 'Cannot write temp file', nil, 2000)
@@ -110,26 +115,30 @@ local function find_url_near_cursor(window, pane)
   tf:write(region)
   tf:close()
 
-  -- stdout is the chosen dmenu line (with trailing newline); empty => cancelled.
+  -- stdout is the chosen line (with trailing newline); empty => cancelled.
+  -- Uses fuzzel in dmenu mode for native Wayland layer-shell support on mangowm.
   local success, stdout = wezterm.run_child_process {
     '/bin/sh', '-c',
-    string.format("xurls '%s' | sort -u | dmenu -i -p 'Copy which url?' -l 10", tmp),
+    string.format("xurls -r '%s' | sort -u | fuzzel --dmenu -p 'Copy which url?: ' -l 10", tmp),
   }
   os.remove(tmp)
 
-  if not success or not stdout or #stdout == 0 then
-    -- dmenu cancelled or no URLs: nothing to do.
+  if not stdout or #stdout == 0 then
     return
   end
 
-  local url = stdout:match('[^\n]*')
+  local url = stdout:gsub('[\r\n]+$', '')
   if #url == 0 then return end
   window:copy_to_clipboard(url)
+  wezterm.run_child_process {
+    '/bin/sh', '-c',
+    string.format("printf '%%s' %s | wl-copy", wezterm.shell_quote_arg(url)),
+  }
   window:toast_notification('wezterm', 'Copied (' .. #url .. ' chars)', nil, 2000)
 end
 
 -- Strip insignificant whitespace while preserving string contents, so a
--- pretty-printed (multi-line) value collapses to one dmenu row. JSON allows
+-- pretty-printed (multi-line) value collapses to one rofi row. JSON allows
 -- removing ALL whitespace outside of string literals.
 local function minify_json(s)
   local out = {}
@@ -158,7 +167,7 @@ end
 
 -- Same flow as the URL extractor: pull the UNWRAPPED scrollback via
 -- get_text_from_region (force-wrap-safe), collect every complete top-level
--- JSON value, list them in dmenu, and copy the one you pick.
+-- JSON value, list them in rofi, and copy the one you pick.
 local function extract_json_from_pane(window, pane)
   local dims = pane:get_dimensions()
   local top = dims.scrollback_top
@@ -216,8 +225,8 @@ local function extract_json_from_pane(window, pane)
     return
   end
 
-  -- Feed the candidates to dmenu; stdout is the chosen value (trailing newline).
-  local tmp = '/tmp/opencode/wez_json_in.txt'
+  -- Feed the candidates to fuzzel; stdout is the chosen value (trailing newline).
+  local tmp = '/tmp/wez_json_in.txt'
   local tf = io.open(tmp, 'w')
   if not tf then
     window:toast_notification('wezterm', 'Cannot write temp file', nil, 2000)
@@ -239,18 +248,45 @@ local function extract_json_from_pane(window, pane)
 
   local success, stdout = wezterm.run_child_process {
     '/bin/sh', '-c',
-    string.format("dmenu -i -p 'Copy which json?' -l 10 < '%s'", tmp),
+    string.format("fuzzel --dmenu -p 'Copy which json: ?' -l 10 < '%s'", tmp),
   }
   os.remove(tmp)
 
-  if not success or not stdout or #stdout == 0 then
+  if not stdout or #stdout == 0 then
     return
   end
 
-  local json = stdout:match('[^\n]*')
+  local json = stdout:gsub('[\r\n]+$', '')
   if #json == 0 then return end
   window:copy_to_clipboard(json)
+  wezterm.run_child_process {
+    '/bin/sh', '-c',
+    string.format("printf '%%s' %s | wl-copy", wezterm.shell_quote_arg(json)),
+  }
   window:toast_notification('wezterm', 'Copied JSON (' .. #json .. ' chars)', nil, 2000)
+end
+
+-- Cycle through a curated list of color schemes with Ctrl+Alt+Space.
+local schemes = {
+  'Custom',
+  'Catppuccin Latte',
+  'Catppuccin Mocha',
+  'Gruvbox Light',
+}
+
+local function switch_scheme(window, pane)
+  local overrides = window:get_config_overrides() or {}
+  local current = overrides.color_scheme
+  local idx = 1
+  for i, s in ipairs(schemes) do
+    if s == current then
+      idx = i
+      break
+    end
+  end
+  local next = schemes[(idx % #schemes) + 1]
+  window:set_config_overrides({ color_scheme = next })
+  window:toast_notification('wezterm', 'Scheme: ' .. next, nil, 2000)
 end
 
 -- Keybindings
@@ -349,6 +385,12 @@ config.keys = {
     key = 'j',
     mods = 'CTRL|SHIFT',
     action = wezterm.action_callback(extract_json_from_pane),
+  },
+  -- Cycle color scheme: Ctrl+Alt+Space
+  {
+    key = 'i',
+    mods = 'CTRL|ALT',
+    action = wezterm.action_callback(switch_scheme),
   },
 }
 
